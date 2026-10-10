@@ -40,22 +40,32 @@ export const StudySession: React.FC<StudySessionProps> = ({
   const { speak, isSpeaking, isSupported: speechSupported } = useSpeech();
 
   const currentCard = cards[currentIndex];
-  const langCode = deck?.languageCode || 'es-ES';
 
-  const handleSpeak = useCallback((text: string) => {
-    speak(text, langCode);
-  }, [speak, langCode]);
+  // Dynamically resolve exact language code from current card or deck
+  const getCardLanguageCode = useCallback((card?: Flashcard, currentDeck?: Deck): string => {
+    if (currentDeck?.languageCode) return currentDeck.languageCode;
+    if (card?.languageId) {
+      const map: Record<string, string> = {
+        chinese: 'zh-CN',
+        spanish: 'es-ES',
+        german: 'de-DE',
+        english: 'en-US',
+      };
+      if (map[card.languageId]) return map[card.languageId];
+    }
+    return 'zh-CN';
+  }, []);
+
+  const targetLangCode = getCardLanguageCode(currentCard, deck);
+
+  const handleSpeak = useCallback((text: string, forceLang?: string) => {
+    const langToUse = forceLang || (isReverseMode ? 'en-US' : targetLangCode);
+    speak(text, langToUse);
+  }, [speak, isReverseMode, targetLangCode]);
 
   const handleFlip = useCallback(() => {
-    setIsFlipped(prev => {
-      const next = !prev;
-      // Auto pronounce on reveal if in standard mode
-      if (next && currentCard && !isReverseMode) {
-        speak(currentCard.front, langCode);
-      }
-      return next;
-    });
-  }, [currentCard, isReverseMode, speak, langCode]);
+    setIsFlipped(prev => !prev);
+  }, []);
 
   const handleGrade = useCallback(async (wasCorrect: boolean) => {
     if (!currentCard) return;
@@ -293,13 +303,13 @@ export const StudySession: React.FC<StudySessionProps> = ({
                   type="button"
                   title="Pronounce with native accent (Shortcut: S)"
                   onClick={() => handleSpeak(isReverseMode ? answerText : promptText)}
-                  className={`p-1.5 rounded-lg border transition-colors ${
+                  className={`p-1.5 rounded-lg border transition-all cursor-pointer ${
                     isSpeaking
-                      ? 'bg-indigo-50 dark:bg-indigo-950 text-indigo-600 border-indigo-300'
-                      : 'text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800'
+                      ? 'bg-amber-400 text-zinc-950 border-amber-500 ring-2 ring-amber-400/30 scale-105'
+                      : 'text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800'
                   }`}
                 >
-                  <Volume2 className="w-4 h-4" />
+                  <Volume2 className={`w-4 h-4 ${isSpeaking ? 'animate-pulse' : ''}`} />
                 </button>
               )}
 
@@ -309,7 +319,7 @@ export const StudySession: React.FC<StudySessionProps> = ({
                   type="button"
                   title="Toggle Hint (Shortcut: H)"
                   onClick={() => setShowHint(prev => !prev)}
-                  className={`p-1.5 rounded-lg border transition-colors ${
+                  className={`p-1.5 rounded-lg border transition-colors cursor-pointer ${
                     showHint
                       ? 'bg-amber-50 dark:bg-amber-950 text-amber-600 border-amber-300'
                       : 'text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800'
@@ -351,9 +361,22 @@ export const StudySession: React.FC<StudySessionProps> = ({
                 {/* Example sentence & translation */}
                 {currentCard.exampleTarget && (
                   <div className="p-3.5 rounded-xl bg-zinc-100/70 dark:bg-zinc-800/60 border border-zinc-200/80 dark:border-zinc-700/60 text-xs space-y-1">
-                    <div className="flex items-center gap-1.5 text-zinc-400 font-medium">
-                      <BookOpen className="w-3.5 h-3.5" />
-                      <span>In Context:</span>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-1.5 text-zinc-400 font-medium">
+                        <BookOpen className="w-3.5 h-3.5" />
+                        <span>In Context:</span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleSpeak(currentCard.exampleTarget!, targetLangCode);
+                        }}
+                        title="Pronounce example sentence"
+                        className="p-1 rounded text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 hover:bg-zinc-200/60 dark:hover:bg-zinc-700 cursor-pointer"
+                      >
+                        <Volume2 className="w-3.5 h-3.5" />
+                      </button>
                     </div>
                     <p className="text-sm font-medium text-zinc-800 dark:text-zinc-200">
                       {currentCard.exampleTarget}

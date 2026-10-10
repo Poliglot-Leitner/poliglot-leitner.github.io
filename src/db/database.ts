@@ -321,7 +321,9 @@ export async function processCardReview(
   wasCorrect: boolean
 ): Promise<{ oldBox: number; newBox: number; nextDate: number }> {
   const now = Date.now();
-  const oldBox = card.box;
+  // Fetch fresh card record to ensure dynamic flags (like isFavorite) are never overwritten by stale session objects
+  const freshCard = (await db.cards.get(card.id)) || card;
+  const oldBox = freshCard.box;
   let newBox: 1 | 2 | 3 | 4 | 5 = 1;
 
   if (wasCorrect) {
@@ -335,13 +337,13 @@ export async function processCardReview(
   const nextDate = now + intervalDays * 24 * 60 * 60 * 1000;
 
   const updated: Flashcard = {
-    ...card,
+    ...freshCard,
     box: newBox,
     nextReviewDate: nextDate,
     lastReviewedDate: now,
-    totalReviews: card.totalReviews + 1,
-    correctCount: card.correctCount + (wasCorrect ? 1 : 0),
-    incorrectCount: card.incorrectCount + (wasCorrect ? 0 : 1),
+    totalReviews: freshCard.totalReviews + 1,
+    correctCount: freshCard.correctCount + (wasCorrect ? 1 : 0),
+    incorrectCount: freshCard.incorrectCount + (wasCorrect ? 0 : 1),
   };
 
   await db.cards.put(updated);

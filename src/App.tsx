@@ -39,6 +39,7 @@ export function App() {
   const [selectedDeckId, setSelectedDeckId] = useState<string | null>(null);
   const [selectedLanguageFilter, setSelectedLanguageFilter] = useState<LanguageId | 'all'>('all');
   const [cards, setCards] = useState<Flashcard[]>([]);
+  const [allCards, setAllCards] = useState<Flashcard[]>([]);
   const [boxSummaries, setBoxSummaries] = useState<LeitnerBoxSummary[]>([]);
   const [activeBoxFilter, setActiveBoxFilter] = useState<number | null>(null);
 
@@ -135,11 +136,14 @@ export function App() {
     const profDecks = await getDecksForProfile(activeProfile.id);
     setDecks(profDecks);
 
+    const totalProfileCards = await getAllCardsForProfile(activeProfile.id);
+    setAllCards(totalProfileCards);
+
     let activeCards: Flashcard[] = [];
     if (selectedDeckId) {
       activeCards = await getCardsForDeck(selectedDeckId);
     } else {
-      activeCards = await getAllCardsForProfile(activeProfile.id);
+      activeCards = totalProfileCards;
     }
 
     // Apply language filter to cards when viewing all decks
@@ -210,9 +214,7 @@ export function App() {
     const SESSION_SIZE = 10;
     const targetCards = deckId
       ? await getCardsForDeck(deckId)
-      : selectedDeckId
-      ? await getCardsForDeck(selectedDeckId)
-      : cards;
+      : (allCards.length > 0 ? allCards : await getAllCardsForProfile(activeProfile.id));
 
     const favoriteCards = targetCards.filter(c => c.isFavorite);
     if (favoriteCards.length === 0) {
@@ -298,7 +300,8 @@ export function App() {
     : decks.filter(d => d.languageId === selectedLanguageFilter);
 
   const totalDueCards = cards.filter(c => c.nextReviewDate <= Date.now()).length;
-  const totalFavoriteCards = cards.filter(c => c.isFavorite).length;
+  // Compute total favorites from all cards across the profile so the count in visualizer is always global
+  const totalFavoriteCards = allCards.filter(c => c.isFavorite).length;
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 flex flex-col font-sans transition-colors duration-150">
@@ -323,6 +326,10 @@ export function App() {
             cards={studyQueue}
             onToggleFavorite={async (cardId) => {
               const res = await toggleCardFavorite(cardId);
+              // Update in-place in studyQueue so active session immediately keeps correct favorite state
+              setStudyQueue(prev =>
+                prev.map(c => (c.id === cardId ? { ...c, isFavorite: res } : c))
+              );
               await refreshProfileData();
               return res;
             }}
@@ -337,7 +344,7 @@ export function App() {
           />
         ) : isFavoritesPage ? (
           <FavoritesView
-            cards={cards}
+            cards={allCards}
             decks={decks}
             onBack={() => setIsFavoritesPage(false)}
             onStartStudyFavorites={() => handleStudyFavorites()}

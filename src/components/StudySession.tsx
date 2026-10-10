@@ -50,6 +50,37 @@ export const StudySession: React.FC<StudySessionProps> = ({
     return initial;
   });
 
+  // Keep favoriteIds in sync whenever cards array updates
+  useEffect(() => {
+    const set = new Set<string>();
+    cards.forEach(c => {
+      if (c.isFavorite) set.add(c.id);
+    });
+    setFavoriteIds(set);
+  }, [cards]);
+
+  const currentCard = cards[currentIndex];
+
+  const handleToggleCurrentFavorite = useCallback(async () => {
+    if (!currentCard) return;
+    const isCurrentlyFav = favoriteIds.has(currentCard.id);
+    const newFav = !isCurrentlyFav;
+
+    // Mutate in-memory card object so subsequent reviews/grades retain the favorite state
+    currentCard.isFavorite = newFav;
+
+    setFavoriteIds(prev => {
+      const next = new Set(prev);
+      if (newFav) next.add(currentCard.id);
+      else next.delete(currentCard.id);
+      return next;
+    });
+
+    if (onToggleFavorite) {
+      await onToggleFavorite(currentCard.id);
+    }
+  }, [currentCard, favoriteIds, onToggleFavorite]);
+
   // Swipe & Drag Gesture State
   const [dragOffset, setDragOffset] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -58,8 +89,6 @@ export const StudySession: React.FC<StudySessionProps> = ({
   const isHorizontalSwipeRef = useRef<boolean | null>(null);
 
   const { speak, isSpeaking, isSupported: speechSupported } = useSpeech();
-
-  const currentCard = cards[currentIndex];
 
   // Dynamically resolve exact language code from current card or deck
   const getCardLanguageCode = useCallback((card?: Flashcard, currentDeck?: Deck): string => {
@@ -244,6 +273,9 @@ export const StudySession: React.FC<StudySessionProps> = ({
           e.preventDefault();
           setShowHint(prev => !prev);
         }
+      } else if (e.key.toLowerCase() === 'f') {
+        e.preventDefault();
+        handleToggleCurrentFavorite();
       } else if (e.key === 'Escape') {
         onExit();
       }
@@ -251,7 +283,7 @@ export const StudySession: React.FC<StudySessionProps> = ({
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [handleFlip, handleGrade, handleSkip, handleSpeak, isFlipped, isCompleted, currentCard, isReverseMode, onExit]);
+  }, [handleFlip, handleGrade, handleSkip, handleSpeak, handleToggleCurrentFavorite, isFlipped, isCompleted, currentCard, isReverseMode, onExit]);
 
   if (!cards || cards.length === 0) {
     return (
@@ -455,19 +487,10 @@ export const StudySession: React.FC<StudySessionProps> = ({
               {/* Star Favorite Button */}
               <button
                 type="button"
-                title={favoriteIds.has(currentCard.id) ? 'Remove from favorites' : 'Mark as favorite sentence'}
-                onClick={async (e) => {
+                title={favoriteIds.has(currentCard.id) ? 'Remove from favorites (F)' : 'Mark as favorite sentence (F)'}
+                onClick={(e) => {
                   e.stopPropagation();
-                  const isCurrentlyFav = favoriteIds.has(currentCard.id);
-                  setFavoriteIds(prev => {
-                    const next = new Set(prev);
-                    if (isCurrentlyFav) next.delete(currentCard.id);
-                    else next.add(currentCard.id);
-                    return next;
-                  });
-                  if (onToggleFavorite) {
-                    await onToggleFavorite(currentCard.id);
-                  }
+                  handleToggleCurrentFavorite();
                 }}
                 onPointerDown={e => e.stopPropagation()}
                 className={`w-9 h-9 flex items-center justify-center rounded-xl border transition-all cursor-pointer active:scale-90 shrink-0 ${

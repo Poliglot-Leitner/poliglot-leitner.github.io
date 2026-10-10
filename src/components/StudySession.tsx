@@ -290,13 +290,6 @@ export const StudySession: React.FC<StudySessionProps> = ({
             </div>
 
             <div className="flex items-center gap-2" onClick={e => e.stopPropagation()}>
-              {/* Phonetic / Pinyin */}
-              {currentCard.phonetic && (
-                <span className="text-xs font-mono px-2.5 py-0.5 rounded-md bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">
-                  {currentCard.phonetic}
-                </span>
-              )}
-
               {/* Speech Audio Button */}
               {speechSupported && (
                 <button
@@ -306,7 +299,7 @@ export const StudySession: React.FC<StudySessionProps> = ({
                     e.stopPropagation();
                     handleSpeak(isReverseMode ? answerText : promptText);
                   }}
-                  className={`w-9 h-9 sm:w-8 sm:h-8 flex items-center justify-center rounded-xl border transition-all cursor-pointer active:scale-95 shrink-0 ${
+                  className={`w-9 h-9 flex items-center justify-center rounded-xl border transition-all cursor-pointer active:scale-95 shrink-0 ${
                     isSpeaking
                       ? 'bg-amber-400 text-zinc-950 border-amber-500 ring-2 ring-amber-400/40 scale-105 shadow-sm'
                       : 'text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50'
@@ -326,7 +319,7 @@ export const StudySession: React.FC<StudySessionProps> = ({
                     e.stopPropagation();
                     setShowHint(prev => !prev);
                   }}
-                  className={`w-9 h-9 sm:w-8 sm:h-8 flex items-center justify-center rounded-xl border transition-colors cursor-pointer active:scale-95 shrink-0 ${
+                  className={`w-9 h-9 flex items-center justify-center rounded-xl border transition-colors cursor-pointer active:scale-95 shrink-0 ${
                     showHint
                       ? 'bg-amber-50 dark:bg-amber-950 text-amber-600 border-amber-300'
                       : 'text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50'
@@ -343,6 +336,15 @@ export const StudySession: React.FC<StudySessionProps> = ({
           <div className="my-auto py-3 sm:py-4">
             {!isFlipped ? (
               <div>
+                {/* Phonetic / Pinyin display */}
+                {!isReverseMode && currentCard.phonetic && (
+                  <div className="mb-2.5">
+                    <span className="inline-block text-xs sm:text-sm font-mono px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">
+                      {currentCard.phonetic}
+                    </span>
+                  </div>
+                )}
+
                 <FormattedContent
                   content={promptText}
                   className="text-xl sm:text-3xl font-semibold text-zinc-900 dark:text-zinc-100 tracking-tight leading-snug"
@@ -382,6 +384,14 @@ export const StudySession: React.FC<StudySessionProps> = ({
                     content={answerText}
                     className="text-lg sm:text-2xl font-semibold text-zinc-900 dark:text-zinc-100 leading-snug"
                   />
+
+                  {isReverseMode && currentCard.phonetic && (
+                    <div className="mt-1.5 mb-2">
+                      <span className="inline-block text-xs font-mono px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">
+                        {currentCard.phonetic}
+                      </span>
+                    </div>
+                  )}
 
                   {/* Audio button for revealed translation if target is on back */}
                   {speechSupported && isReverseMode && (

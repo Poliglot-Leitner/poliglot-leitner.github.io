@@ -54,27 +54,43 @@ export function App() {
 
   // Theme
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
-    const saved = localStorage.getItem('leitner_theme');
-    if (saved === 'dark' || saved === 'light') return saved;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    try {
+      const saved = localStorage.getItem('leitner_theme');
+      if (saved === 'dark' || saved === 'light') return saved;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    } catch {
+      return 'dark';
+    }
   });
 
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-      document.documentElement.style.colorScheme = 'dark';
-      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#09090b');
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.style.colorScheme = 'light';
-      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#fafafa');
+  const applyThemeToDom = useCallback((nextTheme: 'dark' | 'light') => {
+    try {
+      if (nextTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+        document.documentElement.style.colorScheme = 'dark';
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#09090b');
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.style.colorScheme = 'light';
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#fafafa');
+      }
+      localStorage.setItem('leitner_theme', nextTheme);
+    } catch {
+      // ignore
     }
-    localStorage.setItem('leitner_theme', theme);
-  }, [theme]);
+  }, []);
 
-  const toggleTheme = () => {
-    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
-  };
+  useEffect(() => {
+    applyThemeToDom(theme);
+  }, [theme, applyThemeToDom]);
+
+  const toggleTheme = useCallback(() => {
+    setTheme(prev => {
+      const next = prev === 'dark' ? 'light' : 'dark';
+      applyThemeToDom(next);
+      return next;
+    });
+  }, [applyThemeToDom]);
 
   // Load or Initialize Profile
   const loadInitialData = useCallback(async () => {
@@ -265,6 +281,7 @@ export function App() {
         onToggleTheme={toggleTheme}
         totalDueToday={totalDueCards}
         onGoHome={handleGoHome}
+        isStudyMode={isStudyMode}
       />
 
       <main className="flex-1 max-w-5xl w-full mx-auto px-3 sm:px-4 py-4 sm:py-8">

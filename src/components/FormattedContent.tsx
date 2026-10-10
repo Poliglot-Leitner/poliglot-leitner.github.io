@@ -36,7 +36,7 @@ export const FormattedContent: React.FC<FormattedContentProps> = ({ content, cla
       }
 
       // Inside normal text, split by inline math $...$
-      const inlineParts = part.split(/(\$[^\$\n]+?\$)/g);
+      const inlineParts = part.split(/(\$[^$\n]+?\$)/g);
 
       return (
         <span key={`inline-wrapper-${blockIdx}`}>

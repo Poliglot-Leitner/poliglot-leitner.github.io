@@ -13,35 +13,58 @@ export function normalizeLanguageCode(lang?: string): string {
 
 export function useSpeech() {
   const [isSpeaking, setIsSpeaking] = useState(false);
-  const [isSupported, setIsSupported] = useState(true);
+  const [isSupported] = useState(true);
   const currentAudioRef = useRef<HTMLAudioElement | null>(null);
   const activeUtteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
   const voicesRef = useRef<SpeechSynthesisVoice[]>([]);
+  const watchdogTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Pre-load and sync voices on mount
   useEffect(() => {
-    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      setIsSupported(true);
-      const updateVoices = () => {
-        try {
+    if (typeof window === 'undefined') return;
+
+    const loadVoices = () => {
+      try {
+        if ('speechSynthesis' in window) {
           const v = window.speechSynthesis.getVoices();
           if (v && v.length > 0) {
             voicesRef.current = v;
           }
-        } catch {
-          // ignore
         }
-      };
+      } catch {
+        // ignore
+      }
+    };
 
-      updateVoices();
-      window.speechSynthesis.onvoiceschanged = updateVoices;
+    loadVoices();
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
     }
+
+    // Mobile audio context unlock on first touch
+    const handleFirstTouch = () => {
+      try {
+        if ('speechSynthesis' in window && window.speechSynthesis.paused) {
+          window.speechSynthesis.resume();
+        }
+      } catch {
+        // ignore
+      }
+    };
+    window.addEventListener('touchstart', handleFirstTouch, { once: true, passive: true });
+    window.addEventListener('click', handleFirstTouch, { once: true, passive: true });
+
+    return () => {
+      window.removeEventListener('touchstart', handleFirstTouch);
+      window.removeEventListener('click', handleFirstTouch);
+    };
   }, []);
 
   const cleanTextForSpeech = (raw: string, langCode: string): string => {
     let text = raw
       // Remove math formulas
       .replace(/\$\$[\s\S]*?\$\$/g, ' ')
-      .replace(/\$[^\$]+?\$/g, ' ')
+      .replace(/\$[^$]+?\$/g, ' ')
       // Remove markdown bold, italic, code
       .replace(/\*\*(.*?)\*\*/g, '$1')
       .replace(/\*(.*?)\*/g, '$1')
@@ -60,6 +83,10 @@ export function useSpeech() {
   };
 
   const stop = useCallback(() => {
+    if (watchdogTimerRef.current) {
+      clearTimeout(watchdogTimerRef.current);
+      watchdogTimerRef.current = null;
+    }
     if (currentAudioRef.current) {
       try {
         currentAudioRef.current.pause();
@@ -71,7 +98,7 @@ export function useSpeech() {
     }
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       try {
-        if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
+        if (window.speechSynthesis.speaking) {
           window.speechSynthesis.cancel();
         }
       } catch {
@@ -82,6 +109,54 @@ export function useSpeech() {
     setIsSpeaking(false);
   }, []);
 
+  // HTML5 Audio playback via Google TTS
+  const playHtml5Audio = useCallback((cleanedText: string, langCode: string) => {
+    try {
+      const isDev = import.meta.env.DEV;
+      const ttsBase = isDev ? '/api/tts' : 'https://translate.google.com/translate_tts';
+      const audioUrl = `${ttsBase}?ie=UTF-8&tl=${encodeURIComponent(
+        langCode
+      )}&client=tw-ob&q=${encodeURIComponent(cleanedText)}`;
+
+      // Use a clean audio element
+      const audio = new Audio();
+      audio.setAttribute('playsinline', 'true');
+      audio.preload = 'auto';
+      audio.volume = 1.0;
+      audio.src = audioUrl;
+      currentAudioRef.current = audio;
+
+      audio.onplay = () => {
+        setIsSpeaking(true);
+      };
+
+      audio.onended = () => {
+        setIsSpeaking(false);
+        currentAudioRef.current = null;
+      };
+
+      audio.onerror = (e) => {
+        console.warn('HTML5 Audio playback error:', e);
+        setIsSpeaking(false);
+        currentAudioRef.current = null;
+      };
+
+      setIsSpeaking(true);
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((err) => {
+          console.warn('Audio play() catch:', err);
+          setIsSpeaking(false);
+          currentAudioRef.current = null;
+        });
+      }
+    } catch (err) {
+      console.warn('HTML5 Audio execution failed:', err);
+      setIsSpeaking(false);
+      currentAudioRef.current = null;
+    }
+  }, []);
+
   const speak = useCallback(
     (text: string, rawLangCode: string = 'en-US') => {
       const langCode = normalizeLanguageCode(rawLangCode);
@@ -90,42 +165,39 @@ export function useSpeech() {
 
       stop();
 
-      // PRIMARY ENGINE: Native window.speechSynthesis
-      // Mobile Safari (iOS) and Android Chrome require speechSynthesis.speak() to be called
-      // synchronously directly within the user click/touch event, NOT in an async callback.
-      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      const hasSpeechApi = typeof window !== 'undefined' && 'speechSynthesis' in window;
+      const currentVoices = voicesRef.current.length > 0
+        ? voicesRef.current
+        : (hasSpeechApi ? window.speechSynthesis.getVoices() : []);
+
+      const prefix = langCode.split('-')[0].toLowerCase();
+      const matchingVoice = currentVoices.find(v => {
+        const vl = v.lang.toLowerCase().replace('_', '-');
+        return vl === langCode.toLowerCase() || vl.startsWith(prefix);
+      });
+
+      // If native SpeechSynthesis is available AND has a matching voice for the target language:
+      if (hasSpeechApi && matchingVoice) {
         try {
-          // Resume if audio context was suspended on mobile
           if (window.speechSynthesis.paused) {
             window.speechSynthesis.resume();
           }
 
           const utterance = new SpeechSynthesisUtterance(cleaned);
           utterance.lang = langCode;
-          utterance.rate = 0.88; // Slight deliberate pace for language learners
+          utterance.voice = matchingVoice;
+          utterance.rate = 0.88; // Comfortable pace for learners
           utterance.pitch = 1.0;
           utterance.volume = 1.0;
 
-          // Attempt to match best voice
-          const currentVoices = voicesRef.current.length > 0 
-            ? voicesRef.current 
-            : window.speechSynthesis.getVoices();
-
-          if (currentVoices && currentVoices.length > 0) {
-            const exactMatch = currentVoices.find(
-              v => v.lang.toLowerCase().replace('_', '-') === langCode.toLowerCase().replace('_', '-')
-            );
-            const prefixMatch = currentVoices.find(
-              v => v.lang.toLowerCase().startsWith(langCode.split('-')[0].toLowerCase())
-            );
-            if (exactMatch) {
-              utterance.voice = exactMatch;
-            } else if (prefixMatch) {
-              utterance.voice = prefixMatch;
-            }
-          }
+          let didStartSpeaking = false;
 
           utterance.onstart = () => {
+            didStartSpeaking = true;
+            if (watchdogTimerRef.current) {
+              clearTimeout(watchdogTimerRef.current);
+              watchdogTimerRef.current = null;
+            }
             setIsSpeaking(true);
           };
 
@@ -135,61 +207,46 @@ export function useSpeech() {
           };
 
           utterance.onerror = (e) => {
-            console.warn('SpeechSynthesis error:', e);
-            setIsSpeaking(false);
+            console.warn('SpeechSynthesis error, falling back to Audio:', e);
+            if (watchdogTimerRef.current) {
+              clearTimeout(watchdogTimerRef.current);
+              watchdogTimerRef.current = null;
+            }
             activeUtteranceRef.current = null;
+            // Seamless fallback to HTML5 Audio
+            playHtml5Audio(cleaned, langCode);
           };
 
-          // Store reference to prevent garbage collection mid-speech (Chrome/WebKit bug)
+          // Watchdog timer: If synthesis does not actually start within 700ms, fall back to Audio
+          watchdogTimerRef.current = setTimeout(() => {
+            if (!didStartSpeaking) {
+              console.warn('SpeechSynthesis watchdog triggered: fallback to Audio');
+              try {
+                window.speechSynthesis.cancel();
+              } catch {
+                // ignore
+              }
+              activeUtteranceRef.current = null;
+              playHtml5Audio(cleaned, langCode);
+            }
+          }, 700);
+
+          // Prevent garbage collection mid-speech (WebKit/Chrome bug)
           activeUtteranceRef.current = utterance;
           // @ts-expect-error keep active utterance in global window
           window.__activeUtterance = utterance;
 
-          setIsSpeaking(true);
           window.speechSynthesis.speak(utterance);
           return;
         } catch (err) {
-          console.warn('SpeechSynthesis invocation failed, falling back to Audio:', err);
+          console.warn('SpeechSynthesis invocation failed, falling back:', err);
         }
       }
 
-      // SECONDARY FALLBACK: HTML5 Audio via Google TTS (desktop / non-speechSynthesis environments)
-      try {
-        const isDev = import.meta.env.DEV;
-        const ttsBase = isDev ? '/api/tts' : 'https://translate.google.com/translate_tts';
-        const audioUrl = `${ttsBase}?ie=UTF-8&tl=${encodeURIComponent(
-          langCode
-        )}&client=tw-ob&q=${encodeURIComponent(cleaned)}`;
-
-        const audio = new Audio();
-        audio.volume = 1.0;
-        (audio as unknown as { referrerPolicy: string }).referrerPolicy = 'no-referrer';
-        audio.src = audioUrl;
-        currentAudioRef.current = audio;
-
-        audio.onplay = () => setIsSpeaking(true);
-        audio.onended = () => {
-          setIsSpeaking(false);
-          currentAudioRef.current = null;
-        };
-        audio.onerror = () => {
-          setIsSpeaking(false);
-          currentAudioRef.current = null;
-        };
-
-        setIsSpeaking(true);
-        const playPromise = audio.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(() => {
-            setIsSpeaking(false);
-            currentAudioRef.current = null;
-          });
-        }
-      } catch {
-        setIsSpeaking(false);
-      }
+      // DIRECT FALLBACK: No matching voice (e.g. Linux desktop PC, or devices lacking voice pack)
+      playHtml5Audio(cleaned, langCode);
     },
-    [stop]
+    [stop, playHtml5Audio]
   );
 
   return {

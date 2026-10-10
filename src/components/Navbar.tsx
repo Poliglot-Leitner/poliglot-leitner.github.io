@@ -1,21 +1,23 @@
 import React from 'react';
-import type { Profile, Deck } from '../types';
+import type { Profile, Deck, LanguageId } from '../types';
+import { SUPPORTED_LANGUAGES } from '../data/languages';
 import {
-  Layers,
-  BookMarked,
+  Globe2,
   Sun,
   Moon,
   ChevronDown,
   Sparkles,
+  SlidersHorizontal,
 } from 'lucide-react';
 
 interface NavbarProps {
   activeProfile: Profile;
   decks: Deck[];
-  selectedDeckId: string | null;
   onSelectDeck: (deckId: string | null) => void;
+  selectedLanguageFilter: LanguageId | 'all';
+  onSelectLanguageFilter: (lang: LanguageId | 'all') => void;
   onOpenProfileModal: () => void;
-  onOpenSubjectModal: () => void;
+  onOpenCurriculumModal: () => void;
   theme: 'dark' | 'light';
   onToggleTheme: () => void;
   totalDueToday: number;
@@ -24,10 +26,11 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({
   activeProfile,
   decks,
-  selectedDeckId,
   onSelectDeck,
+  selectedLanguageFilter,
+  onSelectLanguageFilter,
   onOpenProfileModal,
-  onOpenSubjectModal,
+  onOpenCurriculumModal,
   theme,
   onToggleTheme,
   totalDueToday,
@@ -38,59 +41,70 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Brand / Logo */}
         <div className="flex items-center gap-3">
           <div
-            onClick={() => onSelectDeck(null)}
+            onClick={() => {
+              onSelectDeck(null);
+              onSelectLanguageFilter('all');
+            }}
             className="flex items-center gap-2 cursor-pointer group"
           >
-            <div className="w-8 h-8 rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 flex items-center justify-center font-bold text-xs tracking-wider shadow-xs">
-              <Layers className="w-4 h-4" />
+            <div className="w-8 h-8 rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 flex items-center justify-center font-bold text-xs shadow-xs">
+              <Globe2 className="w-4 h-4" />
             </div>
             <div className="flex flex-col">
               <span className="text-sm font-bold tracking-tight text-zinc-900 dark:text-zinc-50 leading-none">
-                Leitner
+                Polyglot
               </span>
               <span className="text-[10px] text-zinc-400 font-mono tracking-wider uppercase">
-                Spaced Repetition
+                Leitner Languages
               </span>
             </div>
           </div>
 
-          {/* Quick Deck Switcher */}
-          {decks.length > 0 && (
-            <div className="hidden sm:flex items-center ml-4 pl-4 border-l border-zinc-200 dark:border-zinc-800">
-              <select
-                value={selectedDeckId || 'all'}
-                onChange={e => onSelectDeck(e.target.value === 'all' ? null : e.target.value)}
-                className="text-xs bg-transparent border-none text-zinc-600 dark:text-zinc-300 font-medium py-1 pr-6 focus:outline-none cursor-pointer hover:text-zinc-900 dark:hover:text-zinc-100"
+          {/* Language Filter Pills */}
+          <div className="hidden sm:flex items-center ml-3 pl-3 border-l border-zinc-200 dark:border-zinc-800 gap-1">
+            <button
+              onClick={() => onSelectLanguageFilter('all')}
+              className={`px-2 py-0.5 rounded-md text-xs font-medium transition-colors ${
+                selectedLanguageFilter === 'all'
+                  ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900'
+                  : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200'
+              }`}
+            >
+              All
+            </button>
+            {SUPPORTED_LANGUAGES.map(lang => (
+              <button
+                key={lang.id}
+                onClick={() => onSelectLanguageFilter(lang.id)}
+                className={`px-2 py-0.5 rounded-md text-xs font-medium transition-colors flex items-center gap-1 ${
+                  selectedLanguageFilter === lang.id
+                    ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900'
+                    : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200'
+                }`}
               >
-                <option value="all" className="bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100">
-                  All Decks ({decks.length})
-                </option>
-                {decks.map(d => (
-                  <option key={d.id} value={d.id} className="bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100">
-                    {d.title}
-                  </option>
-                ))}
-              </select>
-            </div>
-          )}
+                <span>{lang.flag}</span>
+                <span className="hidden md:inline">{lang.name}</span>
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Right Navigation Actions */}
+        {/* Right Actions */}
         <div className="flex items-center gap-2">
-          {/* Subjects Button */}
+          {/* Curriculum Builder Trigger */}
           <button
-            onClick={onOpenSubjectModal}
+            onClick={onOpenCurriculumModal}
             className="px-2.5 py-1.5 rounded-lg text-xs font-medium border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 transition-colors flex items-center gap-1.5 cursor-pointer"
-            title="Browse and select learning subjects"
+            title="Configure target languages, topics & difficulty"
           >
-            <BookMarked className="w-3.5 h-3.5" />
-            <span className="hidden md:inline">Subjects</span>
-            <span className="text-[10px] font-mono px-1.5 py-0.2 rounded-full bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-              {decks.length}
+            <SlidersHorizontal className="w-3.5 h-3.5" />
+            <span className="hidden md:inline">Curriculum</span>
+            <span className="text-[10px] font-mono px-1.5 py-0.2 rounded-full bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 capitalize">
+              {activeProfile.selectedDifficulty} &bull; {decks.length}
             </span>
           </button>
 
-          {/* Due Badge if any */}
+          {/* Due Count Badge */}
           {totalDueToday > 0 && (
             <div className="hidden xs:flex items-center gap-1 px-2 py-1 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400 text-[11px] font-medium">
               <Sparkles className="w-3 h-3" />
@@ -114,7 +128,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             title="Manage profiles & backup data"
           >
             <span className="text-sm select-none">{activeProfile.avatar}</span>
-            <span className="text-xs font-semibold text-zinc-800 dark:text-zinc-200 max-w-[90px] truncate">
+            <span className="text-xs font-semibold text-zinc-800 dark:text-zinc-200 max-w-[85px] truncate">
               {activeProfile.name}
             </span>
             <ChevronDown className="w-3 h-3 text-zinc-400" />

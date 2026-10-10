@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { Profile } from '../types';
+import type { Profile, LanguageId, DifficultyLevel } from '../types';
 import {
   createProfile,
   deleteProfile,
@@ -7,6 +7,7 @@ import {
   importProfileBackup,
   type BackupData,
 } from '../db/database';
+import { SUPPORTED_LANGUAGES, DIFFICULTY_LEVELS } from '../data/languages';
 import {
   Users,
   Plus,
@@ -24,7 +25,7 @@ interface ProfileModalProps {
   activeProfile: Profile;
   onSelectProfile: (profile: Profile) => void;
   onRefreshProfiles: () => Promise<void>;
-  onOpenSubjectCatalog: () => void;
+  onOpenCurriculumModal: () => void;
 }
 
 const AVATAR_OPTIONS = ['🌱', '🦉', '🚀', '🧠', '⚡', '☕', '📚', '🎯', '✨', '🌊'];
@@ -36,28 +37,45 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   activeProfile,
   onSelectProfile,
   onRefreshProfiles,
-  onOpenSubjectCatalog,
+  onOpenCurriculumModal,
 }) => {
   const [isCreating, setIsCreating] = useState(false);
   const [newProfileName, setNewProfileName] = useState('');
   const [selectedAvatar, setSelectedAvatar] = useState('🌱');
+  const [newLanguages, setNewLanguages] = useState<LanguageId[]>(['spanish']);
+  const [newDifficulty, setNewDifficulty] = useState<DifficultyLevel>('beginner');
   const [isExporting, setIsExporting] = useState(false);
 
   if (!isOpen) return null;
+
+  const toggleNewLang = (langId: LanguageId) => {
+    if (newLanguages.includes(langId)) {
+      if (newLanguages.length > 1) {
+        setNewLanguages(newLanguages.filter(l => l !== langId));
+      }
+    } else {
+      setNewLanguages([...newLanguages, langId]);
+    }
+  };
 
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newProfileName.trim()) return;
 
-    // By default, seed with Fun Facts and Science
-    const created = await createProfile(newProfileName.trim(), selectedAvatar, ['fun-facts', 'science']);
+    const created = await createProfile(
+      newProfileName.trim(),
+      selectedAvatar,
+      newLanguages,
+      ['daily-travel', 'manners-etiquette', 'idioms-expressions'],
+      newDifficulty
+    );
+
     await onRefreshProfiles();
     onSelectProfile(created);
     setIsCreating(false);
     setNewProfileName('');
     onClose();
-    // Offer them to configure subjects for their new profile
-    onOpenSubjectCatalog();
+    onOpenCurriculumModal();
   };
 
   const handleDelete = async (profileId: string) => {
@@ -85,7 +103,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `leitner_backup_${activeProfile.name.toLowerCase().replace(/\s+/g, '_')}_${new Date().toISOString().slice(0, 10)}.json`;
+      a.download = `polyglot_leitner_backup_${activeProfile.name.toLowerCase().replace(/\s+/g, '_')}_${new Date().toISOString().slice(0, 10)}.json`;
       a.click();
       URL.revokeObjectURL(url);
     } finally {
@@ -126,10 +144,10 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
             </div>
             <div>
               <h2 className="text-base font-bold text-zinc-900 dark:text-zinc-100">
-                Local Device Profiles
+                Learner Profiles
               </h2>
               <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                Private, in-browser data isolated per user profile.
+                Isolated in-browser flashcards and progress per learner.
               </p>
             </div>
           </div>
@@ -147,7 +165,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
           <div>
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
-                Saved Profiles
+                Active Profiles
               </span>
               <button
                 type="button"
@@ -155,7 +173,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
                 className="text-xs font-medium text-zinc-900 dark:text-zinc-100 flex items-center gap-1 hover:underline"
               >
                 <Plus className="w-3.5 h-3.5" />
-                <span>New Profile</span>
+                <span>New Learner</span>
               </button>
             </div>
 
@@ -188,9 +206,11 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
                             </span>
                           )}
                         </div>
-                        <span className="text-[11px] text-zinc-400">
-                          {p.selectedSubjects?.length || 0} subjects chosen
-                        </span>
+                        <div className="flex items-center gap-2 mt-0.5 text-[11px] text-zinc-400">
+                          <span className="capitalize">{p.selectedDifficulty || 'Beginner'}</span>
+                          <span>&bull;</span>
+                          <span>{p.selectedLanguages?.length || 1} Languages</span>
+                        </div>
                       </div>
                     </div>
 
@@ -218,7 +238,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
           {isCreating && (
             <form onSubmit={handleCreate} className="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 space-y-3">
               <span className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 block">
-                Create New Profile
+                Create Learner Profile
               </span>
 
               <div className="flex gap-1.5 flex-wrap">
@@ -240,12 +260,57 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
 
               <input
                 type="text"
-                placeholder="Profile Name (e.g. Alex, Math Focus)"
+                placeholder="Learner Name (e.g. Maria, Diego)"
                 value={newProfileName}
                 onChange={e => setNewProfileName(e.target.value)}
                 required
                 className="w-full text-xs p-2.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-1 focus:ring-zinc-900"
               />
+
+              {/* Target languages pick */}
+              <div>
+                <label className="block text-[11px] font-medium text-zinc-600 dark:text-zinc-400 mb-1">
+                  Target Languages
+                </label>
+                <div className="grid grid-cols-2 gap-1.5">
+                  {SUPPORTED_LANGUAGES.map(lang => {
+                    const isSelected = newLanguages.includes(lang.id);
+                    return (
+                      <button
+                        key={lang.id}
+                        type="button"
+                        onClick={() => toggleNewLang(lang.id)}
+                        className={`px-2.5 py-1.5 rounded-lg text-xs font-medium border flex items-center gap-1.5 ${
+                          isSelected
+                            ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 border-zinc-900'
+                            : 'border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400'
+                        }`}
+                      >
+                        <span>{lang.flag}</span>
+                        <span>{lang.name}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Difficulty pick */}
+              <div>
+                <label className="block text-[11px] font-medium text-zinc-600 dark:text-zinc-400 mb-1">
+                  Starting Proficiency Level
+                </label>
+                <select
+                  value={newDifficulty}
+                  onChange={e => setNewDifficulty(e.target.value as DifficultyLevel)}
+                  className="w-full text-xs p-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100"
+                >
+                  {DIFFICULTY_LEVELS.map(d => (
+                    <option key={d.id} value={d.id}>
+                      {d.name} ({d.cefr})
+                    </option>
+                  ))}
+                </select>
+              </div>
 
               <div className="flex items-center justify-end gap-2 pt-1">
                 <button
@@ -259,7 +324,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
                   type="submit"
                   className="px-4 py-1.5 rounded-lg text-xs font-medium bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
                 >
-                  Create
+                  Create Learner
                 </button>
               </div>
             </form>
@@ -284,7 +349,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
                     Export JSON
                   </div>
                   <div className="text-[10px] text-zinc-400">
-                    Download complete cards backup
+                    Save all cards & progress
                   </div>
                 </div>
               </button>
@@ -296,7 +361,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
                     Import JSON
                   </div>
                   <div className="text-[10px] text-zinc-400">
-                    Restore from backup file
+                    Restore backup file
                   </div>
                 </div>
                 <input
@@ -314,7 +379,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
         <div className="p-4 px-6 border-t border-zinc-100 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50 flex items-center justify-between text-[11px] text-zinc-400">
           <div className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400">
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>100% In-Browser &bull; Zero Server Tracking</span>
+            <span>100% In-Browser &bull; Private &bull; Offline PWA</span>
           </div>
           <button
             onClick={onClose}

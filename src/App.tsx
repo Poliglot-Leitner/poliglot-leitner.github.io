@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import type { Profile, Deck, Flashcard, LeitnerBoxSummary } from './types';
+import type { Profile, Deck, Flashcard, LeitnerBoxSummary, LanguageId, DifficultyLevel } from './types';
 import {
   getAllProfiles,
   createProfile,
@@ -7,24 +7,25 @@ import {
   getAllCardsForProfile,
   getCardsForDeck,
   getDueCards,
-  seedSubjectsForProfile,
+  seedCurriculumForProfile,
   computeBoxSummaries,
   createCustomDeck,
   deleteDeck,
 } from './db/database';
+import { SUPPORTED_LANGUAGES, DIFFICULTY_LEVELS } from './data/languages';
 import { Navbar } from './components/Navbar';
 import { LeitnerVisualizer } from './components/LeitnerVisualizer';
 import { DeckManager } from './components/DeckManager';
 import { StudySession } from './components/StudySession';
-import { SubjectPickerModal } from './components/SubjectPickerModal';
+import { LanguageCurriculumModal } from './components/LanguageCurriculumModal';
 import { ProfileModal } from './components/ProfileModal';
 import {
-  BookMarked,
   Plus,
   Play,
   Layers,
   ArrowRight,
   Trash2,
+  SlidersHorizontal,
 } from 'lucide-react';
 
 export function App() {
@@ -32,6 +33,7 @@ export function App() {
   const [activeProfile, setActiveProfile] = useState<Profile | null>(null);
   const [decks, setDecks] = useState<Deck[]>([]);
   const [selectedDeckId, setSelectedDeckId] = useState<string | null>(null);
+  const [selectedLanguageFilter, setSelectedLanguageFilter] = useState<LanguageId | 'all'>('all');
   const [cards, setCards] = useState<Flashcard[]>([]);
   const [boxSummaries, setBoxSummaries] = useState<LeitnerBoxSummary[]>([]);
   const [activeBoxFilter, setActiveBoxFilter] = useState<number | null>(null);
@@ -39,12 +41,15 @@ export function App() {
   // Modals & Navigation states
   const [isStudyMode, setIsStudyMode] = useState(false);
   const [studyQueue, setStudyQueue] = useState<Flashcard[]>([]);
-  const [isSubjectModalOpen, setIsSubjectModalOpen] = useState(false);
+  const [isCurriculumModalOpen, setIsCurriculumModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const [isCustomDeckModalOpen, setIsCustomDeckModalOpen] = useState(false);
+
+  // Custom deck form state
   const [customTitle, setCustomTitle] = useState('');
   const [customDesc, setCustomDesc] = useState('');
-  const [customLang, setCustomLang] = useState('');
+  const [customLangId, setCustomLangId] = useState<LanguageId>('spanish');
+  const [customDifficulty, setCustomDifficulty] = useState<DifficultyLevel>('beginner');
 
   // Theme
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
@@ -70,8 +75,14 @@ export function App() {
   const loadInitialData = useCallback(async () => {
     let allProf = await getAllProfiles();
     if (allProf.length === 0) {
-      // First time onboarding: seed default profile with fun-facts, science, history
-      const initial = await createProfile('Learner', '🌱', ['fun-facts', 'science', 'math', 'lang-spanish']);
+      // First time onboarding: seed default profile with Spanish, German, and Chinese
+      const initial = await createProfile(
+        'Polyglot',
+        '🌱',
+        ['spanish', 'german', 'chinese'],
+        ['daily-travel', 'manners-etiquette', 'idioms-expressions'],
+        'beginner'
+      );
       allProf = [initial];
     }
 
@@ -98,9 +109,14 @@ export function App() {
       activeCards = await getAllCardsForProfile(activeProfile.id);
     }
 
+    // Apply language filter to cards when viewing all decks
+    if (!selectedDeckId && selectedLanguageFilter !== 'all') {
+      activeCards = activeCards.filter(c => c.languageId === selectedLanguageFilter);
+    }
+
     setCards(activeCards);
     setBoxSummaries(computeBoxSummaries(activeCards));
-  }, [activeProfile, selectedDeckId]);
+  }, [activeProfile, selectedDeckId, selectedLanguageFilter]);
 
   useEffect(() => {
     refreshProfileData();
@@ -115,17 +131,22 @@ export function App() {
   const handleStartStudy = async (deckId?: string) => {
     if (!activeProfile) return;
 
-    const dueCards = await getDueCards(activeProfile.id, deckId || selectedDeckId || undefined);
+    const langFilter = selectedLanguageFilter !== 'all' ? selectedLanguageFilter : undefined;
+    const dueCards = await getDueCards(
+      activeProfile.id,
+      deckId || selectedDeckId || undefined,
+      !deckId && !selectedDeckId ? langFilter : undefined
+    );
 
     if (dueCards.length > 0) {
       setStudyQueue(dueCards);
     } else {
-      // If no cards are strictly due, allow practice review of all cards in this selection
+      // If no cards are due today, allow practice of cards in current scope
       const targetCards = deckId
         ? await getCardsForDeck(deckId)
         : selectedDeckId
         ? await getCardsForDeck(selectedDeckId)
-        : await getAllCardsForProfile(activeProfile.id);
+        : cards;
 
       setStudyQueue(targetCards);
     }
@@ -133,13 +154,19 @@ export function App() {
     setIsStudyMode(true);
   };
 
-  // Save Subjects selected from modal
-  const handleSaveSubjects = async (subjectIds: string[]) => {
+  // Save Curriculum (Languages + Topics + Difficulty)
+  const handleSaveCurriculum = async (
+    languages: LanguageId[],
+    topics: string[],
+    difficulty: DifficultyLevel
+  ) => {
     if (!activeProfile) return;
 
-    await seedSubjectsForProfile(activeProfile.id, subjectIds);
-    // Update profile
-    activeProfile.selectedSubjects = subjectIds;
+    await seedCurriculumForProfile(activeProfile.id, languages, topics, difficulty);
+
+    activeProfile.selectedLanguages = languages;
+    activeProfile.selectedTopics = topics;
+    activeProfile.selectedDifficulty = difficulty;
     setActiveProfile({ ...activeProfile });
 
     await refreshProfileData();
@@ -152,21 +179,21 @@ export function App() {
 
     const newDeck = await createCustomDeck(
       activeProfile.id,
+      customLangId,
       customTitle.trim(),
       customDesc.trim(),
-      customLang.trim() || undefined
+      customDifficulty
     );
 
     setCustomTitle('');
     setCustomDesc('');
-    setCustomLang('');
     setIsCustomDeckModalOpen(false);
     await refreshProfileData();
     setSelectedDeckId(newDeck.id);
   };
 
   const handleDeleteDeck = async (deckId: string) => {
-    if (confirm('Delete this entire deck and all its flashcards?')) {
+    if (confirm('Delete this entire language deck and all its flashcards?')) {
       await deleteDeck(deckId);
       if (selectedDeckId === deckId) {
         setSelectedDeckId(null);
@@ -178,12 +205,16 @@ export function App() {
   if (!activeProfile) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-zinc-950 text-zinc-400 text-xs font-mono">
-        Loading Leitner system...
+        Loading language learning system...
       </div>
     );
   }
 
   const selectedDeck = decks.find(d => d.id === selectedDeckId);
+  const displayedDecks = selectedLanguageFilter === 'all'
+    ? decks
+    : decks.filter(d => d.languageId === selectedLanguageFilter);
+
   const totalDueCards = cards.filter(c => c.nextReviewDate <= Date.now()).length;
 
   return (
@@ -191,10 +222,11 @@ export function App() {
       <Navbar
         activeProfile={activeProfile}
         decks={decks}
-        selectedDeckId={selectedDeckId}
         onSelectDeck={handleSelectDeck}
+        selectedLanguageFilter={selectedLanguageFilter}
+        onSelectLanguageFilter={setSelectedLanguageFilter}
         onOpenProfileModal={() => setIsProfileModalOpen(true)}
-        onOpenSubjectModal={() => setIsSubjectModalOpen(true)}
+        onOpenCurriculumModal={() => setIsCurriculumModalOpen(true)}
         theme={theme}
         onToggleTheme={toggleTheme}
         totalDueToday={totalDueCards}
@@ -233,7 +265,7 @@ export function App() {
                     onClick={() => setSelectedDeckId(null)}
                     className="text-xs text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 flex items-center gap-1 cursor-pointer"
                   >
-                    <span>&larr; View All Subjects</span>
+                    <span>&larr; View All Language Decks</span>
                   </button>
                 </div>
 
@@ -251,29 +283,34 @@ export function App() {
               <div>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
                   <div>
-                    <h2 className="text-lg font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-                      Active Learning Decks
-                    </h2>
+                    <div className="flex items-center gap-2">
+                      <h2 className="text-lg font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+                        Language Decks
+                      </h2>
+                      <span className="text-xs px-2.5 py-0.5 rounded-full font-medium bg-zinc-200/80 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 capitalize">
+                        {activeProfile.selectedDifficulty} Tier
+                      </span>
+                    </div>
                     <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
-                      Review cards on schedule to commit knowledge to permanent long-term memory.
+                      Review phrases on schedule to cement native fluency and intuitive recall.
                     </p>
                   </div>
 
                   <div className="flex items-center gap-2">
                     <button
-                      onClick={() => setIsSubjectModalOpen(true)}
-                      className="px-3.5 py-2 rounded-lg text-xs font-medium border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 transition-colors flex items-center gap-1.5 cursor-pointer"
+                      onClick={() => setIsCurriculumModalOpen(true)}
+                      className="px-3.5 py-2 rounded-lg text-xs font-medium border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
                     >
-                      <BookMarked className="w-3.5 h-3.5" />
-                      <span>Browse Subjects</span>
+                      <SlidersHorizontal className="w-3.5 h-3.5" />
+                      <span>Curriculum & Difficulty</span>
                     </button>
 
                     <button
                       onClick={() => setIsCustomDeckModalOpen(true)}
-                      className="px-3.5 py-2 rounded-lg text-xs font-medium border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 transition-colors flex items-center gap-1.5 cursor-pointer"
+                      className="px-3.5 py-2 rounded-lg text-xs font-medium border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
                     >
                       <Plus className="w-3.5 h-3.5" />
-                      <span>Create Deck</span>
+                      <span>Custom Deck</span>
                     </button>
 
                     {cards.length > 0 && (
@@ -282,38 +319,44 @@ export function App() {
                         className="px-4 py-2 rounded-lg text-xs font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 transition-opacity flex items-center gap-1.5 shadow-xs cursor-pointer"
                       >
                         <Play className="w-3.5 h-3.5 fill-current" />
-                        <span>Study All ({totalDueCards} Due)</span>
+                        <span>Study ({totalDueCards} Due)</span>
                       </button>
                     )}
                   </div>
                 </div>
 
                 {/* Deck Cards Grid */}
-                {decks.length === 0 ? (
+                {displayedDecks.length === 0 ? (
                   <div className="py-16 text-center border border-dashed border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900">
                     <div className="w-12 h-12 rounded-xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-400 mx-auto mb-3">
                       <Layers className="w-6 h-6" />
                     </div>
                     <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1">
-                      No subjects added yet
+                      No decks match the current filter
                     </h3>
                     <p className="text-xs text-zinc-500 dark:text-zinc-400 max-w-sm mx-auto mb-5">
-                      Choose from curated subjects like Science, Programming, Languages, or Fun Facts to get starter flashcards.
+                      Configure your languages and subjects to seed decks, or clear the language filter.
                     </p>
                     <button
-                      onClick={() => setIsSubjectModalOpen(true)}
+                      onClick={() => {
+                        setSelectedLanguageFilter('all');
+                        setIsCurriculumModalOpen(true);
+                      }}
                       className="px-4 py-2 rounded-lg text-xs font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 cursor-pointer shadow-xs"
                     >
-                      Explore Subject Catalog
+                      Open Curriculum Builder
                     </button>
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {decks.map(deck => {
+                    {displayedDecks.map(deck => {
+                      const langDef = SUPPORTED_LANGUAGES.find(l => l.id === deck.languageId);
+
                       return (
-                        <DeckCard
+                        <LanguageDeckCard
                           key={deck.id}
                           deck={deck}
+                          flag={langDef?.flag || '🌐'}
                           onOpen={() => setSelectedDeckId(deck.id)}
                           onStudy={() => handleStartStudy(deck.id)}
                           onDelete={() => handleDeleteDeck(deck.id)}
@@ -328,14 +371,17 @@ export function App() {
         )}
       </main>
 
-      {/* Modals */}
-      <SubjectPickerModal
-        isOpen={isSubjectModalOpen}
-        onClose={() => setIsSubjectModalOpen(false)}
-        activeSubjectIds={decks.map(d => d.subjectId).filter(s => s !== 'custom')}
-        onSaveSubjects={handleSaveSubjects}
+      {/* Curriculum Modal */}
+      <LanguageCurriculumModal
+        isOpen={isCurriculumModalOpen}
+        onClose={() => setIsCurriculumModalOpen(false)}
+        initialLanguages={activeProfile.selectedLanguages || ['spanish']}
+        initialTopics={activeProfile.selectedTopics || ['daily-travel']}
+        initialDifficulty={activeProfile.selectedDifficulty || 'beginner'}
+        onSaveCurriculum={handleSaveCurriculum}
       />
 
+      {/* Profile Modal */}
       <ProfileModal
         isOpen={isProfileModalOpen}
         onClose={() => setIsProfileModalOpen(false)}
@@ -346,7 +392,7 @@ export function App() {
           setSelectedDeckId(null);
         }}
         onRefreshProfiles={loadInitialData}
-        onOpenSubjectCatalog={() => setIsSubjectModalOpen(true)}
+        onOpenCurriculumModal={() => setIsCurriculumModalOpen(true)}
       />
 
       {/* Create Custom Deck Modal */}
@@ -354,20 +400,56 @@ export function App() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-950/60 backdrop-blur-xs animate-in fade-in">
           <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl w-full max-w-md p-6 shadow-2xl">
             <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-100 mb-1">
-              Create Custom Deck
+              Create Custom Language Deck
             </h3>
             <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-4">
-              Add your own topic for studying with Leitner boxes.
+              Add your own specialized vocabulary deck with Leitner repetition.
             </p>
 
             <form onSubmit={handleCreateCustomDeck} className="space-y-3">
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                    Language
+                  </label>
+                  <select
+                    value={customLangId}
+                    onChange={e => setCustomLangId(e.target.value as LanguageId)}
+                    className="w-full text-xs p-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100"
+                  >
+                    {SUPPORTED_LANGUAGES.map(l => (
+                      <option key={l.id} value={l.id}>
+                        {l.flag} {l.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                    Difficulty
+                  </label>
+                  <select
+                    value={customDifficulty}
+                    onChange={e => setCustomDifficulty(e.target.value as DifficultyLevel)}
+                    className="w-full text-xs p-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100"
+                  >
+                    {DIFFICULTY_LEVELS.map(d => (
+                      <option key={d.id} value={d.id}>
+                        {d.name} ({d.cefr})
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
               <div>
                 <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
                   Deck Title
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g. Organic Chemistry, Medical Terminology"
+                  placeholder="e.g. Spanish Subjunctive Triggers"
                   value={customTitle}
                   onChange={e => setCustomTitle(e.target.value)}
                   required
@@ -381,23 +463,10 @@ export function App() {
                 </label>
                 <input
                   type="text"
-                  placeholder="Brief summary or focus area"
+                  placeholder="Brief note or grammatical focus"
                   value={customDesc}
                   onChange={e => setCustomDesc(e.target.value)}
                   className="w-full text-xs p-2.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-1 focus:ring-zinc-900"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
-                  Speech Language Code (Optional)
-                </label>
-                <input
-                  type="text"
-                  placeholder="e.g. en-US, es-ES, fr-FR, de-DE, ja-JP"
-                  value={customLang}
-                  onChange={e => setCustomLang(e.target.value)}
-                  className="w-full text-xs p-2.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-1 focus:ring-zinc-900 font-mono"
                 />
               </div>
 
@@ -424,14 +493,16 @@ export function App() {
   );
 }
 
-// Sub-component for individual Deck overview card
-function DeckCard({
+// Sub-component for individual Language Deck card
+function LanguageDeckCard({
   deck,
+  flag,
   onOpen,
   onStudy,
   onDelete,
 }: {
   deck: Deck;
+  flag: string;
   onOpen: () => void;
   onStudy: () => void;
   onDelete: () => void;
@@ -451,9 +522,12 @@ function DeckCard({
     >
       <div>
         <div className="flex items-start justify-between gap-2 mb-2">
-          <h3 className="font-semibold text-sm text-zinc-900 dark:text-zinc-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-            {deck.title}
-          </h3>
+          <div className="flex items-center gap-2">
+            <span className="text-xl select-none">{flag}</span>
+            <h3 className="font-semibold text-sm text-zinc-900 dark:text-zinc-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+              {deck.title}
+            </h3>
+          </div>
 
           {deck.isCustom && (
             <button
@@ -470,14 +544,14 @@ function DeckCard({
         </div>
 
         <p className="text-xs text-zinc-500 dark:text-zinc-400 line-clamp-2 leading-relaxed mb-4">
-          {deck.description || 'Spaced repetition flashcards with Leitner intervals.'}
+          {deck.description}
         </p>
       </div>
 
       <div className="pt-3 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400">
-            {deckCards.length} cards
+            {deckCards.length} phrases
           </span>
           {dueCount > 0 && (
             <span className="text-[10px] font-medium px-2 py-0.2 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20">

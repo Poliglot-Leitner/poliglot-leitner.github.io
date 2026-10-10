@@ -13,6 +13,8 @@ import {
   Trophy,
   ArrowLeft,
   Sparkles,
+  Repeat,
+  BookOpen,
 } from 'lucide-react';
 
 interface StudySessionProps {
@@ -31,21 +33,29 @@ export const StudySession: React.FC<StudySessionProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [showHint, setShowHint] = useState(false);
+  const [isReverseMode, setIsReverseMode] = useState(false); // Practice Native -> Target
   const [sessionResults, setSessionResults] = useState<SessionResult[]>([]);
   const [isCompleted, setIsCompleted] = useState(false);
 
   const { speak, isSpeaking, isSupported: speechSupported } = useSpeech();
 
   const currentCard = cards[currentIndex];
-  const langCode = deck?.languageCode || 'en-US';
+  const langCode = deck?.languageCode || 'es-ES';
 
   const handleSpeak = useCallback((text: string) => {
     speak(text, langCode);
   }, [speak, langCode]);
 
   const handleFlip = useCallback(() => {
-    setIsFlipped(prev => !prev);
-  }, []);
+    setIsFlipped(prev => {
+      const next = !prev;
+      // Auto pronounce on reveal if in standard mode
+      if (next && currentCard && !isReverseMode) {
+        speak(currentCard.front, langCode);
+      }
+      return next;
+    });
+  }, [currentCard, isReverseMode, speak, langCode]);
 
   const handleGrade = useCallback(async (wasCorrect: boolean) => {
     if (!currentCard) return;
@@ -68,7 +78,6 @@ export const StudySession: React.FC<StudySessionProps> = ({
       setShowHint(false);
     } else {
       setIsCompleted(true);
-      // Trigger subtle celebration confetti
       try {
         confetti({
           particleCount: 70,
@@ -82,12 +91,11 @@ export const StudySession: React.FC<StudySessionProps> = ({
     }
   }, [currentCard, currentIndex, cards.length, sessionResults]);
 
-  // Global Keyboard listener for spacebar, 1, 2, S
+  // Global Keyboard listener for spacebar, 1, 2, S, H
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (isCompleted) return;
 
-      // Avoid capturing shortcuts if user is typing in an input
       if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement)?.tagName)) {
         return;
       }
@@ -108,7 +116,7 @@ export const StudySession: React.FC<StudySessionProps> = ({
       } else if (e.key.toLowerCase() === 's') {
         if (currentCard) {
           e.preventDefault();
-          handleSpeak(isFlipped ? currentCard.back : currentCard.front);
+          handleSpeak(isReverseMode ? currentCard.back : currentCard.front);
         }
       } else if (e.key.toLowerCase() === 'h') {
         if (currentCard?.hint) {
@@ -122,9 +130,8 @@ export const StudySession: React.FC<StudySessionProps> = ({
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [handleFlip, handleGrade, handleSpeak, isFlipped, isCompleted, currentCard, onExit]);
+  }, [handleFlip, handleGrade, handleSpeak, isFlipped, isCompleted, currentCard, isReverseMode, onExit]);
 
-  // If no cards due
   if (!cards || cards.length === 0) {
     return (
       <div className="max-w-xl mx-auto py-16 text-center">
@@ -132,10 +139,10 @@ export const StudySession: React.FC<StudySessionProps> = ({
           <CheckCircle className="w-8 h-8" />
         </div>
         <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50 mb-2">
-          No Cards Due for Review!
+          All Caught Up!
         </h2>
         <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-6 max-w-md mx-auto">
-          You are all caught up with your Leitner schedule for this deck. Check back when the next interval arrives or add new cards.
+          No cards currently due in this deck according to your Leitner review schedule.
         </p>
         <button
           onClick={onExit}
@@ -147,7 +154,6 @@ export const StudySession: React.FC<StudySessionProps> = ({
     );
   }
 
-  // Completed Session Screen
   if (isCompleted) {
     const total = sessionResults.length;
     const correctCount = sessionResults.filter(r => r.wasCorrect).length;
@@ -161,16 +167,15 @@ export const StudySession: React.FC<StudySessionProps> = ({
         </div>
 
         <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-1">
-          Session Complete!
+          Review Session Complete!
         </h2>
         <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-8">
-          Great job reinforcing your memory through spaced repetition.
+          Excellent work reinforcing your language retention with spaced repetition.
         </p>
 
-        {/* Stats card */}
         <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-5 mb-8 text-left shadow-xs space-y-3">
           <div className="flex justify-between items-center text-sm">
-            <span className="text-zinc-500 dark:text-zinc-400">Cards Reviewed</span>
+            <span className="text-zinc-500 dark:text-zinc-400">Phrases Practiced</span>
             <span className="font-semibold text-zinc-900 dark:text-zinc-100">{total}</span>
           </div>
           <div className="flex justify-between items-center text-sm">
@@ -183,7 +188,7 @@ export const StudySession: React.FC<StudySessionProps> = ({
             <span className="text-zinc-500 dark:text-zinc-400">Promoted to Higher Box</span>
             <span className="font-semibold text-indigo-600 dark:text-indigo-400 flex items-center gap-1">
               <Sparkles className="w-3.5 h-3.5" />
-              {advanced} cards
+              {advanced} phrases
             </span>
           </div>
         </div>
@@ -193,7 +198,7 @@ export const StudySession: React.FC<StudySessionProps> = ({
             onClick={onFinish}
             className="w-full py-2.5 rounded-lg text-xs font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 shadow-xs cursor-pointer"
           >
-            Done
+            Finish Session
           </button>
         </div>
       </div>
@@ -202,9 +207,13 @@ export const StudySession: React.FC<StudySessionProps> = ({
 
   const progressPercent = Math.round(((currentIndex + 1) / cards.length) * 100);
 
+  // Content display according to reverse mode
+  const promptText = isReverseMode ? currentCard.back : currentCard.front;
+  const answerText = isReverseMode ? currentCard.front : currentCard.back;
+
   return (
     <div className="max-w-2xl mx-auto py-4 px-3 flex flex-col min-h-[580px]">
-      {/* Top Header / Progress */}
+      {/* Top Header */}
       <div className="flex items-center justify-between mb-4">
         <button
           onClick={onExit}
@@ -214,12 +223,27 @@ export const StudySession: React.FC<StudySessionProps> = ({
           <span>Exit Session</span>
         </button>
 
-        <div className="flex items-center gap-3 text-xs">
-          <span className="font-mono text-zinc-500 dark:text-zinc-400">
-            {currentIndex + 1} / {cards.length}
+        <div className="flex items-center gap-2">
+          {/* Reverse Mode Toggle */}
+          <button
+            type="button"
+            onClick={() => setIsReverseMode(prev => !prev)}
+            title="Toggle prompt direction (Target Language &harr; Translation)"
+            className={`px-2.5 py-1 rounded-md text-xs font-medium border flex items-center gap-1.5 transition-colors ${
+              isReverseMode
+                ? 'bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800'
+                : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border-transparent hover:text-zinc-900'
+            }`}
+          >
+            <Repeat className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">{isReverseMode ? 'Reverse (EN → Target)' : 'Standard (Target → EN)'}</span>
+          </button>
+
+          <span className="px-2 py-1 rounded-md text-[11px] font-mono uppercase bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-semibold">
+            Box {currentCard.box}
           </span>
-          <span className="px-2 py-0.5 rounded-md text-[11px] font-semibold uppercase bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
-            Current: Box {currentCard.box}
+          <span className="text-xs font-mono text-zinc-400">
+            {currentIndex + 1} / {cards.length}
           </span>
         </div>
       </div>
@@ -233,33 +257,42 @@ export const StudySession: React.FC<StudySessionProps> = ({
       </div>
 
       {/* 3D Flashcard Container */}
-      <div className="perspective-1000 flex-1 flex flex-col justify-center my-auto min-h-[360px]">
+      <div className="perspective-1000 flex-1 flex flex-col justify-center my-auto min-h-[380px]">
         <div
           onClick={handleFlip}
-          className={`w-full min-h-[340px] rounded-2xl border transition-all duration-300 cursor-pointer p-8 flex flex-col justify-between relative shadow-sm hover:shadow-md select-none ${
+          className={`w-full min-h-[360px] rounded-2xl border transition-all duration-300 cursor-pointer p-8 flex flex-col justify-between relative shadow-sm hover:shadow-md select-none ${
             isFlipped
               ? 'bg-zinc-50/90 dark:bg-zinc-900/90 border-zinc-300 dark:border-zinc-700 ring-1 ring-zinc-400/20'
               : 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800'
           }`}
         >
-          {/* Card Meta & Badges */}
+          {/* Card Top Meta */}
           <div className="flex items-center justify-between mb-4">
-            <span className="text-[11px] font-mono uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
-              {isFlipped ? 'Answer / Solution' : 'Prompt / Question'}
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="text-[11px] font-mono uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+                {isFlipped ? 'Meaning & Usage' : 'Target Phrase'}
+              </span>
+              {currentCard.difficulty && (
+                <span className="text-[10px] font-medium uppercase px-2 py-0.2 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
+                  {currentCard.difficulty}
+                </span>
+              )}
+            </div>
 
             <div className="flex items-center gap-2" onClick={e => e.stopPropagation()}>
+              {/* Phonetic / Pinyin */}
               {currentCard.phonetic && (
-                <span className="text-xs font-mono px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300">
+                <span className="text-xs font-mono px-2.5 py-0.5 rounded-md bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">
                   {currentCard.phonetic}
                 </span>
               )}
 
+              {/* Speech Audio Button */}
               {speechSupported && (
                 <button
                   type="button"
-                  title="Pronounce with speech synthesis (Shortcut: S)"
-                  onClick={() => handleSpeak(isFlipped ? currentCard.back : currentCard.front)}
+                  title="Pronounce with native accent (Shortcut: S)"
+                  onClick={() => handleSpeak(isReverseMode ? answerText : promptText)}
                   className={`p-1.5 rounded-lg border transition-colors ${
                     isSpeaking
                       ? 'bg-indigo-50 dark:bg-indigo-950 text-indigo-600 border-indigo-300'
@@ -270,6 +303,7 @@ export const StudySession: React.FC<StudySessionProps> = ({
                 </button>
               )}
 
+              {/* Hint Toggle */}
               {currentCard.hint && !isFlipped && (
                 <button
                   type="button"
@@ -287,14 +321,15 @@ export const StudySession: React.FC<StudySessionProps> = ({
             </div>
           </div>
 
-          {/* Card Body with KaTeX & Markdown */}
+          {/* Card Body */}
           <div className="my-auto py-4">
             {!isFlipped ? (
               <div>
                 <FormattedContent
-                  content={currentCard.front}
-                  className="text-lg sm:text-xl font-medium text-zinc-900 dark:text-zinc-100"
+                  content={promptText}
+                  className="text-2xl sm:text-3xl font-semibold text-zinc-900 dark:text-zinc-100 tracking-tight"
                 />
+
                 {showHint && currentCard.hint && (
                   <div className="mt-4 p-3 rounded-lg bg-amber-500/10 border border-amber-500/20 text-xs text-amber-800 dark:text-amber-300 animate-in fade-in">
                     <strong>Hint:</strong> {currentCard.hint}
@@ -302,23 +337,53 @@ export const StudySession: React.FC<StudySessionProps> = ({
                 )}
               </div>
             ) : (
-              <div className="animate-in fade-in duration-200">
-                <FormattedContent
-                  content={currentCard.back}
-                  className="text-base sm:text-lg text-zinc-800 dark:text-zinc-200"
-                />
+              <div className="animate-in fade-in duration-200 space-y-4">
+                <div>
+                  <span className="text-xs text-zinc-400 uppercase tracking-wider block mb-1">
+                    Translation
+                  </span>
+                  <FormattedContent
+                    content={answerText}
+                    className="text-xl sm:text-2xl font-semibold text-zinc-900 dark:text-zinc-100"
+                  />
+                </div>
+
+                {/* Example sentence & translation */}
+                {currentCard.exampleTarget && (
+                  <div className="p-3.5 rounded-xl bg-zinc-100/70 dark:bg-zinc-800/60 border border-zinc-200/80 dark:border-zinc-700/60 text-xs space-y-1">
+                    <div className="flex items-center gap-1.5 text-zinc-400 font-medium">
+                      <BookOpen className="w-3.5 h-3.5" />
+                      <span>In Context:</span>
+                    </div>
+                    <p className="text-sm font-medium text-zinc-800 dark:text-zinc-200">
+                      {currentCard.exampleTarget}
+                    </p>
+                    {currentCard.exampleTranslation && (
+                      <p className="text-xs text-zinc-500 dark:text-zinc-400 italic">
+                        "{currentCard.exampleTranslation}"
+                      </p>
+                    )}
+                  </div>
+                )}
+
+                {/* Grammar & cultural notes */}
+                {currentCard.grammarNotes && (
+                  <div className="text-xs text-zinc-500 dark:text-zinc-400 border-l-2 border-indigo-400 pl-3">
+                    <strong>Notes:</strong> {currentCard.grammarNotes}
+                  </div>
+                )}
               </div>
             )}
           </div>
 
-          {/* Bottom Flip Hint */}
+          {/* Bottom Flip Reminder */}
           <div className="pt-4 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between text-xs text-zinc-400 dark:text-zinc-500">
             <span className="flex items-center gap-1">
               <RotateCw className="w-3.5 h-3.5" />
-              <span>Tap card or press <kbd className="font-mono bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded text-[10px]">Space</kbd> to {isFlipped ? 'flip back' : 'reveal'}</span>
+              <span>Tap or press <kbd className="font-mono bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded text-[10px]">Space</kbd> to {isFlipped ? 'flip back' : 'reveal'}</span>
             </span>
-            <span className="font-mono text-[11px]">
-              Box {currentCard.box}
+            <span className="font-mono text-[11px] uppercase">
+              {deck?.languageId}
             </span>
           </div>
         </div>
@@ -332,7 +397,7 @@ export const StudySession: React.FC<StudySessionProps> = ({
             onClick={handleFlip}
             className="w-full py-3 rounded-xl text-xs font-semibold tracking-wide bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 transition-opacity cursor-pointer shadow-xs flex items-center justify-center gap-2"
           >
-            <span>Show Answer</span>
+            <span>Show Translation</span>
             <kbd className="font-mono bg-white/20 dark:bg-black/10 px-1.5 py-0.5 rounded text-[10px]">Space</kbd>
           </button>
         ) : (

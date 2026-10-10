@@ -1,6 +1,18 @@
 import Dexie, { type Table } from 'dexie';
-import type { Profile, Deck, Flashcard, LeitnerBoxSummary } from '../types';
-import { AVAILABLE_SUBJECTS, INITIAL_SEEDS } from '../data/subjects';
+import type {
+  Profile,
+  Deck,
+  Flashcard,
+  LeitnerBoxSummary,
+  LanguageId,
+  DifficultyLevel,
+} from '../types';
+import {
+  SUPPORTED_LANGUAGES,
+  LANGUAGE_TOPICS,
+  DIFFICULTY_LEVELS,
+  LANGUAGE_CURRICULUM_SEEDS,
+} from '../data/languages';
 
 export const BOX_INTERVALS_DAYS = {
   1: 1,
@@ -16,11 +28,11 @@ export class LeitnerDatabase extends Dexie {
   cards!: Table<Flashcard, string>;
 
   constructor() {
-    super('LeitnerLearningAppDB');
-    this.version(1).stores({
+    super('LeitnerLanguagesDB');
+    this.version(2).stores({
       profiles: 'id, name, createdAt',
-      decks: 'id, profileId, subjectId, createdAt',
-      cards: 'id, deckId, profileId, box, nextReviewDate, lastReviewedDate',
+      decks: 'id, profileId, languageId, topicId, difficulty, createdAt',
+      cards: 'id, deckId, profileId, languageId, difficulty, box, nextReviewDate, lastReviewedDate',
     });
   }
 }
@@ -33,17 +45,25 @@ export async function getAllProfiles(): Promise<Profile[]> {
   return await db.profiles.toArray();
 }
 
-export async function createProfile(name: string, avatar: string, selectedSubjects: string[]): Promise<Profile> {
+export async function createProfile(
+  name: string,
+  avatar: string,
+  selectedLanguages: LanguageId[],
+  selectedTopics: string[],
+  selectedDifficulty: DifficultyLevel
+): Promise<Profile> {
   const newProfile: Profile = {
     id: 'prof_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
-    name: name.trim() || 'Learner',
+    name: name.trim() || 'Language Learner',
     avatar: avatar || '🌱',
-    selectedSubjects: selectedSubjects,
+    selectedLanguages,
+    selectedTopics,
+    selectedDifficulty,
     createdAt: Date.now(),
   };
 
   await db.profiles.add(newProfile);
-  await seedSubjectsForProfile(newProfile.id, selectedSubjects);
+  await seedCurriculumForProfile(newProfile.id, selectedLanguages, selectedTopics, selectedDifficulty);
   return newProfile;
 }
 
@@ -55,79 +75,116 @@ export async function deleteProfile(profileId: string): Promise<void> {
   });
 }
 
-// --- Deck & Subject Helpers ---
+// --- Deck & Curriculum Seeding ---
 
 export async function getDecksForProfile(profileId: string): Promise<Deck[]> {
   return await db.decks.where('profileId').equals(profileId).toArray();
 }
 
-export async function seedSubjectsForProfile(profileId: string, subjectIds: string[]): Promise<void> {
+export async function seedCurriculumForProfile(
+  profileId: string,
+  languages: LanguageId[],
+  topics: string[],
+  difficulty: DifficultyLevel
+): Promise<void> {
   const existingDecks = await db.decks.where('profileId').equals(profileId).toArray();
-  const existingSubjectIds = new Set(existingDecks.map(d => d.subjectId));
 
-  for (const subjectId of subjectIds) {
-    if (existingSubjectIds.has(subjectId)) continue;
+  for (const langId of languages) {
+    const langDef = SUPPORTED_LANGUAGES.find(l => l.id === langId);
+    if (!langDef) continue;
 
-    const subjectDef = AVAILABLE_SUBJECTS.find(s => s.id === subjectId);
-    if (!subjectDef) continue;
+    for (const topicId of topics) {
+      const topicDef = LANGUAGE_TOPICS.find(t => t.id === topicId);
+      if (!topicDef) continue;
 
-    const deckId = 'deck_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7);
-    const newDeck: Deck = {
-      id: deckId,
-      profileId,
-      subjectId,
-      title: subjectDef.sampleDeckTitle || subjectDef.name,
-      description: subjectDef.description,
-      languageCode: subjectDef.defaultLanguageCode,
-      createdAt: Date.now(),
-      updatedAt: Date.now(),
-    };
+      // Check if this deck already exists for this profile
+      const alreadyExists = existingDecks.some(
+        d => d.languageId === langId && d.topicId === topicId && d.difficulty === difficulty
+      );
+      if (alreadyExists) continue;
 
-    await db.decks.add(newDeck);
+      const diffDef = DIFFICULTY_LEVELS.find(d => d.id === difficulty);
+      const deckId = `deck_${langId}_${topicId}_${difficulty}_${Date.now()}_${Math.random().toString(36).slice(2, 5)}`;
 
-    // Seed cards for this subject
-    const seedCards = INITIAL_SEEDS[subjectId] || [];
-    const now = Date.now();
-    const flashcards: Flashcard[] = seedCards.map((card, idx) => ({
-      id: 'card_' + deckId + '_' + idx + '_' + Math.random().toString(36).slice(2, 5),
-      deckId,
-      profileId,
-      front: card.front,
-      back: card.back,
-      hint: card.hint,
-      phonetic: card.phonetic,
-      box: 1,
-      nextReviewDate: now, // Ready for review immediately
-      totalReviews: 0,
-      correctCount: 0,
-      incorrectCount: 0,
-      createdAt: now,
-    }));
+      const newDeck: Deck = {
+        id: deckId,
+        profileId,
+        languageId: langId,
+        topicId: topicId,
+        difficulty: difficulty,
+        title: `${langDef.name}: ${topicDef.name}`,
+        description: `${topicDef.description} • ${diffDef?.name || difficulty} level (${diffDef?.cefr || ''})`,
+        languageCode: langDef.code,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      };
 
-    if (flashcards.length > 0) {
-      await db.cards.bulkAdd(flashcards);
+      await db.decks.add(newDeck);
+
+      // Match seed cards for this language + topic + difficulty
+      // (Also fall back to nearby difficulties if an exact match has fewer cards)
+      const matchingSeeds = LANGUAGE_CURRICULUM_SEEDS.filter(
+        s => s.languageId === langId && s.topicId === topicId && s.difficulty === difficulty
+      );
+
+      // If specific topic doesn't have many seeds at this exact difficulty, also include general seeds for that language & topic
+      const seedsToInsert = matchingSeeds.length > 0
+        ? matchingSeeds
+        : LANGUAGE_CURRICULUM_SEEDS.filter(s => s.languageId === langId && s.topicId === topicId);
+
+      const now = Date.now();
+      const flashcards: Flashcard[] = seedsToInsert.map((s, idx) => ({
+        id: `card_${deckId}_${idx}_${Math.random().toString(36).slice(2, 6)}`,
+        deckId,
+        profileId,
+        languageId: s.languageId,
+        difficulty: s.difficulty,
+        front: s.front,
+        back: s.back,
+        phonetic: s.phonetic,
+        exampleTarget: s.exampleTarget,
+        exampleTranslation: s.exampleTranslation,
+        grammarNotes: s.grammarNotes,
+        hint: s.hint,
+        box: 1,
+        nextReviewDate: now,
+        totalReviews: 0,
+        correctCount: 0,
+        incorrectCount: 0,
+        createdAt: now,
+      }));
+
+      if (flashcards.length > 0) {
+        await db.cards.bulkAdd(flashcards);
+      }
     }
   }
 }
 
 export async function createCustomDeck(
   profileId: string,
+  languageId: LanguageId,
   title: string,
   description: string,
-  languageCode?: string
+  difficulty: DifficultyLevel = 'beginner'
 ): Promise<Deck> {
+  const langDef = SUPPORTED_LANGUAGES.find(l => l.id === languageId);
   const deckId = 'deck_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7);
+
   const newDeck: Deck = {
     id: deckId,
     profileId,
-    subjectId: 'custom',
+    languageId,
+    topicId: 'custom',
+    difficulty,
     title: title.trim(),
     description: description.trim(),
-    languageCode,
+    languageCode: langDef?.code || 'en-US',
     isCustom: true,
     createdAt: Date.now(),
     updatedAt: Date.now(),
   };
+
   await db.decks.add(newDeck);
   return newDeck;
 }
@@ -139,7 +196,7 @@ export async function deleteDeck(deckId: string): Promise<void> {
   });
 }
 
-// --- Flashcard & Leitner Review Helpers ---
+// --- Flashcard Operations & Leitner System ---
 
 export async function getCardsForDeck(deckId: string): Promise<Flashcard[]> {
   return await db.cards.where('deckId').equals(deckId).toArray();
@@ -149,19 +206,26 @@ export async function getAllCardsForProfile(profileId: string): Promise<Flashcar
   return await db.cards.where('profileId').equals(profileId).toArray();
 }
 
-export async function getDueCards(profileId: string, deckId?: string): Promise<Flashcard[]> {
+export async function getDueCards(
+  profileId: string,
+  deckId?: string,
+  languageId?: LanguageId
+): Promise<Flashcard[]> {
   const now = Date.now();
-  let query = db.cards.where('profileId').equals(profileId);
+  const allProfileCards = await db.cards.where('profileId').equals(profileId).toArray();
 
-  const allProfileCards = await query.toArray();
   return allProfileCards.filter(card => {
     const matchesDeck = deckId ? card.deckId === deckId : true;
+    const matchesLang = languageId ? card.languageId === languageId : true;
     const isDue = card.nextReviewDate <= now;
-    return matchesDeck && isDue;
+    return matchesDeck && matchesLang && isDue;
   });
 }
 
-export async function processCardReview(card: Flashcard, wasCorrect: boolean): Promise<{ oldBox: number; newBox: number; nextDate: number }> {
+export async function processCardReview(
+  card: Flashcard,
+  wasCorrect: boolean
+): Promise<{ oldBox: number; newBox: number; nextDate: number }> {
   const now = Date.now();
   const oldBox = card.box;
   let newBox: 1 | 2 | 3 | 4 | 5 = 1;
@@ -169,7 +233,7 @@ export async function processCardReview(card: Flashcard, wasCorrect: boolean): P
   if (wasCorrect) {
     newBox = Math.min(5, oldBox + 1) as 1 | 2 | 3 | 4 | 5;
   } else {
-    // Leitner system resets card back to Box 1 for reinforcement
+    // Leitner system drops to Box 1 for memory reinforcement
     newBox = 1;
   }
 
@@ -191,15 +255,32 @@ export async function processCardReview(card: Flashcard, wasCorrect: boolean): P
   return { oldBox, newBox, nextDate };
 }
 
-export async function addCard(deckId: string, profileId: string, front: string, back: string, hint?: string, phonetic?: string): Promise<Flashcard> {
+export async function addCard(
+  deckId: string,
+  profileId: string,
+  languageId: LanguageId,
+  difficulty: DifficultyLevel,
+  front: string,
+  back: string,
+  phonetic?: string,
+  exampleTarget?: string,
+  exampleTranslation?: string,
+  grammarNotes?: string,
+  hint?: string
+): Promise<Flashcard> {
   const newCard: Flashcard = {
     id: 'card_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
     deckId,
     profileId,
+    languageId,
+    difficulty,
     front: front.trim(),
     back: back.trim(),
-    hint: hint?.trim() || undefined,
     phonetic: phonetic?.trim() || undefined,
+    exampleTarget: exampleTarget?.trim() || undefined,
+    exampleTranslation: exampleTranslation?.trim() || undefined,
+    grammarNotes: grammarNotes?.trim() || undefined,
+    hint: hint?.trim() || undefined,
     box: 1,
     nextReviewDate: Date.now(),
     totalReviews: 0,
@@ -232,18 +313,18 @@ export async function resetCardProgress(cardId: string): Promise<void> {
   }
 }
 
-// --- Box Summary & Statistics ---
+// --- Leitner Box Summary Statistics ---
 
 export function computeBoxSummaries(cards: Flashcard[]): LeitnerBoxSummary[] {
   const now = Date.now();
   const boxes: Array<1 | 2 | 3 | 4 | 5> = [1, 2, 3, 4, 5];
 
   const labels: Record<1 | 2 | 3 | 4 | 5, string> = {
-    1: 'Daily Review',
-    2: 'Every 3 Days',
-    3: 'Weekly',
-    4: 'Fortnightly',
-    5: 'Mastered (Monthly)',
+    1: 'Box 1: Daily Recall',
+    2: 'Box 2: 3-Day Reinforce',
+    3: 'Box 3: Weekly Retention',
+    4: 'Box 4: 14-Day Memory',
+    5: 'Box 5: 30-Day Mastered',
   };
 
   return boxes.map(box => {
@@ -259,7 +340,7 @@ export function computeBoxSummaries(cards: Flashcard[]): LeitnerBoxSummary[] {
   });
 }
 
-// --- Export / Import ---
+// --- Data Portability: Export / Import ---
 
 export interface BackupData {
   version: number;
@@ -277,7 +358,7 @@ export async function exportProfileBackup(profileId: string): Promise<BackupData
   const cards = await db.cards.where('profileId').equals(profileId).toArray();
 
   return {
-    version: 1,
+    version: 2,
     exportedAt: Date.now(),
     profile,
     decks,
@@ -286,7 +367,6 @@ export async function exportProfileBackup(profileId: string): Promise<BackupData
 }
 
 export async function importProfileBackup(backup: BackupData): Promise<Profile> {
-  // If importing, create a new profile copy or overwrite
   const profileId = 'prof_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6);
   const importedProfile: Profile = {
     ...backup.profile,

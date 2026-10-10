@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import type { Deck, Flashcard } from '../types';
 import { addCard, updateCard, deleteCard, resetCardProgress } from '../db/database';
 import { FormattedContent } from './FormattedContent';
+import { useSpeech } from '../hooks/useSpeech';
 import {
   Plus,
   Trash2,
   Edit3,
   RotateCcw,
-  Eye,
+  Volume2,
   Sparkles,
+  BookOpen,
 } from 'lucide-react';
 
 interface DeckManagerProps {
@@ -34,28 +36,36 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
   // Form states
   const [front, setFront] = useState('');
   const [back, setBack] = useState('');
-  const [hint, setHint] = useState('');
   const [phonetic, setPhonetic] = useState('');
-  const [showLivePreview, setShowLivePreview] = useState(false);
+  const [exampleTarget, setExampleTarget] = useState('');
+  const [exampleTranslation, setExampleTranslation] = useState('');
+  const [grammarNotes, setGrammarNotes] = useState('');
+  const [hint, setHint] = useState('');
+
+  const { speak, isSupported: speechSupported } = useSpeech();
 
   const resetForm = () => {
     setFront('');
     setBack('');
-    setHint('');
     setPhonetic('');
+    setExampleTarget('');
+    setExampleTranslation('');
+    setGrammarNotes('');
+    setHint('');
     setIsAdding(false);
     setEditingCardId(null);
-    setShowLivePreview(false);
   };
 
   const handleStartEdit = (card: Flashcard) => {
     setEditingCardId(card.id);
     setFront(card.front);
     setBack(card.back);
-    setHint(card.hint || '');
     setPhonetic(card.phonetic || '');
+    setExampleTarget(card.exampleTarget || '');
+    setExampleTranslation(card.exampleTranslation || '');
+    setGrammarNotes(card.grammarNotes || '');
+    setHint(card.hint || '');
     setIsAdding(true);
-    setShowLivePreview(false);
   };
 
   const handleSave = async (e: React.FormEvent) => {
@@ -69,12 +79,27 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
           ...existing,
           front: front.trim(),
           back: back.trim(),
-          hint: hint.trim() || undefined,
           phonetic: phonetic.trim() || undefined,
+          exampleTarget: exampleTarget.trim() || undefined,
+          exampleTranslation: exampleTranslation.trim() || undefined,
+          grammarNotes: grammarNotes.trim() || undefined,
+          hint: hint.trim() || undefined,
         });
       }
     } else {
-      await addCard(deck.id, deck.profileId, front, back, hint, phonetic);
+      await addCard(
+        deck.id,
+        deck.profileId,
+        deck.languageId,
+        deck.difficulty,
+        front,
+        back,
+        phonetic,
+        exampleTarget,
+        exampleTranslation,
+        grammarNotes,
+        hint
+      );
     }
 
     resetForm();
@@ -106,14 +131,12 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
             <h1 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
               {deck.title}
             </h1>
-            {deck.languageCode && (
-              <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-                {deck.languageCode}
-              </span>
-            )}
+            <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 font-semibold">
+              {deck.difficulty}
+            </span>
           </div>
           <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
-            {deck.description || 'Spaced repetition flashcards with Leitner intervals.'}
+            {deck.description}
           </p>
         </div>
 
@@ -126,7 +149,7 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
             className="flex-1 sm:flex-initial px-4 py-2 rounded-lg text-xs font-medium border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
           >
             <Plus className="w-4 h-4" />
-            <span>Add Card</span>
+            <span>Add Phrase</span>
           </button>
 
           <button
@@ -147,95 +170,112 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
         <div className="mb-6 p-5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-900 shadow-sm animate-in fade-in">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-              {editingCardId ? 'Edit Flashcard' : 'Create New Flashcard'}
+              {editingCardId ? 'Edit Language Phrase' : 'Add New Language Phrase'}
             </h3>
-            <button
-              type="button"
-              onClick={() => setShowLivePreview(prev => !prev)}
-              className="text-xs flex items-center gap-1.5 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100"
-            >
-              <Eye className="w-3.5 h-3.5" />
-              <span>{showLivePreview ? 'Hide Preview' : 'Show LaTeX Preview'}</span>
-            </button>
+            <span className="text-xs text-zinc-400 uppercase font-mono">
+              {deck.languageId} &bull; {deck.difficulty}
+            </span>
           </div>
 
           <form onSubmit={handleSave} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
-                  Front (Prompt / Question / Math $...$)
+                  Target Language Expression
                 </label>
                 <textarea
                   value={front}
                   onChange={e => setFront(e.target.value)}
-                  placeholder="e.g. State Euler's formula: $e^{i\pi} + 1 = 0$"
-                  rows={4}
+                  placeholder="e.g. ¿Dónde está la estación de tren? or 你好"
+                  rows={2}
                   required
-                  className="w-full text-xs font-mono p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-zinc-100"
+                  className="w-full text-xs font-sans p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-1 focus:ring-zinc-900"
                 />
               </div>
 
               <div>
                 <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
-                  Back (Answer / Explanation / Math $$...$$)
+                  English Translation / Meaning
                 </label>
                 <textarea
                   value={back}
                   onChange={e => setBack(e.target.value)}
-                  placeholder="e.g. The formula links e, i, pi, 1, and 0."
-                  rows={4}
+                  placeholder="e.g. Where is the train station?"
+                  rows={2}
                   required
-                  className="w-full text-xs font-mono p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-zinc-100"
+                  className="w-full text-xs font-sans p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-1 focus:ring-zinc-900"
                 />
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <div>
                 <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
-                  Optional Hint
-                </label>
-                <input
-                  type="text"
-                  value={hint}
-                  onChange={e => setHint(e.target.value)}
-                  placeholder="e.g. Think about trigonometric coordinates"
-                  className="w-full text-xs p-2.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-1 focus:ring-zinc-900"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
-                  Optional Phonetic / Pinyin
+                  Phonetic / Pinyin
                 </label>
                 <input
                   type="text"
                   value={phonetic}
                   onChange={e => setPhonetic(e.target.value)}
                   placeholder="e.g. Nǐ hǎo or [pronunciation]"
+                  className="w-full text-xs p-2.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-1 focus:ring-zinc-900 font-mono"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                  Grammar & Nuance Notes
+                </label>
+                <input
+                  type="text"
+                  value={grammarNotes}
+                  onChange={e => setGrammarNotes(e.target.value)}
+                  placeholder="e.g. Feminine noun, uses subjunctive"
+                  className="w-full text-xs p-2.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-1 focus:ring-zinc-900"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                  Recall Hint
+                </label>
+                <input
+                  type="text"
+                  value={hint}
+                  onChange={e => setHint(e.target.value)}
+                  placeholder="e.g. Think about physical location"
                   className="w-full text-xs p-2.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-1 focus:ring-zinc-900"
                 />
               </div>
             </div>
 
-            {/* Live Preview Panel */}
-            {showLivePreview && (
-              <div className="p-4 rounded-lg bg-zinc-100/70 dark:bg-zinc-950/70 border border-zinc-200 dark:border-zinc-800">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 block mb-2">
-                  Live Preview
-                </span>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="p-3 bg-white dark:bg-zinc-900 rounded-md border border-zinc-200 dark:border-zinc-800">
-                    <span className="text-[10px] text-zinc-400 block mb-1">Front</span>
-                    <FormattedContent content={front || '(empty)'} />
-                  </div>
-                  <div className="p-3 bg-white dark:bg-zinc-900 rounded-md border border-zinc-200 dark:border-zinc-800">
-                    <span className="text-[10px] text-zinc-400 block mb-1">Back</span>
-                    <FormattedContent content={back || '(empty)'} />
-                  </div>
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div>
+                <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                  Example Sentence (Target Language)
+                </label>
+                <input
+                  type="text"
+                  value={exampleTarget}
+                  onChange={e => setExampleTarget(e.target.value)}
+                  placeholder="e.g. Disculpe, ¿dónde está la estación de tren más cercana?"
+                  className="w-full text-xs p-2.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-1 focus:ring-zinc-900"
+                />
               </div>
-            )}
+
+              <div>
+                <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                  Example Sentence Translation
+                </label>
+                <input
+                  type="text"
+                  value={exampleTranslation}
+                  onChange={e => setExampleTranslation(e.target.value)}
+                  placeholder="e.g. Excuse me, where is the nearest train station?"
+                  className="w-full text-xs p-2.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-1 focus:ring-zinc-900"
+                />
+              </div>
+            </div>
 
             <div className="flex items-center justify-end gap-2.5 pt-2">
               <button
@@ -249,7 +289,7 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
                 type="submit"
                 className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 shadow-xs cursor-pointer"
               >
-                {editingCardId ? 'Update Card' : 'Add Card'}
+                {editingCardId ? 'Save Changes' : 'Add Phrase'}
               </button>
             </div>
           </form>
@@ -259,13 +299,13 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
       {/* Cards List */}
       <div className="space-y-2.5">
         <div className="flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400 px-1 mb-1">
-          <span>{displayedCards.length} card{displayedCards.length === 1 ? '' : 's'}</span>
-          <span className="text-[11px]">Leitner Box System (1 to 5)</span>
+          <span>{displayedCards.length} phrase{displayedCards.length === 1 ? '' : 's'} in deck</span>
+          <span className="text-[11px]">Leitner 5-Box Schedule</span>
         </div>
 
         {displayedCards.length === 0 ? (
           <div className="py-12 text-center rounded-xl border border-dashed border-zinc-200 dark:border-zinc-800 text-zinc-400 text-xs">
-            No cards found in this box. Add a new card or clear the box filter.
+            No phrases found in this box. Add a new phrase or clear the filter.
           </div>
         ) : (
           displayedCards.map(card => {
@@ -283,26 +323,49 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
                     </span>
                     {isDue && (
                       <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400">
-                        Due for review
+                        Due for recall
                       </span>
                     )}
                     {card.phonetic && (
-                      <span className="text-[10px] font-mono text-zinc-400">
+                      <span className="text-[11px] font-mono px-2 py-0.2 rounded bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">
                         {card.phonetic}
                       </span>
                     )}
                   </div>
 
-                  <div className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                    <FormattedContent content={card.front} />
+                  <div className="flex items-center gap-2">
+                    <div className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+                      <FormattedContent content={card.front} />
+                    </div>
+
+                    {speechSupported && (
+                      <button
+                        type="button"
+                        onClick={() => speak(card.front, deck.languageCode)}
+                        title="Pronounce"
+                        className="p-1 rounded text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                      >
+                        <Volume2 className="w-3.5 h-3.5" />
+                      </button>
+                    )}
                   </div>
 
-                  <div className="text-xs text-zinc-600 dark:text-zinc-400 pt-1 border-t border-zinc-100 dark:border-zinc-800/60">
+                  <div className="text-xs text-zinc-600 dark:text-zinc-400">
                     <FormattedContent content={card.back} />
                   </div>
+
+                  {card.exampleTarget && (
+                    <div className="text-xs text-zinc-500 dark:text-zinc-400 pt-1 flex items-start gap-1.5">
+                      <BookOpen className="w-3.5 h-3.5 shrink-0 mt-0.5 text-zinc-400" />
+                      <span>
+                        <strong>Context:</strong> {card.exampleTarget}{' '}
+                        {card.exampleTranslation && <span className="italic">({card.exampleTranslation})</span>}
+                      </span>
+                    </div>
+                  )}
                 </div>
 
-                {/* Card Actions */}
+                {/* Actions */}
                 <div className="flex items-center gap-1 shrink-0 opacity-80 sm:opacity-0 group-hover:opacity-100 transition-opacity">
                   <button
                     onClick={() => handleReset(card.id)}
@@ -313,14 +376,14 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
                   </button>
                   <button
                     onClick={() => handleStartEdit(card)}
-                    title="Edit card"
+                    title="Edit phrase"
                     className="p-1.5 rounded-md text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800"
                   >
                     <Edit3 className="w-3.5 h-3.5" />
                   </button>
                   <button
                     onClick={() => handleDelete(card.id)}
-                    title="Delete card"
+                    title="Delete phrase"
                     className="p-1.5 rounded-md text-zinc-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/40"
                   >
                     <Trash2 className="w-3.5 h-3.5" />

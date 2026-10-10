@@ -19,6 +19,7 @@ import { Navbar } from './components/Navbar';
 import { LeitnerVisualizer } from './components/LeitnerVisualizer';
 import { DeckManager } from './components/DeckManager';
 import { StudySession } from './components/StudySession';
+import { FavoritesView } from './components/FavoritesView';
 import { LanguageCurriculumModal } from './components/LanguageCurriculumModal';
 import { ProfileModal } from './components/ProfileModal';
 import {
@@ -43,6 +44,7 @@ export function App() {
 
   // Modals & Navigation states
   const [isStudyMode, setIsStudyMode] = useState(false);
+  const [isFavoritesPage, setIsFavoritesPage] = useState(false);
   const [studyQueue, setStudyQueue] = useState<Flashcard[]>([]);
   const [isCurriculumModalOpen, setIsCurriculumModalOpen] = useState(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
@@ -156,11 +158,13 @@ export function App() {
   const handleSelectDeck = (deckId: string | null) => {
     setSelectedDeckId(deckId);
     setActiveBoxFilter(null);
+    setIsFavoritesPage(false);
   };
 
   // Return to the main page (reset deck selection, study mode, filters, and modals)
   const handleGoHome = () => {
     setIsStudyMode(false);
+    setIsFavoritesPage(false);
     setSelectedDeckId(null);
     setSelectedLanguageFilter('all');
     setActiveBoxFilter(null);
@@ -331,6 +335,14 @@ export function App() {
               refreshProfileData();
             }}
           />
+        ) : isFavoritesPage ? (
+          <FavoritesView
+            cards={cards}
+            decks={decks}
+            onBack={() => setIsFavoritesPage(false)}
+            onStartStudyFavorites={() => handleStudyFavorites()}
+            onRefresh={refreshProfileData}
+          />
         ) : (
           <div>
             {/* Visualizer Header */}
@@ -340,6 +352,11 @@ export function App() {
               onSelectBox={setActiveBoxFilter}
               totalCards={cards.length}
               totalDue={totalDueCards}
+              totalFavorites={totalFavoriteCards}
+              onOpenFavorites={() => {
+                setSelectedDeckId(null);
+                setIsFavoritesPage(true);
+              }}
             />
 
             {/* If viewing a single deck */}

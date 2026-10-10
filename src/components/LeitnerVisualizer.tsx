@@ -1,6 +1,6 @@
 import React from 'react';
 import type { LeitnerBoxSummary } from '../types';
-import { Clock, CheckCircle2 } from 'lucide-react';
+import { Clock, CheckCircle2, Star } from 'lucide-react';
 
 interface LeitnerVisualizerProps {
   summaries: LeitnerBoxSummary[];
@@ -8,6 +8,8 @@ interface LeitnerVisualizerProps {
   onSelectBox: (box: number | null) => void;
   totalCards: number;
   totalDue: number;
+  totalFavorites?: number;
+  onOpenFavorites?: () => void;
 }
 
 export const LeitnerVisualizer: React.FC<LeitnerVisualizerProps> = ({
@@ -16,6 +18,8 @@ export const LeitnerVisualizer: React.FC<LeitnerVisualizerProps> = ({
   onSelectBox,
   totalCards,
   totalDue,
+  totalFavorites = 0,
+  onOpenFavorites,
 }) => {
   return (
     <div className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-3.5 sm:p-5 mb-5 sm:mb-6 shadow-xs">
@@ -29,7 +33,30 @@ export const LeitnerVisualizer: React.FC<LeitnerVisualizerProps> = ({
           </p>
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-3 text-xs self-start sm:self-auto">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs self-start sm:self-auto">
+          {onOpenFavorites && (
+            <button
+              type="button"
+              onClick={onOpenFavorites}
+              className={`flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1 rounded-lg font-semibold transition-all cursor-pointer border ${
+                totalFavorites > 0
+                  ? 'bg-amber-400/15 text-amber-900 dark:text-amber-300 border-amber-400/30 hover:bg-amber-400/25'
+                  : 'bg-zinc-100 dark:bg-zinc-800/80 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-750 hover:text-amber-500'
+              }`}
+              title="View and check all starred favorite sentences"
+            >
+              <Star className={`w-3.5 h-3.5 ${totalFavorites > 0 ? 'fill-amber-400 text-amber-500' : 'text-zinc-400'}`} />
+              <span>Starred</span>
+              <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-bold ${
+                totalFavorites > 0
+                  ? 'bg-amber-400 text-amber-950'
+                  : 'bg-zinc-200 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-300'
+              }`}>
+                {totalFavorites}
+              </span>
+            </button>
+          )}
+
           <div className="flex items-center gap-1.5 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
             <span className="font-semibold text-zinc-900 dark:text-zinc-100">{totalCards}</span> Total
           </div>

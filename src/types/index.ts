@@ -65,6 +65,7 @@ export interface Flashcard {
   exampleTranslation?: string; // Example sentence translated
   grammarNotes?: string; // Part of speech, gender article, cultural nuance
   hint?: string;
+  isFavorite?: boolean; // User starred favorite for quick review
   box: 1 | 2 | 3 | 4 | 5;
   nextReviewDate: number; // Unix timestamp in ms
   lastReviewedDate?: number;

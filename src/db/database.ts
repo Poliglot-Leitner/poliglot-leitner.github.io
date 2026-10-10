@@ -36,6 +36,9 @@ export class LeitnerDatabase extends Dexie {
       decks: 'id, profileId, languageId, topicId, difficulty, createdAt',
       cards: 'id, deckId, profileId, languageId, difficulty, box, nextReviewDate, lastReviewedDate',
     });
+    this.version(3).stores({
+      cards: 'id, deckId, profileId, languageId, difficulty, box, nextReviewDate, lastReviewedDate, isFavorite',
+    });
   }
 }
 
@@ -386,6 +389,15 @@ export async function addCard(
 
 export async function updateCard(card: Flashcard): Promise<void> {
   await db.cards.put(card);
+}
+
+export async function toggleCardFavorite(cardId: string): Promise<boolean> {
+  const card = await db.cards.get(cardId);
+  if (!card) return false;
+  const newFav = !card.isFavorite;
+  card.isFavorite = newFav;
+  await db.cards.put(card);
+  return newFav;
 }
 
 export async function deleteCard(cardId: string): Promise<void> {

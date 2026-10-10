@@ -11,6 +11,7 @@ import {
   computeBoxSummaries,
   createCustomDeck,
   deleteDeck,
+  toggleCardFavorite,
   db,
 } from './db/database';
 import { SUPPORTED_LANGUAGES, DIFFICULTY_LEVELS, normalizeDifficulty } from './data/languages';
@@ -27,6 +28,7 @@ import {
   ArrowRight,
   Trash2,
   SlidersHorizontal,
+  Star,
 } from 'lucide-react';
 
 export function App() {
@@ -197,6 +199,28 @@ export function App() {
     setIsStudyMode(true);
   };
 
+  // Start Study Session for Favorite Flashcards (10 per session)
+  const handleStudyFavorites = async (deckId?: string) => {
+    if (!activeProfile) return;
+
+    const SESSION_SIZE = 10;
+    const targetCards = deckId
+      ? await getCardsForDeck(deckId)
+      : selectedDeckId
+      ? await getCardsForDeck(selectedDeckId)
+      : cards;
+
+    const favoriteCards = targetCards.filter(c => c.isFavorite);
+    if (favoriteCards.length === 0) {
+      alert('No favorite sentences yet! Click the star icon (★) on any card during study or in the deck manager to mark it as a favorite.');
+      return;
+    }
+
+    // Queue favorite cards (up to SESSION_SIZE)
+    setStudyQueue(favoriteCards.slice(0, SESSION_SIZE));
+    setIsStudyMode(true);
+  };
+
   // Save Curriculum (Languages + Topics + Difficulty)
   const handleSaveCurriculum = async (
     languages: LanguageId[],
@@ -270,6 +294,7 @@ export function App() {
     : decks.filter(d => d.languageId === selectedLanguageFilter);
 
   const totalDueCards = cards.filter(c => c.nextReviewDate <= Date.now()).length;
+  const totalFavoriteCards = cards.filter(c => c.isFavorite).length;
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 flex flex-col font-sans transition-colors duration-150">
@@ -292,6 +317,11 @@ export function App() {
           <StudySession
             deck={selectedDeck}
             cards={studyQueue}
+            onToggleFavorite={async (cardId) => {
+              const res = await toggleCardFavorite(cardId);
+              await refreshProfileData();
+              return res;
+            }}
             onFinish={() => {
               setIsStudyMode(false);
               refreshProfileData();
@@ -330,6 +360,7 @@ export function App() {
                   activeBoxFilter={activeBoxFilter}
                   onRefresh={refreshProfileData}
                   onStartStudy={() => handleStartStudy(selectedDeck.id)}
+                  onStudyFavorites={() => handleStudyFavorites(selectedDeck.id)}
                   dueCount={totalDueCards}
                 />
               </div>
@@ -367,6 +398,17 @@ export function App() {
                       >
                         <Play className="w-3.5 h-3.5 fill-current" />
                         <span>Study ({totalDueCards} Due)</span>
+                      </button>
+                    )}
+
+                    {totalFavoriteCards > 0 && (
+                      <button
+                        onClick={() => handleStudyFavorites()}
+                        className="flex-1 sm:flex-initial px-3 sm:px-3.5 py-2 rounded-xl text-xs font-semibold bg-amber-400 hover:bg-amber-300 text-amber-950 transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
+                        title="Review all starred favorite sentences"
+                      >
+                        <Star className="w-3.5 h-3.5 fill-amber-950 text-amber-950" />
+                        <span>Favorites ({totalFavoriteCards})</span>
                       </button>
                     )}
 

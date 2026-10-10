@@ -16,6 +16,7 @@ import {
   Repeat,
   BookOpen,
   SkipForward,
+  Star,
 } from 'lucide-react';
 
 interface StudySessionProps {
@@ -23,6 +24,7 @@ interface StudySessionProps {
   cards: Flashcard[];
   onFinish: () => void;
   onExit: () => void;
+  onToggleFavorite?: (cardId: string) => Promise<boolean> | void;
 }
 
 export const StudySession: React.FC<StudySessionProps> = ({
@@ -30,6 +32,7 @@ export const StudySession: React.FC<StudySessionProps> = ({
   cards,
   onFinish,
   onExit,
+  onToggleFavorite,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
@@ -37,6 +40,15 @@ export const StudySession: React.FC<StudySessionProps> = ({
   const [isReverseMode, setIsReverseMode] = useState(false); // Practice Native -> Target
   const [sessionResults, setSessionResults] = useState<SessionResult[]>([]);
   const [isCompleted, setIsCompleted] = useState(false);
+
+  // Local Starred Favorites Set for optimistic and reactive UI updates
+  const [favoriteIds, setFavoriteIds] = useState<Set<string>>(() => {
+    const initial = new Set<string>();
+    cards.forEach(c => {
+      if (c.isFavorite) initial.add(c.id);
+    });
+    return initial;
+  });
 
   // Swipe & Drag Gesture State
   const [dragOffset, setDragOffset] = useState(0);
@@ -440,6 +452,40 @@ export const StudySession: React.FC<StudySessionProps> = ({
               onClick={e => e.stopPropagation()}
               onPointerDown={e => e.stopPropagation()}
             >
+              {/* Star Favorite Button */}
+              <button
+                type="button"
+                title={favoriteIds.has(currentCard.id) ? 'Remove from favorites' : 'Mark as favorite sentence'}
+                onClick={async (e) => {
+                  e.stopPropagation();
+                  const isCurrentlyFav = favoriteIds.has(currentCard.id);
+                  setFavoriteIds(prev => {
+                    const next = new Set(prev);
+                    if (isCurrentlyFav) next.delete(currentCard.id);
+                    else next.add(currentCard.id);
+                    return next;
+                  });
+                  if (onToggleFavorite) {
+                    await onToggleFavorite(currentCard.id);
+                  }
+                }}
+                onPointerDown={e => e.stopPropagation()}
+                className={`w-9 h-9 flex items-center justify-center rounded-xl border transition-all cursor-pointer active:scale-90 shrink-0 ${
+                  favoriteIds.has(currentCard.id)
+                    ? 'bg-amber-400 text-amber-950 border-amber-500 ring-2 ring-amber-400/40 shadow-sm'
+                    : 'text-zinc-400 hover:text-amber-500 border-zinc-200 dark:border-zinc-800 hover:bg-amber-50/50 dark:hover:bg-amber-950/20 bg-zinc-50/50 dark:bg-zinc-900/50'
+                }`}
+                aria-label="Toggle favorite"
+              >
+                <Star
+                  className={`w-4 h-4 transition-transform ${
+                    favoriteIds.has(currentCard.id)
+                      ? 'fill-amber-950 text-amber-950 scale-110'
+                      : 'hover:scale-110'
+                  }`}
+                />
+              </button>
+
               {/* Speech Audio Button */}
               {speechSupported && (
                 <button

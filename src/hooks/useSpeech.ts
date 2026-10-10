@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 
-// Language code mapper to ensure accurate BCP-47 codes
+// Language code normalizer
 export function normalizeLanguageCode(lang?: string): string {
   if (!lang) return 'en-US';
   const l = lang.toLowerCase();
@@ -18,10 +18,8 @@ export function useSpeech() {
   const activeUtteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
 
   useEffect(() => {
-    // Check if speechSynthesis is available in window
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       setIsSupported(true);
-      // Pre-warm voices
       window.speechSynthesis.getVoices();
       window.speechSynthesis.onvoiceschanged = () => {
         window.speechSynthesis.getVoices();
@@ -42,9 +40,8 @@ export function useSpeech() {
       .replace(/^-\s+/gm, '')
       .trim();
 
-    // If Chinese, remove parenthesized Latin Pinyin to only speak Hanzi characters cleanly
+    // If Chinese, remove parenthesized Latin Pinyin so Chinese TTS speaks characters
     if (langCode.startsWith('zh') || /[\u4e00-\u9fa5]/.test(text)) {
-      // Remove parentheses and their contents if they contain Latin characters
       text = text.replace(/\([A-Za-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ\s]+\)/g, '');
       text = text.replace(/（[A-Za-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ\s]+）/g, '');
     }
@@ -54,12 +51,20 @@ export function useSpeech() {
 
   const stop = useCallback(() => {
     if (currentAudioRef.current) {
-      currentAudioRef.current.pause();
-      currentAudioRef.current.currentTime = 0;
+      try {
+        currentAudioRef.current.pause();
+        currentAudioRef.current.currentTime = 0;
+      } catch {
+        // ignore
+      }
       currentAudioRef.current = null;
     }
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
+      try {
+        window.speechSynthesis.cancel();
+      } catch {
+        // ignore
+      }
     }
     setIsSpeaking(false);
   }, []);
@@ -72,7 +77,6 @@ export function useSpeech() {
 
     try {
       window.speechSynthesis.cancel();
-      // On Chromium on Linux, resume is needed if in paused state
       if (window.speechSynthesis.paused) {
         window.speechSynthesis.resume();
       }
@@ -80,6 +84,7 @@ export function useSpeech() {
       const utterance = new SpeechSynthesisUtterance(cleanedText);
       utterance.lang = targetLang;
       utterance.rate = 0.9;
+      utterance.volume = 1.0;
 
       const voices = window.speechSynthesis.getVoices();
       const matched = voices.find(
@@ -101,7 +106,6 @@ export function useSpeech() {
         activeUtteranceRef.current = null;
       };
 
-      // Store reference on window to prevent Chrome garbage collection bug
       activeUtteranceRef.current = utterance;
       // @ts-expect-error keep active utterance in global window
       window.__activeUtterance = utterance;
@@ -122,30 +126,42 @@ export function useSpeech() {
 
       setIsSpeaking(true);
 
-      // Primary Engine: Natural High-Quality Web Audio (works 100% reliably across Linux, Mac, Windows, iOS, Android)
-      const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${encodeURIComponent(
+      // Use local Vite dev proxy in development, direct URL in production
+      const isDev = import.meta.env.DEV;
+      const ttsBase = isDev ? '/api/tts' : 'https://translate.google.com/translate_tts';
+      const audioUrl = `${ttsBase}?ie=UTF-8&tl=${encodeURIComponent(
         langCode
       )}&client=tw-ob&q=${encodeURIComponent(cleaned)}`;
 
-      const audio = new Audio(audioUrl);
+      const audio = new Audio();
+      audio.volume = 1.0;
+      // Set no-referrer on element
+      (audio as unknown as { referrerPolicy: string }).referrerPolicy = 'no-referrer';
+      audio.src = audioUrl;
       currentAudioRef.current = audio;
 
-      audio.onplay = () => setIsSpeaking(true);
+      audio.onplay = () => {
+        setIsSpeaking(true);
+      };
+
       audio.onended = () => {
         setIsSpeaking(false);
         currentAudioRef.current = null;
       };
 
-      audio.onerror = () => {
-        // Fallback Engine: Browser SpeechSynthesis (e.g. if offline or blocked)
+      audio.onerror = (e) => {
+        console.warn('HTML5 Audio playback failed, attempting SpeechSynthesis:', e);
         currentAudioRef.current = null;
         speakWithSpeechSynthesis(cleaned, langCode);
       };
 
-      audio.play().catch(() => {
-        // Autoplay restrictions or network fallback
-        speakWithSpeechSynthesis(cleaned, langCode);
-      });
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((err) => {
+          console.warn('audio.play() rejected, attempting SpeechSynthesis:', err);
+          speakWithSpeechSynthesis(cleaned, langCode);
+        });
+      }
     },
     [stop, speakWithSpeechSynthesis]
   );

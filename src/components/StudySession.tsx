@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import type { Flashcard, Deck, SessionResult } from '../types';
 import { processCardReview } from '../db/database';
 import { FormattedContent } from './FormattedContent';
@@ -15,6 +15,7 @@ import {
   Sparkles,
   Repeat,
   BookOpen,
+  SkipForward,
 } from 'lucide-react';
 
 interface StudySessionProps {
@@ -36,6 +37,13 @@ export const StudySession: React.FC<StudySessionProps> = ({
   const [isReverseMode, setIsReverseMode] = useState(false); // Practice Native -> Target
   const [sessionResults, setSessionResults] = useState<SessionResult[]>([]);
   const [isCompleted, setIsCompleted] = useState(false);
+
+  // Swipe & Drag Gesture State
+  const [dragOffset, setDragOffset] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [flyDirection, setFlyDirection] = useState<'left' | 'right' | null>(null);
+  const dragStartRef = useRef<{ x: number; y: number; time: number } | null>(null);
+  const isHorizontalSwipeRef = useRef<boolean | null>(null);
 
   const { speak, isSpeaking, isSupported: speechSupported } = useSpeech();
 
@@ -66,6 +74,28 @@ export const StudySession: React.FC<StudySessionProps> = ({
   const handleFlip = useCallback(() => {
     setIsFlipped(prev => !prev);
   }, []);
+
+  const handleSkip = useCallback(() => {
+    if (currentIndex + 1 < cards.length) {
+      setCurrentIndex(prev => prev + 1);
+      setIsFlipped(false);
+      setShowHint(false);
+      setDragOffset(0);
+      setFlyDirection(null);
+    } else {
+      setIsCompleted(true);
+      try {
+        confetti({
+          particleCount: 70,
+          spread: 60,
+          origin: { y: 0.65 },
+          colors: ['#10b981', '#6366f1', '#f59e0b', '#3b82f6'],
+        });
+      } catch {
+        // Fallback silently if canvas not available
+      }
+    }
+  }, [currentIndex, cards.length]);
 
   const handleGrade = useCallback(async (wasCorrect: boolean) => {
     if (!currentCard) return;
@@ -101,7 +131,82 @@ export const StudySession: React.FC<StudySessionProps> = ({
     }
   }, [currentCard, currentIndex, cards.length, sessionResults]);
 
-  // Global Keyboard listener for spacebar, 1, 2, S, H
+  // Pointer / Touch Swipe Handlers
+  const handlePointerDown = (e: React.PointerEvent) => {
+    if (e.button !== 0 && e.pointerType === 'mouse') return;
+    dragStartRef.current = { x: e.clientX, y: e.clientY, time: Date.now() };
+    isHorizontalSwipeRef.current = null;
+    setIsDragging(true);
+    setDragOffset(0);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!dragStartRef.current || !isDragging) return;
+    const diffX = e.clientX - dragStartRef.current.x;
+    const diffY = e.clientY - dragStartRef.current.y;
+
+    if (isHorizontalSwipeRef.current === null) {
+      if (Math.abs(diffX) > 6 || Math.abs(diffY) > 6) {
+        isHorizontalSwipeRef.current = Math.abs(diffX) > Math.abs(diffY);
+      }
+    }
+
+    if (isHorizontalSwipeRef.current) {
+      setDragOffset(diffX);
+    }
+  };
+
+  const handlePointerUp = () => {
+    if (!dragStartRef.current) return;
+    const wasHorizontal = isHorizontalSwipeRef.current;
+    const offset = dragOffset;
+    const duration = Date.now() - dragStartRef.current.time;
+    const velocity = Math.abs(offset) / Math.max(duration, 1);
+
+    dragStartRef.current = null;
+    isHorizontalSwipeRef.current = null;
+    setIsDragging(false);
+
+    // Minor movement (< 8px) is a clean tap to flip
+    if (Math.abs(offset) < 8) {
+      setDragOffset(0);
+      handleFlip();
+      return;
+    }
+
+    // Meaningful horizontal swipe: threshold > 65px or quick flick
+    if (wasHorizontal && (Math.abs(offset) > 65 || velocity > 0.35)) {
+      const direction = offset > 0 ? 'right' : 'left';
+      setFlyDirection(direction);
+
+      setTimeout(() => {
+        setFlyDirection(null);
+        setDragOffset(0);
+        if (!isFlipped) {
+          // Before flip: swipe left or right skips directly to next card!
+          handleSkip();
+        } else {
+          // After flip: swipe right = know, swipe left = review
+          if (direction === 'right') {
+            handleGrade(true);
+          } else {
+            handleGrade(false);
+          }
+        }
+      }, 160);
+    } else {
+      setDragOffset(0);
+    }
+  };
+
+  const handlePointerCancel = () => {
+    dragStartRef.current = null;
+    isHorizontalSwipeRef.current = null;
+    setIsDragging(false);
+    setDragOffset(0);
+  };
+
+  // Global Keyboard listener for spacebar, 1, 2, K, S, H, Arrow keys
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (isCompleted) return;
@@ -114,15 +219,22 @@ export const StudySession: React.FC<StudySessionProps> = ({
         e.preventDefault();
         handleFlip();
       } else if (e.key === '1' || e.key === 'ArrowLeft') {
+        e.preventDefault();
         if (isFlipped) {
-          e.preventDefault();
           handleGrade(false);
+        } else {
+          handleSkip();
         }
       } else if (e.key === '2' || e.key === 'ArrowRight') {
+        e.preventDefault();
         if (isFlipped) {
-          e.preventDefault();
           handleGrade(true);
+        } else {
+          handleSkip();
         }
+      } else if (e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        handleSkip();
       } else if (e.key.toLowerCase() === 's') {
         if (currentCard) {
           e.preventDefault();
@@ -140,7 +252,7 @@ export const StudySession: React.FC<StudySessionProps> = ({
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [handleFlip, handleGrade, handleSpeak, isFlipped, isCompleted, currentCard, isReverseMode, onExit]);
+  }, [handleFlip, handleGrade, handleSkip, handleSpeak, isFlipped, isCompleted, currentCard, isReverseMode, onExit]);
 
   if (!cards || cards.length === 0) {
     return (
@@ -221,6 +333,35 @@ export const StudySession: React.FC<StudySessionProps> = ({
   const promptText = isReverseMode ? currentCard.back : currentCard.front;
   const answerText = isReverseMode ? currentCard.front : currentCard.back;
 
+  // Dynamic card transform based on swipe dragging or fly-off
+  const getCardStyle = (): React.CSSProperties => {
+    if (flyDirection) {
+      const x = flyDirection === 'right' ? 450 : -450;
+      const rot = flyDirection === 'right' ? 18 : -18;
+      return {
+        transform: `translate3d(${x}px, 0, 0) rotate(${rot}deg)`,
+        opacity: 0,
+        transition: 'transform 0.16s ease-out, opacity 0.16s ease-out',
+        touchAction: 'pan-y',
+      };
+    }
+
+    if (dragOffset !== 0) {
+      const rot = Math.min(Math.max(dragOffset * 0.04, -14), 14);
+      return {
+        transform: `translate3d(${dragOffset}px, 0, 0) rotate(${rot}deg)`,
+        transition: isDragging ? 'none' : 'transform 0.22s ease-out',
+        touchAction: 'pan-y',
+      };
+    }
+
+    return {
+      transform: 'translate3d(0, 0, 0) rotate(0deg)',
+      transition: 'transform 0.22s ease-out',
+      touchAction: 'pan-y',
+    };
+  };
+
   return (
     <div className="max-w-2xl mx-auto py-4 px-3 flex flex-col min-h-[580px]">
       {/* Top Header */}
@@ -266,16 +407,42 @@ export const StudySession: React.FC<StudySessionProps> = ({
         />
       </div>
 
-      {/* 3D Flashcard Container */}
-      <div className="perspective-1000 flex-1 flex flex-col justify-center my-auto min-h-[380px]">
+      {/* 3D Flashcard Container with Swipe Support */}
+      <div className="perspective-1000 flex-1 flex flex-col justify-center my-auto min-h-[380px] relative overflow-hidden px-1">
         <div
-          onClick={handleFlip}
-          className={`w-full min-h-[360px] rounded-2xl border transition-all duration-300 cursor-pointer p-8 flex flex-col justify-between relative shadow-sm hover:shadow-md select-none ${
+          onPointerDown={handlePointerDown}
+          onPointerMove={isDragging ? handlePointerMove : undefined}
+          onPointerUp={isDragging ? handlePointerUp : undefined}
+          onPointerCancel={isDragging ? handlePointerCancel : undefined}
+          style={getCardStyle()}
+          className={`w-full min-h-[360px] rounded-2xl border transition-all duration-300 cursor-grab active:cursor-grabbing p-8 flex flex-col justify-between relative shadow-sm hover:shadow-md select-none touch-pan-y ${
             isFlipped
               ? 'bg-zinc-50/90 dark:bg-zinc-900/90 border-zinc-300 dark:border-zinc-700 ring-1 ring-zinc-400/20'
               : 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800'
           }`}
         >
+          {/* Dynamic Swipe Direction Feedback Badges */}
+          {dragOffset > 25 && (
+            <div className="absolute top-4 right-4 z-30 px-3 py-1.5 rounded-full text-xs font-semibold shadow-md flex items-center gap-1.5 pointer-events-none animate-in fade-in zoom-in-95 bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900">
+              <span>{isFlipped ? 'I Know This' : 'Skip to Next'}</span>
+              {isFlipped ? (
+                <CheckCircle className="w-3.5 h-3.5 text-emerald-400 dark:text-emerald-600" />
+              ) : (
+                <SkipForward className="w-3.5 h-3.5" />
+              )}
+            </div>
+          )}
+          {dragOffset < -25 && (
+            <div className="absolute top-4 left-4 z-30 px-3 py-1.5 rounded-full text-xs font-semibold shadow-md flex items-center gap-1.5 pointer-events-none animate-in fade-in zoom-in-95 bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900">
+              {isFlipped ? (
+                <XCircle className="w-3.5 h-3.5 text-red-400 dark:text-red-600" />
+              ) : (
+                <SkipForward className="w-3.5 h-3.5 rotate-180" />
+              )}
+              <span>{isFlipped ? 'Review Again' : 'Skip Card'}</span>
+            </div>
+          )}
+
           {/* Card Top Meta */}
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
@@ -289,7 +456,11 @@ export const StudySession: React.FC<StudySessionProps> = ({
               )}
             </div>
 
-            <div className="flex items-center gap-2" onClick={e => e.stopPropagation()}>
+            <div
+              className="flex items-center gap-2"
+              onClick={e => e.stopPropagation()}
+              onPointerDown={e => e.stopPropagation()}
+            >
               {/* Speech Audio Button */}
               {speechSupported && (
                 <button
@@ -299,6 +470,7 @@ export const StudySession: React.FC<StudySessionProps> = ({
                     e.stopPropagation();
                     handleSpeak(isReverseMode ? answerText : promptText);
                   }}
+                  onPointerDown={e => e.stopPropagation()}
                   className={`w-9 h-9 flex items-center justify-center rounded-xl border transition-all cursor-pointer active:scale-95 shrink-0 ${
                     isSpeaking
                       ? 'bg-amber-400 text-zinc-950 border-amber-500 ring-2 ring-amber-400/40 scale-105 shadow-sm'
@@ -319,6 +491,7 @@ export const StudySession: React.FC<StudySessionProps> = ({
                     e.stopPropagation();
                     setShowHint(prev => !prev);
                   }}
+                  onPointerDown={e => e.stopPropagation()}
                   className={`w-9 h-9 flex items-center justify-center rounded-xl border transition-colors cursor-pointer active:scale-95 shrink-0 ${
                     showHint
                       ? 'bg-amber-50 dark:bg-amber-950 text-amber-600 border-amber-300'
@@ -352,10 +525,15 @@ export const StudySession: React.FC<StudySessionProps> = ({
 
                 {/* Mobile-Friendly Quick Audio Trigger */}
                 {speechSupported && (
-                  <div className="mt-3 flex items-center gap-2" onClick={e => e.stopPropagation()}>
+                  <div
+                    className="mt-3 flex items-center gap-2"
+                    onClick={e => e.stopPropagation()}
+                    onPointerDown={e => e.stopPropagation()}
+                  >
                     <button
                       type="button"
                       onClick={() => handleSpeak(promptText)}
+                      onPointerDown={e => e.stopPropagation()}
                       className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border transition-all cursor-pointer active:scale-95 ${
                         isSpeaking
                           ? 'bg-amber-400 text-zinc-950 border-amber-500 ring-2 ring-amber-400/30'
@@ -395,10 +573,15 @@ export const StudySession: React.FC<StudySessionProps> = ({
 
                   {/* Audio button for revealed translation if target is on back */}
                   {speechSupported && isReverseMode && (
-                    <div className="mt-2.5 flex items-center gap-2" onClick={e => e.stopPropagation()}>
+                    <div
+                      className="mt-2.5 flex items-center gap-2"
+                      onClick={e => e.stopPropagation()}
+                      onPointerDown={e => e.stopPropagation()}
+                    >
                       <button
                         type="button"
                         onClick={() => handleSpeak(answerText, targetLangCode)}
+                        onPointerDown={e => e.stopPropagation()}
                         className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200/80 dark:border-zinc-700/80 active:scale-95 cursor-pointer"
                       >
                         <Volume2 className="w-3.5 h-3.5" />
@@ -422,6 +605,7 @@ export const StudySession: React.FC<StudySessionProps> = ({
                           e.stopPropagation();
                           handleSpeak(currentCard.exampleTarget!, targetLangCode);
                         }}
+                        onPointerDown={e => e.stopPropagation()}
                         title="Pronounce example sentence"
                         className="p-1 rounded text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 hover:bg-zinc-200/60 dark:hover:bg-zinc-700 cursor-pointer active:scale-95"
                       >
@@ -449,12 +633,12 @@ export const StudySession: React.FC<StudySessionProps> = ({
             )}
           </div>
 
-          {/* Bottom Flip Reminder */}
+          {/* Bottom Flip / Gesture Hint */}
           <div className="pt-3.5 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between text-xs text-zinc-400 dark:text-zinc-500">
-            <span className="flex items-center gap-1">
-              <RotateCw className="w-3.5 h-3.5" />
+            <span className="flex items-center gap-1.5">
+              <RotateCw className="w-3.5 h-3.5 shrink-0" />
               <span>Tap to {isFlipped ? 'flip back' : 'reveal'}</span>
-              <span className="hidden sm:inline"> (or press <kbd className="font-mono bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded text-[10px]">Space</kbd>)</span>
+              <span className="opacity-70">&bull; Swipe &larr; &rarr; to {isFlipped ? 'grade' : 'skip'}</span>
             </span>
             <span className="font-mono text-[11px] uppercase">
               {deck?.languageId}
@@ -466,14 +650,26 @@ export const StudySession: React.FC<StudySessionProps> = ({
       {/* Control Buttons Bar */}
       <div className="mt-4 sm:mt-6 flex items-center gap-2 sm:gap-3">
         {!isFlipped ? (
-          <button
-            type="button"
-            onClick={handleFlip}
-            className="w-full py-3 sm:py-3.5 rounded-xl text-xs sm:text-sm font-semibold tracking-wide bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 active:scale-[0.99] transition-all cursor-pointer shadow-xs flex items-center justify-center gap-2"
-          >
-            <span>Show Translation</span>
-            <kbd className="hidden sm:inline-block font-mono bg-white/20 dark:bg-black/10 px-1.5 py-0.5 rounded text-[10px]">Space</kbd>
-          </button>
+          <div className="w-full flex items-center gap-2 sm:gap-3">
+            <button
+              type="button"
+              onClick={handleFlip}
+              className="flex-1 py-3 sm:py-3.5 rounded-xl text-xs sm:text-sm font-semibold tracking-wide bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 active:scale-[0.99] transition-all cursor-pointer shadow-xs flex items-center justify-center gap-2"
+            >
+              <span>Show Translation</span>
+              <kbd className="hidden sm:inline-block font-mono bg-white/20 dark:bg-black/10 px-1.5 py-0.5 rounded text-[10px]">Space</kbd>
+            </button>
+            <button
+              type="button"
+              onClick={handleSkip}
+              title="Skip to next card (Shortcut: K or swipe card left/right)"
+              className="py-3 sm:py-3.5 px-4 sm:px-5 rounded-xl text-xs sm:text-sm font-medium border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 active:scale-[0.98] transition-all cursor-pointer flex items-center justify-center gap-1.5 shrink-0 shadow-2xs"
+            >
+              <SkipForward className="w-4 h-4" />
+              <span>Skip</span>
+              <kbd className="hidden sm:inline-block font-mono bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded text-[10px]">K</kbd>
+            </button>
+          </div>
         ) : (
           <div className="w-full grid grid-cols-2 gap-2 sm:gap-3">
             <button

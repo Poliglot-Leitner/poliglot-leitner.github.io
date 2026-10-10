@@ -89,6 +89,14 @@ export function App() {
 
     setProfiles(allProf);
     const current = allProf[0];
+    if (current) {
+      await seedCurriculumForProfile(
+        current.id,
+        current.selectedLanguages || ['spanish', 'german', 'chinese'],
+        current.selectedTopics || ['daily-travel', 'manners-etiquette', 'idioms-expressions'],
+        current.languageDifficulties || current.selectedDifficulty || 'beginner'
+      );
+    }
     setActiveProfile(current);
   }, []);
 

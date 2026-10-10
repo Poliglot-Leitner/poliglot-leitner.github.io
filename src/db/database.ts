@@ -118,10 +118,51 @@ export async function seedCurriculumForProfile(
       if (!topicDef) continue;
 
       // Check if this deck already exists for this profile
-      const alreadyExists = existingDecks.some(
+      const existingDeck = existingDecks.find(
         d => d.languageId === langId && d.topicId === topicId && d.difficulty === langDifficulty
       );
-      if (alreadyExists) continue;
+
+      // Match seed cards for this language + topic + difficulty
+      const matchingSeeds = LANGUAGE_CURRICULUM_SEEDS.filter(
+        s => s.languageId === langId && s.topicId === topicId && s.difficulty === langDifficulty
+      );
+
+      const seedsToInsert = matchingSeeds.length > 0
+        ? matchingSeeds
+        : LANGUAGE_CURRICULUM_SEEDS.filter(s => s.languageId === langId && s.topicId === topicId);
+
+      if (existingDeck) {
+        // Synchronize missing seeds into existing deck
+        const currentCards = await db.cards.where('deckId').equals(existingDeck.id).toArray();
+        const existingFronts = new Set(currentCards.map(c => c.front));
+        const missingSeeds = seedsToInsert.filter(s => !existingFronts.has(s.front));
+
+        if (missingSeeds.length > 0) {
+          const now = Date.now();
+          const newCards: Flashcard[] = missingSeeds.map((s, idx) => ({
+            id: `card_${existingDeck.id}_${idx}_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
+            deckId: existingDeck.id,
+            profileId,
+            languageId: s.languageId,
+            difficulty: s.difficulty,
+            front: s.front,
+            back: s.back,
+            phonetic: s.phonetic,
+            exampleTarget: s.exampleTarget,
+            exampleTranslation: s.exampleTranslation,
+            grammarNotes: s.grammarNotes,
+            hint: s.hint,
+            box: 1,
+            nextReviewDate: now,
+            totalReviews: 0,
+            correctCount: 0,
+            incorrectCount: 0,
+            createdAt: now,
+          }));
+          await db.cards.bulkAdd(newCards);
+        }
+        continue;
+      }
 
       const diffDef = DIFFICULTY_LEVELS.find(d => d.id === langDifficulty);
       const deckId = `deck_${langId}_${topicId}_${langDifficulty}_${Date.now()}_${Math.random().toString(36).slice(2, 5)}`;
@@ -140,17 +181,6 @@ export async function seedCurriculumForProfile(
       };
 
       await db.decks.add(newDeck);
-
-      // Match seed cards for this language + topic + difficulty
-      // (Also fall back to nearby difficulties if an exact match has fewer cards)
-      const matchingSeeds = LANGUAGE_CURRICULUM_SEEDS.filter(
-        s => s.languageId === langId && s.topicId === topicId && s.difficulty === langDifficulty
-      );
-
-      // If specific topic doesn't have many seeds at this exact difficulty, also include general seeds for that language & topic
-      const seedsToInsert = matchingSeeds.length > 0
-        ? matchingSeeds
-        : LANGUAGE_CURRICULUM_SEEDS.filter(s => s.languageId === langId && s.topicId === topicId);
 
       const now = Date.now();
       const flashcards: Flashcard[] = seedsToInsert.map((s, idx) => ({

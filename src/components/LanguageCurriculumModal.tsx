@@ -107,19 +107,19 @@ export const LanguageCurriculumModal: React.FC<LanguageCurriculumModalProps> = (
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-950/60 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-zinc-950/60 backdrop-blur-xs animate-in fade-in duration-200">
+      <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl w-full max-w-2xl max-h-[92vh] sm:max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
         {/* Header */}
-        <div className="p-6 border-b border-zinc-100 dark:border-zinc-800 flex items-start justify-between">
+        <div className="p-4 sm:p-6 border-b border-zinc-100 dark:border-zinc-800 flex items-start justify-between">
           <div>
-            <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 mb-2">
+            <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 mb-1.5 sm:mb-2">
               <Globe2 className="w-3.5 h-3.5" />
               <span>Language Curriculum Builder</span>
             </div>
-            <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+            <h2 className="text-lg sm:text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
               Customize Your Learning Journey
             </h2>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+            <p className="text-[11px] sm:text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
               Choose target languages, subjects of interest, and your target difficulty level.
             </p>
           </div>
@@ -127,7 +127,7 @@ export const LanguageCurriculumModal: React.FC<LanguageCurriculumModalProps> = (
           {!isFirstTime && (
             <button
               onClick={onClose}
-              className="p-1 rounded-lg text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+              className="p-1.5 rounded-lg text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors cursor-pointer shrink-0"
             >
               <X className="w-5 h-5" />
             </button>
@@ -135,7 +135,7 @@ export const LanguageCurriculumModal: React.FC<LanguageCurriculumModalProps> = (
         </div>
 
         {/* Steps Navigation */}
-        <div className="px-6 py-3 border-b border-zinc-100 dark:border-zinc-800 flex items-center justify-between bg-zinc-50/50 dark:bg-zinc-900/50 text-xs">
+        <div className="px-3.5 sm:px-6 py-2.5 sm:py-3 border-b border-zinc-100 dark:border-zinc-800 flex items-center justify-between bg-zinc-50/50 dark:bg-zinc-900/50 text-xs">
           <div className="flex items-center gap-4">
             <button
               type="button"
@@ -424,26 +424,21 @@ export const LanguageCurriculumModal: React.FC<LanguageCurriculumModalProps> = (
         </div>
 
         {/* Footer Navigation */}
-        <div className="p-4 px-6 border-t border-zinc-100 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50 flex items-center justify-between">
-          <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400">
+        <div className="p-3.5 sm:p-4 px-4 sm:px-6 border-t border-zinc-100 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50 flex items-center justify-between gap-3">
+          <div className="hidden sm:flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400">
             <SlidersHorizontal className="w-3.5 h-3.5" />
             <span>
               {selectedLangs.length} Language{selectedLangs.length > 1 ? 's' : ''} &bull;{' '}
-              {selectedTopics.length} Subject{selectedTopics.length > 1 ? 's' : ''} &bull;{' '}
-              <strong className="capitalize">
-                {Array.from(new Set(selectedLangs.map(l => languageDifficulties[l] || 'beginner'))).length === 1
-                  ? `${DIFFICULTY_LEVELS.find(d => d.id === (languageDifficulties[selectedLangs[0]] || 'beginner'))?.name || 'Beginner'} Level`
-                  : 'Custom Levels'}
-              </strong>
+              {selectedTopics.length} Subject{selectedTopics.length > 1 ? 's' : ''}
             </span>
           </div>
 
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center justify-between sm:justify-end gap-2.5 w-full sm:w-auto">
             {step > 1 && (
               <button
                 type="button"
                 onClick={() => setStep(prev => (prev - 1) as 1 | 2 | 3)}
-                className="px-3.5 py-2 rounded-lg text-xs font-medium text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200/60 dark:hover:bg-zinc-800 transition-colors"
+                className="px-3.5 py-2 rounded-xl text-xs font-medium text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200/60 dark:hover:bg-zinc-800 transition-colors cursor-pointer"
               >
                 Back
               </button>
@@ -453,7 +448,7 @@ export const LanguageCurriculumModal: React.FC<LanguageCurriculumModalProps> = (
               <button
                 type="button"
                 onClick={() => setStep(prev => (prev + 1) as 1 | 2 | 3)}
-                className="px-4 py-2 rounded-lg text-xs font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 flex items-center gap-1.5 cursor-pointer shadow-xs"
+                className="ml-auto sm:ml-0 px-4 py-2 rounded-xl text-xs font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 flex items-center gap-1.5 cursor-pointer shadow-xs active:scale-95"
               >
                 <span>Continue</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -463,7 +458,7 @@ export const LanguageCurriculumModal: React.FC<LanguageCurriculumModalProps> = (
                 type="button"
                 onClick={handleSave}
                 disabled={isSaving}
-                className="px-5 py-2 rounded-lg text-xs font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 cursor-pointer disabled:opacity-50 shadow-xs"
+                className="ml-auto sm:ml-0 px-5 py-2 rounded-xl text-xs font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 cursor-pointer disabled:opacity-50 shadow-xs active:scale-95"
               >
                 {isSaving ? 'Configuring Decks...' : 'Apply & Build Decks'}
               </button>

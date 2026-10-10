@@ -62,8 +62,12 @@ export function App() {
   useEffect(() => {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
+      document.documentElement.style.colorScheme = 'dark';
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#09090b');
     } else {
       document.documentElement.classList.remove('dark');
+      document.documentElement.style.colorScheme = 'light';
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#fafafa');
     }
     localStorage.setItem('leitner_theme', theme);
   }, [theme]);
@@ -263,7 +267,7 @@ export function App() {
         onGoHome={handleGoHome}
       />
 
-      <main className="flex-1 max-w-5xl w-full mx-auto px-4 py-8">
+      <main className="flex-1 max-w-5xl w-full mx-auto px-3 sm:px-4 py-4 sm:py-8">
         {isStudyMode ? (
           <StudySession
             deck={selectedDeck}
@@ -312,10 +316,10 @@ export function App() {
             ) : (
               /* All Decks Overview */
               <div>
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-4 sm:mb-6">
                   <div>
                     <div className="flex items-center gap-2">
-                      <h2 className="text-lg font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+                      <h2 className="text-base sm:text-lg font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
                         Language Decks
                       </h2>
                       {selectedLanguageFilter !== 'all' ? (
@@ -330,37 +334,37 @@ export function App() {
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+                    <p className="text-[11px] sm:text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
                       Review phrases on schedule to cement native fluency and intuitive recall.
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => setIsCurriculumModalOpen(true)}
-                      className="px-3.5 py-2 rounded-lg text-xs font-medium border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
-                    >
-                      <SlidersHorizontal className="w-3.5 h-3.5" />
-                      <span>Curriculum & Difficulty</span>
-                    </button>
-
-                    <button
-                      onClick={() => setIsCustomDeckModalOpen(true)}
-                      className="px-3.5 py-2 rounded-lg text-xs font-medium border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
-                    >
-                      <Plus className="w-3.5 h-3.5" />
-                      <span>Custom Deck</span>
-                    </button>
-
+                  <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 w-full sm:w-auto">
                     {cards.length > 0 && (
                       <button
                         onClick={() => handleStartStudy()}
-                        className="px-4 py-2 rounded-lg text-xs font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 transition-opacity flex items-center gap-1.5 shadow-xs cursor-pointer"
+                        className="w-full sm:w-auto order-first sm:order-last px-4 py-2.5 sm:py-2 rounded-xl text-xs font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer"
                       >
                         <Play className="w-3.5 h-3.5 fill-current" />
                         <span>Study ({totalDueCards} Due)</span>
                       </button>
                     )}
+
+                    <button
+                      onClick={() => setIsCurriculumModalOpen(true)}
+                      className="flex-1 sm:flex-initial px-3 sm:px-3.5 py-2 rounded-xl text-xs font-medium border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
+                    >
+                      <SlidersHorizontal className="w-3.5 h-3.5" />
+                      <span>Curriculum</span>
+                    </button>
+
+                    <button
+                      onClick={() => setIsCustomDeckModalOpen(true)}
+                      className="flex-1 sm:flex-initial px-3 sm:px-3.5 py-2 rounded-xl text-xs font-medium border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-800 dark:text-zinc-200 transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                      <span>Custom Deck</span>
+                    </button>
                   </div>
                 </div>
 
@@ -558,13 +562,13 @@ function LanguageDeckCard({
   return (
     <div
       onClick={onOpen}
-      className="p-5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all flex flex-col justify-between cursor-pointer group shadow-2xs hover:shadow-xs relative"
+      className="p-4 sm:p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all flex flex-col justify-between cursor-pointer group shadow-2xs hover:shadow-xs active:scale-[0.99] relative"
     >
       <div>
         <div className="flex items-start justify-between gap-2 mb-2">
-          <div className="flex items-center gap-2">
-            <span className="text-xl select-none">{flag}</span>
-            <h3 className="font-semibold text-sm text-zinc-900 dark:text-zinc-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+          <div className="flex items-center gap-2.5">
+            <span className="text-2xl select-none">{flag}</span>
+            <h3 className="font-semibold text-sm sm:text-base text-zinc-900 dark:text-zinc-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
               {deck.title}
             </h3>
           </div>
@@ -576,7 +580,7 @@ function LanguageDeckCard({
                 onDelete();
               }}
               title="Delete deck"
-              className="opacity-0 group-hover:opacity-100 text-zinc-400 hover:text-red-500 transition-opacity p-1"
+              className="opacity-0 group-hover:opacity-100 text-zinc-400 hover:text-red-500 transition-opacity p-1 cursor-pointer"
             >
               <Trash2 className="w-3.5 h-3.5" />
             </button>
@@ -588,13 +592,13 @@ function LanguageDeckCard({
         </p>
       </div>
 
-      <div className="pt-3 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between">
+      <div className="pt-3 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400">
             {deckCards.length} phrases
           </span>
           {dueCount > 0 && (
-            <span className="text-[10px] font-medium px-2 py-0.2 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20">
+            <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/20">
               {dueCount} due
             </span>
           )}
@@ -605,7 +609,7 @@ function LanguageDeckCard({
             e.stopPropagation();
             onStudy();
           }}
-          className="px-3 py-1 rounded-md text-xs font-medium bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 transition-colors flex items-center gap-1 cursor-pointer"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 active:scale-95 transition-all flex items-center gap-1 cursor-pointer shadow-2xs"
         >
           <span>Study</span>
           <ArrowRight className="w-3 h-3" />

@@ -16,14 +16,24 @@ export function useSpeech() {
   const [isSupported, setIsSupported] = useState(true);
   const currentAudioRef = useRef<HTMLAudioElement | null>(null);
   const activeUtteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const voicesRef = useRef<SpeechSynthesisVoice[]>([]);
 
   useEffect(() => {
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       setIsSupported(true);
-      window.speechSynthesis.getVoices();
-      window.speechSynthesis.onvoiceschanged = () => {
-        window.speechSynthesis.getVoices();
+      const updateVoices = () => {
+        try {
+          const v = window.speechSynthesis.getVoices();
+          if (v && v.length > 0) {
+            voicesRef.current = v;
+          }
+        } catch {
+          // ignore
+        }
       };
+
+      updateVoices();
+      window.speechSynthesis.onvoiceschanged = updateVoices;
     }
   }, []);
 
@@ -40,7 +50,7 @@ export function useSpeech() {
       .replace(/^-\s+/gm, '')
       .trim();
 
-    // If Chinese, remove parenthesized Latin Pinyin so Chinese TTS speaks characters
+    // If Chinese, remove parenthesized Latin Pinyin so Chinese TTS speaks characters naturally
     if (langCode.startsWith('zh') || /[\u4e00-\u9fa5]/.test(text)) {
       text = text.replace(/\([A-Za-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ\s]+\)/g, '');
       text = text.replace(/（[A-Za-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ\s]+）/g, '');
@@ -61,109 +71,125 @@ export function useSpeech() {
     }
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       try {
-        window.speechSynthesis.cancel();
+        if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
+          window.speechSynthesis.cancel();
+        }
       } catch {
         // ignore
       }
     }
+    activeUtteranceRef.current = null;
     setIsSpeaking(false);
-  }, []);
-
-  const speakWithSpeechSynthesis = useCallback((cleanedText: string, targetLang: string) => {
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
-      setIsSpeaking(false);
-      return;
-    }
-
-    try {
-      window.speechSynthesis.cancel();
-      if (window.speechSynthesis.paused) {
-        window.speechSynthesis.resume();
-      }
-
-      const utterance = new SpeechSynthesisUtterance(cleanedText);
-      utterance.lang = targetLang;
-      utterance.rate = 0.9;
-      utterance.volume = 1.0;
-
-      const voices = window.speechSynthesis.getVoices();
-      const matched = voices.find(
-        v => v.lang.toLowerCase() === targetLang.toLowerCase() ||
-             v.lang.toLowerCase().startsWith(targetLang.split('-')[0].toLowerCase())
-      );
-
-      if (matched) {
-        utterance.voice = matched;
-      }
-
-      utterance.onstart = () => setIsSpeaking(true);
-      utterance.onend = () => {
-        setIsSpeaking(false);
-        activeUtteranceRef.current = null;
-      };
-      utterance.onerror = () => {
-        setIsSpeaking(false);
-        activeUtteranceRef.current = null;
-      };
-
-      activeUtteranceRef.current = utterance;
-      // @ts-expect-error keep active utterance in global window
-      window.__activeUtterance = utterance;
-
-      window.speechSynthesis.speak(utterance);
-    } catch {
-      setIsSpeaking(false);
-    }
   }, []);
 
   const speak = useCallback(
     (text: string, rawLangCode: string = 'en-US') => {
-      stop();
-
       const langCode = normalizeLanguageCode(rawLangCode);
       const cleaned = cleanTextForSpeech(text, langCode);
       if (!cleaned) return;
 
-      setIsSpeaking(true);
+      stop();
 
-      // Use local Vite dev proxy in development, direct URL in production
-      const isDev = import.meta.env.DEV;
-      const ttsBase = isDev ? '/api/tts' : 'https://translate.google.com/translate_tts';
-      const audioUrl = `${ttsBase}?ie=UTF-8&tl=${encodeURIComponent(
-        langCode
-      )}&client=tw-ob&q=${encodeURIComponent(cleaned)}`;
+      // PRIMARY ENGINE: Native window.speechSynthesis
+      // Mobile Safari (iOS) and Android Chrome require speechSynthesis.speak() to be called
+      // synchronously directly within the user click/touch event, NOT in an async callback.
+      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        try {
+          // Resume if audio context was suspended on mobile
+          if (window.speechSynthesis.paused) {
+            window.speechSynthesis.resume();
+          }
 
-      const audio = new Audio();
-      audio.volume = 1.0;
-      // Set no-referrer on element
-      (audio as unknown as { referrerPolicy: string }).referrerPolicy = 'no-referrer';
-      audio.src = audioUrl;
-      currentAudioRef.current = audio;
+          const utterance = new SpeechSynthesisUtterance(cleaned);
+          utterance.lang = langCode;
+          utterance.rate = 0.88; // Slight deliberate pace for language learners
+          utterance.pitch = 1.0;
+          utterance.volume = 1.0;
 
-      audio.onplay = () => {
+          // Attempt to match best voice
+          const currentVoices = voicesRef.current.length > 0 
+            ? voicesRef.current 
+            : window.speechSynthesis.getVoices();
+
+          if (currentVoices && currentVoices.length > 0) {
+            const exactMatch = currentVoices.find(
+              v => v.lang.toLowerCase().replace('_', '-') === langCode.toLowerCase().replace('_', '-')
+            );
+            const prefixMatch = currentVoices.find(
+              v => v.lang.toLowerCase().startsWith(langCode.split('-')[0].toLowerCase())
+            );
+            if (exactMatch) {
+              utterance.voice = exactMatch;
+            } else if (prefixMatch) {
+              utterance.voice = prefixMatch;
+            }
+          }
+
+          utterance.onstart = () => {
+            setIsSpeaking(true);
+          };
+
+          utterance.onend = () => {
+            setIsSpeaking(false);
+            activeUtteranceRef.current = null;
+          };
+
+          utterance.onerror = (e) => {
+            console.warn('SpeechSynthesis error:', e);
+            setIsSpeaking(false);
+            activeUtteranceRef.current = null;
+          };
+
+          // Store reference to prevent garbage collection mid-speech (Chrome/WebKit bug)
+          activeUtteranceRef.current = utterance;
+          // @ts-expect-error keep active utterance in global window
+          window.__activeUtterance = utterance;
+
+          setIsSpeaking(true);
+          window.speechSynthesis.speak(utterance);
+          return;
+        } catch (err) {
+          console.warn('SpeechSynthesis invocation failed, falling back to Audio:', err);
+        }
+      }
+
+      // SECONDARY FALLBACK: HTML5 Audio via Google TTS (desktop / non-speechSynthesis environments)
+      try {
+        const isDev = import.meta.env.DEV;
+        const ttsBase = isDev ? '/api/tts' : 'https://translate.google.com/translate_tts';
+        const audioUrl = `${ttsBase}?ie=UTF-8&tl=${encodeURIComponent(
+          langCode
+        )}&client=tw-ob&q=${encodeURIComponent(cleaned)}`;
+
+        const audio = new Audio();
+        audio.volume = 1.0;
+        (audio as unknown as { referrerPolicy: string }).referrerPolicy = 'no-referrer';
+        audio.src = audioUrl;
+        currentAudioRef.current = audio;
+
+        audio.onplay = () => setIsSpeaking(true);
+        audio.onended = () => {
+          setIsSpeaking(false);
+          currentAudioRef.current = null;
+        };
+        audio.onerror = () => {
+          setIsSpeaking(false);
+          currentAudioRef.current = null;
+        };
+
         setIsSpeaking(true);
-      };
-
-      audio.onended = () => {
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            setIsSpeaking(false);
+            currentAudioRef.current = null;
+          });
+        }
+      } catch {
         setIsSpeaking(false);
-        currentAudioRef.current = null;
-      };
-
-      audio.onerror = (e) => {
-        console.warn('HTML5 Audio playback failed, attempting SpeechSynthesis:', e);
-        currentAudioRef.current = null;
-        speakWithSpeechSynthesis(cleaned, langCode);
-      };
-
-      const playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise.catch((err) => {
-          console.warn('audio.play() rejected, attempting SpeechSynthesis:', err);
-          speakWithSpeechSynthesis(cleaned, langCode);
-        });
       }
     },
-    [stop, speakWithSpeechSynthesis]
+    [stop]
   );
 
   return {

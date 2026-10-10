@@ -50,20 +50,33 @@ export async function createProfile(
   avatar: string,
   selectedLanguages: LanguageId[],
   selectedTopics: string[],
-  selectedDifficulty: DifficultyLevel
+  difficultyOrMap: DifficultyLevel | Partial<Record<LanguageId, DifficultyLevel>> = 'beginner'
 ): Promise<Profile> {
+  const languageDifficulties: Partial<Record<LanguageId, DifficultyLevel>> =
+    typeof difficultyOrMap === 'object'
+      ? { ...difficultyOrMap }
+      : selectedLanguages.reduce((acc, l) => ({ ...acc, [l]: difficultyOrMap }), {});
+
+  const primaryDifficulty: DifficultyLevel =
+    typeof difficultyOrMap === 'string'
+      ? difficultyOrMap
+      : selectedLanguages.length > 0 && difficultyOrMap[selectedLanguages[0]]
+      ? difficultyOrMap[selectedLanguages[0]]!
+      : 'beginner';
+
   const newProfile: Profile = {
     id: 'prof_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
     name: name.trim() || 'Language Learner',
     avatar: avatar || '🌱',
     selectedLanguages,
     selectedTopics,
-    selectedDifficulty,
+    selectedDifficulty: primaryDifficulty,
+    languageDifficulties,
     createdAt: Date.now(),
   };
 
   await db.profiles.add(newProfile);
-  await seedCurriculumForProfile(newProfile.id, selectedLanguages, selectedTopics, selectedDifficulty);
+  await seedCurriculumForProfile(newProfile.id, selectedLanguages, selectedTopics, languageDifficulties);
   return newProfile;
 }
 
@@ -85,7 +98,7 @@ export async function seedCurriculumForProfile(
   profileId: string,
   languages: LanguageId[],
   topics: string[],
-  difficulty: DifficultyLevel
+  difficultyOrMap: DifficultyLevel | Partial<Record<LanguageId, DifficultyLevel>>
 ): Promise<void> {
   const existingDecks = await db.decks.where('profileId').equals(profileId).toArray();
 
@@ -93,27 +106,34 @@ export async function seedCurriculumForProfile(
     const langDef = SUPPORTED_LANGUAGES.find(l => l.id === langId);
     if (!langDef) continue;
 
+    const langDifficulty: DifficultyLevel =
+      typeof difficultyOrMap === 'object' && difficultyOrMap[langId]
+        ? difficultyOrMap[langId]!
+        : typeof difficultyOrMap === 'string'
+        ? difficultyOrMap
+        : 'beginner';
+
     for (const topicId of topics) {
       const topicDef = LANGUAGE_TOPICS.find(t => t.id === topicId);
       if (!topicDef) continue;
 
       // Check if this deck already exists for this profile
       const alreadyExists = existingDecks.some(
-        d => d.languageId === langId && d.topicId === topicId && d.difficulty === difficulty
+        d => d.languageId === langId && d.topicId === topicId && d.difficulty === langDifficulty
       );
       if (alreadyExists) continue;
 
-      const diffDef = DIFFICULTY_LEVELS.find(d => d.id === difficulty);
-      const deckId = `deck_${langId}_${topicId}_${difficulty}_${Date.now()}_${Math.random().toString(36).slice(2, 5)}`;
+      const diffDef = DIFFICULTY_LEVELS.find(d => d.id === langDifficulty);
+      const deckId = `deck_${langId}_${topicId}_${langDifficulty}_${Date.now()}_${Math.random().toString(36).slice(2, 5)}`;
 
       const newDeck: Deck = {
         id: deckId,
         profileId,
         languageId: langId,
         topicId: topicId,
-        difficulty: difficulty,
+        difficulty: langDifficulty,
         title: `${langDef.name}: ${topicDef.name}`,
-        description: `${topicDef.description} • ${diffDef?.name || difficulty} level (${diffDef?.cefr || ''})`,
+        description: `${topicDef.description} • ${diffDef?.name || langDifficulty} level (${diffDef?.cefr || ''})`,
         languageCode: langDef.code,
         createdAt: Date.now(),
         updatedAt: Date.now(),
@@ -124,7 +144,7 @@ export async function seedCurriculumForProfile(
       // Match seed cards for this language + topic + difficulty
       // (Also fall back to nearby difficulties if an exact match has fewer cards)
       const matchingSeeds = LANGUAGE_CURRICULUM_SEEDS.filter(
-        s => s.languageId === langId && s.topicId === topicId && s.difficulty === difficulty
+        s => s.languageId === langId && s.topicId === topicId && s.difficulty === langDifficulty
       );
 
       // If specific topic doesn't have many seeds at this exact difficulty, also include general seeds for that language & topic

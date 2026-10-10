@@ -33,8 +33,10 @@ export interface Profile {
   selectedLanguages: LanguageId[];
   selectedTopics: string[];
   selectedDifficulty: DifficultyLevel;
+  languageDifficulties?: Partial<Record<LanguageId, DifficultyLevel>>;
   createdAt: number;
 }
+
 
 export interface Deck {
   id: string;

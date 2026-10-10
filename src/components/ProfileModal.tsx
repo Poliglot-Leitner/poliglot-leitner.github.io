@@ -43,7 +43,12 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   const [newProfileName, setNewProfileName] = useState('');
   const [selectedAvatar, setSelectedAvatar] = useState('🌱');
   const [newLanguages, setNewLanguages] = useState<LanguageId[]>(['spanish']);
-  const [newDifficulty, setNewDifficulty] = useState<DifficultyLevel>('beginner');
+  const [newDifficulties, setNewDifficulties] = useState<Record<LanguageId, DifficultyLevel>>({
+    spanish: 'beginner',
+    english: 'beginner',
+    german: 'beginner',
+    chinese: 'beginner',
+  });
   const [isExporting, setIsExporting] = useState(false);
 
   if (!isOpen) return null;
@@ -67,7 +72,7 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
       selectedAvatar,
       newLanguages,
       ['daily-travel', 'manners-etiquette', 'idioms-expressions'],
-      newDifficulty
+      newDifficulties
     );
 
     await onRefreshProfiles();
@@ -206,10 +211,21 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
                             </span>
                           )}
                         </div>
-                        <div className="flex items-center gap-2 mt-0.5 text-[11px] text-zinc-400">
-                          <span className="capitalize">{p.selectedDifficulty || 'Beginner'}</span>
-                          <span>&bull;</span>
-                          <span>{p.selectedLanguages?.length || 1} Languages</span>
+                        <div className="flex items-center gap-1.5 mt-1 flex-wrap">
+                          {(p.selectedLanguages || ['spanish']).map(langId => {
+                            const langDef = SUPPORTED_LANGUAGES.find(l => l.id === langId);
+                            const diff = p.languageDifficulties?.[langId] || p.selectedDifficulty || 'beginner';
+                            const diffDef = DIFFICULTY_LEVELS.find(d => d.id === diff);
+                            return (
+                              <span
+                                key={langId}
+                                className="inline-flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-medium border border-zinc-200/50 dark:border-zinc-700/50"
+                              >
+                                <span>{langDef?.flag}</span>
+                                <span className="font-mono">{diffDef?.cefr || diff}</span>
+                              </span>
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
@@ -294,22 +310,81 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
                 </div>
               </div>
 
-              {/* Difficulty pick */}
+              {/* Difficulty pick per language */}
               <div>
-                <label className="block text-[11px] font-medium text-zinc-600 dark:text-zinc-400 mb-1">
-                  Starting Proficiency Level
-                </label>
-                <select
-                  value={newDifficulty}
-                  onChange={e => setNewDifficulty(e.target.value as DifficultyLevel)}
-                  className="w-full text-xs p-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100"
-                >
-                  {DIFFICULTY_LEVELS.map(d => (
-                    <option key={d.id} value={d.id}>
-                      {d.name} ({d.cefr})
-                    </option>
-                  ))}
-                </select>
+                <div className="flex items-center justify-between mb-1.5">
+                  <label className="block text-[11px] font-medium text-zinc-600 dark:text-zinc-400">
+                    Starting Proficiency Level
+                  </label>
+                  {newLanguages.length > 1 && (
+                    <div className="flex items-center gap-1.5 text-[10px] text-zinc-400">
+                      <span>Set all:</span>
+                      {DIFFICULTY_LEVELS.map(d => (
+                        <button
+                          key={d.id}
+                          type="button"
+                          onClick={() => {
+                            setNewDifficulties(prev => {
+                              const next = { ...prev };
+                              newLanguages.forEach(l => {
+                                next[l] = d.id;
+                              });
+                              return next;
+                            });
+                          }}
+                          className="hover:underline hover:text-zinc-900 dark:hover:text-zinc-100 font-medium"
+                          title={`Set all selected languages to ${d.name} (${d.cefr})`}
+                        >
+                          {d.name}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <div className="space-y-1.5">
+                  {newLanguages.map(langId => {
+                    const lang = SUPPORTED_LANGUAGES.find(l => l.id === langId);
+                    if (!lang) return null;
+                    const currentLevel = newDifficulties[langId] || 'beginner';
+
+                    return (
+                      <div
+                        key={langId}
+                        className="flex items-center justify-between gap-3 p-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900"
+                      >
+                        <div className="flex items-center gap-2 min-w-0">
+                          <span className="text-base select-none">{lang.flag}</span>
+                          <div className="min-w-0">
+                            <span className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 block truncate">
+                              {lang.name}
+                            </span>
+                            <span className="text-[10px] text-zinc-400 block truncate">
+                              {lang.nativeName}
+                            </span>
+                          </div>
+                        </div>
+
+                        <select
+                          value={currentLevel}
+                          onChange={e =>
+                            setNewDifficulties(prev => ({
+                              ...prev,
+                              [langId]: e.target.value as DifficultyLevel,
+                            }))
+                          }
+                          className="text-xs py-1 px-2.5 rounded-md border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-medium focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-zinc-100 cursor-pointer"
+                        >
+                          {DIFFICULTY_LEVELS.map(d => (
+                            <option key={d.id} value={d.id}>
+                              {d.name} ({d.cefr})
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
 
               <div className="flex items-center justify-end gap-2 pt-1">

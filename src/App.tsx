@@ -11,6 +11,7 @@ import {
   computeBoxSummaries,
   createCustomDeck,
   deleteDeck,
+  db,
 } from './db/database';
 import { SUPPORTED_LANGUAGES, DIFFICULTY_LEVELS } from './data/languages';
 import { Navbar } from './components/Navbar';
@@ -158,15 +159,26 @@ export function App() {
   const handleSaveCurriculum = async (
     languages: LanguageId[],
     topics: string[],
-    difficulty: DifficultyLevel
+    difficulties: Partial<Record<LanguageId, DifficultyLevel>>
   ) => {
     if (!activeProfile) return;
 
-    await seedCurriculumForProfile(activeProfile.id, languages, topics, difficulty);
+    await seedCurriculumForProfile(activeProfile.id, languages, topics, difficulties);
+
+    const mergedDifficulties = {
+      ...(activeProfile.languageDifficulties || {}),
+      ...difficulties,
+    };
+    const primaryDifficulty = (languages.length > 0 && difficulties[languages[0]])
+      ? difficulties[languages[0]]!
+      : (activeProfile.selectedDifficulty || 'beginner');
 
     activeProfile.selectedLanguages = languages;
     activeProfile.selectedTopics = topics;
-    activeProfile.selectedDifficulty = difficulty;
+    activeProfile.languageDifficulties = mergedDifficulties;
+    activeProfile.selectedDifficulty = primaryDifficulty;
+
+    await db.profiles.put(activeProfile);
     setActiveProfile({ ...activeProfile });
 
     await refreshProfileData();
@@ -287,9 +299,17 @@ export function App() {
                       <h2 className="text-lg font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
                         Language Decks
                       </h2>
-                      <span className="text-xs px-2.5 py-0.5 rounded-full font-medium bg-zinc-200/80 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 capitalize">
-                        {activeProfile.selectedDifficulty} Tier
-                      </span>
+                      {selectedLanguageFilter !== 'all' ? (
+                        <span className="text-xs px-2.5 py-0.5 rounded-full font-medium bg-zinc-200/80 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 capitalize">
+                          {activeProfile.languageDifficulties?.[selectedLanguageFilter] || activeProfile.selectedDifficulty || 'Beginner'} Tier
+                        </span>
+                      ) : (
+                        <span className="text-xs px-2.5 py-0.5 rounded-full font-medium bg-zinc-200/80 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
+                          {Array.from(new Set(activeProfile.selectedLanguages.map(l => activeProfile.languageDifficulties?.[l] || activeProfile.selectedDifficulty || 'beginner'))).length === 1
+                            ? `${activeProfile.languageDifficulties?.[activeProfile.selectedLanguages[0]] || activeProfile.selectedDifficulty || 'Beginner'} Tier`
+                            : 'Multi-Level Tiers'}
+                        </span>
+                      )}
                     </div>
                     <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
                       Review phrases on schedule to cement native fluency and intuitive recall.
@@ -378,6 +398,7 @@ export function App() {
         initialLanguages={activeProfile.selectedLanguages || ['spanish']}
         initialTopics={activeProfile.selectedTopics || ['daily-travel']}
         initialDifficulty={activeProfile.selectedDifficulty || 'beginner'}
+        initialLanguageDifficulties={activeProfile.languageDifficulties || {}}
         onSaveCurriculum={handleSaveCurriculum}
       />
 

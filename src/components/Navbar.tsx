@@ -100,7 +100,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             <SlidersHorizontal className="w-3.5 h-3.5" />
             <span className="hidden md:inline">Curriculum</span>
             <span className="text-[10px] font-mono px-1.5 py-0.2 rounded-full bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 capitalize">
-              {activeProfile.selectedDifficulty} &bull; {decks.length}
+              {selectedLanguageFilter !== 'all'
+                ? (activeProfile.languageDifficulties?.[selectedLanguageFilter] || activeProfile.selectedDifficulty || 'beginner')
+                : (activeProfile.selectedDifficulty || 'beginner')} &bull; {decks.length}
             </span>
           </button>
 

@@ -491,7 +491,7 @@ export const StudySession: React.FC<StudySessionProps> = ({
                 {/* Phonetic / Pinyin display */}
                 {!isReverseMode && currentCard.phonetic && (
                   <div className="mb-2.5">
-                    <span className="inline-block text-xs sm:text-sm font-mono px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">
+                    <span className="inline-block text-xs sm:text-sm font-mono px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20 whitespace-pre-line">
                       {currentCard.phonetic}
                     </span>
                   </div>
@@ -544,7 +544,7 @@ export const StudySession: React.FC<StudySessionProps> = ({
 
                   {isReverseMode && currentCard.phonetic && (
                     <div className="mt-1.5 mb-2">
-                      <span className="inline-block text-xs font-mono px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">
+                      <span className="inline-block text-xs font-mono px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20 whitespace-pre-line">
                         {currentCard.phonetic}
                       </span>
                     </div>

@@ -1,6 +1,6 @@
 export type LanguageId = 'spanish' | 'english' | 'german' | 'chinese';
 
-export type DifficultyLevel = 'beginner' | 'intermediate' | 'advanced' | 'fluent';
+export type DifficultyLevel = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2' | 'beginner' | 'intermediate' | 'advanced' | 'fluent';
 
 export interface LanguageOption {
   id: LanguageId;

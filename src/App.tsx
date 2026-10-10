@@ -13,7 +13,7 @@ import {
   deleteDeck,
   db,
 } from './db/database';
-import { SUPPORTED_LANGUAGES, DIFFICULTY_LEVELS } from './data/languages';
+import { SUPPORTED_LANGUAGES, DIFFICULTY_LEVELS, normalizeDifficulty } from './data/languages';
 import { Navbar } from './components/Navbar';
 import { LeitnerVisualizer } from './components/LeitnerVisualizer';
 import { DeckManager } from './components/DeckManager';
@@ -50,7 +50,7 @@ export function App() {
   const [customTitle, setCustomTitle] = useState('');
   const [customDesc, setCustomDesc] = useState('');
   const [customLangId, setCustomLangId] = useState<LanguageId>('spanish');
-  const [customDifficulty, setCustomDifficulty] = useState<DifficultyLevel>('beginner');
+  const [customDifficulty, setCustomDifficulty] = useState<DifficultyLevel>('A1');
 
   // Theme
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
@@ -102,7 +102,7 @@ export function App() {
         '🌱',
         ['spanish', 'german', 'chinese'],
         ['daily-travel', 'manners-etiquette', 'idioms-expressions'],
-        'beginner'
+        'A1'
       );
       allProf = [initial];
     }
@@ -114,7 +114,7 @@ export function App() {
         current.id,
         current.selectedLanguages || ['spanish', 'german', 'chinese'],
         current.selectedTopics || ['daily-travel', 'manners-etiquette', 'idioms-expressions'],
-        current.languageDifficulties || current.selectedDifficulty || 'beginner'
+        current.languageDifficulties || current.selectedDifficulty || 'A1'
       );
     }
     setActiveProfile(current);
@@ -167,10 +167,11 @@ export function App() {
     setIsCustomDeckModalOpen(false);
   };
 
-  // Start Study Session
+  // Start Study Session (Enforce 10 sentences per session)
   const handleStartStudy = async (deckId?: string) => {
     if (!activeProfile) return;
 
+    const SESSION_SIZE = 10;
     const langFilter = selectedLanguageFilter !== 'all' ? selectedLanguageFilter : undefined;
     const dueCards = await getDueCards(
       activeProfile.id,
@@ -178,8 +179,9 @@ export function App() {
       !deckId && !selectedDeckId ? langFilter : undefined
     );
 
+    let queue: Flashcard[] = [];
     if (dueCards.length > 0) {
-      setStudyQueue(dueCards);
+      queue = dueCards.slice(0, SESSION_SIZE);
     } else {
       // If no cards are due today, allow practice of cards in current scope
       const targetCards = deckId
@@ -188,9 +190,10 @@ export function App() {
         ? await getCardsForDeck(selectedDeckId)
         : cards;
 
-      setStudyQueue(targetCards);
+      queue = targetCards.slice(0, SESSION_SIZE);
     }
 
+    setStudyQueue(queue);
     setIsStudyMode(true);
   };
 
@@ -209,8 +212,8 @@ export function App() {
       ...difficulties,
     };
     const primaryDifficulty = (languages.length > 0 && difficulties[languages[0]])
-      ? difficulties[languages[0]]!
-      : (activeProfile.selectedDifficulty || 'beginner');
+      ? normalizeDifficulty(difficulties[languages[0]]!)
+      : normalizeDifficulty(activeProfile.selectedDifficulty || 'A1');
 
     activeProfile.selectedLanguages = languages;
     activeProfile.selectedTopics = topics;

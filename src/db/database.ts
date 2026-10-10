@@ -12,6 +12,8 @@ import {
   LANGUAGE_TOPICS,
   DIFFICULTY_LEVELS,
   LANGUAGE_CURRICULUM_SEEDS,
+  normalizeDifficulty,
+  getIncludedLevels,
 } from '../data/languages';
 
 export const BOX_INTERVALS_DAYS = {
@@ -106,32 +108,42 @@ export async function seedCurriculumForProfile(
     const langDef = SUPPORTED_LANGUAGES.find(l => l.id === langId);
     if (!langDef) continue;
 
-    const langDifficulty: DifficultyLevel =
+    const rawDiff: DifficultyLevel =
       typeof difficultyOrMap === 'object' && difficultyOrMap[langId]
         ? difficultyOrMap[langId]!
         : typeof difficultyOrMap === 'string'
         ? difficultyOrMap
-        : 'beginner';
+        : 'A1';
+    const langDifficulty: DifficultyLevel = normalizeDifficulty(rawDiff);
+    const includedLevels = getIncludedLevels(langDifficulty);
 
     for (const topicId of topics) {
       const topicDef = LANGUAGE_TOPICS.find(t => t.id === topicId);
       if (!topicDef) continue;
 
-      // Check if this deck already exists for this profile
+      // Check if this deck already exists for this profile and topic
       const existingDeck = existingDecks.find(
-        d => d.languageId === langId && d.topicId === topicId && d.difficulty === langDifficulty
+        d => d.languageId === langId && d.topicId === topicId
       );
 
-      // Match seed cards for this language + topic + difficulty
+      // Match seed cards for this language + topic whose difficulty is in includedLevels
+      // ("as the user selects a level, the lower level ones are also selected")
       const matchingSeeds = LANGUAGE_CURRICULUM_SEEDS.filter(
-        s => s.languageId === langId && s.topicId === topicId && s.difficulty === langDifficulty
+        s => s.languageId === langId && s.topicId === topicId && includedLevels.includes(normalizeDifficulty(s.difficulty))
       );
 
       const seedsToInsert = matchingSeeds.length > 0
         ? matchingSeeds
-        : LANGUAGE_CURRICULUM_SEEDS.filter(s => s.languageId === langId && s.topicId === topicId);
+        : LANGUAGE_CURRICULUM_SEEDS.filter(
+            s => s.languageId === langId && s.topicId === topicId && includedLevels.includes(normalizeDifficulty(s.difficulty))
+          );
 
       if (existingDeck) {
+        if (existingDeck.difficulty !== langDifficulty) {
+          existingDeck.difficulty = langDifficulty;
+          await db.decks.put(existingDeck);
+        }
+
         // Synchronize missing seeds into existing deck
         const currentCards = await db.cards.where('deckId').equals(existingDeck.id).toArray();
         const existingFronts = new Set(currentCards.map(c => c.front));
@@ -144,7 +156,7 @@ export async function seedCurriculumForProfile(
             deckId: existingDeck.id,
             profileId,
             languageId: s.languageId,
-            difficulty: s.difficulty,
+            difficulty: normalizeDifficulty(s.difficulty),
             front: s.front,
             back: s.back,
             phonetic: s.phonetic,
@@ -161,6 +173,35 @@ export async function seedCurriculumForProfile(
           }));
           await db.cards.bulkAdd(newCards);
         }
+
+        // Synchronize enriched grammar notes, hints, and explanations onto existing cards
+        for (const card of currentCards) {
+          const seedMatch = LANGUAGE_CURRICULUM_SEEDS.find(
+            s => s.front === card.front && s.languageId === card.languageId
+          );
+          if (seedMatch) {
+            let changed = false;
+            if (seedMatch.grammarNotes && card.grammarNotes !== seedMatch.grammarNotes) {
+              card.grammarNotes = seedMatch.grammarNotes;
+              changed = true;
+            }
+            if (seedMatch.hint && card.hint !== seedMatch.hint) {
+              card.hint = seedMatch.hint;
+              changed = true;
+            }
+            if (seedMatch.phonetic && card.phonetic !== seedMatch.phonetic) {
+              card.phonetic = seedMatch.phonetic;
+              changed = true;
+            }
+            if (normalizeDifficulty(card.difficulty) !== normalizeDifficulty(seedMatch.difficulty)) {
+              card.difficulty = normalizeDifficulty(seedMatch.difficulty);
+              changed = true;
+            }
+            if (changed) {
+              await db.cards.put(card);
+            }
+          }
+        }
         continue;
       }
 
@@ -174,7 +215,7 @@ export async function seedCurriculumForProfile(
         topicId: topicId,
         difficulty: langDifficulty,
         title: `${langDef.name}: ${topicDef.name}`,
-        description: `${topicDef.description} • ${diffDef?.name || langDifficulty} level (${diffDef?.cefr || ''})`,
+        description: `${topicDef.description} • Levels: ${includedLevels.join(', ')} (${diffDef?.cefr || ''})`,
         languageCode: langDef.code,
         createdAt: Date.now(),
         updatedAt: Date.now(),
@@ -188,7 +229,7 @@ export async function seedCurriculumForProfile(
         deckId,
         profileId,
         languageId: s.languageId,
-        difficulty: s.difficulty,
+        difficulty: normalizeDifficulty(s.difficulty),
         front: s.front,
         back: s.back,
         phonetic: s.phonetic,

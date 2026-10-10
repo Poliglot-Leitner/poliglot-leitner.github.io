@@ -623,10 +623,14 @@ export const StudySession: React.FC<StudySessionProps> = ({
                   </div>
                 )}
 
-                {/* Grammar & cultural notes */}
+                {/* Grammar & cultural context explanation */}
                 {currentCard.grammarNotes && (
-                  <div className="text-[11px] sm:text-xs text-zinc-500 dark:text-zinc-400 border-l-2 border-indigo-400 pl-3">
-                    <strong>Notes:</strong> {currentCard.grammarNotes}
+                  <div className="mt-3 p-3 rounded-xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-100/90 dark:border-indigo-900/50 text-[11px] sm:text-xs text-zinc-700 dark:text-zinc-300 leading-relaxed shadow-2xs">
+                    <div className="flex items-center gap-1.5 font-semibold text-indigo-700 dark:text-indigo-400 mb-1">
+                      <Sparkles className="w-3.5 h-3.5 shrink-0" />
+                      <span>Context & Cultural Explanation</span>
+                    </div>
+                    <p className="opacity-95">{currentCard.grammarNotes}</p>
                   </div>
                 )}
               </div>

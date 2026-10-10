@@ -82,34 +82,76 @@ export const LANGUAGE_TOPICS: TopicOption[] = [
 
 export const DIFFICULTY_LEVELS: DifficultyOption[] = [
   {
-    id: 'beginner',
-    name: 'Beginner',
-    cefr: 'A1 – A2',
-    badge: 'Beginner',
-    description: 'Essential high-frequency vocabulary, basic sentence structures, and greeting fundamentals.',
+    id: 'A1',
+    name: 'A1',
+    cefr: 'Beginner',
+    badge: 'A1 · Breakthrough',
+    description: 'Basic everyday expressions, simple introductions, asking directions, and essential survival vocabulary.',
   },
   {
-    id: 'intermediate',
-    name: 'Intermediate',
-    cefr: 'B1 – B2',
-    badge: 'Intermediate',
-    description: 'Conversational fluency, past/future tenses, connecting ideas, and practical scenarios.',
+    id: 'A2',
+    name: 'A2',
+    cefr: 'Elementary',
+    badge: 'A2 · Waystage',
+    description: 'Frequent phrases for immediate daily needs: dining, shopping, transit, weather, and routine questions.',
   },
   {
-    id: 'advanced',
-    name: 'Advanced',
-    cefr: 'C1',
-    badge: 'Advanced',
-    description: 'Nuanced expressions, formal discourse, subjunctive mood, and complex professional themes.',
+    id: 'B1',
+    name: 'B1',
+    cefr: 'Intermediate',
+    badge: 'B1 · Threshold',
+    description: 'Connected sentences on familiar topics, travel scenarios, expressing opinions, feelings, and personal plans.',
   },
   {
-    id: 'fluent',
-    name: 'Fluent',
-    cefr: 'C2',
-    badge: 'Fluent Mastery',
-    description: 'Native-level subtleties, literary rhetoric, cultural proverbs, and fast colloquial speech.',
+    id: 'B2',
+    name: 'B2',
+    cefr: 'Upper-Intermediate',
+    badge: 'B2 · Vantage',
+    description: 'Complex texts, abstract ideas, technology, workplace interactions, and natural colloquial conversation.',
+  },
+  {
+    id: 'C1',
+    name: 'C1',
+    cefr: 'Advanced',
+    badge: 'C1 · Effective Proficiency',
+    description: 'Demanding idiomatic texts, formal rhetoric, nuanced cultural subtext, and professional negotiations.',
+  },
+  {
+    id: 'C2',
+    name: 'C2',
+    cefr: 'Mastery',
+    badge: 'C2 · Native Mastery',
+    description: 'Effortless understanding of subtle nuances, classic proverbs, cultural humor, and high-context speech.',
   },
 ];
+
+export const CEFR_LEVELS: DifficultyLevel[] = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+
+export const normalizeDifficulty = (diff?: string): DifficultyLevel => {
+  if (!diff) return 'A1';
+  const upper = diff.toUpperCase();
+  if (['A1', 'A2', 'B1', 'B2', 'C1', 'C2'].includes(upper)) {
+    return upper as DifficultyLevel;
+  }
+  switch (diff.toLowerCase()) {
+    case 'beginner': return 'A1';
+    case 'intermediate': return 'B1';
+    case 'advanced': return 'C1';
+    case 'fluent': return 'C2';
+    default: return 'A1';
+  }
+};
+
+/**
+ * Returns all CEFR levels up to and including the selected level.
+ * Example: 'B1' -> ['A1', 'A2', 'B1']
+ */
+export const getIncludedLevels = (level?: string): DifficultyLevel[] => {
+  const norm = normalizeDifficulty(level);
+  const idx = CEFR_LEVELS.indexOf(norm);
+  if (idx === -1) return ['A1'];
+  return CEFR_LEVELS.slice(0, idx + 1);
+};
 
 export interface CurriculumSeed {
   languageId: LanguageId;
@@ -707,6 +749,109 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
     exampleTranslation: 'We support QR code payments here, please show your payment code.',
     grammarNotes: 'China is predominantly cashless. Mobile payment is conducted via 微信支付 or 支付宝.',
   },
+  {
+    languageId: 'chinese',
+    topicId: 'daily-travel',
+    difficulty: 'A1',
+    front: '帽子很酷',
+    back: 'The hat is very cool.',
+    phonetic: 'Màozi hěn kù.',
+    exampleTarget: '你今天戴的这顶黑色帽子很酷，在哪里买的？',
+    exampleTranslation: 'The black hat you are wearing today is very cool; where did you get it?',
+    grammarNotes: '“酷” (kù) is an ubiquitous loanword from English "cool", widely used in colloquial Mandarin to praise style, outfits, and tech gadgets. In Chinese, predicative adjectives connect with “很” (hěn) without needing the verb "to be" (是). The classifier for hats is “顶” (dǐng).',
+    hint: '“酷” (kù) comes from the English word "cool".',
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'daily-travel',
+    difficulty: 'A1',
+    front: '叉烧肉',
+    back: 'Char siu (Cantonese honey BBQ roast pork)',
+    phonetic: 'Chāshāoròu',
+    exampleTarget: '服务员，来一份经典蜜汁叉烧肉，多淋一点酱汁。',
+    exampleTranslation: 'Waiter, one order of classic honey-glazed char siu please, drizzle a bit more sauce.',
+    grammarNotes: 'Cultural Gastronomy: “叉烧” (chāshāo, Cantonese: char siu) refers to seasoned pork skewered on long metal forks (叉) and roasted over an open fire oven. A crown jewel of Cantonese roast meats (烧腊 shāolà), characterized by its tender meat and sweet honey-red glaze.',
+    hint: 'Iconic Cantonese sweet caramelized barbecue roast pork.',
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'daily-travel',
+    difficulty: 'A1',
+    front: '蛋挞',
+    back: 'Egg tart (custard pastry / pastel de nata)',
+    phonetic: 'Dàntà',
+    exampleTarget: '刚出炉的葡式蛋挞金黄微焦，外皮层层酥脆，内馅嫩滑。',
+    exampleTranslation: 'The freshly baked Portuguese egg tart is golden and caramelized; pastry is flaky with silky custard.',
+    grammarNotes: '“挞” (tà) is the Cantonese phonetic transcription of the English word "tart". A staple in Hong Kong-style cha chaan tengs (茶餐厅) and Macau. Two primary types: flaky puff pastry egg tarts (酥皮蛋挞) and Portuguese egg tarts with caramelized blistered custard (葡式蛋挞).',
+    hint: 'Cantonese transliteration of "tart" (挞 tà).',
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'daily-travel',
+    difficulty: 'A2',
+    front: '这件外套很显气质。',
+    back: 'This coat / jacket brings out your elegance.',
+    phonetic: 'Zhè jiàn wàitào hěn xiǎn qìzhì.',
+    exampleTarget: '你穿这件米色羊绒大衣特别优雅，很显气质。',
+    exampleTranslation: 'You look extraordinarily elegant in this beige cashmere coat; it really highlights your grace.',
+    grammarNotes: '“显气质” (xiǎn qìzhì) is a high-register native aesthetic compliment meaning an article of clothing accentuates someone\'s refined aura and personal charm.',
+    hint: '“显” = reveal/accentuate, “气质” = poise/elegance.',
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'daily-travel',
+    difficulty: 'A2',
+    front: '这双运动鞋穿起来轻便透气又舒服。',
+    back: 'These sneakers feel lightweight, breathable, and comfortable to wear.',
+    phonetic: 'Zhè shuāng yùndòngxié chuān qǐlái qīngbiàn tòuqì yòu shūfu.',
+    exampleTarget: '出门旅行走很多路，一定要穿一双轻便透气的运动鞋。',
+    exampleTranslation: 'Walking a lot while traveling, you must wear a pair of lightweight and breathable sneakers.',
+    grammarNotes: '“穿起来” (chuān qǐlái) is the perception pattern: "when worn / to wear". “双” (shuāng) is the classifier for shoes, socks, and chopsticks.',
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'daily-travel',
+    difficulty: 'A2',
+    front: '早茶点了一笼晶莹鲜虾饺和一份热腾腾的肠粉。',
+    back: 'For morning tea, we ordered a basket of crystal shrimp dumplings and steaming rice noodle rolls.',
+    phonetic: 'Zǎochá diǎn le yì lóng jīngyíng xiānxiājiǎo hé yí fèn rèténgténg de chángfěn.',
+    exampleTarget: '周末在茶楼饮茶，“一盅两件”是老广最惬意的生活方式。',
+    exampleTranslation: 'Drinking tea at the teahouse on weekends, "one pot of tea and two dim sum baskets" is the most delightful Cantonese lifestyle.',
+    grammarNotes: '“早茶” (zǎochá, Yum Cha) is the beloved Cantonese morning dining tradition. Shrimp dumplings (虾饺) and steamed rice rolls (肠粉) are essential dim sum classics.',
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'daily-travel',
+    difficulty: 'A2',
+    front: '正宗的小笼包皮薄汁多，先喝汤再吃肉。',
+    back: 'Authentic soup dumplings have paper-thin skin and rich broth; drink the soup first before eating.',
+    phonetic: 'Zhèngzōng de xiǎolóngbāo píbáo zhīduō, xiān hē tāng zài chī ròu.',
+    exampleTarget: '吃小笼包要小心烫口：轻轻提，慢慢移，先开窗，后喝汤。',
+    exampleTranslation: 'Be careful of burns when eating soup dumplings: lift gently, move slowly, make a small hole, then sip the broth.',
+    grammarNotes: 'Cultural Dining Rule: Jiangnan Xiaolongbao (小笼包) contains piping hot broth inside. The traditional dining mantra teaches opening a small bite on top to sip broth before eating.',
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'daily-travel',
+    difficulty: 'B1',
+    front: '你的穿搭风格很有个性。',
+    back: 'Your outfit style has great personality / distinctive flair.',
+    phonetic: 'Nǐ de chuāndā fēnggé hěn yǒu gèxìng.',
+    exampleTarget: '你今天的复古穿搭风格很有个性，拍照特别上镜。',
+    exampleTranslation: 'Your vintage outfit style today has so much personality; it looks fantastic in photos.',
+    grammarNotes: '“穿搭” (chuāndā = wear + match) is the contemporary Mandarin buzzword for fashion styling and OOTD (Outfit Of The Day).',
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'daily-travel',
+    difficulty: 'B1',
+    front: '北京烤鸭配上葱丝、甜面酱和荷叶饼，风味绝佳。',
+    back: 'Peking duck paired with scallion shreds, sweet bean sauce, and lotus-leaf pancakes is exceptionally delicious.',
+    phonetic: 'Běijīng kǎoyā pèi shàng cōngsī, tiánmiànjiàng hé héyèbǐng, fēngwèi juéjiā.',
+    exampleTarget: '师傅在桌旁现场片烤鸭，酥脆的鸭皮蘸白糖入口即化。',
+    exampleTranslation: 'The chef slices the roast duck tableside; the crispy duck skin dipped in sugar melts in your mouth.',
+    grammarNotes: '“入口即化” (rù kǒu jí huà) is a classic Chinese culinary idiom describing food so tender it dissolves instantly upon tasting.',
+  },
   // Intermediate
   {
     languageId: 'chinese',
@@ -777,6 +922,63 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
     exampleTarget: '李经理，初次见面，非常荣幸能与您认识。',
     exampleTranslation: 'Manager Li, pleased to meet you for the first time, it is an honor to meet you.',
     grammarNotes: 'In Chinese business etiquette, always hand and receive business cards with both hands.',
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'manners-etiquette',
+    difficulty: 'A1',
+    front: '祝你拥有美好的一天',
+    back: 'Wishing you a wonderful day! / Have a great day!',
+    phonetic: 'Zhù nǐ yōngyǒu měihǎo de yī tiān.',
+    exampleTarget: '早安！阳光明媚，祝你拥有美好的一天。',
+    exampleTranslation: 'Good morning! The sun is shining, wishing you a wonderful day.',
+    grammarNotes: '“祝你” (zhù nǐ) introduces heartfelt wishes ("Wish you..."). “拥有” (yōngyǒu) is a formal/warm verb meaning "to have / to possess". This expression is frequently used as a friendly parting greeting in morning chats, hospitality, and polite emails.',
+    hint: '“祝你” = Wish you, “拥有” = have/possess, “美好” = wonderful.',
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'manners-etiquette',
+    difficulty: 'A1',
+    front: '祝你周末愉快，好好放松充电！',
+    back: 'Have a pleasant weekend, relax and recharge well!',
+    phonetic: 'Zhù nǐ zhōumò yúkuài, hǎohǎo fàngsōng chōngdiàn!',
+    exampleTarget: '辛苦了一整周，祝你周末愉快，多陪陪家人。',
+    exampleTranslation: 'You worked hard all week, wishing you a pleasant weekend, spend good time with family.',
+    grammarNotes: '“愉快” (yúkuài) means cheerful / pleasant. “充电” (chōngdiàn = to recharge battery) is the ubiquitous modern Chinese metaphor for getting physical and mental rest after a busy work week.',
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'manners-etiquette',
+    difficulty: 'A2',
+    front: '你很粗鲁',
+    back: 'You are very rude / ill-mannered.',
+    phonetic: 'Nǐ hěn cūlǔ.',
+    exampleTarget: '在图书馆大声打电话插队是非常粗鲁的行为。',
+    exampleTranslation: 'Talking loudly on the phone and cutting in line in a library is very rude behavior.',
+    grammarNotes: 'Pragmatic & Social Nuance: “粗鲁” (cūlǔ) specifically denotes unrefined, boorish, or disrespectful behavior that violates civil etiquette. While direct and assertive, it calls out objectionable conduct without using vulgar profanity.',
+    hint: '“粗” = crude/rough, “鲁” = rash/blunt.',
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'manners-etiquette',
+    difficulty: 'A2',
+    front: '祝你一路顺风，期待早日相聚！',
+    back: 'Wishing you bon voyage / smooth travels, looking forward to meeting soon!',
+    phonetic: 'Zhù nǐ yílù shùnfēng, qīdài zǎorì xiāngjù!',
+    exampleTarget: '回国路上注意安全，祝你一路顺风，常保持联系！',
+    exampleTranslation: 'Stay safe on the journey back home, wishing you smooth travels and let\'s keep in touch!',
+    grammarNotes: '“一路顺风” (yílù shùnfēng, smooth winds all the way) is the quintessential Chinese travel benediction. (Note: Traditionally avoided when saying farewell to airplane pilots or sailors where headwind is technically needed for takeoff, but universally accepted colloquially).',
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'manners-etiquette',
+    difficulty: 'B1',
+    front: '祝你好运连连，万事胜意！',
+    back: 'Wishing you continuous good luck and that everything exceeds expectations!',
+    phonetic: 'Zhù nǐ hǎoyùn liánlián, wànshì shèngyì!',
+    exampleTarget: '在新的一年里，祝你好运连连，身体健康，万事胜意！',
+    exampleTranslation: 'In the new year, wishing you nonstop good luck, good health, and everything succeeds beyond expectations!',
+    grammarNotes: '“万事胜意” (wàn shì shèng yì) is an elegant literary greeting meaning "all matters turn out even better than what you wished for (胜 = surpass, 意 = wishes)".',
   },
   // Intermediate
   {
@@ -937,6 +1139,40 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
     exampleTranslation: 'I have uploaded the revised proposal to the shared cloud drive, please review.',
     grammarNotes: 'The “把” (bǎ) construction highlights the disposal/action taken upon an object (“把会议纪要发到...”).',
   },
+  {
+    languageId: 'chinese',
+    topicId: 'business-work',
+    difficulty: 'A2',
+    front: '无人机',
+    back: 'Drone / UAV (Unmanned Aerial Vehicle)',
+    phonetic: 'Wúrénjī',
+    exampleTarget: '很多科技公司正在利用无人机进行快递配送和电力巡检。',
+    exampleTranslation: 'Many tech companies are using drones for parcel delivery and power grid inspections.',
+    grammarNotes: 'Morphology & Usage: Constructed literally as "no-person machine" (无 wú = without + 人 rén = person + 机 jī = machine/aircraft). Widely used in modern China for consumer aerial filming (航拍 hángpāi), precision agriculture, logistics, and cinematography. The measure words are “架” (jià) or “台” (tái).',
+    hint: 'Literal: 无 (without) + 人 (person) + 机 (machine).',
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'business-work',
+    difficulty: 'B1',
+    front: '这架无人机支持4K高清航拍和自动返航。',
+    back: 'This drone supports 4K HD aerial photography and auto return-to-home.',
+    phonetic: 'Zhè jià wúrénjī zhīchí 4K gāoqīng hángpāi hé zìdòng fǎnháng.',
+    exampleTarget: '当电池电量不足或信号丢失时，无人机会自动返航到起飞点。',
+    exampleTranslation: 'When battery is low or signal is lost, the drone automatically returns to the takeoff point.',
+    grammarNotes: '“航拍” (hángpāi) is the standard Chinese term for aerial photography. “返航” (fǎnháng) means return to base / return home.',
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'business-work',
+    difficulty: 'B2',
+    front: '人工智能与自动驾驶技术正在迅速发展。',
+    back: 'Artificial intelligence and autonomous driving technologies are developing rapidly.',
+    phonetic: 'Réngōng zhìnéng yǔ zìdòng jiàshǐ jìshù zhèngzài xùnsù fāzhǎn.',
+    exampleTarget: '随着算力提升和传感器普及，无人驾驶出租车已经在多个城市开始商业化运营。',
+    exampleTranslation: 'With increased computing power and sensor adoption, autonomous robotaxis have begun commercial operation in multiple cities.',
+    grammarNotes: '“人工智能” (AI) and “自动驾驶” (autonomous driving) are high-frequency contemporary technical and economic terms in China.',
+  },
   // Advanced
   {
     languageId: 'chinese',
@@ -973,6 +1209,63 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
     exampleTarget: '练习发音不要怕犯错，只要多说多练，熟能生巧。',
     exampleTranslation: 'Don\'t be afraid of making mistakes when practicing pronunciation; as long as you speak more, practice makes perfect.',
     grammarNotes: 'Proverb originating from the story of the ancient archer and the oil seller.',
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'idioms-expressions',
+    difficulty: 'A2',
+    front: '你滚开',
+    back: 'Get lost! / Shove off! / Get the hell out of here!',
+    phonetic: 'Nǐ gǔnkāi!',
+    exampleTarget: '我现在非常生气，不想再跟你争吵，你马上滚开！',
+    exampleTranslation: 'I am extremely furious right now and do not want to argue with you anymore; get lost right now!',
+    grammarNotes: 'Sociolinguistic Alert: “滚” (gǔn) literally means "to roll". When used towards a person, “滚” or “滚开” is a harsh, hostile command ordering someone to vacate your presence immediately. It signals intense emotional friction or anger. Highly aggressive; avoid in polite society.',
+    hint: '“滚” literally means "roll", expressing fierce hostility.',
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'idioms-expressions',
+    difficulty: 'A2',
+    front: '肥猪',
+    back: 'Fat pig (pejorative insult / derogatory slang)',
+    phonetic: 'Féizhū',
+    exampleTarget: '用“肥猪”进行人身攻击属于严重的言语霸凌。',
+    exampleTranslation: 'Using "fat pig" as a personal attack constitutes severe verbal bullying.',
+    grammarNotes: 'Linguistic Taboo Nuance: In standard Mandarin, “肥” (féi) means fat/greasy and is reserved for culinary meat (e.g. 肥牛 beef, 肥羊 lamb, 肥肠). For living people, the neutral word is “胖” (pàng = plump/heavy). Directing “肥猪” at an individual is an offensive, body-shaming insult.',
+    hint: '“肥” is standard for animal meat, making this a heavy taboo insult for people.',
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'idioms-expressions',
+    difficulty: 'A2',
+    front: '别烦我，让我一个人静一静。',
+    back: 'Don\'t bother me, let me be quiet alone for a moment.',
+    phonetic: 'Bié fán wǒ, ràng wǒ yí gè rén jìng yí jìng.',
+    exampleTarget: '我今天工作压力太大了，请你先别烦我，让我一个人静一静。',
+    exampleTranslation: 'I was under too much work stress today; please don\'t bother me for now, let me just have some quiet alone time.',
+    grammarNotes: '“烦” (fán) means annoyed / to bother. “静一静” (jìng yí jìng) means to calm down / have quiet time. A natural, colloquial phrase for setting personal boundaries without being overly hostile.',
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'idioms-expressions',
+    difficulty: 'B1',
+    front: '请你说话注意分寸，不要得寸进尺。',
+    back: 'Please watch your boundaries; do not give an inch and take a mile.',
+    phonetic: 'Qǐng nǐ shuōhuà zhùyì fēncun, bú yào dé cùn jìn chǐ.',
+    exampleTarget: '我已经做出很大让步了，请你注意分寸，不要得寸进尺。',
+    exampleTranslation: 'I have already made major concessions; please mind your boundaries and don\'t push your luck.',
+    grammarNotes: '“分寸” (fēncun) refers to proper boundaries and tact in speech and behavior. “得寸进尺” (gain an inch, advance a yard) is an indispensable idiom describing greedy overstepping.',
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'idioms-expressions',
+    difficulty: 'B1',
+    front: '别多管闲事，管好你自己就行了。',
+    back: 'Mind your own business; taking care of yourself is enough.',
+    phonetic: 'Bié duō guǎn xiánshì, guǎn hǎo nǐ zìjǐ jiù xíng le.',
+    exampleTarget: '这是我们内部的私事，请你别多管闲事。',
+    exampleTranslation: 'This is our internal private matter; please don\'t stick your nose into other people\'s business.',
+    grammarNotes: '“管闲事” (guǎn xiánshì) means meddling in matters that do not concern you. “别多管闲事” is a firm, colloquial brush-off widely seen in everyday dialogue.',
   },
   // Fluent
   {

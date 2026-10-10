@@ -7,7 +7,12 @@ import {
   importProfileBackup,
   type BackupData,
 } from '../db/database';
-import { SUPPORTED_LANGUAGES, DIFFICULTY_LEVELS } from '../data/languages';
+import {
+  SUPPORTED_LANGUAGES,
+  DIFFICULTY_LEVELS,
+  normalizeDifficulty,
+  getIncludedLevels,
+} from '../data/languages';
 import {
   Users,
   Plus,
@@ -44,10 +49,10 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   const [selectedAvatar, setSelectedAvatar] = useState('🌱');
   const [newLanguages, setNewLanguages] = useState<LanguageId[]>(['spanish']);
   const [newDifficulties, setNewDifficulties] = useState<Record<LanguageId, DifficultyLevel>>({
-    spanish: 'beginner',
-    english: 'beginner',
-    german: 'beginner',
-    chinese: 'beginner',
+    spanish: 'A1',
+    english: 'A1',
+    german: 'A1',
+    chinese: 'A1',
   });
   const [isExporting, setIsExporting] = useState(false);
 
@@ -365,22 +370,27 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
                           </div>
                         </div>
 
-                        <select
-                          value={currentLevel}
-                          onChange={e =>
-                            setNewDifficulties(prev => ({
-                              ...prev,
-                              [langId]: e.target.value as DifficultyLevel,
-                            }))
-                          }
-                          className="text-xs py-1 px-2.5 rounded-md border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-medium focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-zinc-100 cursor-pointer"
-                        >
-                          {DIFFICULTY_LEVELS.map(d => (
-                            <option key={d.id} value={d.id}>
-                              {d.name} ({d.cefr})
-                            </option>
-                          ))}
-                        </select>
+                        <div className="flex flex-col items-end shrink-0">
+                          <select
+                            value={normalizeDifficulty(currentLevel)}
+                            onChange={e =>
+                              setNewDifficulties(prev => ({
+                                ...prev,
+                                [langId]: e.target.value as DifficultyLevel,
+                              }))
+                            }
+                            className="text-xs py-1 px-2.5 rounded-md border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-medium focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-zinc-100 cursor-pointer"
+                          >
+                            {DIFFICULTY_LEVELS.map(d => (
+                              <option key={d.id} value={d.id}>
+                                {d.name} ({d.cefr})
+                              </option>
+                            ))}
+                          </select>
+                          <span className="text-[9px] text-zinc-400 dark:text-zinc-500 mt-0.5 font-mono">
+                            Includes: {getIncludedLevels(currentLevel).join(', ')}
+                          </span>
+                        </div>
                       </div>
                     );
                   })}

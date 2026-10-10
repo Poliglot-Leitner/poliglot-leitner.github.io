@@ -4,6 +4,8 @@ import {
   SUPPORTED_LANGUAGES,
   LANGUAGE_TOPICS,
   DIFFICULTY_LEVELS,
+  normalizeDifficulty,
+  getIncludedLevels,
 } from '../data/languages';
 import {
   Globe2,
@@ -48,7 +50,7 @@ export const LanguageCurriculumModal: React.FC<LanguageCurriculumModalProps> = (
   onClose,
   initialLanguages,
   initialTopics,
-  initialDifficulty = 'beginner',
+  initialDifficulty = 'A1',
   initialLanguageDifficulties = {},
   onSaveCurriculum,
   isFirstTime = false,
@@ -61,10 +63,10 @@ export const LanguageCurriculumModal: React.FC<LanguageCurriculumModalProps> = (
   );
   const [languageDifficulties, setLanguageDifficulties] = useState<Record<LanguageId, DifficultyLevel>>(() => {
     return {
-      spanish: initialLanguageDifficulties?.spanish || initialDifficulty || 'beginner',
-      english: initialLanguageDifficulties?.english || initialDifficulty || 'beginner',
-      german: initialLanguageDifficulties?.german || initialDifficulty || 'beginner',
-      chinese: initialLanguageDifficulties?.chinese || initialDifficulty || 'beginner',
+      spanish: normalizeDifficulty(initialLanguageDifficulties?.spanish || initialDifficulty || 'A1'),
+      english: normalizeDifficulty(initialLanguageDifficulties?.english || initialDifficulty || 'A1'),
+      german: normalizeDifficulty(initialLanguageDifficulties?.german || initialDifficulty || 'A1'),
+      chinese: normalizeDifficulty(initialLanguageDifficulties?.chinese || initialDifficulty || 'A1'),
     };
   });
   const [step, setStep] = useState<1 | 2 | 3>(1);
@@ -346,8 +348,9 @@ export const LanguageCurriculumModal: React.FC<LanguageCurriculumModalProps> = (
                 {selectedLangs.map(langId => {
                   const langDef = SUPPORTED_LANGUAGES.find(l => l.id === langId);
                   if (!langDef) return null;
-                  const currentDiff = languageDifficulties[langId] || 'beginner';
+                  const currentDiff = normalizeDifficulty(languageDifficulties[langId] || 'A1');
                   const activeDiffDef = DIFFICULTY_LEVELS.find(d => d.id === currentDiff);
+                  const includedLevels = getIncludedLevels(currentDiff);
 
                   return (
                     <div
@@ -378,10 +381,12 @@ export const LanguageCurriculumModal: React.FC<LanguageCurriculumModalProps> = (
                         </span>
                       </div>
 
-                      {/* Segmented Level Buttons */}
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-2">
+                      {/* Segmented Level Buttons: A1, A2, B1, B2, C1, C2 */}
+                      <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-2">
                         {DIFFICULTY_LEVELS.map(diff => {
-                          const isSelected = currentDiff === diff.id;
+                          const isTarget = currentDiff === diff.id;
+                          const isIncluded = includedLevels.includes(diff.id);
+
                           return (
                             <button
                               key={diff.id}
@@ -389,30 +394,59 @@ export const LanguageCurriculumModal: React.FC<LanguageCurriculumModalProps> = (
                               onClick={() =>
                                 setLanguageDifficulties(prev => ({ ...prev, [langId]: diff.id }))
                               }
-                              className={`p-2.5 rounded-lg border text-left transition-all cursor-pointer ${
-                                isSelected
-                                  ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 border-zinc-900 dark:border-zinc-100 shadow-xs ring-1 ring-zinc-900/20'
-                                  : 'border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-800/40 text-zinc-700 dark:text-zinc-300 hover:border-zinc-300 dark:hover:border-zinc-700'
+                              className={`p-2 rounded-lg border text-left transition-all cursor-pointer relative ${
+                                isTarget
+                                  ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 border-zinc-900 dark:border-zinc-100 shadow-xs ring-2 ring-zinc-900/30'
+                                  : isIncluded
+                                  ? 'bg-emerald-50/90 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-700/60 text-emerald-900 dark:text-emerald-200'
+                                  : 'border-zinc-200 dark:border-zinc-800 bg-zinc-50/40 dark:bg-zinc-800/30 text-zinc-500 dark:text-zinc-400 opacity-60 hover:opacity-90'
                               }`}
                             >
                               <div className="flex items-center justify-between gap-1 mb-0.5">
                                 <span className="text-xs font-bold leading-none">{diff.name}</span>
-                                <span className={`text-[10px] font-mono px-1 py-0.2 rounded font-semibold ${
-                                  isSelected
-                                    ? 'bg-white/20 dark:bg-zinc-900/20 text-white dark:text-zinc-900'
-                                    : 'bg-zinc-200 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-300'
-                                }`}>
-                                  {diff.cefr}
-                                </span>
+                                {isIncluded && (
+                                  <span className={`text-[9px] font-mono px-1 py-0.2 rounded font-semibold ${
+                                    isTarget
+                                      ? 'bg-white/20 dark:bg-zinc-900/20 text-white dark:text-zinc-900'
+                                      : 'bg-emerald-200 dark:bg-emerald-800/80 text-emerald-900 dark:text-emerald-100'
+                                  }`}>
+                                    {isTarget ? 'Target' : '✓ Incl.'}
+                                  </span>
+                                )}
                               </div>
+                              <span className="text-[10px] opacity-80 block truncate">
+                                {diff.cefr}
+                              </span>
                             </button>
                           );
                         })}
                       </div>
 
+                      {/* Auto-included Levels Visualizer */}
+                      <div className="flex items-center gap-1.5 flex-wrap text-[11px] bg-zinc-50 dark:bg-zinc-800/60 border border-zinc-200/80 dark:border-zinc-700/80 p-2.5 rounded-lg mb-2">
+                        <span className="font-semibold text-zinc-700 dark:text-zinc-300">Included tiers:</span>
+                        <div className="flex items-center gap-1">
+                          {includedLevels.map(lvl => (
+                            <span
+                              key={lvl}
+                              className={`px-1.5 py-0.5 rounded text-[10px] font-mono font-bold ${
+                                lvl === currentDiff
+                                  ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 ring-1 ring-zinc-400'
+                                  : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-300'
+                              }`}
+                            >
+                              {lvl}
+                            </span>
+                          ))}
+                        </div>
+                        <span className="text-[11px] text-zinc-500 dark:text-zinc-400 ml-auto">
+                          Selecting <strong>{currentDiff}</strong> automatically includes all sentences from {includedLevels.join(' + ')}
+                        </span>
+                      </div>
+
                       {/* Level Description */}
-                      <div className="text-[11px] text-zinc-500 dark:text-zinc-400 leading-relaxed bg-zinc-50 dark:bg-zinc-800/50 p-2.5 rounded-lg border border-zinc-100 dark:border-zinc-800">
-                        <span className="font-semibold text-zinc-700 dark:text-zinc-300">Curriculum focus: </span>
+                      <div className="text-[11px] text-zinc-500 dark:text-zinc-400 leading-relaxed bg-zinc-50/70 dark:bg-zinc-800/40 p-2.5 rounded-lg border border-zinc-100 dark:border-zinc-800">
+                        <span className="font-semibold text-zinc-700 dark:text-zinc-300">{activeDiffDef?.name} ({activeDiffDef?.cefr}): </span>
                         {activeDiffDef?.description}
                       </div>
                     </div>

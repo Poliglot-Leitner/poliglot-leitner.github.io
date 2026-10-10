@@ -182,16 +182,11 @@ export const StudySession: React.FC<StudySessionProps> = ({
       setTimeout(() => {
         setFlyDirection(null);
         setDragOffset(0);
-        if (!isFlipped) {
-          // Before flip: swipe left or right skips directly to next card!
-          handleSkip();
+        // Swiping left = Review Again (false), Swiping right = I Know This (true)
+        if (direction === 'right') {
+          handleGrade(true);
         } else {
-          // After flip: swipe right = know, swipe left = review
-          if (direction === 'right') {
-            handleGrade(true);
-          } else {
-            handleGrade(false);
-          }
+          handleGrade(false);
         }
       }, 160);
     } else {
@@ -220,18 +215,10 @@ export const StudySession: React.FC<StudySessionProps> = ({
         handleFlip();
       } else if (e.key === '1' || e.key === 'ArrowLeft') {
         e.preventDefault();
-        if (isFlipped) {
-          handleGrade(false);
-        } else {
-          handleSkip();
-        }
+        handleGrade(false);
       } else if (e.key === '2' || e.key === 'ArrowRight') {
         e.preventDefault();
-        if (isFlipped) {
-          handleGrade(true);
-        } else {
-          handleSkip();
-        }
+        handleGrade(true);
       } else if (e.key.toLowerCase() === 'k') {
         e.preventDefault();
         handleSkip();
@@ -423,23 +410,15 @@ export const StudySession: React.FC<StudySessionProps> = ({
         >
           {/* Dynamic Swipe Direction Feedback Badges */}
           {dragOffset > 25 && (
-            <div className="absolute top-4 right-4 z-30 px-3 py-1.5 rounded-full text-xs font-semibold shadow-md flex items-center gap-1.5 pointer-events-none animate-in fade-in zoom-in-95 bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900">
-              <span>{isFlipped ? 'I Know This' : 'Skip to Next'}</span>
-              {isFlipped ? (
-                <CheckCircle className="w-3.5 h-3.5 text-emerald-400 dark:text-emerald-600" />
-              ) : (
-                <SkipForward className="w-3.5 h-3.5" />
-              )}
+            <div className="absolute top-4 right-4 z-30 px-3.5 py-1.5 rounded-full text-xs font-semibold shadow-md flex items-center gap-1.5 pointer-events-none animate-in fade-in zoom-in-95 bg-emerald-600 text-white border border-emerald-500">
+              <span>I Know This</span>
+              <CheckCircle className="w-3.5 h-3.5 text-white" />
             </div>
           )}
           {dragOffset < -25 && (
-            <div className="absolute top-4 left-4 z-30 px-3 py-1.5 rounded-full text-xs font-semibold shadow-md flex items-center gap-1.5 pointer-events-none animate-in fade-in zoom-in-95 bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900">
-              {isFlipped ? (
-                <XCircle className="w-3.5 h-3.5 text-red-400 dark:text-red-600" />
-              ) : (
-                <SkipForward className="w-3.5 h-3.5 rotate-180" />
-              )}
-              <span>{isFlipped ? 'Review Again' : 'Skip Card'}</span>
+            <div className="absolute top-4 left-4 z-30 px-3.5 py-1.5 rounded-full text-xs font-semibold shadow-md flex items-center gap-1.5 pointer-events-none animate-in fade-in zoom-in-95 bg-rose-600 text-white border border-rose-500">
+              <XCircle className="w-3.5 h-3.5 text-white" />
+              <span>Review Again</span>
             </div>
           )}
 
@@ -642,7 +621,7 @@ export const StudySession: React.FC<StudySessionProps> = ({
             <span className="flex items-center gap-1.5">
               <RotateCw className="w-3.5 h-3.5 shrink-0" />
               <span>Tap to {isFlipped ? 'flip back' : 'reveal'}</span>
-              <span className="opacity-70">&bull; Swipe &larr; &rarr; to {isFlipped ? 'grade' : 'skip'}</span>
+              <span className="opacity-70">&bull; Swipe &larr; Review Again &bull; Swipe &rarr; I Know This</span>
             </span>
             <span className="font-mono text-[11px] uppercase">
               {deck?.languageId}

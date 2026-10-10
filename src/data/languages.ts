@@ -175,7 +175,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'spanish',
     topicId: 'daily-travel',
-    difficulty: 'beginner',
+    difficulty: 'A1',
     front: '¿Dónde está la estación de tren?',
     back: 'Where is the train station?',
     phonetic: 'DOHN-deh ehs-TAH lah ehs-tah-SYOHN deh trehn',
@@ -187,7 +187,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'spanish',
     topicId: 'daily-travel',
-    difficulty: 'beginner',
+    difficulty: 'A1',
     front: 'La cuenta, por favor.',
     back: 'The bill / check, please.',
     phonetic: 'lah KWEHN-tah, por fah-VOR',
@@ -199,7 +199,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'spanish',
     topicId: 'daily-travel',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: 'Perder el vuelo / Hacer transbordo',
     back: 'To miss the flight / To transfer (layover)',
     phonetic: 'pehr-DEHR ehl BWEH-loh / ah-SEHR trahns-BOR-doh',
@@ -211,7 +211,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'spanish',
     topicId: 'manners-etiquette',
-    difficulty: 'beginner',
+    difficulty: 'A1',
     front: 'Mucho gusto / Encantado(a)',
     back: 'Pleased to meet you / Delighted',
     phonetic: 'MOO-choh GOOS-toh / ehn-kahn-TAH-doh',
@@ -223,7 +223,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'spanish',
     topicId: 'manners-etiquette',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: 'Tú vs. Usted (Tratamiento formal)',
     back: 'Informal "You" vs. Formal "You"',
     phonetic: 'too vs. oos-TEHD',
@@ -235,7 +235,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'spanish',
     topicId: 'culture-history',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: 'La sobremesa',
     back: 'The post-meal conversation at the table with companions.',
     phonetic: 'lah soh-breh-MEH-sah',
@@ -247,7 +247,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'spanish',
     topicId: 'science-nature',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: 'El cambio climático y la capa de ozono',
     back: 'Climate change and the ozone layer',
     phonetic: 'ehl KAHM-byoh klee-MAH-tee-koh',
@@ -259,7 +259,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'spanish',
     topicId: 'business-work',
-    difficulty: 'advanced',
+    difficulty: 'C1',
     front: 'Llegar a un consenso / Cerrar el trato',
     back: 'To reach a consensus / To close the deal',
     phonetic: 'yeh-GAHR ah oon kohn-SEHN-soh',
@@ -271,7 +271,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'spanish',
     topicId: 'idioms-expressions',
-    difficulty: 'fluent',
+    difficulty: 'C2',
     front: 'Estar en las nubes / Tomar el pelo',
     back: 'To be daydreaming (in the clouds) / To pull someone’s leg',
     phonetic: 'ehs-TAHR ehn lahs NOO-behs / toh-MAHR ehl PEH-loh',
@@ -288,7 +288,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'english',
     topicId: 'daily-travel',
-    difficulty: 'beginner',
+    difficulty: 'A1',
     front: 'Could you tell me how to get to the airport?',
     back: 'Polite inquiry asking for directions to the airport.',
     phonetic: '/kʊd juː tɛl miː haʊ tuː ɡɛt tuː ði ˈeəpɔːt/',
@@ -300,7 +300,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'english',
     topicId: 'manners-etiquette',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: 'Would you mind if I... / I would appreciate it if...',
     back: 'Polite formula for requesting permission or assistance without imposing.',
     phonetic: '/wʊd juː maɪnd ɪf/',
@@ -312,7 +312,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'english',
     topicId: 'science-nature',
-    difficulty: 'advanced',
+    difficulty: 'C1',
     front: 'Photosynthesis & Cellular Respiration',
     back: 'Process by which plants convert sunlight into chemical energy ($6CO_2 + 6H_2O \\to C_6H_{12}O_6 + 6O_2$).',
     phonetic: '/ˌfəʊ.təʊˈsɪn.θə.sɪs/',
@@ -324,7 +324,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'english',
     topicId: 'business-work',
-    difficulty: 'advanced',
+    difficulty: 'C1',
     front: 'Touch base / Move the needle',
     back: 'To briefly reconnect / To make noticeable, measurable progress.',
     phonetic: '/tʌtʃ beɪs / muːv ðə ˈniː.dəl/',
@@ -336,7 +336,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'english',
     topicId: 'idioms-expressions',
-    difficulty: 'fluent',
+    difficulty: 'C2',
     front: 'Serendipity / Epiphany',
     back: 'Fortunate accidental discovery / A sudden moment of deep realization.',
     phonetic: '/ˌser.ənˈdɪp.ə.ti / ɪˈpɪf.ən.i/',
@@ -354,7 +354,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'daily-travel',
-    difficulty: 'beginner',
+    difficulty: 'A1',
     front: 'Entschuldigung, wo ist der Bahnhof?',
     back: 'Excuse me, where is the train station?',
     phonetic: 'ent-SHOOL-dee-goong, vo ɪst deːɐ̯ ˈbaːn-hoːf',
@@ -366,7 +366,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'daily-travel',
-    difficulty: 'beginner',
+    difficulty: 'A1',
     front: 'Ich möchte bitte ein stilles Wasser und die Speisekarte.',
     back: 'I would like still water and the menu, please.',
     phonetic: 'ikh MIKH-teh BIT-teh aɪn SHTIL-les VAS-ser oont dee SHPY-zeh-kahr-teh',
@@ -377,7 +377,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'daily-travel',
-    difficulty: 'beginner',
+    difficulty: 'A1',
     front: 'Ein Ticket nach Berlin, einfache Fahrt bitte.',
     back: 'One ticket to Berlin, one-way please.',
     phonetic: 'aɪn TIK-et nakh ber-LEEN, AYN-fah-kheh FAHRT BIT-teh',
@@ -388,7 +388,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'daily-travel',
-    difficulty: 'beginner',
+    difficulty: 'A1',
     front: 'Wie viel kostet das zusammen? Kann ich mit Karte zahlen?',
     back: 'How much is that altogether? Can I pay by card?',
     phonetic: 'vee feel KOS-tet dahs tsoo-ZAHM-men? kahn ikh mit KAHR-teh TSAH-len?',
@@ -400,7 +400,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'daily-travel',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: 'Könnten Sie mir bitte sagen, wann der nächste Zug abfährt?',
     back: 'Could you please tell me when the next train departs?',
     phonetic: 'KIRN-ten zee meer BIT-teh ZAH-gen, vahn deːɐ̯ NAYKH-steh tsook AHP-fayrt?',
@@ -411,7 +411,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'daily-travel',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: 'Ich habe ein Zimmer auf den Namen Weber reserviert.',
     back: 'I have reserved a room under the name Weber.',
     phonetic: 'ikh HAH-beh aɪn TSIM-mer owf dayn NAH-men VAY-ber reh-zer-VEERT',
@@ -423,7 +423,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'daily-travel',
-    difficulty: 'advanced',
+    difficulty: 'B2',
     front: 'Aufgrund einer technischen Störung verzögert sich die Abfahrt.',
     back: 'Due to a technical malfunction, the departure is delayed.',
     phonetic: 'owf-GROONT EYE-ner TEKH-nish-en SHTIR-oong fehr-TSIR-gert zikh dee AHP-fahrt',
@@ -437,7 +437,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'manners-etiquette',
-    difficulty: 'beginner',
+    difficulty: 'A1',
     front: 'Schönen Tag noch! — Danke, gleichfalls!',
     back: 'Have a nice rest of the day! — Thank you, likewise!',
     phonetic: 'SHIR-nen tahk nokh! — DAHN-keh, GLYKH-fahls!',
@@ -448,7 +448,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'manners-etiquette',
-    difficulty: 'beginner',
+    difficulty: 'A1',
     front: 'Guten Appetit! — Danke, ebenfalls!',
     back: 'Enjoy your meal! — Thank you, likewise!',
     phonetic: 'GOO-ten ah-peh-TEET! — DAHN-keh, AY-ben-fahls!',
@@ -459,7 +459,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'manners-etiquette',
-    difficulty: 'beginner',
+    difficulty: 'A2',
     front: 'Darf ich mich kurz vorstellen? Mein Name ist...',
     back: 'May I introduce myself briefly? My name is...',
     phonetic: 'DAHRF ikh mikh koorts FOR-shte-len? maɪn NAH-meh ɪst...',
@@ -471,7 +471,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'manners-etiquette',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: 'Siezen vs. Duzen (Herr / Frau + Nachname)',
     back: 'Formal address with "Sie" vs. informal with "du".',
     phonetic: 'ZEE-tsen vs. DOO-tsen',
@@ -482,7 +482,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'manners-etiquette',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: 'Es tut mir aufrichtig leid, das war keine Absicht.',
     back: 'I am sincerely sorry, that was unintentional.',
     phonetic: 'es toot meer OWF-rikh-tikh layt, dahs vahr KYE-neh AHP-zikht',
@@ -494,7 +494,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'manners-etiquette',
-    difficulty: 'advanced',
+    difficulty: 'C1',
     front: 'Ich möchte mich bei Ihnen für das entgegengebrachte Vertrauen bedanken.',
     back: 'I would like to thank you for the trust placed in me.',
     phonetic: 'ikh MIKH-teh mikh bye EE-nen fyur dahs ent-GAY-gen-geh-brakh-teh fer-TROW-en beh-DAHN-ken',
@@ -508,7 +508,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'culture-history',
-    difficulty: 'beginner',
+    difficulty: 'A2',
     front: 'In Deutschland gilt die Sonntagsruhe; Geschäfte sind sonntags zu.',
     back: 'In Germany Sunday rest applies; shops are closed on Sundays.',
     phonetic: 'ɪn DOYTSH-lahnt gilt dee ZON-tahks-roo-eh',
@@ -520,7 +520,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'culture-history',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: 'Der Feierabend und die deutsche Gemütlichkeit',
     back: 'The end of the workday and the culture of cozy warmth, friendliness, and peace.',
     phonetic: 'deːɐ̯ ˈfaɪ̯ɐˌʔaːbn̩t oont dee ɡəˈmyːtlɪçkaɪt',
@@ -531,7 +531,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'culture-history',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: 'Kaffee und Kuchen am Sonntagnachmittag',
     back: 'Coffee and cake on Sunday afternoon (cherished cultural gathering).',
     phonetic: 'KAH-fay oont KOO-khen ahm ZON-tahk-nahkh-mit-tahk',
@@ -543,7 +543,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'culture-history',
-    difficulty: 'advanced',
+    difficulty: 'B2',
     front: 'Dichter und Denker: Das Erbe von Goethe, Schiller und Kant.',
     back: 'Poets and thinkers: The intellectual heritage of Goethe, Schiller, and Kant.',
     phonetic: 'DIKH-ter oont DENG-ker',
@@ -557,7 +557,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'science-nature',
-    difficulty: 'beginner',
+    difficulty: 'A1',
     front: 'Wie wird das Wetter morgen? — Es soll sonnig und warm werden.',
     back: 'How will the weather be tomorrow? — It is forecast to be sunny and warm.',
     phonetic: 'vee veert dahs VET-ter MOR-gen? es zol ZON-nikh oont vahrm VEHR-den',
@@ -569,7 +569,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'science-nature',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: 'Erneuerbare Energien und die Energiewende in Deutschland',
     back: 'Renewable energies and the energy transition in Germany.',
     phonetic: 'er-NOY-er-bah-reh eh-nehr-GEE-en oont dee eh-nehr-GEE-ven-deh',
@@ -581,7 +581,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'science-nature',
-    difficulty: 'advanced',
+    difficulty: 'B2',
     front: 'Die ökologische Nachhaltigkeit erfordert eine Senkung der Treibhausgase.',
     back: 'Ecological sustainability requires a reduction in greenhouse gas emissions.',
     phonetic: 'dee ir-ko-LOH-gish-eh NAHKH-halt-ikh-kaɪt...',
@@ -595,7 +595,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'business-work',
-    difficulty: 'beginner',
+    difficulty: 'A2',
     front: 'Ich arbeite als Ingenieur bei einem Technologieunternehmen.',
     back: 'I work as an engineer at a technology company.',
     phonetic: 'ikh AHR-bye-teh ahls in-zheh-NYIR bye EYE-nem tekh-no-lo-GEE-oon-ter-nay-men',
@@ -607,7 +607,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'business-work',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: 'Könnten wir den Termin auf nächsten Dienstag verschieben?',
     back: 'Could we reschedule the meeting to next Tuesday?',
     phonetic: 'KIRN-ten veer dayn tehr-MEEN owf NAYKH-sten DEEN-stahk fehr-SHEE-ben?',
@@ -619,7 +619,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'business-work',
-    difficulty: 'advanced',
+    difficulty: 'B2',
     front: 'Wir müssen die Fristen einhalten, um den Projektplan nicht zu gefährden.',
     back: 'We must meet the deadlines so as not to jeopardize the project plan.',
     phonetic: 'veer MYUS-sen dee FRIS-ten AYN-hahl-ten, oom dayn pro-YEKT-plahn nikht tsoo geh-FAYR-den',
@@ -633,7 +633,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'idioms-expressions',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: 'Ich drücke dir ganz fest die Daumen!',
     back: 'I am keeping my fingers crossed for you! (Wishing you great luck!)',
     phonetic: 'ikh DRYUK-keh deer gahnts fest dee DOW-men!',
@@ -644,7 +644,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'idioms-expressions',
-    difficulty: 'intermediate',
+    difficulty: 'A2',
     front: 'Übung macht den Meister.',
     back: 'Practice makes perfect. (Practice makes the master.)',
     phonetic: 'YOO-boong makht dayn MYS-ter',
@@ -656,7 +656,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'idioms-expressions',
-    difficulty: 'fluent',
+    difficulty: 'C2',
     front: 'Ich verstehe nur Bahnhof.',
     back: 'It is all Greek to me / I don\'t understand a single word.',
     phonetic: 'ikh fer-SHTAY-eh noor BAHN-hof',
@@ -667,7 +667,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'idioms-expressions',
-    difficulty: 'fluent',
+    difficulty: 'C2',
     front: 'Den Nagel auf den Kopf treffen.',
     back: 'To hit the nail right on the head (to be spot on).',
     phonetic: 'dayn NAH-gel owf dayn kopf TREF-fen',
@@ -678,7 +678,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'idioms-expressions',
-    difficulty: 'fluent',
+    difficulty: 'C2',
     front: 'Schadenfreude / Fernweh',
     back: 'Pleasure from another’s mishap / A longing to wander to distant lands.',
     phonetic: 'SHAH-den-froy-deh / FEHRN-vay',
@@ -1327,7 +1327,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'idioms-expressions',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: 'Übung macht den Meister.',
     back: 'Practice makes the master / Practice makes perfect.',
     phonetic: 'EW-boong mahkht dayn MYS-ter',
@@ -1339,7 +1339,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'german',
     topicId: 'idioms-expressions',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: 'Aller Anfang ist schwer.',
     back: 'All beginnings are hard / Every beginning is tough.',
     phonetic: 'AHL-ler AHN-fahng ɪst shvayr',
@@ -1382,7 +1382,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'beginner',
+    difficulty: 'A1',
     front: '请问，洗手间在哪里？',
     back: 'Excuse me, where is the restroom?',
     phonetic: 'Qǐngwèn, xǐshǒujiān zài nǎlǐ?',
@@ -1394,7 +1394,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'beginner',
+    difficulty: 'A1',
     front: '我要一杯热美式咖啡，不加糖。',
     back: 'I would like a cup of hot Americano coffee, no sugar.',
     phonetic: 'Wǒ yào yī bēi rè Měishì kāfēi, bù jiā táng.',
@@ -1405,7 +1405,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'beginner',
+    difficulty: 'A1',
     front: '老板，这个多少钱？可以便宜一点吗？',
     back: 'Boss, how much is this? Can it be a bit cheaper?',
     phonetic: 'Lǎobǎn, zhège duōshao qián? Kěyǐ piányi yīdiǎn ma?',
@@ -1416,7 +1416,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'beginner',
+    difficulty: 'A2',
     front: '请问去高铁站坐几号线？要换乘吗？',
     back: 'Excuse me, which line goes to the high-speed rail station? Do I need to transfer?',
     phonetic: 'Qǐngwèn qù gāotiězhàn zuò jǐ hào xiàn? Yào huànchéng ma?',
@@ -1427,7 +1427,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'beginner',
+    difficulty: 'A1',
     front: '服务员，买单！可以微信或者支付宝支付吗？',
     back: 'Waiter, the bill please! Can I pay with WeChat or Alipay?',
     phonetic: 'Fúwùyuán, mǎidān! Kěyǐ Wēixìn huòzhě Zhīfùbǎo zhīfù ma?',
@@ -1542,7 +1542,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: '师傅，请打表，去首都国际机场三号航站楼。',
     back: 'Driver, please use the meter, to Capital Airport Terminal 3.',
     phonetic: 'Shīfu, qǐng dǎbiǎo, qù Shǒudū Guójì Jīchǎng sān hào hángzhànlóu.',
@@ -1553,7 +1553,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: '我订了一间大床房，这是我的护照。',
     back: 'I booked a king-bed room, here is my passport.',
     phonetic: 'Wǒ dìng le yì jiān dàchuáng fáng, zhè shì wǒ de hùzhào.',
@@ -1565,7 +1565,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'advanced',
+    difficulty: 'C1',
     front: '麻烦帮我办理一下退房手续，并开具增值税普通发票。',
     back: 'Please process my check-out and issue a general VAT invoice (Fapiao).',
     phonetic: 'Máfan bāng wǒ bànlǐ yíxià tuìfáng shǒuxù, bìng kāijù zēngzhíshuì pǔtōng fāpiào.',
@@ -1579,7 +1579,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'manners-etiquette',
-    difficulty: 'beginner',
+    difficulty: 'A1',
     front: '不好意思，打扰一下。',
     back: 'Excuse me, sorry to bother you.',
     phonetic: 'Bù hǎoyìsi, dǎrǎo yíxià.',
@@ -1590,7 +1590,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'manners-etiquette',
-    difficulty: 'beginner',
+    difficulty: 'A2',
     front: '祝你一路平安，前程似锦！',
     back: 'Wishing you a safe journey and a bright, splendid future!',
     phonetic: 'Zhù nǐ yílù píng’ān, qiánchéng sì jǐn!',
@@ -1601,7 +1601,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'manners-etiquette',
-    difficulty: 'beginner',
+    difficulty: 'A2',
     front: '初次见面，请多关照！这是我的名片。',
     back: 'Pleased to meet you for the first time! Here is my business card.',
     phonetic: 'Chūcì jiànmiàn, qǐng duō guānzhào! Zhè shì wǒ de míngpiàn.',
@@ -1670,7 +1670,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'manners-etiquette',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: '客气 (Kèqi) & 您好 (Nínhǎo)',
     back: 'Polite / Courteous, and respectful "You" (formal)',
     phonetic: 'Kèqi / Nín hǎo',
@@ -1681,7 +1681,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'manners-etiquette',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: '大家别客气，快趁热吃！我以茶代酒敬大家一杯。',
     back: 'Please everyone make yourselves at home, eat while it\'s hot! Let me toast you all with tea instead of alcohol.',
     phonetic: 'Dàjiā bié kèqi, kuài chèn rè chī! Wǒ yǐ chá dài jiǔ jìng dàjiā yì bēi.',
@@ -1693,7 +1693,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'manners-etiquette',
-    difficulty: 'advanced',
+    difficulty: 'C1',
     front: '非常感谢您在百忙之中抽空接待我们。',
     back: 'Thank you immensely for taking time out of your busy schedule to host us.',
     phonetic: 'Fēicháng gǎnxiè nín zài bǎimáng zhī zhōng chōukòng jiēdài wǒmen.',
@@ -1707,7 +1707,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'culture-history',
-    difficulty: 'beginner',
+    difficulty: 'A2',
     front: '春节是中国最重要的传统节日，全家人团圆吃饺子。',
     back: 'Spring Festival is China\'s most important traditional holiday; the whole family reunites to eat dumplings.',
     phonetic: 'Chūnjié shì Zhōngguó zuì zhòngyào de chuántǒng jiérì, quánjiā rén tuányuán chī jiǎozi.',
@@ -1718,7 +1718,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'culture-history',
-    difficulty: 'beginner',
+    difficulty: 'A2',
     front: '中秋节吃月饼、赏明月，象征阖家团圆。',
     back: 'During Mid-Autumn Festival, people eat mooncakes and admire the bright moon, symbolizing family reunion.',
     phonetic: 'Zhōngqiūjié chī yuèbǐng, shǎng míngyuè, xiàngzhēng héjiā tuányuán.',
@@ -1730,7 +1730,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'culture-history',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: '端午节与包粽子',
     back: 'Dragon Boat Festival (Duanwu) and making sticky rice dumplings (Zongzi).',
     phonetic: 'Duānwǔ jié yǔ bāo zòngzi',
@@ -1741,7 +1741,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'culture-history',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: '中国茶文化讲究“色、香、味、形”，品茶能修身养性。',
     back: 'Chinese tea culture values color, fragrance, flavor, and form; sipping tea cultivates character and inner calm.',
     phonetic: 'Zhōngguó chá wénhuà jiǎngjiu "sè, xiāng, wèi, xíng", pǐn chá néng xiūshēn yǎngxìng.',
@@ -1753,7 +1753,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'culture-history',
-    difficulty: 'advanced',
+    difficulty: 'C1',
     front: '四大发明（造纸术、指南针、火药、印刷术）对世界文明做出了卓越贡献。',
     back: 'The Four Great Inventions (papermaking, compass, gunpowder, movable printing) contributed immensely to world civilization.',
     phonetic: 'Sì dà fāmíng (zàozhǐ shù, zhǐnánzhēn, huǒyào, yìnshuā shù)...',
@@ -1767,7 +1767,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'science-nature',
-    difficulty: 'beginner',
+    difficulty: 'A2',
     front: '今天气温最高二十八度，阳光充足，非常适合户外运动。',
     back: 'Today the maximum temperature is 28 degrees with plenty of sunshine, very suitable for outdoor sports.',
     phonetic: 'Jīntiān qìwēn zuìgāo èrshíbā dù, yángguāng chōngzú, fēicháng shìhé hùwài yùndòng.',
@@ -1779,7 +1779,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'science-nature',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: '大熊猫和金丝猴是中国特有的国家一级保护动物。',
     back: 'Giant pandas and golden snub-nosed monkeys are first-class protected wildlife endemic to China.',
     phonetic: 'Dàxióngmāo hé jīnsīhóu shì Zhōngguó tèyǒu de guójiā yījí bǎohù dòngwù.',
@@ -1791,7 +1791,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'science-nature',
-    difficulty: 'advanced',
+    difficulty: 'C1',
     front: '人工智能和大模型技术正在深刻重塑各行各业的生产力。',
     back: 'Artificial intelligence and large model technologies are profoundly reshaping productivity across all industries.',
     phonetic: 'Réngōng zhìnéng hé dà móxíng jìshù zhèngzài shēnkè chóngshù gè háng gè yè de shēngchǎnlì.',
@@ -1805,7 +1805,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'business-work',
-    difficulty: 'beginner',
+    difficulty: 'A2',
     front: '我们在三楼第一会议室开会，请准时参加。',
     back: 'We are holding a meeting in Conference Room 1 on the 3rd floor; please attend on time.',
     phonetic: 'Wǒmen zài sān lóu dì-yī huìyìshì kāihuì, qǐng zhǔnshí cānjiā.',
@@ -1817,7 +1817,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'business-work',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: '请把今天的会议纪要和项目进度表发到项目群里。',
     back: 'Please send today\'s meeting minutes and project schedule into the project group chat.',
     phonetic: 'Qǐng bǎ jīntiān de huìyì jìyào hé xiàngmù jìndù biǎo fā dào xiàngmù qún lǐ.',
@@ -1863,7 +1863,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'business-work',
-    difficulty: 'advanced',
+    difficulty: 'C1',
     front: '合作共赢 / 签署合同：双方在互惠互利的基础上达成战略合作。',
     back: 'Win-win cooperation / Signing contracts: Both sides reached strategic cooperation on the basis of mutual benefit.',
     phonetic: 'Hézuò gòngyíng / Qiānshǔ hétong',
@@ -1877,7 +1877,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'idioms-expressions',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: '千里之行，始于足下。',
     back: 'A journey of a thousand miles begins with a single step.',
     phonetic: 'Qiānlǐ zhī xíng, shǐ yú zú xià.',
@@ -1888,7 +1888,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'idioms-expressions',
-    difficulty: 'intermediate',
+    difficulty: 'B1',
     front: '熟能生巧 (Shú néng shēng qiǎo)',
     back: 'Skill comes from practice / Practice makes perfect.',
     phonetic: 'Shú néng shēng qiǎo',
@@ -1957,7 +1957,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'idioms-expressions',
-    difficulty: 'fluent',
+    difficulty: 'C2',
     front: '塞翁失马，焉知非福。',
     back: 'A blessing in disguise (When the old man lost his horse, who could tell whether it was not a blessing?)',
     phonetic: 'Sài wēng shī mǎ, yān zhī fēi fú.',
@@ -1968,7 +1968,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'idioms-expressions',
-    difficulty: 'fluent',
+    difficulty: 'C2',
     front: '温故知新 (Wēn gù zhī xīn)',
     back: 'Reviewing the old allows one to discover new insights (Confucius principle).',
     phonetic: 'Wēn gù zhī xīn',
@@ -1979,7 +1979,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'idioms-expressions',
-    difficulty: 'fluent',
+    difficulty: 'C2',
     front: '循序渐进 (Xún xù jiàn jìn)',
     back: 'To progress step by step in orderly sequence; gradual steady mastery.',
     phonetic: 'Xún xù jiàn jìn',
@@ -1990,7 +1990,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'idioms-expressions',
-    difficulty: 'fluent',
+    difficulty: 'C2',
     front: '学无止境，持之以恒。',
     back: 'Learning has no limits; persist with relentless constancy.',
     phonetic: 'Xué wú zhǐjìng, chí zhī yǐ héng.',
@@ -2615,7 +2615,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'idioms-expressions',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '活到老，学到老。',
     back: 'Live until old, learn until old (One is never too old to learn).',
     phonetic: 'Huó dào lǎo, xué dào lǎo.',
@@ -2639,7 +2639,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'idioms-expressions',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '早起的鸟儿有虫吃。',
     back: 'The early bird catches the worm.',
     phonetic: 'Zǎo qǐ de niǎor yǒu chóng chī.',
@@ -2677,7 +2677,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'manners-etiquette',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '— 你好！请问你叫什么名字？\n— 你好！我姓陈叫芭芭拉，你呢？\n— 我姓王叫大卫，很高兴认识你！\n— 我也是！',
     back: '— Hello! May I ask what your name is?\n— Hello! My surname is Chen and my name is Barbara, and you?\n— My surname is Wang and my name is David, nice to meet you!\n— Me too!',
     phonetic: '— Nǐ hǎo! Qǐngwèn nǐ jiào shénme míngzi?\n— Nǐ hǎo! Wǒ xìng Chén jiào Bābālā, nǐ ne?\n— Wǒ xìng Wáng jiào Dàwèi, hěn gāoxìng rènshi nǐ!\n— Wǒ yě shì!',
@@ -2689,7 +2689,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '— 你家有几口人？你爸爸是医生吗？\n— 我家有四个人：爸爸、妈妈、弟弟和我。我爸爸是教授，妈妈是老师。',
     back: '— How many people are in your family? Is your father a doctor?\n— There are four in my family: dad, mom, younger brother, and me. My dad is a professor, and mom is a teacher.',
     phonetic: '— Nǐ jiā yǒu jǐ kǒu rén? Nǐ bàba shì yīshēng ma?\n— Wǒ jiā yǒu sì gè rén: bàba, māma, dìdi hé wǒ. Wǒ bàba shì jiàoshòu, māma shì lǎoshī.',
@@ -2701,7 +2701,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '— 你有没有哥哥弟弟？\n— 没有，我没有哥哥弟弟，我只有一个妹妹。',
     back: '— Do you have any brothers (older or younger)?\n— No, I don\'t have brothers; I only have one younger sister.',
     phonetic: '— Nǐ yǒu méiyǒu gēge dìdi?\n— Méiyǒu, wǒ méiyǒu gēge dìdi, wǒ zhǐ yǒu yí gè mèimei.',
@@ -2713,7 +2713,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '— 你结婚了没有？\n— 我结婚了，有一个儿子。你呢？\n— 我还没有结婚，我是单身。',
     back: '— Are you married or not?\n— I am married, with one son. And you?\n— I\'m not married yet; I am single.',
     phonetic: '— Nǐ jiéhūn le méiyǒu?\n— Wǒ jiéhūn le, yǒu yí gè érzi. Nǐ ne?\n— Wǒ hái méiyǒu jiéhūn, wǒ shì dānshēn.',
@@ -2725,7 +2725,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '— 请问你是哪里人？你的家乡在哪儿？\n— 我是上海人，我是在旧金山出生的。你住在哪里？\n— 我住在纽约。',
     back: '— Where are you from originally? Where is your hometown?\n— I am from Shanghai, and I was born in San Francisco. Where do you live?\n— I live in New York.',
     phonetic: '— Qǐngwèn nǐ shì nǎlǐ rén? Nǐ de jiāxiāng zài nǎr?\n— Wǒ shì Shànghǎirén, wǒ shì zài Jiùjīnshān chūshēng de. Nǐ zhù zài nǎlǐ?\n— Wǒ zhù zài Niǔyuē.',
@@ -2737,7 +2737,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'business-work',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '— 请问王先生，你在哪里工作？他是做什么的？\n— 我在旧金山工作。他是我弟弟，他是工程师，在上海工作。',
     back: '— Excuse me Mr. Wang, where do you work? What does he do?\n— I work in San Francisco. He is my younger brother, he is an engineer working in Shanghai.',
     phonetic: '— Qǐngwèn Wáng xiānsheng, nǐ zài nǎlǐ gōngzuò? Tā shì zuò shénme de?\n— Wǒ zài Jiùjīnshān gōngzuò. Tā shì wǒ dìdi, tā shì gōngchéngshī, zài Shànghǎi gōngzuò.',
@@ -2749,7 +2749,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'culture-history',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '— 你会说几门外语？\n— 我会说英语，也会说俄语。他不会说英语，但他会说日语。',
     back: '— How many foreign languages can you speak?\n— I can speak English and Russian. He cannot speak English, but he can speak Japanese.',
     phonetic: '— Nǐ huì shuō jǐ mén wàiyǔ?\n— Wǒ huì shuō Yīngyǔ, yě huì shuō Éyǔ. Tā bú huì shuō Yīngyǔ, dàn tā huì shuō Rìyǔ.',
@@ -2761,7 +2761,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'manners-etiquette',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '— 你认识不认识中国字？你会不会写汉字？\n— 不认识，我不会写，我只会说一点儿中文。',
     back: '— Do you recognize Chinese characters or not? Can you write Hanzi?\n— I don\'t recognize them and can\'t write them; I can only speak a little Chinese.',
     phonetic: '— Nǐ rènshi bu rènshi Zhōngguó zì? Nǐ huì bu huì xiě Hànzì?\n— Bú rènshi, wǒ bú huì xiě, wǒ zhǐ huì shuō yìdiǎnr Zhōngwén.',
@@ -2785,7 +2785,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '— 你平时几点上班？什么时候回家？\n— 我八点去公司上班，中午在公司吃中饭，五点半回家，晚上在家里学习。',
     back: '— What time do you usually start work? When do you return home?\n— I go to the company to work at 8 AM, eat lunch at the office at noon, return home at 5:30 PM, and study at home in the evening.',
     phonetic: '— Nǐ píngshí jǐ diǎn shàngbān? Shénme shíhou huíjiā?\n— Wǒ bā diǎn qù gōngsī shàngbān, zhōngwǔ zài gōngsī chī zhōngfàn, wǔ diǎn bàn huíjiā, wǎnshang zài jiālǐ xuéxí.',
@@ -2797,7 +2797,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '— 今天是几月几号，星期几？\n— 今天是七月二十三号，星期二；昨天是星期一，明天是星期三。一个星期有七天，一年有三百六十五天。',
     back: '— What date and what day of the week is today?\n— Today is July 23rd, Tuesday; yesterday was Monday, tomorrow is Wednesday. A week has 7 days, a year has 365 days.',
     phonetic: '— Jīntiān shì jǐ yuè jǐ hào, xīngqī jǐ?\n— Jīntiān shì qī yuè èrshísān hào, xīngqī èr; zuótiān shì xīngqī yī, míngtiān shì xīngqī sān. Yí gè xīngqī yǒu qī tiān, yì nián yǒu sānbǎi liùshíwǔ tiān.',
@@ -2809,7 +2809,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'manners-etiquette',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '— 我的生日是四月六号，你的生日是几号？\n— 哇，你的生日快到了，提前祝你生日快乐！',
     back: '— My birthday is April 6th; what day is your birthday?\n— Wow, your birthday is coming up soon, wishing you a happy birthday in advance!',
     phonetic: '— Wǒ de shēngrì shì sì yuè liù hào, nǐ de shēngrì shì jǐ hào?\n— Wa, nǐ de shēngrì kuài dào le, tíqián zhù nǐ shēngrì kuàilè!',
@@ -2821,7 +2821,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '— 对不起，请问现在几点了？\n— 现在差两分九点，怎么了？\n— 我该走了，我跟一个朋友有约会。',
     back: '— Excuse me, what time is it now?\n— It\'s two minutes to nine now (8:58), what\'s the matter?\n— I should be going, I have an appointment with a friend.',
     phonetic: '— Duìbuqǐ, qǐngwèn xiànzài jǐ diǎn le?\n— Xiànzài chà liǎng fēn jiǔ diǎn, zěnme le?\n— Wǒ gāi zǒu le, wǒ gēn yí gè péngyou yǒu yuēhuì.',
@@ -2833,7 +2833,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '— 你经常运动吗？平常作什么运动？\n— 我很喜欢体育运动。我每天跑步，有时候打网球。我游泳游得很好，可是篮球打得不好。',
     back: '— Do you exercise often? What sports do you usually do?\n— I really like sports. I run every day, sometimes play tennis. I swim very well, but I don\'t play basketball well.',
     phonetic: '— Nǐ jīngcháng yùndòng ma? Píngcháng zuò shénme yùndòng?\n— Wǒ hěn xǐhuan tǐyù yùndòng. Wǒ měitiān pǎobù, yǒushíhou dǎ wǎngqiú. Wǒ yóuyǒng yóu de hěn hǎo, kěshì lánqiú dǎ de bù hǎo.',
@@ -2857,7 +2857,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '— 请问，你们有新鲜水果吗？这种苹果多少钱？\n— 有，这些都是刚到的！五块钱一斤。\n— 给我来两斤，挑甜一点的！',
     back: '— Excuse me, do you have fresh fruit? How much are these apples?\n— Yes, these just arrived! Five yuan per jin (500g).\n— Give me two jin, pick the sweeter ones!',
     phonetic: '— Qǐngwèn, nǐmen yǒu xīnxiān shuǐguǒ ma? Zhè zhǒng píngguǒ duōshao qián?\n— Yǒu, zhèxiē dōu shì gāng dào de! Wǔ kuài qián yì jīn.\n— Gěi wǒ lái liǎng jīn, tiāo tián yìdiǎnr de!',
@@ -2869,7 +2869,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '— 请问，去图书馆怎么走？离这儿有多远？\n— 往前走，在十字路口向右拐，再走一分钟就到了。不远，大约几百米。',
     back: '— Excuse me, how do I get to the library? How far is it from here?\n— Walk straight ahead, turn right at the intersection, walk one more minute and you\'re there. Not far, about a few hundred meters.',
     phonetic: '— Qǐngwèn, qù túshūguǎn zěnme zǒu? Lí zhèr yǒu duō yuǎn?\n— Wǎng qián zǒu, zài shízì lùkǒu xiàng yòu guǎi, zài zǒu yì fēnzhōng jiù dào le. Bù yuǎn, dàyuē jǐbǎi mǐ.',
@@ -2881,7 +2881,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '— 你好，请问哪儿卖全麦面包和鲜榨果汁？\n— 这层第五过道就有卖。您想要什么样的？\n— 我喜欢切片吐司和纯苹果汁，麻烦您带我看看。\n— 好，没问题，请跟我来！',
     back: '— Hello, where do they sell whole wheat bread and freshly squeezed fruit juice?\n— Aisle 5 on this floor sells them. What kind would you like?\n— I like sliced toast and pure apple juice, could you show me?\n— Sure, no problem, please follow me!',
     phonetic: '— Nǐ hǎo, qǐngwèn nǎr mài quánmài miànbāo hé xiānzhà guǒzhī?\n— Zhè céng dì-wǔ guòdào jiù yǒu mài. Nín xiǎng yào shénme yàng de?\n— Wǒ xǐhuan qiēpiàn tǔsī hé chún píngguǒzhī, máfan nín dài wǒ kànkan.\n— Hǎo, méi wèntí, qǐng gēn wǒ lái!',
@@ -2893,7 +2893,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '— 你好，我要预订一间单人房。\n— 好的，哪天的？住几晚？\n— 十月十日，我要住一晚。\n— 好的，一共三百元，请问您的姓名和电话？\n— 我叫芭芭拉，电话是123456789。',
     back: '— Hello, I would like to book a single room.\n— Okay, for which date? How many nights?\n— October 10th, I want to stay one night.\n— Okay, 300 yuan in total, may I have your name and phone number?\n— My name is Barbara, phone is 123456789.',
     phonetic: '— Nǐ hǎo, wǒ yào yùdìng yì jiān dānrénfáng.\n— Hǎo de, nǎ tiān de? Zhù jǐ wǎn?\n— Shí yuè shí rì, wǒ yào zhù yì wǎn.\n— Hǎo de, yígòng sānbǎi yuán, qǐngwèn nín de xìngmíng hé diànhuà?\n— Wǒ jiào Bābālā, diànhuà shì yāo-èr-sān-sì-wǔ-liù-qī-bā-jiǔ.',
@@ -2905,7 +2905,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '— 司机师傅早上好，去北京饭店！我可以把行李放在后备箱吗？\n— 当然可以，我来帮您搬！……好了，到了，车费五十块。\n— 给您钱，不用找了。再见！\n— 您走好，再见！',
     back: '— Good morning driver, to Beijing Hotel! Can I put my luggage in the trunk?\n— Of course, let me help you lift it! ... Alright, we have arrived, fare is 50 yuan.\n— Here is your money, keep the change. Goodbye!\n— Take care, goodbye!',
     phonetic: '— Sījī shīfu zǎoshang hǎo, qù Běijīng Fàndiàn! Wǒ kěyǐ bǎ xíngli fàng zài hòubèixiāng ma? \n— Dāngrán kěyǐ, wǒ lái bāng nín bān! ... Hǎo le, dào le, chēfèi wǔshí kuài.\n— Gěi nín qián, bú yòng zhǎo le. Zàijiàn!\n— Nín zǒu hǎo, zàijiàn!',
@@ -2917,7 +2917,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '— 先生您好，欢迎光临，您需要点什么？\n— 我要一份牛排。\n— 好的，请问要几分熟？\n— 七分熟，配黑椒汁。谢谢！\n— 好的，请稍等！',
     back: '— Hello sir, welcome, what would you like to order?\n— I would like a steak.\n— Understood, what doneness would you like?\n— Medium-well (7/10), with black pepper sauce. Thank you!\n— Understood, please wait a moment!',
     phonetic: '— Xiānsheng nín hǎo, huānyíng guānglín, nín xūyào diǎn shénme?\n— Wǒ yào yí fèn niúpái.\n— Hǎo de, qǐngwèn yào jǐ fēn shú?\n— Qī fēn shú, pèi hēijiāozhī. Xièxie!\n— Hǎo de, qǐng shāo děng!',
@@ -2989,7 +2989,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '— 今天我请客！\n— 太不好意思了，下次一定我来请，或者我们AA制吧。',
     back: '— Today is my treat! (It\'s on me!)\n— You\'re too kind! Next time it\'s definitely my treat, or let\'s split the bill (go Dutch).',
     phonetic: '— Jīntiān wǒ qǐngkè!\n— Tài bù hǎoyìsi le, xià cì yīdìng wǒ lái qǐng, huòzhě wǒmen AA zhì ba.',
@@ -3025,7 +3025,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'food',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '服务员，请问菜齐了吗？请再给我们拿一双筷子和一些纸巾。',
     back: 'Waiter, have all the dishes arrived? Please bring us an extra pair of chopsticks and some tissues.',
     phonetic: 'Fúwùyuán, qǐngwèn cài qí le ma? Qǐng zài gěi wǒmen ná yī shuāng kuàizi hé yīxiē zhǐjīn.',
@@ -3037,7 +3037,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'food',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '买单！请问支持微信支付还是支付宝？可以扫码吗？',
     back: 'Check please! Do you support WeChat Pay or Alipay? Can I scan the QR code?',
     phonetic: 'Mǎidān! Qǐngwèn zhīchí wēixìn zhīfù háishi zhīfùbǎo? Kěyǐ sǎomǎ ma?',
@@ -3061,7 +3061,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '救命！快帮我报警！紧急电话：报警110，急救120，火警119。',
     back: 'Help! Please call the police for me! Emergency numbers: Police 110, Ambulance 120, Fire 119.',
     phonetic: 'Jiùmìng! Kuài bāng wǒ bàojǐng! Jǐnjí diànhuà: bàojǐng yāo-yāo-líng, jíjiù yāo-èr-líng, huǒjǐng yāo-yāo-jiǔ.',
@@ -3121,7 +3121,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '你好，我预订了房间，这是我的护照。几点退房？请问有免费WiFi吗？',
     back: 'Hello, I booked a room, here is my passport. What time is check-out? Is there free Wi-Fi?',
     phonetic: 'Nǐhǎo, wǒ yùdìng le fángjiān, zhè shì wǒ de hùzhào. Jǐ diǎn tuìfáng? Qǐngwèn yǒu miǎnfèi WiFi ma?',
@@ -3181,7 +3181,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '今天天气怎么样？外面冷不冷？需要带雨伞或者涂防晒吗？',
     back: 'How is the weather today? Is it cold outside? Do I need to bring an umbrella or apply sunscreen?',
     phonetic: 'Jīntiān tiānqì zěnme yàng? Wàimiàn lěng bu lěng? Xūyào dài yǔsǎn huòzhě tú fángshài ma?',
@@ -3217,7 +3217,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '我有点不舒服，头疼而且发烧。请问附近的药店和医院在哪里？',
     back: 'I feel a bit unwell, having a headache and fever. Where are the pharmacy and hospital nearby?',
     phonetic: 'Wǒ yǒudiǎn bù shūfu, tóuténg érqiě fāshāo. Qǐngwèn fùjìn de yàodiàn hé yīyuàn zài nǎlǐ?',
@@ -3229,7 +3229,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '— 你中文说得真棒！\n— 哪里哪里，过奖了，我才学了几个月，还差得远呢！',
     back: '— Your Chinese is spoken really well!\n— Not at all, you flatter me! I\'ve only studied for a few months, I still have a long way to go!',
     phonetic: '— Nǐ zhōngwén shuō de zhēn bàng!\n— Nǎlǐ nǎlǐ, guòjiǎng le, wǒ cái xué le jǐ gè yuè, hái chà de yuǎn ne!',
@@ -3301,7 +3301,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '你可以借我你的手机充电器或者充电宝用一下吗？我的手机快没电了。',
     back: 'Could you lend me your phone charger or power bank for a moment? My phone is almost out of battery.',
     phonetic: 'Nǐ kěyǐ jiè wǒ nǐ de shǒujī chōngdiànqì huòzhě chōngdiànbǎo yòng yíxià ma? Wǒ de shǒujī kuài méidiàn le.',
@@ -3325,7 +3325,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '— 您好，请问洗手间 / 卫生间在哪里？\n— 直走走到头，右转就是。',
     back: '— Hello, excuse me where is the restroom / bathroom?\n— Walk straight all the way to the end, turn right and it\'s right there.',
     phonetic: '— Nínhǎo, qǐngwèn xǐshǒujiān / wèishēngjiān zài nǎlǐ?\n— Zhí zǒu zǒu dào tóu, yòuzhuǎn jiù shì.',
@@ -3457,7 +3457,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '请问去机场的大巴在哪里坐？末班车是几点？',
     back: 'Excuse me, where do I board the airport shuttle bus? What time is the last bus?',
     phonetic: 'Qǐngwèn qù jīchǎng de dàbā zài nǎlǐ zuò? Mòbānchē shì jǐ diǎn?',
@@ -3565,7 +3565,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '老师，不好意思我迟到了，请问我可以进来吗？',
     back: 'Teacher, I\'m sorry I am late; may I come in please?',
     phonetic: 'Lǎoshī, bù hǎoyìsi wǒ chídào le, qǐngwèn wǒ kěyǐ jìnlái ma?',
@@ -3577,7 +3577,7 @@ export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
   {
     languageId: 'chinese',
     topicId: 'daily-travel',
-    difficulty: 'A1',
+    difficulty: 'A2',
     front: '这个作业什么时候交？我们要交打印版还是电子版？',
     back: 'When is this assignment due? Do we submit a printed copy or an electronic copy?',
     phonetic: 'Zhège zuòyè shénme shíhou jiāo? Wǒmen yào jiāo dǎyìnbǎn háishi diànzǐbǎn?',

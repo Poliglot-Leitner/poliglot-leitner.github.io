@@ -1,58 +1,68 @@
-# Leitner Spaced Repetition Learning
+# Polyglot Leitner: Language Learning System
 
-> A lean, minimalist in-browser learning app using the **Leitner 5-Box Spaced Repetition System**.
-> Built with **React 19, TypeScript, Vite, Tailwind CSS v4, Dexie (IndexedDB), KaTeX, and the Web Speech API**.
+> A lean, minimalist in-browser language learning tool using the **Leitner 5-Box Spaced Repetition System**.
+> Built with **React 19, TypeScript, Vite, Tailwind CSS v4, Dexie (IndexedDB), and the Web Speech API**.
 > **100% Client-Side &bull; Zero Backend &bull; Completely Offline PWA &bull; Hosted on GitHub Pages.**
 
 ---
 
-## Features
+## Language-First Curriculum Architecture
 
-- **Leitner 5-Box Spaced Repetition Engine**:
-  - **Box 1 (Daily)**: Brand-new or unmastered cards.
-  - **Box 2 (Every 3 days)**: Reinforcement stage.
-  - **Box 3 (Weekly / 7 days)**: Solid recall.
-  - **Box 4 (Fortnightly / 14 days)**: Long-term memory consolidation.
-  - **Box 5 (Monthly / 30 days)**: Mastered knowledge.
-  - Immediate promotion on recall; resets to Box 1 on forgotten cards for optimal neuro-retention.
-- **Curated Subjects with Starter Cards**:
-  - **Fun Facts**: Fascinating curiosities and nature anomalies.
-  - **Historical Figures**: Hypatia, Avicenna, Ada Lovelace, Marcus Aurelius, Toussaint Louverture, and more.
-  - **Science**: Quantum physics ($E=mc^2$, Heisenberg's principle), molecular biology, CRISPR-Cas9, ATP.
-  - **Mathematics**: Euler's identity ($e^{i\pi} + 1 = 0$), calculus derivatives, quadratic equations, Pythagorean theorem rendered in **KaTeX**.
-  - **Programming**: CS fundamentals, time complexities, closures, CAP theorem, Git internals.
-  - **Manners & Etiquette**: Table dining protocol (BMW rule), professional communications, introductions.
-  - **Survival Skills**: Wilderness rule of 3s, navigation by Polaris, emergency signals, hypothermia prevention.
-  - **Languages**: 
-    - **English**: Advanced vocabulary, idioms, homophone distinctions.
-    - **Spanish**: Essential idioms (*"Estar en las nubes"*), *ser* vs *estar*, dining expressions.
-    - **Chinese (Mandarin)**: Greetings, Confucius idioms (*温故知新*), encouragement (*加油*), with Pinyin.
-    - **German**: Compound concepts (*Schadenfreude*, *Fernweh*), travel expressions (*"Wo ist der Bahnhof?"*).
-- **Web Speech API**:
-  - Real-time native pronunciation in the target language accent (English, Spanish, Chinese, German, etc.) without external APIs or network calls.
-- **Local Device Multi-Profiles**:
-  - Create multiple local profiles on the same device.
-  - Independent cards, decks, and review schedules per profile.
-- **Data Sovereignty & Portability**:
-  - Export full JSON backup anytime.
-  - Import and restore backups on any browser or computer.
-- **Offline PWA**:
-  - Full service worker precaching with `vite-plugin-pwa`.
-  - Works on airplanes, subways, or without internet.
-  - Installable on iOS, Android, Windows, and macOS.
-- **Lean Minimalist Aesthetics**:
-  - Clean typography, generous whitespace, zen focus, dark and light mode toggle.
-  - Smooth 3D card flip with keyboard shortcuts (`Space` = Flip, `1` = Review again, `2` = Good, `S` = Pronounce, `H` = Hint).
+The app guides you through a 3-step learning matrix:
+
+1. **Step 1: Choose Your Target Languages**
+   - 🇪🇸 **Spanish** (`es-ES`): Conversational idioms, formal *usted* vs informal *tú*, and regional expressions.
+   - 🇬🇧 **English** (`en-US`): Nuanced vocabulary, false friends, idioms, and high-register terms.
+   - 🇩🇪 **German** (`de-DE`): Evocative compound nouns (*Schadenfreude*, *Fernweh*), travel essentials, and *Siezen* vs *Duzen*.
+   - 🇨🇳 **Chinese (Mandarin)** (`zh-CN`): Hanzi characters with **Pinyin tonal markings**, Chengyu idioms (*温故知新*), and conversational etiquette.
+
+2. **Step 2: Choose Learning Subjects & Topics**
+   - ✈️ **Daily Life & Travel**: Transit, ordering at cafés/restaurants, hotel requests, and navigation.
+   - 🤝 **Manners & Social Protocol**: Polite addresses, greetings, formal respect, and dinner table etiquette.
+   - 🏛️ **Culture & Traditions**: National festivals, folklore, history, and cultural heritage.
+   - 🔬 **Science & Nature**: Environmental terminology, astronomy, biology, and health.
+   - 💼 **Business & Professional**: Formal email formulas, meetings, consensus, and leadership.
+   - ✨ **Idioms, Proverbs & Wisdom**: Figurative expressions, cultural proverbs, and colloquial idioms.
+
+3. **Step 3: Select Your Difficulty Level (CEFR)**
+   - **Beginner (A1 – A2)**: Core vocabulary, foundational phrases, and essential question patterns.
+   - **Intermediate (B1 – B2)**: Conversational fluency, past/future tenses, and connecting ideas.
+   - **Advanced (C1)**: Professional nuance, formal registers, and abstract discussion.
+   - **Fluent (C2)**: Native-level subtleties, literary rhetoric, proverbs, and colloquialisms.
+
+---
+
+## Core Language Learning Features
+
+- **Leitner 5-Box Spaced Repetition**:
+  - **Box 1 (Daily)**: New and unmastered vocabulary.
+  - **Box 2 (Every 3 Days)**: Reinforcement.
+  - **Box 3 (Weekly / 7 Days)**: Solid recall.
+  - **Box 4 (Fortnightly / 14 Days)**: Long-term memory consolidation.
+  - **Box 5 (Monthly / 30 Days)**: Mastered fluency.
+  - Correct answers promote cards to Box $+1$; forgotten cards reset to Box 1 for reinforcement.
+- **Contextual Sentence Examples**:
+  - Every card includes a full example sentence in the target language and an English translation.
+- **Phonetics & Pinyin Support**:
+  - Chinese cards display clear **Pinyin with tonal marks** (e.g. *Nǐ hǎo*, *Wēn gù zhī xīn*).
+  - Spanish, German, and English cards provide IPA or phonetic guides.
+- **Web Speech API (Native TTS)**:
+  - Pronounces phrases in native target accents without external API calls or network latency.
+  - Keyboard shortcut `S` to trigger pronunciation anytime.
+- **Reverse Practice Mode**:
+  - Toggle between **Standard** (Target Language &rarr; Translation) and **Reverse** (Translation &rarr; Target Language) for active recall.
+- **Local Device Profiles & Data Sovereignty**:
+  - Manage multiple learner profiles on the same device.
+  - Export full JSON backups or restore previous study sessions anytime.
+- **100% Offline PWA**:
+  - Full service worker caching with `vite-plugin-pwa`.
+  - Works on planes, trains, and offline mobile devices.
 
 ---
 
 ## Local Development
 
 ```bash
-# Clone the repository
-git clone https://github.com/<your-username>/13-leitner.git
-cd 13-leitner
-
 # Install dependencies
 npm install
 
@@ -62,12 +72,8 @@ npm run dev
 
 ---
 
-## GitHub Pages Deployment
+## Deploy to GitHub Pages
 
-The repository includes a ready-to-use GitHub Actions workflow in [`.github/workflows/deploy.yml`](file:///.github/workflows/deploy.yml).
-
-To activate automatic deployments on GitHub:
-1. Go to your repository **Settings** on GitHub.
-2. In the left sidebar, click **Pages**.
-3. Under **Build and deployment** > **Source**, choose **GitHub Actions**.
-4. Push your code to `main` (or `master`). GitHub Actions will automatically build and deploy your app to `https://<your-username>.github.io/<repo-name>/`.
+1. In your GitHub repository, open **Settings** > **Pages**.
+2. Under **Build and deployment**, select **GitHub Actions**.
+3. Push your repository to `main` — the workflow at [`.github/workflows/deploy.yml`](file:///.github/workflows/deploy.yml) will automatically build and publish the PWA.

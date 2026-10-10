@@ -128,6 +128,17 @@ export function App() {
     setActiveBoxFilter(null);
   };
 
+  // Return to the main page (reset deck selection, study mode, filters, and modals)
+  const handleGoHome = () => {
+    setIsStudyMode(false);
+    setSelectedDeckId(null);
+    setSelectedLanguageFilter('all');
+    setActiveBoxFilter(null);
+    setIsProfileModalOpen(false);
+    setIsCurriculumModalOpen(false);
+    setIsCustomDeckModalOpen(false);
+  };
+
   // Start Study Session
   const handleStartStudy = async (deckId?: string) => {
     if (!activeProfile) return;
@@ -234,7 +245,6 @@ export function App() {
       <Navbar
         activeProfile={activeProfile}
         decks={decks}
-        onSelectDeck={handleSelectDeck}
         selectedLanguageFilter={selectedLanguageFilter}
         onSelectLanguageFilter={setSelectedLanguageFilter}
         onOpenProfileModal={() => setIsProfileModalOpen(true)}
@@ -242,6 +252,7 @@ export function App() {
         theme={theme}
         onToggleTheme={toggleTheme}
         totalDueToday={totalDueCards}
+        onGoHome={handleGoHome}
       />
 
       <main className="flex-1 max-w-5xl w-full mx-auto px-4 py-8">
@@ -377,7 +388,7 @@ export function App() {
                           key={deck.id}
                           deck={deck}
                           flag={langDef?.flag || '🌐'}
-                          onOpen={() => setSelectedDeckId(deck.id)}
+                          onOpen={() => handleSelectDeck(deck.id)}
                           onStudy={() => handleStartStudy(deck.id)}
                           onDelete={() => handleDeleteDeck(deck.id)}
                         />

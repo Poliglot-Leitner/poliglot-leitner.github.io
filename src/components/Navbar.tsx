@@ -13,7 +13,6 @@ import {
 interface NavbarProps {
   activeProfile: Profile;
   decks: Deck[];
-  onSelectDeck: (deckId: string | null) => void;
   selectedLanguageFilter: LanguageId | 'all';
   onSelectLanguageFilter: (lang: LanguageId | 'all') => void;
   onOpenProfileModal: () => void;
@@ -21,12 +20,12 @@ interface NavbarProps {
   theme: 'dark' | 'light';
   onToggleTheme: () => void;
   totalDueToday: number;
+  onGoHome: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   activeProfile,
   decks,
-  onSelectDeck,
   selectedLanguageFilter,
   onSelectLanguageFilter,
   onOpenProfileModal,
@@ -34,31 +33,31 @@ export const Navbar: React.FC<NavbarProps> = ({
   theme,
   onToggleTheme,
   totalDueToday,
+  onGoHome,
 }) => {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md">
       <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between gap-3">
         {/* Brand / Logo */}
         <div className="flex items-center gap-3">
-          <div
-            onClick={() => {
-              onSelectDeck(null);
-              onSelectLanguageFilter('all');
-            }}
-            className="flex items-center gap-2 cursor-pointer group"
+          <button
+            type="button"
+            onClick={onGoHome}
+            title="Return to main page"
+            className="flex items-center gap-2 cursor-pointer group text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 rounded-lg p-0.5 transition-opacity hover:opacity-85"
           >
-            <div className="w-8 h-8 rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 flex items-center justify-center font-bold text-xs shadow-xs">
+            <div className="w-8 h-8 rounded-lg bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 flex items-center justify-center font-bold text-xs shadow-xs group-hover:scale-105 transition-transform">
               <Globe2 className="w-4 h-4" />
             </div>
             <div className="flex flex-col">
-              <span className="text-sm font-bold tracking-tight text-zinc-900 dark:text-zinc-50 leading-none">
+              <span className="text-sm font-bold tracking-tight text-zinc-900 dark:text-zinc-50 leading-none group-hover:text-zinc-700 dark:group-hover:text-zinc-200 transition-colors">
                 Polyglot
               </span>
               <span className="text-[10px] text-zinc-400 font-mono tracking-wider uppercase">
                 Leitner Languages
               </span>
             </div>
-          </div>
+          </button>
 
           {/* Language Filter Pills */}
           <div className="hidden sm:flex items-center ml-3 pl-3 border-l border-zinc-200 dark:border-zinc-800 gap-1">

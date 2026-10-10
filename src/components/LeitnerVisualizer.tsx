@@ -1,0 +1,131 @@
+import React from 'react';
+import type { LeitnerBoxSummary } from '../types';
+import { Clock, CheckCircle2 } from 'lucide-react';
+
+interface LeitnerVisualizerProps {
+  summaries: LeitnerBoxSummary[];
+  activeBoxFilter: number | null;
+  onSelectBox: (box: number | null) => void;
+  totalCards: number;
+  totalDue: number;
+}
+
+export const LeitnerVisualizer: React.FC<LeitnerVisualizerProps> = ({
+  summaries,
+  activeBoxFilter,
+  onSelectBox,
+  totalCards,
+  totalDue,
+}) => {
+  return (
+    <div className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-5 mb-6 shadow-xs">
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+        <div>
+          <h2 className="text-sm font-semibold tracking-wide uppercase text-zinc-500 dark:text-zinc-400">
+            Leitner Spaced Repetition Boxes
+          </h2>
+          <p className="text-xs text-zinc-400 dark:text-zinc-500 mt-0.5">
+            Cards advance to the next interval upon recall, or reset to Box 1 for reinforcement.
+          </p>
+        </div>
+
+        <div className="flex items-center gap-3 text-xs">
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
+            <span className="font-semibold text-zinc-900 dark:text-zinc-100">{totalCards}</span> Total
+          </div>
+          <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md font-medium ${
+            totalDue > 0
+              ? 'bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20'
+              : 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20'
+          }`}>
+            {totalDue > 0 ? (
+              <>
+                <Clock className="w-3.5 h-3.5" />
+                <span>{totalDue} Due Today</span>
+              </>
+            ) : (
+              <>
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                <span>All Caught Up</span>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* 5-Box Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+        {summaries.map((s) => {
+          const isSelected = activeBoxFilter === s.box;
+          const percent = totalCards > 0 ? Math.round((s.cardCount / totalCards) * 100) : 0;
+
+          return (
+            <button
+              key={s.box}
+              type="button"
+              onClick={() => onSelectBox(isSelected ? null : s.box)}
+              className={`text-left p-3 rounded-lg border transition-all duration-150 flex flex-col justify-between relative overflow-hidden group ${
+                isSelected
+                  ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 border-zinc-900 dark:border-zinc-100 ring-2 ring-zinc-900/20 dark:ring-zinc-100/20'
+                  : 'bg-zinc-50/50 dark:bg-zinc-900/50 hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 border-zinc-200/80 dark:border-zinc-800'
+              }`}
+            >
+              {/* Progress Bar under each box */}
+              <div
+                className={`absolute bottom-0 left-0 h-0.5 transition-all ${
+                  isSelected ? 'bg-amber-400' : 'bg-zinc-300 dark:bg-zinc-700'
+                }`}
+                style={{ width: `${percent}%` }}
+              />
+
+              <div className="flex items-center justify-between w-full mb-2">
+                <span className={`text-[11px] font-semibold tracking-wider uppercase ${
+                  isSelected ? 'opacity-80' : 'text-zinc-400 dark:text-zinc-500'
+                }`}>
+                  Box {s.box}
+                </span>
+                <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded ${
+                  isSelected
+                    ? 'bg-white/20 dark:bg-black/10'
+                    : 'bg-zinc-200/70 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400'
+                }`}>
+                  {s.intervalDays}d
+                </span>
+              </div>
+
+              <div className="flex items-baseline justify-between w-full">
+                <span className={`text-xl font-semibold tracking-tight ${
+                  isSelected ? 'text-white dark:text-zinc-900' : 'text-zinc-900 dark:text-zinc-100'
+                }`}>
+                  {s.cardCount}
+                </span>
+
+                {s.dueCount > 0 && (
+                  <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full ${
+                    isSelected
+                      ? 'bg-amber-400 text-zinc-950 font-bold'
+                      : 'bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-800'
+                  }`}>
+                    {s.dueCount} due
+                  </span>
+                )}
+              </div>
+            </button>
+          );
+        })}
+      </div>
+
+      {activeBoxFilter !== null && (
+        <div className="mt-3 flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400 pt-2 border-t border-zinc-100 dark:border-zinc-800">
+          <span>Filtering cards in <strong>Box {activeBoxFilter}</strong></span>
+          <button
+            onClick={() => onSelectBox(null)}
+            className="text-zinc-700 dark:text-zinc-300 hover:underline cursor-pointer"
+          >
+            Clear filter
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};

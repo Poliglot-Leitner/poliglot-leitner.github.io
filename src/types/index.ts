@@ -52,18 +52,22 @@ export interface Deck {
   updatedAt: number;
 }
 
+export type CardType = 'sentence' | 'word';
+
 export interface Flashcard {
   id: string;
   deckId: string;
   profileId: string;
   languageId: LanguageId;
   difficulty: DifficultyLevel;
-  front: string; // Target language word / phrase / expression
+  cardType?: CardType; // 'word' for words/expressions, 'sentence' for full sentences
+  front: string; // Target language word / phrase / expression / sentence
   back: string; // Translation & meaning
   phonetic?: string; // Pinyin for Chinese, IPA / pronunciation for others
   exampleTarget?: string; // Example sentence in target language
   exampleTranslation?: string; // Example sentence translated
-  grammarNotes?: string; // Part of speech, gender article, cultural nuance
+  exampleSentences?: Array<{ target: string; translation: string; phonetic?: string }>; // Rich additional sentence examples
+  grammarNotes?: string; // Part of speech, gender article, cultural nuance, etymology
   hint?: string;
   isFavorite?: boolean; // User starred favorite for quick review
   box: 1 | 2 | 3 | 4 | 5;

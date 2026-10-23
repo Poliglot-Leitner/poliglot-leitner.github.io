@@ -17,6 +17,8 @@ import {
   BookOpen,
   SkipForward,
   Star,
+  Type,
+  MessageSquareQuote,
 } from 'lucide-react';
 
 interface StudySessionProps {
@@ -470,7 +472,24 @@ export const StudySession: React.FC<StudySessionProps> = ({
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <span className="text-[11px] font-mono uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
-                {isFlipped ? 'Meaning & Usage' : 'Target Phrase'}
+                {isFlipped ? 'Meaning & Usage' : (currentCard.cardType === 'word' ? 'Target Word / Expression' : 'Target Sentence')}
+              </span>
+              <span className={`inline-flex items-center gap-1 text-[10px] font-semibold uppercase px-2 py-0.5 rounded-full border ${
+                currentCard.cardType === 'word'
+                  ? 'bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800'
+                  : 'bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
+              }`}>
+                {currentCard.cardType === 'word' ? (
+                  <>
+                    <Type className="w-3 h-3" />
+                    <span>Word</span>
+                  </>
+                ) : (
+                  <>
+                    <MessageSquareQuote className="w-3 h-3" />
+                    <span>Sentence</span>
+                  </>
+                )}
               </span>
               {currentCard.difficulty && (
                 <span className="text-[10px] font-medium uppercase px-2 py-0.2 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
@@ -639,50 +658,105 @@ export const StudySession: React.FC<StudySessionProps> = ({
                   )}
                 </div>
 
-                {/* Example sentence & translation */}
-                {currentCard.exampleTarget && (
-                  <div className="p-3 sm:p-3.5 rounded-xl bg-zinc-100/70 dark:bg-zinc-800/60 border border-zinc-200/80 dark:border-zinc-700/60 text-xs space-y-1">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-1.5 text-zinc-400 font-medium">
-                        <BookOpen className="w-3.5 h-3.5" />
-                        <span>In Context:</span>
+                  {/* Example sentences list (both single exampleTarget or multiple exampleSentences) */}
+                  {((currentCard.exampleSentences && currentCard.exampleSentences.length > 0) || currentCard.exampleTarget) && (
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between text-zinc-400 font-medium text-xs px-0.5">
+                        <div className="flex items-center gap-1.5">
+                          <BookOpen className="w-3.5 h-3.5 text-indigo-500" />
+                          <span>Example Sentences & Usage in Context:</span>
+                        </div>
+                        {currentCard.cardType === 'word' && (
+                          <span className="text-[10px] font-mono uppercase bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 px-2 py-0.5 rounded-full border border-indigo-200 dark:border-indigo-800">
+                            Word Context
+                          </span>
+                        )}
                       </div>
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleSpeak(currentCard.exampleTarget!, targetLangCode);
-                        }}
-                        onPointerDown={e => e.stopPropagation()}
-                        title="Pronounce example sentence"
-                        className="p-1 rounded text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 hover:bg-zinc-200/60 dark:hover:bg-zinc-700 cursor-pointer active:scale-95"
-                      >
-                        <Volume2 className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-                    <p className="text-xs sm:text-sm font-medium text-zinc-800 dark:text-zinc-200">
-                      {currentCard.exampleTarget}
-                    </p>
-                    {currentCard.exampleTranslation && (
-                      <p className="text-[11px] sm:text-xs text-zinc-500 dark:text-zinc-400 italic">
-                        "{currentCard.exampleTranslation}"
-                      </p>
-                    )}
-                  </div>
-                )}
 
-                {/* Grammar & cultural context explanation */}
-                {currentCard.grammarNotes && (
-                  <div className="mt-3 p-3 rounded-xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-100/90 dark:border-indigo-900/50 text-[11px] sm:text-xs text-zinc-700 dark:text-zinc-300 leading-relaxed shadow-2xs">
-                    <div className="flex items-center gap-1.5 font-semibold text-indigo-700 dark:text-indigo-400 mb-1">
-                      <Sparkles className="w-3.5 h-3.5 shrink-0" />
-                      <span>Context & Cultural Explanation</span>
+                      {/* If card has multiple rich example sentences */}
+                      {currentCard.exampleSentences && currentCard.exampleSentences.length > 0 ? (
+                        <div className="space-y-2">
+                          {currentCard.exampleSentences.map((ex, exIdx) => (
+                            <div
+                              key={exIdx}
+                              className="p-3 sm:p-3.5 rounded-xl bg-zinc-100/80 dark:bg-zinc-800/70 border border-zinc-200/90 dark:border-zinc-700/70 text-xs space-y-1 transition-colors hover:border-zinc-300 dark:hover:border-zinc-600"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="text-[10px] font-mono font-semibold text-zinc-400">
+                                  Example {exIdx + 1}
+                                </span>
+                                <button
+                                  type="button"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleSpeak(ex.target, targetLangCode);
+                                  }}
+                                  onPointerDown={e => e.stopPropagation()}
+                                  title="Pronounce example sentence"
+                                  className="p-1 rounded text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 hover:bg-zinc-200/60 dark:hover:bg-zinc-700 cursor-pointer active:scale-95"
+                                >
+                                  <Volume2 className="w-3.5 h-3.5" />
+                                </button>
+                              </div>
+                              <p className="text-xs sm:text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                                {ex.target}
+                              </p>
+                              {ex.phonetic && (
+                                <p className="text-[11px] font-mono text-amber-700 dark:text-amber-300">
+                                  {ex.phonetic}
+                                </p>
+                              )}
+                              <p className="text-[11px] sm:text-xs text-zinc-500 dark:text-zinc-400 italic">
+                                "{ex.translation}"
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      ) : currentCard.exampleTarget ? (
+                        /* Single example sentence fallback */
+                        <div className="p-3 sm:p-3.5 rounded-xl bg-zinc-100/70 dark:bg-zinc-800/60 border border-zinc-200/80 dark:border-zinc-700/60 text-xs space-y-1">
+                          <div className="flex items-center justify-between">
+                            <span className="text-[10px] font-mono font-semibold text-zinc-400">
+                              Example
+                            </span>
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleSpeak(currentCard.exampleTarget!, targetLangCode);
+                              }}
+                              onPointerDown={e => e.stopPropagation()}
+                              title="Pronounce example sentence"
+                              className="p-1 rounded text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 hover:bg-zinc-200/60 dark:hover:bg-zinc-700 cursor-pointer active:scale-95"
+                            >
+                              <Volume2 className="w-3.5 h-3.5" />
+                            </button>
+                          </div>
+                          <p className="text-xs sm:text-sm font-medium text-zinc-800 dark:text-zinc-200">
+                            {currentCard.exampleTarget}
+                          </p>
+                          {currentCard.exampleTranslation && (
+                            <p className="text-[11px] sm:text-xs text-zinc-500 dark:text-zinc-400 italic">
+                              "{currentCard.exampleTranslation}"
+                            </p>
+                          )}
+                        </div>
+                      ) : null}
                     </div>
-                    <p className="opacity-95">{currentCard.grammarNotes}</p>
-                  </div>
-                )}
-              </div>
-            )}
+                  )}
+
+                  {/* Grammar & cultural context explanation */}
+                  {currentCard.grammarNotes && (
+                    <div className="mt-3 p-3 rounded-xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-100/90 dark:border-indigo-900/50 text-[11px] sm:text-xs text-zinc-700 dark:text-zinc-300 leading-relaxed shadow-2xs">
+                      <div className="flex items-center gap-1.5 font-semibold text-indigo-700 dark:text-indigo-400 mb-1">
+                        <Sparkles className="w-3.5 h-3.5 shrink-0" />
+                        <span>Word Notes, Grammar & Cultural Nuance</span>
+                      </div>
+                      <p className="opacity-95">{currentCard.grammarNotes}</p>
+                    </div>
+                  )}
+                </div>
+              )}
           </div>
 
           {/* Bottom Flip / Gesture Hint */}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { Deck, Flashcard } from '../types';
+import type { Deck, Flashcard, CardType } from '../types';
 import { addCard, updateCard, deleteCard, resetCardProgress, toggleCardFavorite } from '../db/database';
 import { FormattedContent } from './FormattedContent';
 import { useSpeech } from '../hooks/useSpeech';
@@ -12,6 +12,8 @@ import {
   Sparkles,
   BookOpen,
   Star,
+  Type,
+  MessageSquareQuote,
 } from 'lucide-react';
 
 interface DeckManagerProps {
@@ -39,17 +41,21 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
   // Form states
   const [front, setFront] = useState('');
   const [back, setBack] = useState('');
+  const [cardType, setCardType] = useState<CardType>('word');
   const [phonetic, setPhonetic] = useState('');
   const [exampleTarget, setExampleTarget] = useState('');
   const [exampleTranslation, setExampleTranslation] = useState('');
   const [grammarNotes, setGrammarNotes] = useState('');
   const [hint, setHint] = useState('');
 
+  const [cardTypeFilter, setCardTypeFilter] = useState<'all' | 'word' | 'sentence'>('all');
+
   const { speak, isSupported: speechSupported } = useSpeech();
 
   const resetForm = () => {
     setFront('');
     setBack('');
+    setCardType('word');
     setPhonetic('');
     setExampleTarget('');
     setExampleTranslation('');
@@ -63,6 +69,7 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
     setEditingCardId(card.id);
     setFront(card.front);
     setBack(card.back);
+    setCardType(card.cardType || 'sentence');
     setPhonetic(card.phonetic || '');
     setExampleTarget(card.exampleTarget || '');
     setExampleTranslation(card.exampleTranslation || '');
@@ -82,6 +89,7 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
           ...existing,
           front: front.trim(),
           back: back.trim(),
+          cardType,
           phonetic: phonetic.trim() || undefined,
           exampleTarget: exampleTarget.trim() || undefined,
           exampleTranslation: exampleTranslation.trim() || undefined,
@@ -101,7 +109,8 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
         exampleTarget,
         exampleTranslation,
         grammarNotes,
-        hint
+        hint,
+        cardType
       );
     }
 
@@ -131,10 +140,16 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
   const displayedCards = cards.filter(c => {
     if (activeBoxFilter !== null && c.box !== activeBoxFilter) return false;
     if (showFavoritesOnly && !c.isFavorite) return false;
+    if (cardTypeFilter !== 'all') {
+      const effectiveType = c.cardType || 'sentence';
+      if (effectiveType !== cardTypeFilter) return false;
+    }
     return true;
   });
 
   const favoritesCount = cards.filter(c => c.isFavorite).length;
+  const wordsCount = cards.filter(c => (c.cardType || 'sentence') === 'word').length;
+  const sentencesCount = cards.filter(c => (c.cardType || 'sentence') === 'sentence').length;
 
   return (
     <div className="w-full">
@@ -203,15 +218,48 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
           </div>
 
           <form onSubmit={handleSave} className="space-y-4">
+            {/* Card Type Selector */}
+            <div>
+              <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
+                Card Category
+              </label>
+              <div className="grid grid-cols-2 gap-2 max-w-sm">
+                <button
+                  type="button"
+                  onClick={() => setCardType('word')}
+                  className={`p-2 rounded-lg border text-xs font-medium flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+                    cardType === 'word'
+                      ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 border-zinc-900 dark:border-zinc-100 shadow-xs'
+                      : 'bg-white dark:bg-zinc-950 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800 hover:border-zinc-300'
+                  }`}
+                >
+                  <Type className="w-3.5 h-3.5" />
+                  <span>Word / Expression</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setCardType('sentence')}
+                  className={`p-2 rounded-lg border text-xs font-medium flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+                    cardType === 'sentence'
+                      ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 border-zinc-900 dark:border-zinc-100 shadow-xs'
+                      : 'bg-white dark:bg-zinc-950 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800 hover:border-zinc-300'
+                  }`}
+                >
+                  <MessageSquareQuote className="w-3.5 h-3.5" />
+                  <span>Full Sentence</span>
+                </button>
+              </div>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
-                  Target Language Expression
+                  {cardType === 'word' ? 'Target Word / Expression' : 'Target Sentence'}
                 </label>
                 <textarea
                   value={front}
                   onChange={e => setFront(e.target.value)}
-                  placeholder="e.g. ¿Dónde está la estación de tren? or 你好"
+                  placeholder={cardType === 'word' ? 'e.g. la sobremesa or 早上好' : 'e.g. ¿Dónde está la estación de tren?'}
                   rows={2}
                   required
                   className="w-full text-xs font-sans p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-1 focus:ring-zinc-900"
@@ -225,7 +273,7 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
                 <textarea
                   value={back}
                   onChange={e => setBack(e.target.value)}
-                  placeholder="e.g. Where is the train station?"
+                  placeholder="e.g. The post-meal conversation at the table with friends"
                   rows={2}
                   required
                   className="w-full text-xs font-sans p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-1 focus:ring-zinc-900"
@@ -323,15 +371,53 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
 
       {/* Cards List */}
       <div className="space-y-2.5">
-        <div className="flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400 px-1 mb-1">
-          <div className="flex items-center gap-2">
-            <span>{displayedCards.length} phrase{displayedCards.length === 1 ? '' : 's'}</span>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-zinc-500 dark:text-zinc-400 px-1 mb-1">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+            {/* Type Filter Pills: All / Words / Sentences */}
+            <div className="inline-flex items-center p-0.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700">
+              <button
+                type="button"
+                onClick={() => setCardTypeFilter('all')}
+                className={`px-2 py-0.5 rounded-md text-[11px] font-semibold transition-all cursor-pointer ${
+                  cardTypeFilter === 'all'
+                    ? 'bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 shadow-2xs'
+                    : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200'
+                }`}
+              >
+                All ({cards.length})
+              </button>
+              <button
+                type="button"
+                onClick={() => setCardTypeFilter('word')}
+                className={`px-2 py-0.5 rounded-md text-[11px] font-semibold transition-all flex items-center gap-1 cursor-pointer ${
+                  cardTypeFilter === 'word'
+                    ? 'bg-white dark:bg-zinc-900 text-indigo-600 dark:text-indigo-400 shadow-2xs'
+                    : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200'
+                }`}
+              >
+                <Type className="w-3 h-3" />
+                <span>Words ({wordsCount})</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setCardTypeFilter('sentence')}
+                className={`px-2 py-0.5 rounded-md text-[11px] font-semibold transition-all flex items-center gap-1 cursor-pointer ${
+                  cardTypeFilter === 'sentence'
+                    ? 'bg-white dark:bg-zinc-900 text-emerald-600 dark:text-emerald-400 shadow-2xs'
+                    : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200'
+                }`}
+              >
+                <MessageSquareQuote className="w-3 h-3" />
+                <span>Sentences ({sentencesCount})</span>
+              </button>
+            </div>
+
             <button
               type="button"
               onClick={() => setShowFavoritesOnly(prev => !prev)}
-              className={`px-2 py-0.5 rounded-full text-[11px] font-medium transition-all flex items-center gap-1 cursor-pointer border ${
+              className={`px-2 py-1 rounded-lg text-[11px] font-medium transition-all flex items-center gap-1 cursor-pointer border ${
                 showFavoritesOnly
-                  ? 'bg-amber-400 text-amber-950 border-amber-500 shadow-2xs'
+                  ? 'bg-amber-400 text-amber-950 border-amber-500 shadow-2xs font-semibold'
                   : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700 hover:text-amber-600 dark:hover:text-amber-400'
               }`}
               title="Filter by favorite sentences"
@@ -340,18 +426,23 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
               <span>Favorites ({favoritesCount})</span>
             </button>
           </div>
-          <span className="text-[11px]">Leitner 5-Box Schedule</span>
+          <span className="text-[11px] font-mono text-zinc-400">
+            Showing {displayedCards.length} of {cards.length}
+          </span>
         </div>
 
         {displayedCards.length === 0 ? (
           <div className="py-12 text-center rounded-xl border border-dashed border-zinc-200 dark:border-zinc-800 text-zinc-400 text-xs">
             {showFavoritesOnly
               ? 'No favorite phrases found in this deck. Click the star icon on any card to add it to your favorites!'
+              : cardTypeFilter !== 'all'
+              ? `No ${cardTypeFilter === 'word' ? 'words/expressions' : 'sentences'} match the current filter.`
               : 'No phrases found in this box. Add a new phrase or clear the filter.'}
           </div>
         ) : (
           displayedCards.map(card => {
             const isDue = card.nextReviewDate <= Date.now();
+            const isWord = (card.cardType || 'sentence') === 'word';
 
             return (
               <div
@@ -362,6 +453,23 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
                   <div className="flex items-center gap-2">
                     <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 font-semibold text-zinc-700 dark:text-zinc-300">
                       Box {card.box}
+                    </span>
+                    <span className={`inline-flex items-center gap-1 text-[9px] font-semibold uppercase px-2 py-0.5 rounded-full border ${
+                      isWord
+                        ? 'bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800'
+                        : 'bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
+                    }`}>
+                      {isWord ? (
+                        <>
+                          <Type className="w-2.5 h-2.5" />
+                          <span>Word</span>
+                        </>
+                      ) : (
+                        <>
+                          <MessageSquareQuote className="w-2.5 h-2.5" />
+                          <span>Sentence</span>
+                        </>
+                      )}
                     </span>
                     {isDue && (
                       <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400">
@@ -396,7 +504,19 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
                     <FormattedContent content={card.back} />
                   </div>
 
-                  {card.exampleTarget && (
+                  {card.exampleSentences && card.exampleSentences.length > 0 ? (
+                    <div className="space-y-1.5 pt-1">
+                      {card.exampleSentences.map((ex, exIdx) => (
+                        <div key={exIdx} className="text-xs text-zinc-500 dark:text-zinc-400 flex items-start gap-1.5 bg-zinc-50 dark:bg-zinc-800/40 p-2 rounded-lg border border-zinc-100 dark:border-zinc-800">
+                          <BookOpen className="w-3.5 h-3.5 shrink-0 mt-0.5 text-indigo-500" />
+                          <div>
+                            <span className="font-medium text-zinc-800 dark:text-zinc-200">{ex.target}</span>{' '}
+                            {ex.translation && <span className="italic">({ex.translation})</span>}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : card.exampleTarget ? (
                     <div className="text-xs text-zinc-500 dark:text-zinc-400 pt-1 flex items-start gap-1.5">
                       <BookOpen className="w-3.5 h-3.5 shrink-0 mt-0.5 text-zinc-400" />
                       <span>
@@ -404,7 +524,7 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
                         {card.exampleTranslation && <span className="italic">({card.exampleTranslation})</span>}
                       </span>
                     </div>
-                  )}
+                  ) : null}
                 </div>
 
                 {/* Actions */}

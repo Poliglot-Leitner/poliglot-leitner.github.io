@@ -6,6 +6,7 @@ import type {
   LeitnerBoxSummary,
   LanguageId,
   DifficultyLevel,
+  CardType,
 } from '../types';
 import {
   SUPPORTED_LANGUAGES,
@@ -38,6 +39,9 @@ export class LeitnerDatabase extends Dexie {
     });
     this.version(3).stores({
       cards: 'id, deckId, profileId, languageId, difficulty, box, nextReviewDate, lastReviewedDate, isFavorite',
+    });
+    this.version(4).stores({
+      cards: 'id, deckId, profileId, languageId, difficulty, box, nextReviewDate, lastReviewedDate, isFavorite, cardType',
     });
   }
 }
@@ -160,11 +164,13 @@ export async function seedCurriculumForProfile(
             profileId,
             languageId: s.languageId,
             difficulty: normalizeDifficulty(s.difficulty),
+            cardType: s.cardType || 'sentence',
             front: s.front,
             back: s.back,
             phonetic: s.phonetic,
             exampleTarget: s.exampleTarget,
             exampleTranslation: s.exampleTranslation,
+            exampleSentences: s.exampleSentences,
             grammarNotes: s.grammarNotes,
             hint: s.hint,
             box: 1,
@@ -177,13 +183,21 @@ export async function seedCurriculumForProfile(
           await db.cards.bulkAdd(newCards);
         }
 
-        // Synchronize enriched grammar notes, hints, and explanations onto existing cards
+        // Synchronize enriched grammar notes, hints, cardType, and explanations onto existing cards
         for (const card of currentCards) {
           const seedMatch = LANGUAGE_CURRICULUM_SEEDS.find(
             s => s.front === card.front && s.languageId === card.languageId
           );
           if (seedMatch) {
             let changed = false;
+            if (seedMatch.cardType && card.cardType !== seedMatch.cardType) {
+              card.cardType = seedMatch.cardType;
+              changed = true;
+            }
+            if (seedMatch.exampleSentences && JSON.stringify(card.exampleSentences) !== JSON.stringify(seedMatch.exampleSentences)) {
+              card.exampleSentences = seedMatch.exampleSentences;
+              changed = true;
+            }
             if (seedMatch.grammarNotes && card.grammarNotes !== seedMatch.grammarNotes) {
               card.grammarNotes = seedMatch.grammarNotes;
               changed = true;
@@ -233,11 +247,13 @@ export async function seedCurriculumForProfile(
         profileId,
         languageId: s.languageId,
         difficulty: normalizeDifficulty(s.difficulty),
+        cardType: s.cardType || 'sentence',
         front: s.front,
         back: s.back,
         phonetic: s.phonetic,
         exampleTarget: s.exampleTarget,
         exampleTranslation: s.exampleTranslation,
+        exampleSentences: s.exampleSentences,
         grammarNotes: s.grammarNotes,
         hint: s.hint,
         box: 1,
@@ -362,7 +378,9 @@ export async function addCard(
   exampleTarget?: string,
   exampleTranslation?: string,
   grammarNotes?: string,
-  hint?: string
+  hint?: string,
+  cardType?: CardType,
+  exampleSentences?: Array<{ target: string; translation: string; phonetic?: string }>
 ): Promise<Flashcard> {
   const newCard: Flashcard = {
     id: 'card_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
@@ -370,11 +388,13 @@ export async function addCard(
     profileId,
     languageId,
     difficulty,
+    cardType: cardType || 'sentence',
     front: front.trim(),
     back: back.trim(),
     phonetic: phonetic?.trim() || undefined,
     exampleTarget: exampleTarget?.trim() || undefined,
     exampleTranslation: exampleTranslation?.trim() || undefined,
+    exampleSentences: exampleSentences && exampleSentences.length > 0 ? exampleSentences : undefined,
     grammarNotes: grammarNotes?.trim() || undefined,
     hint: hint?.trim() || undefined,
     box: 1,

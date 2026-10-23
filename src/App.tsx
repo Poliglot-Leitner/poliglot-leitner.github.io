@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import type { Profile, Deck, Flashcard, LeitnerBoxSummary, LanguageId, DifficultyLevel } from './types';
+import type { Profile, Deck, Flashcard, LeitnerBoxSummary, LanguageId, DifficultyLevel, CardType } from './types';
 import {
   getAllProfiles,
   createProfile,
@@ -38,6 +38,7 @@ export function App() {
   const [decks, setDecks] = useState<Deck[]>([]);
   const [selectedDeckId, setSelectedDeckId] = useState<string | null>(null);
   const [selectedLanguageFilter, setSelectedLanguageFilter] = useState<LanguageId | 'all'>('all');
+  const [selectedCardTypeFilter, setSelectedCardTypeFilter] = useState<CardType | 'all'>('all');
   const [cards, setCards] = useState<Flashcard[]>([]);
   const [allCards, setAllCards] = useState<Flashcard[]>([]);
   const [boxSummaries, setBoxSummaries] = useState<LeitnerBoxSummary[]>([]);
@@ -151,9 +152,14 @@ export function App() {
       activeCards = activeCards.filter(c => c.languageId === selectedLanguageFilter);
     }
 
+    // Apply card type filter (words/expressions vs full sentences)
+    if (selectedCardTypeFilter !== 'all') {
+      activeCards = activeCards.filter(c => (c.cardType || 'sentence') === selectedCardTypeFilter);
+    }
+
     setCards(activeCards);
     setBoxSummaries(computeBoxSummaries(activeCards));
-  }, [activeProfile, selectedDeckId, selectedLanguageFilter]);
+  }, [activeProfile, selectedDeckId, selectedLanguageFilter, selectedCardTypeFilter]);
 
   useEffect(() => {
     refreshProfileData();
@@ -171,27 +177,34 @@ export function App() {
     setIsFavoritesPage(false);
     setSelectedDeckId(null);
     setSelectedLanguageFilter('all');
+    setSelectedCardTypeFilter('all');
     setActiveBoxFilter(null);
     setIsProfileModalOpen(false);
     setIsCurriculumModalOpen(false);
     setIsCustomDeckModalOpen(false);
   };
 
-  // Start Study Session (Enforce 10 sentences per session)
-  const handleStartStudy = async (deckId?: string) => {
+  // Start Study Session (Enforce 10 cards per session)
+  const handleStartStudy = async (deckId?: string, forceCardType?: CardType) => {
     if (!activeProfile) return;
 
     const SESSION_SIZE = 10;
     const langFilter = selectedLanguageFilter !== 'all' ? selectedLanguageFilter : undefined;
+    const typeFilter = forceCardType || (selectedCardTypeFilter !== 'all' ? selectedCardTypeFilter : undefined);
+
     const dueCards = await getDueCards(
       activeProfile.id,
       deckId || selectedDeckId || undefined,
       !deckId && !selectedDeckId ? langFilter : undefined
     );
 
+    const filteredDueCards = typeFilter
+      ? dueCards.filter(c => (c.cardType || 'sentence') === typeFilter)
+      : dueCards;
+
     let queue: Flashcard[] = [];
-    if (dueCards.length > 0) {
-      queue = dueCards.slice(0, SESSION_SIZE);
+    if (filteredDueCards.length > 0) {
+      queue = filteredDueCards.slice(0, SESSION_SIZE);
     } else {
       // If no cards are due today, allow practice of cards in current scope
       const targetCards = deckId
@@ -200,7 +213,11 @@ export function App() {
         ? await getCardsForDeck(selectedDeckId)
         : cards;
 
-      queue = targetCards.slice(0, SESSION_SIZE);
+      const filteredTarget = typeFilter
+        ? targetCards.filter(c => (c.cardType || 'sentence') === typeFilter)
+        : targetCards;
+
+      queue = filteredTarget.slice(0, SESSION_SIZE);
     }
 
     setStudyQueue(queue);
@@ -353,18 +370,35 @@ export function App() {
         ) : (
           <div>
             {/* Visualizer Header */}
-            <LeitnerVisualizer
-              summaries={boxSummaries}
-              activeBoxFilter={activeBoxFilter}
-              onSelectBox={setActiveBoxFilter}
-              totalCards={cards.length}
-              totalDue={totalDueCards}
-              totalFavorites={totalFavoriteCards}
-              onOpenFavorites={() => {
-                setSelectedDeckId(null);
-                setIsFavoritesPage(true);
-              }}
-            />
+            {(() => {
+              // Calculate word & sentence counts for current scope (active deck or language filter)
+              const currentScopeCards = selectedDeckId
+                ? allCards.filter(c => c.deckId === selectedDeckId)
+                : selectedLanguageFilter !== 'all'
+                ? allCards.filter(c => c.languageId === selectedLanguageFilter)
+                : allCards;
+              const wordsCount = currentScopeCards.filter(c => c.cardType === 'word').length;
+              const sentencesCount = currentScopeCards.filter(c => (c.cardType || 'sentence') === 'sentence').length;
+
+              return (
+                <LeitnerVisualizer
+                  summaries={boxSummaries}
+                  activeBoxFilter={activeBoxFilter}
+                  onSelectBox={setActiveBoxFilter}
+                  totalCards={cards.length}
+                  totalDue={totalDueCards}
+                  totalFavorites={totalFavoriteCards}
+                  selectedCardTypeFilter={selectedCardTypeFilter}
+                  onSelectCardTypeFilter={setSelectedCardTypeFilter}
+                  wordsCount={wordsCount}
+                  sentencesCount={sentencesCount}
+                  onOpenFavorites={() => {
+                    setSelectedDeckId(null);
+                    setIsFavoritesPage(true);
+                  }}
+                />
+              );
+            })()}
 
             {/* If viewing a single deck */}
             {selectedDeck ? (
@@ -644,6 +678,8 @@ function LanguageDeckCard({
   }, [deck.id]);
 
   const dueCount = deckCards.filter(c => c.nextReviewDate <= Date.now()).length;
+  const wordCount = deckCards.filter(c => c.cardType === 'word').length;
+  const sentenceCount = deckCards.filter(c => (c.cardType || 'sentence') === 'sentence').length;
 
   return (
     <div
@@ -679,14 +715,23 @@ function LanguageDeckCard({
       </div>
 
       <div className="pt-3 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className="text-xs font-mono text-zinc-600 dark:text-zinc-400">
-            {deckCards.length} phrases
-          </span>
-          {dueCount > 0 && (
-            <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/20">
-              {dueCount} due
+        <div className="flex flex-col gap-0.5">
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-mono text-zinc-700 dark:text-zinc-300 font-medium">
+              {deckCards.length} phrases
             </span>
+            {dueCount > 0 && (
+              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/20">
+                {dueCount} due
+              </span>
+            )}
+          </div>
+          {(wordCount > 0 || sentenceCount > 0) && (
+            <div className="flex items-center gap-2 text-[10px] text-zinc-400 dark:text-zinc-500">
+              {wordCount > 0 && <span>{wordCount} words</span>}
+              {wordCount > 0 && sentenceCount > 0 && <span>•</span>}
+              {sentenceCount > 0 && <span>{sentenceCount} sentences</span>}
+            </div>
           )}
         </div>
 

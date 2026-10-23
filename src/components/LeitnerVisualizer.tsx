@@ -1,6 +1,6 @@
 import React from 'react';
-import type { LeitnerBoxSummary } from '../types';
-import { Clock, CheckCircle2, Star } from 'lucide-react';
+import type { LeitnerBoxSummary, CardType } from '../types';
+import { Clock, CheckCircle2, Star, Type, MessageSquareQuote, Layers } from 'lucide-react';
 
 interface LeitnerVisualizerProps {
   summaries: LeitnerBoxSummary[];
@@ -10,6 +10,10 @@ interface LeitnerVisualizerProps {
   totalDue: number;
   totalFavorites?: number;
   onOpenFavorites?: () => void;
+  selectedCardTypeFilter?: CardType | 'all';
+  onSelectCardTypeFilter?: (type: CardType | 'all') => void;
+  wordsCount?: number;
+  sentencesCount?: number;
 }
 
 export const LeitnerVisualizer: React.FC<LeitnerVisualizerProps> = ({
@@ -20,20 +24,76 @@ export const LeitnerVisualizer: React.FC<LeitnerVisualizerProps> = ({
   totalDue,
   totalFavorites = 0,
   onOpenFavorites,
+  selectedCardTypeFilter = 'all',
+  onSelectCardTypeFilter,
+  wordsCount = 0,
+  sentencesCount = 0,
 }) => {
   return (
     <div className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-3.5 sm:p-5 mb-5 sm:mb-6 shadow-xs">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3 mb-3.5 sm:mb-4">
         <div>
-          <h2 className="text-xs sm:text-sm font-semibold tracking-wide uppercase text-zinc-500 dark:text-zinc-400">
-            Leitner Spaced Repetition Boxes
-          </h2>
+          <div className="flex items-center gap-2">
+            <h2 className="text-xs sm:text-sm font-semibold tracking-wide uppercase text-zinc-500 dark:text-zinc-400">
+              Leitner Spaced Repetition Boxes
+            </h2>
+            {onSelectCardTypeFilter && (
+              <span className="hidden md:inline-flex text-[10px] font-mono px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
+                Mode: {selectedCardTypeFilter === 'all' ? 'All Cards' : selectedCardTypeFilter === 'word' ? 'Words & Expressions' : 'Sentences'}
+              </span>
+            )}
+          </div>
           <p className="text-[11px] sm:text-xs text-zinc-400 dark:text-zinc-500 mt-0.5">
             Cards advance to longer intervals upon recall, or reset to Box 1 for reinforcement.
           </p>
         </div>
 
         <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs self-start sm:self-auto">
+          {/* Card Type Selector (Words vs Sentences vs All) */}
+          {onSelectCardTypeFilter && (
+            <div className="inline-flex items-center p-0.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-2xs">
+              <button
+                type="button"
+                onClick={() => onSelectCardTypeFilter('all')}
+                className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center gap-1 ${
+                  selectedCardTypeFilter === 'all'
+                    ? 'bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 shadow-2xs'
+                    : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200'
+                }`}
+                title="Review all flashcards together"
+              >
+                <Layers className="w-3.5 h-3.5" />
+                <span>All ({totalCards})</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => onSelectCardTypeFilter('word')}
+                className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center gap-1 ${
+                  selectedCardTypeFilter === 'word'
+                    ? 'bg-indigo-600 text-white shadow-2xs'
+                    : 'text-zinc-600 dark:text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400'
+                }`}
+                title="Review words and individual expressions"
+              >
+                <Type className="w-3.5 h-3.5" />
+                <span>Words ({wordsCount})</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => onSelectCardTypeFilter('sentence')}
+                className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center gap-1 ${
+                  selectedCardTypeFilter === 'sentence'
+                    ? 'bg-emerald-600 text-white shadow-2xs'
+                    : 'text-zinc-600 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400'
+                }`}
+                title="Review full conversational sentences"
+              >
+                <MessageSquareQuote className="w-3.5 h-3.5" />
+                <span>Sentences ({sentencesCount})</span>
+              </button>
+            </div>
+          )}
+
           {onOpenFavorites && (
             <button
               type="button"

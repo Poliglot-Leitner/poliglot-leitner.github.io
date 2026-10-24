@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import type { Flashcard, Deck, SessionResult } from '../types';
-import { processCardReview } from '../db/database';
+import { processCardReview, db } from '../db/database';
 import { FormattedContent } from './FormattedContent';
 import { useSpeech } from '../hooks/useSpeech';
 import confetti from 'canvas-confetti';
@@ -16,10 +16,13 @@ import {
   Repeat,
   BookOpen,
   SkipForward,
+  SkipBack,
   Star,
   Type,
   MessageSquareQuote,
+  MessagesSquare,
 } from 'lucide-react';
+import { DialogueCardContent } from './DialogueCardContent';
 
 interface StudySessionProps {
   deck?: Deck;
@@ -139,6 +142,35 @@ export const StudySession: React.FC<StudySessionProps> = ({
       }
     }
   }, [currentIndex, cards.length]);
+
+  const handlePrevious = useCallback(async () => {
+    if (currentIndex <= 0) return;
+
+    // Check if the previous card was graded in this session
+    const lastResult = sessionResults[sessionResults.length - 1];
+    const prevCard = cards[currentIndex - 1];
+
+    if (lastResult && lastResult.cardId === prevCard.id) {
+      const freshCard = await db.cards.get(prevCard.id);
+      if (freshCard) {
+        const reverted: Flashcard = {
+          ...freshCard,
+          box: (lastResult.oldBox as 1 | 2 | 3 | 4 | 5) || 1,
+          totalReviews: Math.max(0, freshCard.totalReviews - 1),
+          correctCount: lastResult.wasCorrect ? Math.max(0, freshCard.correctCount - 1) : freshCard.correctCount,
+          incorrectCount: !lastResult.wasCorrect ? Math.max(0, freshCard.incorrectCount - 1) : freshCard.incorrectCount,
+        };
+        await db.cards.put(reverted);
+      }
+      setSessionResults(prev => prev.slice(0, -1));
+    }
+
+    setCurrentIndex(prev => prev - 1);
+    setIsFlipped(false);
+    setShowHint(false);
+    setDragOffset(0);
+    setFlyDirection(null);
+  }, [currentIndex, cards, sessionResults]);
 
   const handleGrade = useCallback(async (wasCorrect: boolean) => {
     if (!currentCard) return;
@@ -265,6 +297,9 @@ export const StudySession: React.FC<StudySessionProps> = ({
       } else if (e.key.toLowerCase() === 'k') {
         e.preventDefault();
         handleSkip();
+      } else if (e.key.toLowerCase() === 'j') {
+        e.preventDefault();
+        handlePrevious();
       } else if (e.key.toLowerCase() === 's') {
         if (currentCard) {
           e.preventDefault();
@@ -285,7 +320,7 @@ export const StudySession: React.FC<StudySessionProps> = ({
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [handleFlip, handleGrade, handleSkip, handleSpeak, handleToggleCurrentFavorite, isFlipped, isCompleted, currentCard, isReverseMode, onExit]);
+  }, [handleFlip, handleGrade, handleSkip, handlePrevious, handleSpeak, handleToggleCurrentFavorite, isFlipped, isCompleted, currentCard, isReverseMode, onExit]);
 
   if (!cards || cards.length === 0) {
     return (
@@ -472,17 +507,30 @@ export const StudySession: React.FC<StudySessionProps> = ({
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <span className="text-[11px] font-mono uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
-                {isFlipped ? 'Meaning & Usage' : (currentCard.cardType === 'word' ? 'Target Word / Expression' : 'Target Sentence')}
+                {isFlipped
+                  ? (currentCard.cardType === 'dialogue' ? 'Dialogue Translation & Nuance' : 'Meaning & Usage')
+                  : (currentCard.cardType === 'word'
+                  ? 'Target Word / Expression'
+                  : currentCard.cardType === 'dialogue'
+                  ? 'Two-Person Dialogue'
+                  : 'Target Sentence')}
               </span>
               <span className={`inline-flex items-center gap-1 text-[10px] font-semibold uppercase px-2 py-0.5 rounded-full border ${
                 currentCard.cardType === 'word'
                   ? 'bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800'
+                  : currentCard.cardType === 'dialogue'
+                  ? 'bg-purple-50 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800'
                   : 'bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
               }`}>
                 {currentCard.cardType === 'word' ? (
                   <>
                     <Type className="w-3 h-3" />
                     <span>Word</span>
+                  </>
+                ) : currentCard.cardType === 'dialogue' ? (
+                  <>
+                    <MessagesSquare className="w-3 h-3" />
+                    <span>Dialogue</span>
                   </>
                 ) : (
                   <>
@@ -574,7 +622,24 @@ export const StudySession: React.FC<StudySessionProps> = ({
 
           {/* Card Body */}
           <div className="my-auto py-3 sm:py-4">
-            {!isFlipped ? (
+            {currentCard.cardType === 'dialogue' ? (
+              <div className="w-full">
+                <DialogueCardContent
+                  front={currentCard.front}
+                  back={currentCard.back}
+                  phonetic={currentCard.phonetic}
+                  isFlipped={isFlipped}
+                  languageCode={targetLangCode}
+                  onSpeak={speechSupported ? handleSpeak : undefined}
+                />
+
+                {showHint && currentCard.hint && !isFlipped && (
+                  <div className="mt-4 p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-800 dark:text-amber-300 animate-in fade-in">
+                    <strong>Hint:</strong> {currentCard.hint}
+                  </div>
+                )}
+              </div>
+            ) : !isFlipped ? (
               <div>
                 {/* Phonetic / Pinyin display */}
                 {!isReverseMode && currentCard.phonetic && (
@@ -779,17 +844,34 @@ export const StudySession: React.FC<StudySessionProps> = ({
           <div className="w-full flex items-center gap-2 sm:gap-3">
             <button
               type="button"
+              onClick={handlePrevious}
+              disabled={currentIndex === 0}
+              title={currentIndex === 0 ? 'This is the first card' : 'Return to previous card (Shortcut: J)'}
+              className={`py-3 sm:py-3.5 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-medium border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 shrink-0 shadow-2xs ${
+                currentIndex === 0
+                  ? 'opacity-40 cursor-not-allowed pointer-events-none'
+                  : 'hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 cursor-pointer'
+              }`}
+            >
+              <SkipBack className="w-4 h-4" />
+              <span>Previous</span>
+              <kbd className="hidden sm:inline-block font-mono bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded text-[10px]">J</kbd>
+            </button>
+
+            <button
+              type="button"
               onClick={handleFlip}
               className="flex-1 py-3 sm:py-3.5 rounded-xl text-xs sm:text-sm font-semibold tracking-wide bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 active:scale-[0.99] transition-all cursor-pointer shadow-xs flex items-center justify-center gap-2"
             >
               <span>Show Translation</span>
               <kbd className="hidden sm:inline-block font-mono bg-white/20 dark:bg-black/10 px-1.5 py-0.5 rounded text-[10px]">Space</kbd>
             </button>
+
             <button
               type="button"
               onClick={handleSkip}
               title="Skip to next card (Shortcut: K or swipe card left/right)"
-              className="py-3 sm:py-3.5 px-4 sm:px-5 rounded-xl text-xs sm:text-sm font-medium border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 active:scale-[0.98] transition-all cursor-pointer flex items-center justify-center gap-1.5 shrink-0 shadow-2xs"
+              className="py-3 sm:py-3.5 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-medium border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 active:scale-[0.98] transition-all cursor-pointer flex items-center justify-center gap-1.5 shrink-0 shadow-2xs"
             >
               <SkipForward className="w-4 h-4" />
               <span>Skip</span>
@@ -797,11 +879,27 @@ export const StudySession: React.FC<StudySessionProps> = ({
             </button>
           </div>
         ) : (
-          <div className="w-full grid grid-cols-2 gap-2 sm:gap-3">
+          <div className="w-full flex items-center gap-2 sm:gap-3">
+            <button
+              type="button"
+              onClick={handlePrevious}
+              disabled={currentIndex === 0}
+              title={currentIndex === 0 ? 'This is the first card' : 'Return to previous card (Shortcut: J)'}
+              className={`py-3 sm:py-3.5 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-medium border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 shrink-0 shadow-2xs ${
+                currentIndex === 0
+                  ? 'opacity-40 cursor-not-allowed pointer-events-none'
+                  : 'hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 cursor-pointer'
+              }`}
+            >
+              <SkipBack className="w-4 h-4" />
+              <span className="hidden sm:inline">Previous</span>
+              <kbd className="hidden sm:inline-block font-mono bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded text-[10px]">J</kbd>
+            </button>
+
             <button
               type="button"
               onClick={() => handleGrade(false)}
-              className="py-3 sm:py-3.5 px-3 sm:px-4 rounded-xl border border-red-200 dark:border-red-950/60 bg-red-500/10 hover:bg-red-500/15 text-red-700 dark:text-red-400 text-xs sm:text-sm font-semibold active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer"
+              className="flex-1 py-3 sm:py-3.5 px-3 sm:px-4 rounded-xl border border-red-200 dark:border-red-950/60 bg-red-500/10 hover:bg-red-500/15 text-red-700 dark:text-red-400 text-xs sm:text-sm font-semibold active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer"
             >
               <XCircle className="w-4 h-4 shrink-0" />
               <span>Review Again</span>
@@ -811,7 +909,7 @@ export const StudySession: React.FC<StudySessionProps> = ({
             <button
               type="button"
               onClick={() => handleGrade(true)}
-              className="py-3 sm:py-3.5 px-3 sm:px-4 rounded-xl border border-emerald-200 dark:border-emerald-950/60 bg-emerald-500/15 hover:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-xs sm:text-sm font-semibold active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer shadow-xs"
+              className="flex-1 py-3 sm:py-3.5 px-3 sm:px-4 rounded-xl border border-emerald-200 dark:border-emerald-950/60 bg-emerald-500/15 hover:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-xs sm:text-sm font-semibold active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer shadow-xs"
             >
               <CheckCircle className="w-4 h-4 shrink-0" />
               <span>I Know This</span>

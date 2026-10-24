@@ -1,6 +1,6 @@
 import React from 'react';
 import type { LeitnerBoxSummary, CardType } from '../types';
-import { Clock, CheckCircle2, Star, Type, MessageSquareQuote, Layers } from 'lucide-react';
+import { Clock, CheckCircle2, Star, Type, MessageSquareQuote, MessagesSquare, Layers } from 'lucide-react';
 
 interface LeitnerVisualizerProps {
   summaries: LeitnerBoxSummary[];
@@ -14,6 +14,7 @@ interface LeitnerVisualizerProps {
   onSelectCardTypeFilter?: (type: CardType | 'all') => void;
   wordsCount?: number;
   sentencesCount?: number;
+  dialoguesCount?: number;
 }
 
 export const LeitnerVisualizer: React.FC<LeitnerVisualizerProps> = ({
@@ -28,6 +29,7 @@ export const LeitnerVisualizer: React.FC<LeitnerVisualizerProps> = ({
   onSelectCardTypeFilter,
   wordsCount = 0,
   sentencesCount = 0,
+  dialoguesCount = 0,
 }) => {
   return (
     <div className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-3.5 sm:p-5 mb-5 sm:mb-6 shadow-xs">
@@ -39,7 +41,7 @@ export const LeitnerVisualizer: React.FC<LeitnerVisualizerProps> = ({
             </h2>
             {onSelectCardTypeFilter && (
               <span className="hidden md:inline-flex text-[10px] font-mono px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-                Mode: {selectedCardTypeFilter === 'all' ? 'All Cards' : selectedCardTypeFilter === 'word' ? 'Words & Expressions' : 'Sentences'}
+                Mode: {selectedCardTypeFilter === 'all' ? 'All Cards' : selectedCardTypeFilter === 'word' ? 'Words & Expressions' : selectedCardTypeFilter === 'sentence' ? 'Sentences' : 'Dialogues'}
               </span>
             )}
           </div>
@@ -49,7 +51,7 @@ export const LeitnerVisualizer: React.FC<LeitnerVisualizerProps> = ({
         </div>
 
         <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs self-start sm:self-auto">
-          {/* Card Type Selector (Words vs Sentences vs All) */}
+          {/* Card Type Selector (Words vs Sentences vs Dialogues vs All) */}
           {onSelectCardTypeFilter && (
             <div className="inline-flex items-center p-0.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-2xs">
               <button
@@ -90,6 +92,19 @@ export const LeitnerVisualizer: React.FC<LeitnerVisualizerProps> = ({
               >
                 <MessageSquareQuote className="w-3.5 h-3.5" />
                 <span>Sentences ({sentencesCount})</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => onSelectCardTypeFilter('dialogue')}
+                className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center gap-1 ${
+                  selectedCardTypeFilter === 'dialogue'
+                    ? 'bg-purple-600 text-white shadow-2xs'
+                    : 'text-zinc-600 dark:text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400'
+                }`}
+                title="Review interactive two-person dialogues"
+              >
+                <MessagesSquare className="w-3.5 h-3.5" />
+                <span>Dialogues ({dialoguesCount})</span>
               </button>
             </div>
           )}

@@ -14,7 +14,12 @@ import {
   toggleCardFavorite,
   db,
 } from './db/database';
-import { SUPPORTED_LANGUAGES, DIFFICULTY_LEVELS, normalizeDifficulty } from './data/languages';
+import {
+  SUPPORTED_LANGUAGES,
+  LANGUAGE_TOPICS,
+  DIFFICULTY_LEVELS,
+  normalizeDifficulty,
+} from './data/languages';
 import { Navbar } from './components/Navbar';
 import { LeitnerVisualizer } from './components/LeitnerVisualizer';
 import { DeckManager } from './components/DeckManager';
@@ -22,6 +27,7 @@ import { StudySession } from './components/StudySession';
 import { FavoritesView } from './components/FavoritesView';
 import { LanguageCurriculumModal } from './components/LanguageCurriculumModal';
 import { ProfileModal } from './components/ProfileModal';
+import { CardListView } from './components/CardListView';
 import {
   Plus,
   Play,
@@ -30,7 +36,48 @@ import {
   Trash2,
   SlidersHorizontal,
   Star,
+  Search,
+  X as XIcon,
+  Sparkles,
+  Palette,
+  Hash,
+  PawPrint,
+  Utensils,
+  Users,
+  Activity,
+  Clock,
+  Home,
+  Heart,
+  Shirt,
+  Plane,
+  HeartHandshake,
+  Landmark,
+  Atom,
+  Briefcase,
+  MessagesSquare,
+  Type,
+  MessageSquareQuote,
 } from 'lucide-react';
+
+const TOPIC_ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
+  Sparkles,
+  Palette,
+  Hash,
+  PawPrint,
+  Utensils,
+  Users,
+  Activity,
+  Clock,
+  Home,
+  Heart,
+  Shirt,
+  Plane,
+  HeartHandshake,
+  Landmark,
+  Atom,
+  Briefcase,
+  MessagesSquare,
+};
 
 export function App() {
   const [profiles, setProfiles] = useState<Profile[]>([]);
@@ -38,7 +85,10 @@ export function App() {
   const [decks, setDecks] = useState<Deck[]>([]);
   const [selectedDeckId, setSelectedDeckId] = useState<string | null>(null);
   const [selectedLanguageFilter, setSelectedLanguageFilter] = useState<LanguageId | 'all'>('all');
+  const [selectedTopicFilter, setSelectedTopicFilter] = useState<string>('all');
+  const [deckSearchQuery, setDeckSearchQuery] = useState<string>('');
   const [selectedCardTypeFilter, setSelectedCardTypeFilter] = useState<CardType | 'all'>('all');
+  const [dashboardViewMode, setDashboardViewMode] = useState<'cards' | 'decks'>('decks');
   const [cards, setCards] = useState<Flashcard[]>([]);
   const [allCards, setAllCards] = useState<Flashcard[]>([]);
   const [boxSummaries, setBoxSummaries] = useState<LeitnerBoxSummary[]>([]);
@@ -101,13 +151,16 @@ export function App() {
   // Load or Initialize Profile
   const loadInitialData = useCallback(async () => {
     let allProf = await getAllProfiles();
+    const allTopicIds = LANGUAGE_TOPICS.map(t => t.id);
+    const allLangIds = SUPPORTED_LANGUAGES.map(l => l.id);
+
     if (allProf.length === 0) {
-      // First time onboarding: seed default profile with Spanish, German, and Chinese
+      // First time onboarding: seed default profile with all languages and all topics
       const initial = await createProfile(
         'Polyglot',
         '🌱',
-        ['spanish', 'german', 'chinese'],
-        ['daily-travel', 'manners-etiquette', 'idioms-expressions'],
+        allLangIds,
+        allTopicIds,
         'A1'
       );
       allProf = [initial];
@@ -116,10 +169,21 @@ export function App() {
     setProfiles(allProf);
     const current = allProf[0];
     if (current) {
+      const currentTopics = current.selectedTopics || [];
+      const mergedTopics = Array.from(new Set([...currentTopics, ...allTopicIds]));
+      const currentLangs = current.selectedLanguages || [];
+      const mergedLangs = Array.from(new Set([...currentLangs, ...allLangIds]));
+
+      if (mergedTopics.length !== currentTopics.length || mergedLangs.length !== currentLangs.length) {
+        current.selectedTopics = mergedTopics;
+        current.selectedLanguages = mergedLangs;
+        await db.profiles.put(current);
+      }
+
       await seedCurriculumForProfile(
         current.id,
-        current.selectedLanguages || ['spanish', 'german', 'chinese'],
-        current.selectedTopics || ['daily-travel', 'manners-etiquette', 'idioms-expressions'],
+        mergedLangs,
+        mergedTopics,
         current.languageDifficulties || current.selectedDifficulty || 'A1'
       );
     }
@@ -178,6 +242,7 @@ export function App() {
     setSelectedDeckId(null);
     setSelectedLanguageFilter('all');
     setSelectedCardTypeFilter('all');
+    setDashboardViewMode('decks');
     setActiveBoxFilter(null);
     setIsProfileModalOpen(false);
     setIsCurriculumModalOpen(false);
@@ -312,9 +377,24 @@ export function App() {
   }
 
   const selectedDeck = decks.find(d => d.id === selectedDeckId);
-  const displayedDecks = selectedLanguageFilter === 'all'
-    ? decks
-    : decks.filter(d => d.languageId === selectedLanguageFilter);
+  const displayedDecks = decks.filter(d => {
+    if (selectedLanguageFilter !== 'all' && d.languageId !== selectedLanguageFilter) {
+      return false;
+    }
+    if (selectedTopicFilter !== 'all' && d.topicId !== selectedTopicFilter) {
+      return false;
+    }
+    if (deckSearchQuery.trim()) {
+      const q = deckSearchQuery.trim().toLowerCase();
+      const matchTitle = d.title.toLowerCase().includes(q);
+      const matchDesc = d.description.toLowerCase().includes(q);
+      const matchTopic = d.topicId?.toLowerCase().includes(q);
+      if (!matchTitle && !matchDesc && !matchTopic) {
+        return false;
+      }
+    }
+    return true;
+  });
 
   const totalDueCards = cards.filter(c => c.nextReviewDate <= Date.now()).length;
   // Compute total favorites from all cards across the profile so the count in visualizer is always global
@@ -379,6 +459,7 @@ export function App() {
                 : allCards;
               const wordsCount = currentScopeCards.filter(c => c.cardType === 'word').length;
               const sentencesCount = currentScopeCards.filter(c => (c.cardType || 'sentence') === 'sentence').length;
+              const dialoguesCount = currentScopeCards.filter(c => c.cardType === 'dialogue').length;
 
               return (
                 <LeitnerVisualizer
@@ -389,9 +470,17 @@ export function App() {
                   totalDue={totalDueCards}
                   totalFavorites={totalFavoriteCards}
                   selectedCardTypeFilter={selectedCardTypeFilter}
-                  onSelectCardTypeFilter={setSelectedCardTypeFilter}
+                  onSelectCardTypeFilter={(type) => {
+                    setSelectedCardTypeFilter(type);
+                    if (type !== 'all') {
+                      setDashboardViewMode('cards');
+                    } else {
+                      setDashboardViewMode('decks');
+                    }
+                  }}
                   wordsCount={wordsCount}
                   sentencesCount={sentencesCount}
+                  dialoguesCount={dialoguesCount}
                   onOpenFavorites={() => {
                     setSelectedDeckId(null);
                     setIsFavoritesPage(true);
@@ -428,8 +517,36 @@ export function App() {
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-4 sm:mb-6">
                   <div>
                     <div className="flex items-center gap-2">
-                      <h2 className="text-base sm:text-lg font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-                        Language Decks
+                      <h2 className="text-base sm:text-lg font-bold tracking-tight text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+                        {selectedCardTypeFilter === 'dialogue' ? (
+                          <>
+                            <span>Dialogues Section</span>
+                            <span className="text-xs px-2.5 py-0.5 rounded-full font-semibold bg-purple-100 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300">
+                              {cards.length} Dialogues
+                            </span>
+                          </>
+                        ) : selectedCardTypeFilter === 'word' ? (
+                          <>
+                            <span>Words & Expressions</span>
+                            <span className="text-xs px-2.5 py-0.5 rounded-full font-semibold bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300">
+                              {cards.length} Words
+                            </span>
+                          </>
+                        ) : selectedCardTypeFilter === 'sentence' ? (
+                          <>
+                            <span>Sentences Section</span>
+                            <span className="text-xs px-2.5 py-0.5 rounded-full font-semibold bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300">
+                              {cards.length} Sentences
+                            </span>
+                          </>
+                        ) : (
+                          <>
+                            <span>Language Decks</span>
+                            <span className="text-xs px-2.5 py-0.5 rounded-full font-semibold bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
+                              {decks.length} Decks
+                            </span>
+                          </>
+                        )}
                       </h2>
                       {selectedLanguageFilter !== 'all' ? (
                         <span className="text-xs px-2.5 py-0.5 rounded-full font-medium bg-zinc-200/80 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 capitalize">
@@ -444,7 +561,13 @@ export function App() {
                       )}
                     </div>
                     <p className="text-[11px] sm:text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
-                      Review phrases on schedule to cement native fluency and intuitive recall.
+                      {selectedCardTypeFilter === 'dialogue'
+                        ? 'Master practical two-person conversations in Chinese, German, Spanish, and English.'
+                        : selectedCardTypeFilter === 'word'
+                        ? 'Build strong vocabulary foundation with native audio and spaced repetition.'
+                        : selectedCardTypeFilter === 'sentence'
+                        ? 'Absorb grammar naturally through contextual full conversational sentences.'
+                        : 'Review phrases on schedule to cement native fluency and intuitive recall.'}
                     </p>
                   </div>
 
@@ -455,7 +578,15 @@ export function App() {
                         className="w-full sm:w-auto order-first sm:order-last px-4 py-2.5 sm:py-2 rounded-xl text-xs font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 shadow-xs cursor-pointer"
                       >
                         <Play className="w-3.5 h-3.5 fill-current" />
-                        <span>Study ({totalDueCards} Due)</span>
+                        <span>
+                          {selectedCardTypeFilter === 'dialogue'
+                            ? `Study Dialogues (${totalDueCards} Due)`
+                            : selectedCardTypeFilter === 'word'
+                            ? `Study Words (${totalDueCards} Due)`
+                            : selectedCardTypeFilter === 'sentence'
+                            ? `Study Sentences (${totalDueCards} Due)`
+                            : `Study (${totalDueCards} Due)`}
+                        </span>
                       </button>
                     )}
 
@@ -488,7 +619,167 @@ export function App() {
                   </div>
                 </div>
 
-                {/* Deck Cards Grid */}
+                {/* View Mode Toggle when a specific card type is chosen */}
+                {selectedCardTypeFilter !== 'all' && (
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-5 p-2 rounded-2xl bg-zinc-100/80 dark:bg-zinc-850 border border-zinc-200 dark:border-zinc-800 shadow-2xs">
+                    <div className="inline-flex items-center p-0.5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 shadow-2xs">
+                      <button
+                        type="button"
+                        onClick={() => setDashboardViewMode('cards')}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all flex items-center gap-1.5 ${
+                          dashboardViewMode === 'cards'
+                            ? selectedCardTypeFilter === 'dialogue'
+                              ? 'bg-purple-600 text-white shadow-2xs'
+                              : selectedCardTypeFilter === 'word'
+                              ? 'bg-indigo-600 text-white shadow-2xs'
+                              : 'bg-emerald-600 text-white shadow-2xs'
+                            : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
+                        }`}
+                      >
+                        {selectedCardTypeFilter === 'dialogue' ? (
+                          <MessagesSquare className="w-3.5 h-3.5" />
+                        ) : selectedCardTypeFilter === 'word' ? (
+                          <Type className="w-3.5 h-3.5" />
+                        ) : (
+                          <MessageSquareQuote className="w-3.5 h-3.5" />
+                        )}
+                        <span>
+                          {selectedCardTypeFilter === 'dialogue'
+                            ? 'Dialogue Cards'
+                            : selectedCardTypeFilter === 'word'
+                            ? 'Word Cards'
+                            : 'Sentence Cards'}{' '}
+                          ({cards.length})
+                        </span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setDashboardViewMode('decks')}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-semibold cursor-pointer transition-all flex items-center gap-1.5 ${
+                          dashboardViewMode === 'decks'
+                            ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 shadow-2xs'
+                            : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
+                        }`}
+                      >
+                        <Layers className="w-3.5 h-3.5" />
+                        <span>Decks View ({displayedDecks.length})</span>
+                      </button>
+                    </div>
+
+                    <span className="text-xs text-zinc-500 dark:text-zinc-400 font-medium px-2">
+                      {dashboardViewMode === 'cards'
+                        ? `Viewing all ${selectedCardTypeFilter === 'dialogue' ? 'dialogue cards' : selectedCardTypeFilter === 'word' ? 'vocabulary words' : 'full sentences'} across your decks`
+                        : 'Organized by subject decks'}
+                    </span>
+                  </div>
+                )}
+
+                {/* Direct Card List View when in cards view mode */}
+                {selectedCardTypeFilter !== 'all' && dashboardViewMode === 'cards' ? (
+                  <CardListView
+                    cards={cards}
+                    decks={decks}
+                    cardTypeFilter={selectedCardTypeFilter}
+                    onToggleFavorite={async (cardId) => {
+                      await toggleCardFavorite(cardId);
+                      await refreshProfileData();
+                    }}
+                    onStartStudyWithCards={() => handleStartStudy()}
+                  />
+                ) : (
+                  <>
+                    {/* Topic Quick Filters & Search Bar */}
+                <div className="space-y-3 mb-6">
+                  {/* Search and stats bar */}
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+                    <div className="relative flex-1 max-w-md">
+                      <Search className="w-4 h-4 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                      <input
+                        type="text"
+                        value={deckSearchQuery}
+                        onChange={e => setDeckSearchQuery(e.target.value)}
+                        placeholder="Search decks (e.g., Adjectives, Colors, Animals, Food...)"
+                        className="w-full pl-9.5 pr-8 py-2 text-xs rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 focus:outline-hidden focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all shadow-2xs"
+                      />
+                      {deckSearchQuery && (
+                        <button
+                          onClick={() => setDeckSearchQuery('')}
+                          className="absolute right-2.5 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 p-0.5 cursor-pointer"
+                        >
+                          <XIcon className="w-3.5 h-3.5" />
+                        </button>
+                      )}
+                    </div>
+
+                    <div className="text-xs text-zinc-500 dark:text-zinc-400 flex items-center gap-2">
+                      <span>
+                        Showing <strong className="text-zinc-800 dark:text-zinc-200">{displayedDecks.length}</strong> of {decks.length} decks
+                      </span>
+                      {(selectedTopicFilter !== 'all' || deckSearchQuery || selectedLanguageFilter !== 'all') && (
+                        <button
+                          onClick={() => {
+                            setSelectedTopicFilter('all');
+                            setDeckSearchQuery('');
+                            setSelectedLanguageFilter('all');
+                          }}
+                          className="text-xs font-medium text-indigo-600 dark:text-indigo-400 hover:underline cursor-pointer"
+                        >
+                          Reset filters
+                        </button>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Horizontal Topic Filter Chips */}
+                  <div className="flex items-center gap-1.5 overflow-x-auto pb-1.5 scrollbar-thin scrollbar-thumb-zinc-300 dark:scrollbar-thumb-zinc-700">
+                    <button
+                      onClick={() => setSelectedTopicFilter('all')}
+                      className={`px-3 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 shrink-0 shadow-2xs ${
+                        selectedTopicFilter === 'all'
+                          ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 shadow-xs'
+                          : 'bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800'
+                      }`}
+                    >
+                      <Layers className="w-3.5 h-3.5" />
+                      <span>All Topics</span>
+                      <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-zinc-700/20 dark:bg-zinc-300/20 font-mono">
+                        {decks.length}
+                      </span>
+                    </button>
+
+                    {LANGUAGE_TOPICS.map(topic => {
+                      const IconComp = TOPIC_ICON_MAP[topic.icon] || Sparkles;
+                      const isSelected = selectedTopicFilter === topic.id;
+                      const count = decks.filter(d => d.topicId === topic.id).length;
+
+                      return (
+                        <button
+                          key={topic.id}
+                          onClick={() => setSelectedTopicFilter(topic.id)}
+                          className={`px-3 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 shrink-0 shadow-2xs ${
+                            isSelected
+                              ? 'bg-indigo-600 text-white dark:bg-indigo-500 dark:text-white shadow-xs'
+                              : 'bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800'
+                          }`}
+                        >
+                          <IconComp className="w-3.5 h-3.5" />
+                          <span>{topic.name}</span>
+                          {count > 0 && (
+                            <span
+                              className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
+                                isSelected
+                                  ? 'bg-white/20 text-white'
+                                  : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400'
+                              }`}
+                            >
+                              {count}
+                            </span>
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
                 {displayedDecks.length === 0 ? (
                   <div className="py-16 text-center border border-dashed border-zinc-200 dark:border-zinc-800 rounded-2xl bg-white dark:bg-zinc-900">
                     <div className="w-12 h-12 rounded-xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-400 mx-auto mb-3">
@@ -527,6 +818,8 @@ export function App() {
                       );
                     })}
                   </div>
+                )}
+                  </>
                 )}
               </div>
             )}
@@ -680,6 +973,10 @@ function LanguageDeckCard({
   const dueCount = deckCards.filter(c => c.nextReviewDate <= Date.now()).length;
   const wordCount = deckCards.filter(c => c.cardType === 'word').length;
   const sentenceCount = deckCards.filter(c => (c.cardType || 'sentence') === 'sentence').length;
+  const dialogueCount = deckCards.filter(c => c.cardType === 'dialogue').length;
+
+  const topicDef = LANGUAGE_TOPICS.find(t => t.id === deck.topicId);
+  const IconComp = topicDef?.icon ? TOPIC_ICON_MAP[topicDef.icon] || Sparkles : Sparkles;
 
   return (
     <div
@@ -690,9 +987,17 @@ function LanguageDeckCard({
         <div className="flex items-start justify-between gap-2 mb-2">
           <div className="flex items-center gap-2.5">
             <span className="text-2xl select-none">{flag}</span>
-            <h3 className="font-semibold text-sm sm:text-base text-zinc-900 dark:text-zinc-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-              {deck.title}
-            </h3>
+            <div>
+              <h3 className="font-semibold text-sm sm:text-base text-zinc-900 dark:text-zinc-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                {deck.title}
+              </h3>
+              {topicDef && (
+                <div className="flex items-center gap-1.5 mt-0.5 text-[11px] font-medium text-indigo-600 dark:text-indigo-400">
+                  <IconComp className="w-3 h-3" />
+                  <span>{topicDef.name}</span>
+                </div>
+              )}
+            </div>
           </div>
 
           {deck.isCustom && (
@@ -726,11 +1031,17 @@ function LanguageDeckCard({
               </span>
             )}
           </div>
-          {(wordCount > 0 || sentenceCount > 0) && (
-            <div className="flex items-center gap-2 text-[10px] text-zinc-400 dark:text-zinc-500">
+          {(wordCount > 0 || sentenceCount > 0 || dialogueCount > 0) && (
+            <div className="flex flex-wrap items-center gap-1.5 text-[10px] text-zinc-400 dark:text-zinc-500">
               {wordCount > 0 && <span>{wordCount} words</span>}
-              {wordCount > 0 && sentenceCount > 0 && <span>•</span>}
+              {wordCount > 0 && (sentenceCount > 0 || dialogueCount > 0) && <span>•</span>}
               {sentenceCount > 0 && <span>{sentenceCount} sentences</span>}
+              {sentenceCount > 0 && dialogueCount > 0 && <span>•</span>}
+              {dialogueCount > 0 && (
+                <span className="text-purple-600 dark:text-purple-400 font-semibold">
+                  {dialogueCount} dialogues
+                </span>
+              )}
             </div>
           )}
         </div>

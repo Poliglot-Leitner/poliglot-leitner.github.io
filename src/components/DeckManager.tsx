@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import type { Deck, Flashcard, CardType } from '../types';
 import { addCard, updateCard, deleteCard, resetCardProgress, toggleCardFavorite } from '../db/database';
 import { FormattedContent } from './FormattedContent';
+import { DialogueCardContent } from './DialogueCardContent';
 import { useSpeech } from '../hooks/useSpeech';
 import {
   Plus,
@@ -14,6 +15,7 @@ import {
   Star,
   Type,
   MessageSquareQuote,
+  MessagesSquare,
 } from 'lucide-react';
 
 interface DeckManagerProps {
@@ -48,7 +50,7 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
   const [grammarNotes, setGrammarNotes] = useState('');
   const [hint, setHint] = useState('');
 
-  const [cardTypeFilter, setCardTypeFilter] = useState<'all' | 'word' | 'sentence'>('all');
+  const [cardTypeFilter, setCardTypeFilter] = useState<'all' | 'word' | 'sentence' | 'dialogue'>('all');
 
   const { speak, isSupported: speechSupported } = useSpeech();
 
@@ -150,6 +152,7 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
   const favoritesCount = cards.filter(c => c.isFavorite).length;
   const wordsCount = cards.filter(c => (c.cardType || 'sentence') === 'word').length;
   const sentencesCount = cards.filter(c => (c.cardType || 'sentence') === 'sentence').length;
+  const dialoguesCount = cards.filter(c => c.cardType === 'dialogue').length;
 
   return (
     <div className="w-full">
@@ -223,7 +226,7 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
               <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
                 Card Category
               </label>
-              <div className="grid grid-cols-2 gap-2 max-w-sm">
+              <div className="grid grid-cols-3 gap-2 max-w-md">
                 <button
                   type="button"
                   onClick={() => setCardType('word')}
@@ -234,7 +237,7 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
                   }`}
                 >
                   <Type className="w-3.5 h-3.5" />
-                  <span>Word / Expression</span>
+                  <span>Word</span>
                 </button>
                 <button
                   type="button"
@@ -246,7 +249,19 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
                   }`}
                 >
                   <MessageSquareQuote className="w-3.5 h-3.5" />
-                  <span>Full Sentence</span>
+                  <span>Sentence</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setCardType('dialogue')}
+                  className={`p-2 rounded-lg border text-xs font-medium flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+                    cardType === 'dialogue'
+                      ? 'bg-purple-600 text-white border-purple-600 shadow-xs'
+                      : 'bg-white dark:bg-zinc-950 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800 hover:border-zinc-300'
+                  }`}
+                >
+                  <MessagesSquare className="w-3.5 h-3.5" />
+                  <span>Dialogue</span>
                 </button>
               </div>
             </div>
@@ -254,13 +269,19 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
-                  {cardType === 'word' ? 'Target Word / Expression' : 'Target Sentence'}
+                  {cardType === 'word' ? 'Target Word / Expression' : cardType === 'dialogue' ? 'Target Dialogue (e.g. A: ... \\n B: ...)' : 'Target Sentence'}
                 </label>
                 <textarea
                   value={front}
                   onChange={e => setFront(e.target.value)}
-                  placeholder={cardType === 'word' ? 'e.g. la sobremesa or 早上好' : 'e.g. ¿Dónde está la estación de tren?'}
-                  rows={2}
+                  placeholder={
+                    cardType === 'word'
+                      ? 'e.g. la sobremesa or 早上好'
+                      : cardType === 'dialogue'
+                      ? 'A: 你好！请问洗手间在哪里？\nB: 就在前面右拐。'
+                      : 'e.g. ¿Dónde está la estación de tren?'
+                  }
+                  rows={cardType === 'dialogue' ? 4 : 2}
                   required
                   className="w-full text-xs font-sans p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-1 focus:ring-zinc-900"
                 />
@@ -373,7 +394,7 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
       <div className="space-y-2.5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-zinc-500 dark:text-zinc-400 px-1 mb-1">
           <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-            {/* Type Filter Pills: All / Words / Sentences */}
+            {/* Type Filter Pills: All / Words / Sentences / Dialogues */}
             <div className="inline-flex items-center p-0.5 rounded-lg bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700">
               <button
                 type="button"
@@ -410,6 +431,18 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
                 <MessageSquareQuote className="w-3 h-3" />
                 <span>Sentences ({sentencesCount})</span>
               </button>
+              <button
+                type="button"
+                onClick={() => setCardTypeFilter('dialogue')}
+                className={`px-2 py-0.5 rounded-md text-[11px] font-semibold transition-all flex items-center gap-1 cursor-pointer ${
+                  cardTypeFilter === 'dialogue'
+                    ? 'bg-white dark:bg-zinc-900 text-purple-600 dark:text-purple-400 shadow-2xs'
+                    : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200'
+                }`}
+              >
+                <MessagesSquare className="w-3 h-3" />
+                <span>Dialogues ({dialoguesCount})</span>
+              </button>
             </div>
 
             <button
@@ -436,13 +469,14 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
             {showFavoritesOnly
               ? 'No favorite phrases found in this deck. Click the star icon on any card to add it to your favorites!'
               : cardTypeFilter !== 'all'
-              ? `No ${cardTypeFilter === 'word' ? 'words/expressions' : 'sentences'} match the current filter.`
+              ? `No ${cardTypeFilter === 'word' ? 'words/expressions' : cardTypeFilter === 'dialogue' ? 'dialogues' : 'sentences'} match the current filter.`
               : 'No phrases found in this box. Add a new phrase or clear the filter.'}
           </div>
         ) : (
           displayedCards.map(card => {
             const isDue = card.nextReviewDate <= Date.now();
-            const isWord = (card.cardType || 'sentence') === 'word';
+            const isWord = card.cardType === 'word';
+            const isDialogue = card.cardType === 'dialogue';
 
             return (
               <div
@@ -457,12 +491,19 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
                     <span className={`inline-flex items-center gap-1 text-[9px] font-semibold uppercase px-2 py-0.5 rounded-full border ${
                       isWord
                         ? 'bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800'
+                        : isDialogue
+                        ? 'bg-purple-50 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800'
                         : 'bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
                     }`}>
                       {isWord ? (
                         <>
                           <Type className="w-2.5 h-2.5" />
                           <span>Word</span>
+                        </>
+                      ) : isDialogue ? (
+                        <>
+                          <MessagesSquare className="w-2.5 h-2.5" />
+                          <span>Dialogue</span>
                         </>
                       ) : (
                         <>
@@ -483,26 +524,42 @@ export const DeckManager: React.FC<DeckManagerProps> = ({
                     )}
                   </div>
 
-                  <div className="flex items-center gap-2">
-                    <div className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
-                      <FormattedContent content={card.front} />
+                  {isDialogue ? (
+                    <div className="pt-1">
+                      <DialogueCardContent
+                        front={card.front}
+                        back={card.back}
+                        phonetic={card.phonetic}
+                        isFlipped={true}
+                        languageCode={deck.languageCode}
+                        onSpeak={speechSupported ? (text, code) => speak(text, code || deck.languageCode) : undefined}
+                        compact={true}
+                      />
                     </div>
+                  ) : (
+                    <>
+                      <div className="flex items-center gap-2">
+                        <div className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+                          <FormattedContent content={card.front} />
+                        </div>
 
-                    {speechSupported && (
-                      <button
-                        type="button"
-                        onClick={() => speak(card.front, deck.languageCode)}
-                        title="Pronounce"
-                        className="p-1 rounded text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800"
-                      >
-                        <Volume2 className="w-3.5 h-3.5" />
-                      </button>
-                    )}
-                  </div>
+                        {speechSupported && (
+                          <button
+                            type="button"
+                            onClick={() => speak(card.front, deck.languageCode)}
+                            title="Pronounce"
+                            className="p-1 rounded text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                          >
+                            <Volume2 className="w-3.5 h-3.5" />
+                          </button>
+                        )}
+                      </div>
 
-                  <div className="text-xs text-zinc-600 dark:text-zinc-400">
-                    <FormattedContent content={card.back} />
-                  </div>
+                      <div className="text-xs text-zinc-600 dark:text-zinc-400">
+                        <FormattedContent content={card.back} />
+                      </div>
+                    </>
+                  )}
 
                   {card.exampleSentences && card.exampleSentences.length > 0 ? (
                     <div className="space-y-1.5 pt-1">

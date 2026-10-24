@@ -52,7 +52,7 @@ export interface Deck {
   updatedAt: number;
 }
 
-export type CardType = 'sentence' | 'word';
+export type CardType = 'sentence' | 'word' | 'dialogue';
 
 export interface Flashcard {
   id: string;
@@ -60,7 +60,7 @@ export interface Flashcard {
   profileId: string;
   languageId: LanguageId;
   difficulty: DifficultyLevel;
-  cardType?: CardType; // 'word' for words/expressions, 'sentence' for full sentences
+  cardType?: CardType; // 'word' for words/expressions, 'sentence' for full sentences, 'dialogue' for short dialogues
   front: string; // Target language word / phrase / expression / sentence
   back: string; // Translation & meaning
   phonetic?: string; // Pinyin for Chinese, IPA / pronunciation for others

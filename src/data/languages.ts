@@ -6,6 +6,7 @@ import type {
   DifficultyLevel,
   CardType,
 } from '../types';
+import { ALL_NEW_VOCABULARY_SEEDS } from './seeds';
 
 export const SUPPORTED_LANGUAGES: LanguageOption[] = [
   {
@@ -44,6 +45,72 @@ export const SUPPORTED_LANGUAGES: LanguageOption[] = [
 
 export const LANGUAGE_TOPICS: TopicOption[] = [
   {
+    id: 'adjectives',
+    name: 'Adjectives & Descriptors',
+    description: 'Essential descriptive qualities, emotions, sizes, textures, and sensory attributes.',
+    icon: 'Sparkles',
+  },
+  {
+    id: 'colors',
+    name: 'Colors & Shades',
+    description: 'Primary, secondary, and chromatic tones, metallic hues, and color idioms.',
+    icon: 'Palette',
+  },
+  {
+    id: 'numbers',
+    name: 'Numbers, Counting & Math',
+    description: 'Cardinal and ordinal numbers, counting measures, fractions, and quantitative terms.',
+    icon: 'Hash',
+  },
+  {
+    id: 'animals',
+    name: 'Animals & Wildlife',
+    description: 'Domestic pets, wildlife, aquatic fauna, birds, and nature vocabulary.',
+    icon: 'PawPrint',
+  },
+  {
+    id: 'food-dining',
+    name: 'Food, Drinks & Dining',
+    description: 'Staples, dishes, fruits, beverages, dining expressions, and table phrases.',
+    icon: 'Utensils',
+  },
+  {
+    id: 'family-relations',
+    name: 'Family & Relationships',
+    description: 'Kinship terms, relatives, friends, life partners, and social connections.',
+    icon: 'Users',
+  },
+  {
+    id: 'verbs-actions',
+    name: 'Essential Verbs & Actions',
+    description: 'Foundational verbs, core daily actions, modal expressions, and state verbs.',
+    icon: 'Activity',
+  },
+  {
+    id: 'time-calendar',
+    name: 'Time, Days & Seasons',
+    description: 'Days of the week, months, seasons, units of time, and relative temporal expressions.',
+    icon: 'Clock',
+  },
+  {
+    id: 'home-objects',
+    name: 'House & Daily Objects',
+    description: 'Rooms, furniture, personal effects, digital tools, and household items.',
+    icon: 'Home',
+  },
+  {
+    id: 'health-body',
+    name: 'Body Parts & Health',
+    description: 'Human anatomy, physical well-being, doctors, medicine, and healthcare phrases.',
+    icon: 'Heart',
+  },
+  {
+    id: 'clothing-style',
+    name: 'Clothing & Accessories',
+    description: 'Everyday garments, footwear, headwear, outer layers, and fashion items.',
+    icon: 'Shirt',
+  },
+  {
     id: 'daily-travel',
     name: 'Daily Life & Travel',
     description: 'Cafés, city transit, directions, reservations, and everyday interactions.',
@@ -78,6 +145,12 @@ export const LANGUAGE_TOPICS: TopicOption[] = [
     name: 'Idioms, Proverbs & Wisdom',
     description: 'Figurative speech, colloquial metaphors, and timeless cultural wisdom.',
     icon: 'Sparkles',
+  },
+  {
+    id: 'dialogues-conversations',
+    name: 'Everyday Dialogues & Conversations',
+    description: 'Realistic two-person dialogues: café, directions, shopping, dining, asking for help, and social situations.',
+    icon: 'MessagesSquare',
   },
 ];
 
@@ -19836,4 +19909,8 @@ const ORIGINAL_CURRICULUM_SEEDS: CurriculumSeed[] = [
   },
 ];
 
-export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [...VOCABULARY_BANK_SEEDS, ...ORIGINAL_CURRICULUM_SEEDS];
+export const LANGUAGE_CURRICULUM_SEEDS: CurriculumSeed[] = [
+  ...VOCABULARY_BANK_SEEDS,
+  ...ORIGINAL_CURRICULUM_SEEDS,
+  ...ALL_NEW_VOCABULARY_SEEDS,
+];

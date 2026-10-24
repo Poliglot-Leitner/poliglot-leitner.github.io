@@ -1803,6 +1803,65 @@ export const DIALOGUE_SEEDS: CurriculumSeed[] = [
       { target: '前面堵得要命。', translation: 'Up ahead is jammed up to no end.', phonetic: 'Qiánmiàn dǔ de yàomìng.' }
     ]
   },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'B1',
+    cardType: 'dialogue',
+    front: 'A: 喂，下班后去不去喝一杯？听说新开了一家精酿啤酒屋。\nB: 今天真去不了，这周在赶项目DDL，我整个人都麻了。\nA: 行吧，那你先忙，改天咱们再约个周末好好聚聚。\nB: 妥了，等我忙完这阵子！',
+    back: 'A: Hey, want to grab a drink after work? Heard a new craft beer pub opened.\nB: I really can\'t today, rushing project deadline this week, I\'m totally numb/exhausted.\nA: Alright, go ahead with work, we\'ll set up another date on the weekend to properly hang out.\nB: Settled / Deal, once I finish this hectic stretch!',
+    phonetic: 'A: Wèi, xiàbān hòu qù bù qù hē yībēi? Tīngshuō xīn kāi le yī jiā jīngniàng píjiǔwū.\nB: Jīntiān zhēn qù bù liǎo, zhè zhōu zài gǎn xiàngmù DDL, wǒ zhěngrén dōu má le.\nA: Xíng ba, nà nǐ xiān máng, gǎitiān zánmen zài yuē gè zhōumò hǎohǎo jùju.\nB: Tuǒ le, děng wǒ máng wán zhè zhènzi!',
+    grammarNotes: 'Modern workplace Chinese: “赶 DDL” (gǎn deadline); “人麻了” (totally numb/overwhelmed with fatigue); “妥了” (tuǒ le - northern colloquial for "settled / all good"); “改天” (another day).',
+    hint: 'Situation: Declining a drink invitation due to tight work deadlines.',
+    exampleSentences: [
+      { target: '我整个人都麻了。', translation: 'I am totally numb / overwhelmed.', phonetic: 'Wǒ zhěngrén dōu má le.' },
+      { target: '妥了，没问题！', translation: 'Done deal, no problem!', phonetic: 'Tuǒ le, méi wèntí!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A2',
+    cardType: 'dialogue',
+    front: 'A: 老板，这件外套怎么卖啊？能便宜点儿不？\nB: 帅哥好眼光，这是新款，原价二百八，最低给你二百。\nA: 一百五行不行？合适我就直接扫码拿走了。\nB: 哎呀你太会砍价了！行吧行吧，交个朋友，拿走吧！',
+    back: 'A: Boss, how much for this jacket? Can you make it a bit cheaper?\nB: Handsome, you have great taste, this is a new model, original 280, lowest for you is 200.\nA: How about 150? If that works I\'ll scan the QR code and take it right away.\nB: Oh man, you are too good at bargaining! Alright alright, just to make a friend, take it!',
+    phonetic: 'A: Lǎobǎn, zhè jiàn wàitào zěnme mài a? Néng piányi diǎnr bù?\nB: Shuàigē hǎo yǎnguāng, zhè shì xīnkuǎn, yuánjià èrbǎi bā, zuìdī gěi nǐ èrbǎi.\nA: Yībǎi wǔ xíng bù xíng? Héshì wǒ jiù zhíjiē sǎo mǎ ná zǒu le.\nB: Àiyā nǐ tài huì kǎnjià le! Xíng ba xíng ba, jiāo gè péngyǒu, ná zǒu ba!',
+    grammarNotes: 'Bargaining lingo: “砍价” (kǎnjià - haggle); “交个朋友” (classic merchant line: just to make a friend); “怎么卖” (how much is it selling for); “合适我就拿走” (if the price is right I\'ll take it).',
+    hint: 'Situation: Friendly bargaining at a local clothing market in China.',
+    exampleSentences: [
+      { target: '能便宜点儿不？', translation: 'Can you make it a bit cheaper?', phonetic: 'Néng piányi diǎnr bù?' },
+      { target: '交个朋友！', translation: 'Just to make a friend!', phonetic: 'Jiāo gè péngyǒu!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'B1',
+    cardType: 'dialogue',
+    front: 'A: 听说你最近在看房子，打算买房上车了？\nB: 哎，首付勉强凑齐了，但是每个月房贷压力山大啊。\nA: 理解，不过好歹在城市扎下根了，慢慢奋斗呗！\nB: 是啊，为了以后的生活，只能咬牙坚持了。',
+    back: 'A: Heard you\'ve been house-hunting lately, planning to get on the housing bandwagon?\nB: Sigh, barely scraped together the down payment, but the monthly mortgage stress is colossal.\nA: I understand, but at least you\'re putting down roots in the city, keep striving little by little!\nB: Yeah, for our future life, just gotta grit teeth and persevere.',
+    phonetic: 'A: Tīngshuō nǐ zuìjìn zài kàn fángzi, dǎsuàn mǎifáng shàngchē le?\nB: Āi, shǒufù miǎnqiǎng còu qí le, dànshì měi gè yuè fángdài yālì shān dà a.\nA: Lǐjiě, bùguò hǎodǎi zài chéngshì zhā xià gēn le, mànmàn fèndòu bei!\nB: Shì a, wèile yǐhòu de shēnghuó, zhǐ néng yǎoyá jiānchí le.',
+    grammarNotes: 'Urban Chinese life idioms: “上车” (get on board / buy a home before prices rise); “压力山大” (pun on Alexander the Great = pressure huge as a mountain); “扎下根” (put down roots); “咬牙坚持” (grit teeth and persist).',
+    hint: 'Situation: Discussing mortgages, down payments, and putting down roots in the city.',
+    exampleSentences: [
+      { target: '最近压力山大。', translation: 'Lately stress is massive as a mountain.', phonetic: 'Zuìjìn yālì shān dà.' },
+      { target: '咬牙坚持下去！', translation: 'Grit your teeth and power through!', phonetic: 'Yǎoyá jiānchí xiàqù!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A2',
+    cardType: 'dialogue',
+    front: 'A: 喂，是外卖小哥吗？\nB: 对，您好！您的黄焖鸡米饭到了，放在您家门口鞋柜上了。\nA: 太感谢了！汤汁没洒吧？\nB: 放心，包得严严实实的，祝您用餐愉快，记得给个五星好评啊！',
+    back: 'A: Hello, is this the delivery driver?\nB: Yes, hello! Your braised chicken rice has arrived, left it on the shoe cabinet by your front door.\nA: Thank you so much! Did the broth spill at all?\nB: Don\'t worry, packed tight and secure. Enjoy your meal, remember to leave a 5-star review please!',
+    phonetic: 'A: Wèi, shì wàimài xiǎogē ma?\nB: Duì, nín hǎo! Nín de huángmènjī mǐfàn dào le, fàng zài nín jiā ménkǒu xiéguì shàng le.\nA: Tài gǎnxiè le! Tāngzhī méi sǎ ba?\nB: Fàngxīn, bāo de yányán-shíshí de, zhù nín yòngcān yúkuài, jìde gěi gè wǔxīng hǎopíng a!',
+    grammarNotes: 'Takeout delivery ecosystem: “外卖小哥” (delivery rider); “放门口” (leave at the door); “严严实实” (tightly sealed); “五星好评” (5-star rating).',
+    hint: 'Situation: Coordinating food delivery arrival over the phone.',
+    exampleSentences: [
+      { target: '记得给个好评！', translation: 'Remember to leave a good review!', phonetic: 'Jìde gěi gè hǎopíng!' }
+    ]
+  },
 {
     languageId: 'german',
     topicId: 'dialogues-conversations',
@@ -2231,6 +2290,50 @@ export const DIALOGUE_SEEDS: CurriculumSeed[] = [
       { target: 'Einmal mit allem, bitte.', translation: 'One with everything, please.', phonetic: 'EYN-mahl mit AHL-lem, BIT-teh.' }
     ]
   },
+  {
+    languageId: 'german',
+    topicId: 'dialogues-conversations',
+    difficulty: 'B1',
+    cardType: 'dialogue',
+    front: 'A: Hast du am Wochenende was vor, oder machst du dir einen gemütlichen Lenz?\nB: Ich wollte eigentlich auf den Flohmarkt im Mauerpark, danach grillen am Kanal.\nA: Klingt mega! Darf ich mich anschließen?\nB: Na klar, je mehr Leute, desto lustiger!',
+    back: 'A: Do you have plans for the weekend, or are you taking it easy / kicking back?\nB: I actually wanted to go to the flea market in Mauerpark, then barbecue by the canal.\nA: Sounds awesome! May I tag along / join in?\nB: Of course, the more the merrier!',
+    phonetic: 'A: HAHST doo ahm VOH-khen-en-deh vahs fohr, OH-der MAHKHST doo deer EY-nen geh-MEET-likh-en lents?\nB: Ikh VOHL-teh EY-gent-likh owf dayn FLOH-markt im MOW-er-park, dah-NAHKH GRIL-len ahm kah-NAHL.\nA: Klingt MAY-gah! Darf ikh mikh AHN-shlee-sen?\nB: Nah klahr, yay mayr LOY-teh, DES-toh LOOS-tee-ger!',
+    grammarNotes: 'Casual German lifestyle: “einen Lenz machen” (slang: kick back and take it easy); “Klingt mega!” (sounds super cool); “sich anschließen” (to tag along / join in); “Flohmarkt” (flea market).',
+    hint: 'Situation: Making casual weekend plans with a friend in Berlin.',
+    exampleSentences: [
+      { target: 'Klingt mega!', translation: 'Sounds mega / awesome!', phonetic: 'Klingt MAY-gah!' },
+      { target: 'Je mehr, desto besser.', translation: 'The more, the better.', phonetic: 'Yay mayr, DES-toh BES-ser.' }
+    ]
+  },
+  {
+    languageId: 'german',
+    topicId: 'dialogues-conversations',
+    difficulty: 'B1',
+    cardType: 'dialogue',
+    front: 'A: Ich verstehe nur Bahnhof bei dieser Steuererklärung, das ist viel zu kompliziert!\nB: Kein Wunder, das Beamtendeutsch blickt doch kein normaler Mensch.\nA: Kannst du mir am Samstag einen Gefallen tun und drüberschauen?\nB: Abgemacht! Wenn du dafür die Pizza spendierst, helfe ich dir gerne.',
+    back: 'A: It\'s all Greek to me / I don\'t understand a thing with this tax return, it\'s way too complicated!\nB: No wonder, no normal human can decipher bureaucratic German.\nA: Could you do me a favor on Saturday and look it over?\nB: Deal! If you treat to pizza for that, I\'ll gladly help.',
+    phonetic: 'A: Ikh fair-SHTAY-eh noor BAHN-hohf by DEE-zer SHTOY-er-air-klay-roong, dahs ist feel tsoo kom-plee-TSEERT!\nB: Kyn VOON-der, dahs beh-AHM-ten-doytsh blikt dokh kyn nor-MAH-ler MENSH.\nA: Kahnst doo meer ahm ZAHM-stahk EY-nen geh-FAHL-len toon oont DREE-ber-show-en?\nB: AHP-geh-mahkt! Ven doo dah-FEER dee PEET-sah shpen-DEERST, HEL-feh ikh deer GAIR-neh.',
+    grammarNotes: 'Idioms: “Ich verstehe nur Bahnhof” (It\'s all gibberish/Greek to me); “Beamtendeutsch” (dense bureaucratic German); “Abgemacht!” (Deal!); “durchblicken” (to grasp/understand).',
+    hint: 'Situation: Asking a native friend for help with complex paperwork and tax forms.',
+    exampleSentences: [
+      { target: 'Ich verstehe nur Bahnhof.', translation: 'It\'s completely all Greek to me.', phonetic: 'Ikh fair-SHTAY-eh noor BAHN-hohf.' },
+      { target: 'Abgemacht!', translation: 'It\'s a deal!', phonetic: 'AHP-geh-mahkt!' }
+    ]
+  },
+  {
+    languageId: 'german',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A2',
+    cardType: 'dialogue',
+    front: 'A: Hallo! Ein kleines Bier und eine Apfelschorle, bitte.\nB: Gerne! Möchten Sie drinnen sitzen oder lieber auf der Terrasse?\nA: Draußen, wenn noch ein Plätzchen frei ist.\nB: Sicher, Tisch Nummer 7 ist frei. Ich bringe die Getränke gleich raus!',
+    back: 'A: Hello! A small beer and an apple spritzer, please.\nB: With pleasure! Would you like to sit inside or rather on the terrace?\nA: Outside, if there is still a little spot available.\nB: Certainly, table number 7 is free. I\'ll bring the drinks right out!',
+    phonetic: 'A: HAH-loh! Ein KLY-nes beer oont EY-neh AHP-fel-shor-leh, BIT-teh.\nB: GAIR-neh! MERKH-ten zee DRIN-nen ZIT-sen OH-der LEE-ber owf dair teh-RAHS-seh?\nA: DROW-sen, ven nokh ein PLETZ-khen fry ist.\nB: ZEE-kher, tish NOOM-mer ZEE-ben ist fry. Ikh BRING-eh dee geh-TRENG-keh glykh rows!',
+    grammarNotes: 'German beverage & terrace culture: “Apfelschorle” (apple juice mixed with carbonated water - national soft drink); “ein Plätzchen” (a cozy spot); “draußen / drinnen” (outside / inside).',
+    hint: 'Situation: Enjoying a drink outside at a German Biergarten or café.',
+    exampleSentences: [
+      { target: 'Ein Glas Apfelschorle, bitte.', translation: 'A glass of apple spritzer, please.', phonetic: 'Ein glahs AHP-fel-shor-leh, BIT-teh.' }
+    ]
+  },
   // =========================================================================
   // SPANISH DIALOGUES (Diálogos Cortos)
   // =========================================================================
@@ -2555,6 +2658,51 @@ export const DIALOGUE_SEEDS: CurriculumSeed[] = [
     exampleSentences: [
       { target: '¡Jalo!', translation: 'I\'m in! / Count me in!', phonetic: 'HAH-loh!' },
       { target: 'Se me hace agua la boca.', translation: 'My mouth is watering.', phonetic: 'Seh meh AH-seh AH-gwah lah BOH-kah.' }
+    ]
+  },
+  {
+    languageId: 'spanish',
+    topicId: 'dialogues-conversations',
+    difficulty: 'B1',
+    cardType: 'dialogue',
+    front: 'A: ¿Supiste lo que le pasó a Mateo el fin de semana?\nB: ¡Cuenta el chisme completo, no me dejes con la intriga!\nA: Pues resulta que se encontró a su ex en el antro y se le armó un drama tremendo.\nB: ¡Qué oso! Yo me hubiera querido meter bajo tierra.',
+    back: 'A: Did you hear what happened to Mateo over the weekend?\nB: Spill the whole gossip, don\'t leave me hanging!\nA: Well it turns out he ran into his ex at the club and a massive drama unfolded.\nB: How utterly embarrassing! I would have wanted to crawl under a rock / sink into the ground.',
+    phonetic: 'A: Soo-PEES-teh loh keh leh pah-SOH ah mah-TEH-oh el feen deh seh-MAH-nah?\nB: KWEN-tah el CHEES-meh kohm-PLEH-toh, noh meh DEH-hes kohn lah een-TREE-gah!\nA: Pwehs reh-SOOL-tah keh seh en-kohn-TROH ah soo eks en el AHN-troh ee seh leh ar-MOH oon DRAH-mah treh-MEN-doh.\nB: Keh OH-soh! Yoh meh oo-BYEH-rah keh-REE-doh meh-TEHR BAH-hoh TYEH-rah.',
+    grammarNotes: 'Latin American youth storytelling: “el chisme” (gossip); “¡Qué oso!” (How embarrassing / cringe - Mexico/Colombia); “el antro” (nightclub in Mexico); “meterse bajo tierra” (die of embarrassment).',
+    hint: 'Situation: Gossiping playfully with close friends about weekend nightlife drama.',
+    exampleSentences: [
+      { target: '¡Qué oso!', translation: 'How embarrassing! / How cringe!', phonetic: 'Keh OH-soh!' },
+      { target: '¡Cuenta el chisme!', translation: 'Spill the tea / gossip!', phonetic: 'KWEN-tah el CHEES-meh!' }
+    ]
+  },
+  {
+    languageId: 'spanish',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A2',
+    cardType: 'dialogue',
+    front: 'A: Oye, ¿vamos a tapear esta noche por el centro?\nB: De lujo, pero que sea en un sitio con buenas bravas y pinchos.\nA: Conozco un bar castizo que pone unas tapas de muerte lenta con cada ronda.\nB: ¡Venga ya! Pues nos vemos ahí a las ocho.',
+    back: 'A: Hey, shall we go out for tapas tonight in the center?\nB: Splendid / Awesome, but let it be a place with good patatas bravas and skewers.\nA: I know an authentic traditional bar that gives killer tapas with every round of drinks.\nB: Say no more / Come on! See you there at eight then.',
+    phonetic: 'A: OH-yeh, VAH-mohs ah tah-peh-AHR EHS-tah NOH-cheh pohr el TSEN-troh?\nB: Deh LOO-hoh, PEH-roh keh SEH-ah en oon SEE-tyoh kohn BWEH-nahs BRAH-vahs ee PEEN-chohs.\nA: Koh-NOHZ-koh oon bahr kahs-TEE-thoh keh POH-neh OO-nahs TAH-pahs deh MWEHR-teh LEN-tah kohn KAH-dah ROHN-dah.\nB: VEN-gah yah! Pwehs nohs VEH-mohs ah-EE ah lahs OH-choh.',
+    grammarNotes: 'Madrid/Spain tapas culture: “tapear” (to go hopping for tapas); “de lujo” (top notch / luxury); “castizo” (authentic traditional); “de muerte lenta” (to die for / delicious); “patatas bravas” (spicy fried potatoes).',
+    hint: 'Situation: Planning a tapas crawl through historic Madrid.',
+    exampleSentences: [
+      { target: 'Vamos a tapear.', translation: 'Let\'s go out for tapas.', phonetic: 'VAH-mohs ah tah-peh-AHR.' },
+      { target: 'Esto está de muerte.', translation: 'This is to die for / heavenly delicious.', phonetic: 'EHS-toh es-TAH deh MWEHR-teh.' }
+    ]
+  },
+  {
+    languageId: 'spanish',
+    topicId: 'dialogues-conversations',
+    difficulty: 'B1',
+    cardType: 'dialogue',
+    front: 'A: Che, ¿te venís a comer un asado a casa el domingo?\nB: ¡De una, boludo! ¿Qué llevo? ¿Un vinito o algo para la picada?\nA: Traete un Malbec y unas cervezas bien frías para la previa.\nB: Dale, joya, contá conmigo.',
+    back: 'A: Hey mate, are you coming over to eat a barbecue at my place on Sunday?\nB: Absolutely, dude! What should I bring? A nice wine or something for the appetizer board?\nA: Bring along a Malbec and some ice-cold beers for the warm-up.\nB: Alright, awesome / brilliant, count on me.',
+    phonetic: 'A: Cheh, teh veh-NEES ah koh-MEHR oon ah-SAH-doh ah KAH-sah el doh-MEEN-goh?\nB: Deh OO-nah, boh-LOO-doh! Keh YEH-voh? Oon vee-NEE-toh oh AHL-goh PAH-rah lah pee-KAH-dah?\nA: Try-EH-teh oon mahl-BEK ee OO-nahs sehr-VEH-zahs byen FREE-ahs PAH-rah lah PREH-vyah.\nB: DAH-leh, HOH-yah, kohn-TAH kohn-MEE-goh.',
+    grammarNotes: 'Rioplatense (Argentina/Uruguay) authenticity: voseo (“te venís”, “traete”, “contá”); “che” (hey); “boludo” (colloquial dude); “asado” (bbq); “la previa” (pre-gathering); “joya” (brilliant/awesome).',
+    hint: 'Situation: Authentic Argentine Sunday barbecue (asado) invitation.',
+    exampleSentences: [
+      { target: '¡De una, joya!', translation: 'Right on, awesome!', phonetic: 'Deh OO-nah, HOH-yah!' },
+      { target: 'Contá conmigo.', translation: 'Count on me.', phonetic: 'Kohn-TAH kohn-MEE-goh.' }
     ]
   },
   // =========================================================================

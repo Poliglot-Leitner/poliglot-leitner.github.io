@@ -2428,4 +2428,185 @@ export const VERBS_SEEDS: CurriculumSeed[] = [
       }
     ]
   }
+,
+  {
+    "languageId": "chinese",
+    "topicId": "idioms-expressions",
+    "difficulty": "B1",
+    "cardType": "word",
+    "front": "人麻了 / 麻了 (má le)",
+    "back": "to be emotionally or physically numb / burnt out / overwhelmed",
+    "phonetic": "rén má le / má le",
+    "exampleTarget": "连续加班三天三夜，写了上千行代码，我现在整个人都麻了。",
+    "exampleTranslation": "Worked overtime three days and nights straight, wrote over a thousand lines of code, I am totally numb / burnt out right now.",
+    "grammarNotes": "Originated from esports and internet culture; now ubiquitous among young professionals describing overwhelming fatigue, stress, or absurdity.",
+    "hint": "Humorous slang for total mental or physical exhaustion.",
+    "exampleSentences": [
+      {
+        "target": "看到这个账单，我整个人都麻了。",
+        "translation": "Seeing this bill, I went completely numb.",
+        "phonetic": "Kàn dào zhège zhàngdān, wǒ zhěngrén dōu má le."
+      }
+    ]
+  },
+  {
+    "languageId": "chinese",
+    "topicId": "idioms-expressions",
+    "difficulty": "B1",
+    "cardType": "word",
+    "front": "妥了 / 妥妥的 (tuǒ le / tuǒtuǒ de)",
+    "back": "all settled / done deal / completely guaranteed (Northern colloquial)",
+    "phonetic": "tuǒ le / tuǒ-tuǒ de",
+    "exampleTarget": "这件事交给我办你就放心吧，妥妥的没问题！",
+    "exampleTranslation": "Leave this matter to me and rest assured, it's 100% guaranteed no problem!",
+    "grammarNotes": "Northern Mandarin classic: '妥' means appropriate/secure. '妥了' means agreement/settled; '妥妥的' acts as an adverb meaning 'definitely / without a doubt'.",
+    "hint": "Northern slang for something completely settled or guaranteed.",
+    "exampleSentences": [
+      {
+        "target": "事情办妥了！",
+        "translation": "The business has been settled!",
+        "phonetic": "Shìqing bàn tuǒ le!"
+      }
+    ]
+  },
+  {
+    "languageId": "chinese",
+    "topicId": "daily-travel",
+    "difficulty": "A2",
+    "cardType": "sentence",
+    "front": "老板，来份黄焖鸡，米饭多给点，汤汁拌饭绝了！",
+    "back": "Boss, bring a braised chicken, give extra rice, mixing the broth with rice is out of this world!",
+    "phonetic": "Lǎobǎn, lái fèn huángmènjī, mǐfàn duō gěi diǎn, tāngzhī bàn fàn jué le!",
+    "exampleTarget": "老板，来份黄焖鸡，米饭多给点，汤汁拌饭绝了！",
+    "exampleTranslation": "Boss, bring a braised chicken, give extra rice, mixing the broth with rice is out of this world!",
+    "grammarNotes": "“绝了” (jué le) is standard slang for 'out of this world / absolutely unbeatable / supreme'.",
+    "hint": "High praise for food flavor pairing.",
+    "exampleSentences": [
+      {
+        "target": "这道菜的味道真是绝了！",
+        "translation": "The taste of this dish is truly out of this world!",
+        "phonetic": "Zhè dào cài de wèidao zhēnshì jué le!"
+      }
+    ]
+  },
+  {
+    "languageId": "german",
+    "topicId": "idioms-expressions",
+    "difficulty": "B1",
+    "cardType": "word",
+    "front": "abgemacht! (Abgemacht!)",
+    "back": "Deal! / Agreed! / It's a bargain!",
+    "phonetic": "AHP-geh-mahkt",
+    "exampleTarget": "Du kochst das Abendessen und ich spüle danach das Geschirr? Abgemacht!",
+    "exampleTranslation": "You cook dinner and I wash the dishes afterwards? Deal!",
+    "grammarNotes": "From 'abmachen' (to agree upon / settle). The most common colloquial affirmation when striking a mutual agreement or deal between friends.",
+    "hint": "The standard German exclamation for 'Deal! / Agreed!'.",
+    "exampleSentences": [
+      {
+        "target": "Kommst du morgen um acht? - Abgemacht!",
+        "translation": "Are you coming tomorrow at eight? - It's a deal!",
+        "phonetic": "Komst doo MOR-gen oom ahkht? - AHP-geh-mahkt!"
+      }
+    ]
+  },
+  {
+    "languageId": "german",
+    "topicId": "idioms-expressions",
+    "difficulty": "B1",
+    "cardType": "word",
+    "front": "Pech gehabt (Pech haben)",
+    "back": "tough luck / bad break / out of luck",
+    "phonetic": "pekh geh-HAHPT",
+    "exampleTarget": "Der Bäcker hatte schon zu, da haben wir wohl Pech gehabt.",
+    "exampleTranslation": "The bakery was already closed, looks like we had bad luck.",
+    "grammarNotes": "'Pech' literally means pitch/tar (symbol of misfortune). 'Pech gehabt!' is used casually when something unfortunate or unlucky happens.",
+    "hint": "Standard German expression for unfortunate luck.",
+    "exampleSentences": [
+      {
+        "target": "Wer zu spät kommt, hat Pech gehabt.",
+        "translation": "Whoever arrives too late is out of luck.",
+        "phonetic": "Vair tsoo shpayt komt, haht pekh geh-HAHPT."
+      }
+    ]
+  },
+  {
+    "languageId": "german",
+    "topicId": "idioms-expressions",
+    "difficulty": "A2",
+    "cardType": "sentence",
+    "front": "Ich drücke dir ganz fest die Daumen für deine Prüfung morgen!",
+    "back": "I'm crossing my fingers tightly for your exam tomorrow!",
+    "phonetic": "Ikh DREER-keh deer gahnts fest dee DOW-men feer DY-neh PREE-foong MOR-gen!",
+    "exampleTarget": "Ich drücke dir ganz fest die Daumen für deine Prüfung morgen!",
+    "exampleTranslation": "I'm crossing my fingers tightly for your exam tomorrow!",
+    "grammarNotes": "Germans 'press their thumbs' ('die Daumen drücken') instead of crossing their fingers to wish good luck.",
+    "hint": "The German cultural equivalent of crossing your fingers for luck.",
+    "exampleSentences": [
+      {
+        "target": "Daumen drücken!",
+        "translation": "Fingers crossed / Thumbs pressed!",
+        "phonetic": "DOW-men DREER-ken!"
+      }
+    ]
+  },
+  {
+    "languageId": "spanish",
+    "topicId": "idioms-expressions",
+    "difficulty": "A2",
+    "cardType": "word",
+    "front": "¡qué oso! (hacer el oso)",
+    "back": "how embarrassing! / how cringe! (Mexican & Colombian slang)",
+    "phonetic": "keh OH-soh",
+    "exampleTarget": "Se me rompió el pantalón en plena fiesta frente a todos, ¡qué oso!",
+    "exampleTranslation": "My pants tore right in the middle of the party in front of everyone, how utterly embarrassing!",
+    "grammarNotes": "'Hacer el oso' = to make a fool of oneself. '¡Qué oso!' = what an embarrassment / how cringe. Highly popular across Latin America.",
+    "hint": "Youth slang for awkward or cringeworthy social embarrassment.",
+    "exampleSentences": [
+      {
+        "target": "No quiero hacer el oso cantando en el karaoke.",
+        "translation": "I don't want to make a fool of myself singing at karaoke.",
+        "phonetic": "Noh KYEH-roh ah-SEHR el OH-soh kahn-TAHN-doh en el kah-rah-OH-keh."
+      }
+    ]
+  },
+  {
+    "languageId": "spanish",
+    "topicId": "idioms-expressions",
+    "difficulty": "B1",
+    "cardType": "word",
+    "front": "el chisme / chismear",
+    "back": "gossip / the tea / to gossip playfully",
+    "phonetic": "el CHEES-meh / chees-meh-AHR",
+    "exampleTarget": "Siéntate aquí conmigo y cuéntame todo el chisme con lujo de detalles.",
+    "exampleTranslation": "Sit down here with me and tell me all the gossip in full detail.",
+    "grammarNotes": "'El chisme' = gossip/tea; 'chismoso/a' = gossip hound; 'chismear' = to gossip. Central to casual Latin American camaraderie.",
+    "hint": "Everyday Spanish for gossip, tea, or social news.",
+    "exampleSentences": [
+      {
+        "target": "Nos encanta el chisme sano.",
+        "translation": "We love good harmless gossip.",
+        "phonetic": "Nohs en-KAHN-tah el CHEES-meh SAH-noh."
+      }
+    ]
+  },
+  {
+    "languageId": "spanish",
+    "topicId": "idioms-expressions",
+    "difficulty": "A2",
+    "cardType": "sentence",
+    "front": "¡Venga ya! No te rayes por tonterías, que la vida son dos días.",
+    "back": "Come on now! Don't fret / overthink over silly nonsense, life is too short.",
+    "phonetic": "VEN-gah yah! Noh teh RAH-yes pohr tohn-teh-REE-ahs, keh lah VEE-dah sohn dohs DEE-ahs.",
+    "exampleTarget": "¡Venga ya! No te rayes por tonterías, que la vida son dos días.",
+    "exampleTranslation": "Come on now! Don't fret / overthink over silly nonsense, life is too short.",
+    "grammarNotes": "'Rayarse' (Spain slang) = to fret, obsess, or overthink. 'La vida son dos días' = life is brief, enjoy it.",
+    "hint": "Encouraging a stressed friend to stop overthinking and enjoy life.",
+    "exampleSentences": [
+      {
+        "target": "No te rayes.",
+        "translation": "Don't fret / don't overthink it.",
+        "phonetic": "Noh teh RAH-yes."
+      }
+    ]
+  }
 ];

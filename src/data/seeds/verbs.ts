@@ -2187,4 +2187,245 @@ export const VERBS_SEEDS: CurriculumSeed[] = [
       }
     ]
   }
+,
+  {
+    "languageId": "chinese",
+    "topicId": "idioms-expressions",
+    "difficulty": "B1",
+    "cardType": "word",
+    "front": "躺平 (tǎngpíng)",
+    "back": "to lie flat / opt out of the rat race / take it easy",
+    "phonetic": "tǎng-píng",
+    "exampleTarget": "面对过度的竞争和无休止的加班，越来越多的年轻人选择心态躺平。",
+    "exampleTranslation": "Facing excessive competition and endless overtime, more and more young people choose to mentally lie flat.",
+    "grammarNotes": "Major modern cultural catchphrase: rejecting relentless hyper-competition ('内卷') in favor of modest contentment and mental peace.",
+    "hint": "Modern Chinese lifestyle idiom of stepping back from intense social pressure.",
+    "exampleSentences": [
+      {
+        "target": "周末谁也别叫我，我要在家彻底躺平两天。",
+        "translation": "Don't anyone call me this weekend, I'm going to totally lie flat at home for two days.",
+        "phonetic": "Zhōumò shuí yě bié jiào wǒ, wǒ yào zài jiā chèdǐ tǎngpíng liǎng tiān."
+      }
+    ]
+  },
+  {
+    "languageId": "chinese",
+    "topicId": "idioms-expressions",
+    "difficulty": "B1",
+    "cardType": "word",
+    "front": "内卷 / 卷 (nèijuǎn / juǎn)",
+    "back": "involution / cutthroat competition / frantic rat race",
+    "phonetic": "nèi-juǎn / juǎn",
+    "exampleTarget": "现在考研和找工作太卷了，大家都付出了几倍的精力。",
+    "exampleTranslation": "Taking grad school exams and job hunting are too cutthroat now; everyone has invested several times more effort.",
+    "grammarNotes": "Originally an anthropological term ('involution'), now ubiquitous slang in China for zero-sum toxic competition where people overwork without creating new value.",
+    "hint": "Ubiquitous buzzword for frantic societal rat race.",
+    "exampleSentences": [
+      {
+        "target": "大家都在疯狂加班，整个行业卷得不行。",
+        "translation": "Everyone is working overtime like crazy, the whole industry is ridiculously competitive.",
+        "phonetic": "Dàjiā dōu zài fēngkuáng jiābān, zhěnggè hángyè juǎn de bùxíng."
+      }
+    ]
+  },
+  {
+    "languageId": "chinese",
+    "topicId": "manners-etiquette",
+    "difficulty": "A2",
+    "cardType": "word",
+    "front": "哥们儿 / 姐妹 (gēmenr / jiěmèi)",
+    "back": "bro / dude / bestie / sister (close peer address)",
+    "phonetic": "gē-menr / jiě-mèi",
+    "exampleTarget": "好哥们儿讲义气，无论遇到什么困难都互相鼎力相助。",
+    "exampleTranslation": "Good bros are loyal; no matter what difficulty arises they wholeheartedly back each other up.",
+    "grammarNotes": "‘哥们儿’ (Northern erhua) = bro/dude among males; ‘姐妹’ = girls addressing their close female friends ('bestie/sis').",
+    "hint": "Informal intimate friend addresses in Mandarin.",
+    "exampleSentences": [
+      {
+        "target": "那是我穿一条裤子长大的铁哥们儿。",
+        "translation": "That's an ironclad bro I grew up sharing everything with.",
+        "phonetic": "Nà shì wǒ chuān yī tiáo kùzi zhǎngdà de tiě gēmenr."
+      }
+    ]
+  },
+  {
+    "languageId": "chinese",
+    "topicId": "daily-travel",
+    "difficulty": "A2",
+    "cardType": "sentence",
+    "front": "别客气，咱俩谁跟谁啊，下回换你请！",
+    "back": "Don't be polite, between you and me who's keeping count, next time is your turn to treat!",
+    "phonetic": "Bié kèqì, zán liǎ shuí gēn shuí a, xià huí huàn nǐ qǐng!",
+    "exampleTarget": "别客气，咱俩谁跟谁啊，下回换你请！",
+    "exampleTranslation": "Don't be polite, between you and me who's keeping count, next time is your turn to treat!",
+    "grammarNotes": "‘谁跟谁啊’ is the ultimate idiom to brush off formal thanks between true close friends.",
+    "hint": "Friendly dismissal of formal debt or thanks among friends.",
+    "exampleSentences": [
+      {
+        "target": "跟我还客气啥，咱俩谁跟谁啊！",
+        "translation": "Why stand on ceremony with me, who's counting between us!",
+        "phonetic": "Gēn wǒ hái kèqì shá, zán liǎ shuí gēn shuí a!"
+      }
+    ]
+  },
+  {
+    "languageId": "german",
+    "topicId": "idioms-expressions",
+    "difficulty": "A2",
+    "cardType": "word",
+    "front": "Bock haben (auf etwas)",
+    "back": "to be up for / to feel like / to be in the mood for something",
+    "phonetic": "bok HAH-ben",
+    "exampleTarget": "Hast du heute Abend Bock auf Kino oder lieber eine Runde zocken?",
+    "exampleTranslation": "Do you feel like going to the cinema tonight or rather gaming a round?",
+    "grammarNotes": "Extremely frequent informal German: 'Ich habe (keinen) Bock' = I'm (not) in the mood / I don't feel like it. 'Null Bock' = zero desire.",
+    "hint": "Informal German for being in the mood for an activity.",
+    "exampleSentences": [
+      {
+        "target": "Ich habe heute echt null Bock auf Hausaufgaben.",
+        "translation": "I really have zero desire for homework today.",
+        "phonetic": "Ikh HAH-beh HOY-teh ekht nool bok owf HOWS-owf-gah-ben."
+      }
+    ]
+  },
+  {
+    "languageId": "german",
+    "topicId": "daily-travel",
+    "difficulty": "A2",
+    "cardType": "word",
+    "front": "der Feierabend",
+    "back": "quitting time / end of work / evening leisure after work",
+    "phonetic": "dair FY-er-ah-bent",
+    "exampleTarget": "Punkt siebzehn Uhr macht er den Laptop zu und genießt seinen wohlverdienten Feierabend.",
+    "exampleTranslation": "At five o'clock sharp he closes the laptop and enjoys his well-deserved after-work evening.",
+    "grammarNotes": "Culturally unique German concept: the boundary where work ends and personal life begins. 'Schönen Feierabend!' is standard farewell to colleagues.",
+    "hint": "Sacred German concept of the work day ending.",
+    "exampleSentences": [
+      {
+        "target": "Ich wünsche dir einen erholsamen Feierabend!",
+        "translation": "I wish you a restful evening after work!",
+        "phonetic": "Ikh VEERN-sheh deer EY-nen air-HOHL-zah-men FY-er-ah-bent!"
+      }
+    ]
+  },
+  {
+    "languageId": "german",
+    "topicId": "idioms-expressions",
+    "difficulty": "B1",
+    "cardType": "word",
+    "front": "na (Na, wie geht's? / Na ja / Na gut)",
+    "back": "well / hey / so (quintessential German conversational particle)",
+    "phonetic": "nah",
+    "exampleTarget": "Na, hast du am Wochenende etwas Schönes unternommen?",
+    "exampleTranslation": "Well, did you do anything nice over the weekend?",
+    "grammarNotes": "'Na' can be a greeting ('Na?'), hesitation ('Na ja...'), acceptance ('Na gut'), or astonishment ('Na hör mal!'). Germans can hold entire micro-conversations with 'Na? - Na!'.",
+    "hint": "The most versatile conversational filler particle in spoken German.",
+    "exampleSentences": [
+      {
+        "target": "Na ja, es könnte definitiv besser laufen.",
+        "translation": "Well, things could definitely be going better.",
+        "phonetic": "Nah yah, ess KERN-teh deh-fee-nee-TEEF BES-ser LOW-fen."
+      }
+    ]
+  },
+  {
+    "languageId": "german",
+    "topicId": "idioms-expressions",
+    "difficulty": "B1",
+    "cardType": "sentence",
+    "front": "Das ist mir vollkommen Wurst, mach einfach wie du denkst!",
+    "back": "That is completely all the same to me / I couldn't care less, just do as you think!",
+    "phonetic": "Dahs ist meer fol-KOM-men voorst, mahkh EYN-fahkh vee doo denkst!",
+    "exampleTarget": "Das ist mir vollkommen Wurst, mach einfach wie du denkst!",
+    "exampleTranslation": "That is completely all the same to me / I couldn't care less, just do as you think!",
+    "grammarNotes": "'Das ist mir Wurst / wurscht' = classic German idiom meaning 'it's all sausage to me' (it doesn't matter to me).",
+    "hint": "Iconic food-based idiom for total indifference.",
+    "exampleSentences": [
+      {
+        "target": "Ob Pizza oder Pasta ist mir völlig wurscht.",
+        "translation": "Whether pizza or pasta is completely all the same to me.",
+        "phonetic": "Op PEET-sah OH-der PAHS-tah ist meer FERL-likh voorst."
+      }
+    ]
+  },
+  {
+    "languageId": "spanish",
+    "topicId": "idioms-expressions",
+    "difficulty": "A2",
+    "cardType": "word",
+    "front": "ponerse las pilas",
+    "back": "to get one's act together / get energized / step it up",
+    "phonetic": "poh-NEHR-seh lahs PEE-lahs",
+    "exampleTarget": "Si queremos aprobar este examen tan difícil, tenemos que ponernos las pilas desde hoy.",
+    "exampleTranslation": "If we want to pass this difficult exam, we have to get our act together / step it up starting today.",
+    "grammarNotes": "Literally 'to put in one's batteries'. Used everywhere in the Spanish-speaking world to tell someone to wake up, focus, and work with energy.",
+    "hint": "Universal Spanish idiom for energizing and getting down to business.",
+    "exampleSentences": [
+      {
+        "target": "¡Ponte las pilas con ese reporte!",
+        "translation": "Get your act together with that report!",
+        "phonetic": "POHN-teh lahs PEE-lahs kohn EH-seh reh-POHR-teh!"
+      }
+    ]
+  },
+  {
+    "languageId": "spanish",
+    "topicId": "idioms-expressions",
+    "difficulty": "A2",
+    "cardType": "word",
+    "front": "molar (¡Mola un montón!)",
+    "back": "to be cool / to be great (colloquial Spain)",
+    "phonetic": "moh-LAHR",
+    "exampleTarget": "Ese videojuego nuevo mola muchísimo, tienes que probarlo.",
+    "exampleTranslation": "That new video game is super cool, you have to try it.",
+    "grammarNotes": "Works like 'gustar': 'Me mola' (I like it / it's cool to me). 'Mola un montón' = it's super awesome.",
+    "hint": "Classic Spain slang for cool/great.",
+    "exampleSentences": [
+      {
+        "target": "Tu coche nuevo mola un montón.",
+        "translation": "Your new car is super cool.",
+        "phonetic": "Too KOH-cheh NWEH-voh MOH-lah oon mohn-TOHN."
+      }
+    ]
+  },
+  {
+    "languageId": "spanish",
+    "topicId": "idioms-expressions",
+    "difficulty": "A2",
+    "cardType": "word",
+    "front": "la neta",
+    "back": "the absolute truth / honestly / for real (Mexican slang)",
+    "phonetic": "lah NEH-tah",
+    "exampleTarget": "La neta no tenía ganas de salir, pero me convencieron mis amigos.",
+    "exampleTranslation": "Honestly / for real I had no desire to go out, but my friends convinced me.",
+    "grammarNotes": "'La neta' = the truth; '¿Neta?' = really? / for real?; 'Ser la neta' = to be the greatest/coolest.",
+    "hint": "Essential Mexican truth-marker particle.",
+    "exampleSentences": [
+      {
+        "target": "¿Es neta lo que me estás diciendo?",
+        "translation": "Is what you're telling me for real?",
+        "phonetic": "Es NEH-tah loh keh meh es-TAHS dee-SYEN-doh?"
+      }
+    ]
+  },
+  {
+    "languageId": "spanish",
+    "topicId": "idioms-expressions",
+    "difficulty": "A2",
+    "cardType": "sentence",
+    "front": "¡No manches! ¿A poco te ganaste la beca para estudiar en el extranjero?",
+    "back": "No way / Come on! You really won the scholarship to study abroad?!",
+    "phonetic": "Noh MAHN-ches! Ah POH-koh teh gah-NAHS-teh lah BEH-kah PAH-rah es-too-DYAHR en el eks-trahn-HEH-roh?",
+    "exampleTarget": "¡No manches! ¿A poco te ganaste la beca para estudiar en el extranjero?",
+    "exampleTranslation": "No way / Come on! You really won the scholarship to study abroad?!",
+    "grammarNotes": "'¡No manches!' (polite/clean form of 'no mames') = no way!; '¿A poco...?' = Mexican conversational expression of disbelief ('You don't say?! / Really?!').",
+    "hint": "Expressing astonished surprise at wonderful news.",
+    "exampleSentences": [
+      {
+        "target": "¿A poco sí?",
+        "translation": "Really? Is that so?",
+        "phonetic": "Ah POH-koh see?"
+      }
+    ]
+  }
 ];

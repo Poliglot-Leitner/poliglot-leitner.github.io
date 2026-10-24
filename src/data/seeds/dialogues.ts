@@ -1743,6 +1743,66 @@ export const DIALOGUE_SEEDS: CurriculumSeed[] = [
       { target: '真好吃！', translation: 'Really tasty!', phonetic: 'Zhēn hǎochī!' }
     ]
   },
+  // =========================================================================
+  // REAL-LIFE COLLOQUIAL CHINESE DIALOGUES (地道中国日常生活口语 - 像母语者一样说话)
+  // =========================================================================
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A2',
+    cardType: 'dialogue',
+    front: 'A: 哥们儿，你最近在忙啥呢？\nB: 嗨，别提了，最近公司天天加班，我都快被卷死了！\nA: 这么拼啊？赶紧找机会躺平歇歇吧。',
+    back: 'A: Bro, what have you been up to lately?\nB: Ugh, don\'t even ask / don\'t get me started, the company has us working overtime every day, I\'m almost getting ground down to death by the competition!\nA: Grinding that hard? Hurry up and find a chance to lie flat / chill out and rest.',
+    phonetic: 'A: Gēmenr, nǐ zuìjìn zài máng shà ne?\nB: Hāi, bié tí le, zuìjìn gōngsī tiāntiān jiābān, wǒ dōu kuài bèi juǎn sǐ le!\nA: Zhème pīn a? Gǎnjǐn zhǎo jīhuì tǎngpíng xiēxie ba.',
+    grammarNotes: 'Modern Chinese youth buzzwords: “卷” (juǎn - from involution/competition); “躺平” (tǎngpíng - lie flat / take it easy); “哥们儿” (gēmenr - bro/dude); “别提了” (bié tí le - don\'t get me started).',
+    hint: 'Situation: Venting about workplace competition and long hours over tea or coffee.',
+    exampleSentences: [
+      { target: '别太卷了，身体要紧。', translation: 'Don\'t overwork/compete too furiously, health comes first.', phonetic: 'Bié tài juǎn le, shēntǐ yàojǐn.' },
+      { target: '今天只想在家里躺平。', translation: 'Today I just want to lie flat at home.', phonetic: 'Jīntiān zhǐ xiǎng zài jiālǐ tǎngpíng.' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A2',
+    cardType: 'dialogue',
+    front: 'A: 帅哥，吃点什么？里面请坐！\nB: 老板，来一碗牛肉面，加个煎蛋，多放香菜少放盐。\nA: 好嘞！面要宽的还是细的？\nB: 要细面，汤多一点儿！',
+    back: 'A: Handsome! What would you like to eat? Please come sit inside!\nB: Boss, bring a bowl of beef noodles, add a fried egg, extra cilantro, less salt.\nA: Right on / Coming up! Do you want wide noodles or thin noodles?\nB: Thin noodles, and a bit more broth please!',
+    phonetic: 'A: Shuàigē, chī diǎn shénme? Lǐmiàn qǐng zuò!\nB: Lǎobǎn, lái yī wǎn niúròumiàn, jiā gè jiāndàn, duō fàng xiāngcài shǎo fàng yán.\nA: Hǎo lei! Miàn yào kuān de háishì xì de?\nB: Yào xì miàn, tāng duō yīdiǎnr!',
+    grammarNotes: 'Authentic dining culture: “帅哥 / 美女” (shuàigē/měinǚ) is universal friendly address in restaurants; “好嘞” (hǎo lei) is cheerful waiter agreement ("right on!"); custom requests: 多放...少放... (extra... / less...).',
+    hint: 'Situation: Ordering customized noodles like a local regular.',
+    exampleSentences: [
+      { target: '好嘞，马上来！', translation: 'You got it, coming right up!', phonetic: 'Hǎo lei, mǎshàng lái!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'B1',
+    cardType: 'dialogue',
+    front: 'A: 刚才买单你干嘛抢着付啊？说好了这顿我请客的！\nB: 咱俩谁跟谁啊，下次你请不就结了！\nA: 行，那待会儿喝奶茶必须我来买！\nB: 没问题，一言为定。',
+    back: 'A: Why did you fight to pay the bill just now? We agreed this meal was on me!\nB: Hey, between the two of us, who\'s keeping score? Next time it\'s on you and that settles it!\nA: Alright, then when we get boba tea later, I\'m definitely buying!\nB: No problem, it\'s a deal.',
+    phonetic: 'A: Gāngcái mǎidān nǐ gànmá qiǎng zhe fù a? Shuō hǎo le zhè dùn wǒ qǐngkè de!\nB: Zán liǎ shuí gēn shuí a, xià cì nǐ qǐng bù jiù jié le!\nA: Xíng, nà dàihuǐr hē nǎichá bìxū wǒ lái mǎi!\nB: Méi wèntí, yī yán wéi dìng.',
+    grammarNotes: 'Chinese social etiquette: Fighting for the bill (抢买单 qiǎng mǎidān); “咱俩谁跟谁啊” (zán liǎ shuí gēn shuí a = we\'re so close, why keep score?); “一言为定” (it\'s a deal).',
+    hint: 'Situation: The classic friendly Chinese squabble over paying the restaurant check.',
+    exampleSentences: [
+      { target: '咱俩谁跟谁啊！', translation: 'Between you and me, who\'s counting!', phonetic: 'Zán liǎ shuí gēn shuí a!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A2',
+    cardType: 'dialogue',
+    front: 'A: 师傅，我去高铁站，大概得多久啊？\nB: 现在是晚高峰，环路堵得要命，少说得四十分钟。\nA: 哎呀，我火车还有一个小时发车，能抄近道吗？\nB: 放心吧，我走辅路穿过去，保准误不了你的车！',
+    back: 'A: Master/Driver, I\'m going to the high-speed train station, about how long will it take?\nB: It\'s evening rush hour now, the ring road is insanely jammed, forty minutes at least.\nA: Oh dear, my train departs in an hour, can we take a shortcut?\nB: Don\'t worry, I\'ll cut through the side roads, I guarantee you won\'t miss your train!',
+    phonetic: 'A: Shīfu, wǒ qù gāotiězhàn, dàgài děi duōjiǔ a?\nB: Xiànzài shì wǎngāofēng, huánlù dǔ de yàomìng, shǎoshuō děi sìshí fēnzhōng.\nA: Àiyā, wǒ huǒchē hái yǒu yī gè xiǎoshí fāchē, néng chāo jìndào ma?\nB: Fàngxīn ba, wǒ zǒu fǔlù chuān guòqù, bǎozhǔn wù bù liǎo nǐ de chē!',
+    grammarNotes: 'Colloquial taxi lingo: “堵得要命” (dǔ de yàomìng - jammed to death / insanely congested); “抄近道” (chāo jìndào - take a shortcut); “保准” (bǎozhǔn - guaranteed).',
+    hint: 'Situation: Rushing to catch a train in heavy rush-hour traffic.',
+    exampleSentences: [
+      { target: '前面堵得要命。', translation: 'Up ahead is jammed up to no end.', phonetic: 'Qiánmiàn dǔ de yàomìng.' }
+    ]
+  },
 {
     languageId: 'german',
     topicId: 'dialogues-conversations',
@@ -2126,6 +2186,52 @@ export const DIALOGUE_SEEDS: CurriculumSeed[] = [
     ]
   },
   // =========================================================================
+  // REAL-LIFE COLLOQUIAL GERMAN DIALOGUES (Authentisches Deutsch im Alltag)
+  // =========================================================================
+  {
+    languageId: 'german',
+    topicId: 'dialogues-conversations',
+    difficulty: 'B1',
+    cardType: 'dialogue',
+    front: 'A: Na, alles fit bei dir?\nB: Ja, geht so. Ich habe heute überhaupt keinen Bock auf die Uni.\nA: Ach komm, zieh durch! Danach trinken wir ein kühles Feierabendbier.',
+    back: 'A: Well, all good with you?\nB: Yeah, so-so. I really have zero desire / mood for university today.\nA: Oh come on, push through! Afterwards we\'ll have a cool after-work beer.',
+    phonetic: 'A: Nah, AHL-les fit by deer?\nB: Yah, gayt zoh. Ikh HAH-beh HOY-teh oo-ber-HOWPT KY-nen bok owf dee OO-nee.\nA: Akh kom, tsee doorkh! Dah-NAHKH TRING-ken veer ein KOO-les FY-er-ah-bent-beer.',
+    grammarNotes: 'German youth & daily staples: “Bock haben” (colloquial for lust haben / to be in the mood); “Feierabend” (sacred German concept of the end of the working day); “Na” (universal conversational starter).',
+    hint: 'Situation: Chatting with a friend or study buddy who is feeling unmotivated.',
+    exampleSentences: [
+      { target: 'Ich habe voll Bock darauf!', translation: 'I am totally up for that / really in the mood for that!', phonetic: 'Ikh HAH-beh fol bok dah-ROWF!' },
+      { target: 'Schönen Feierabend!', translation: 'Have a great evening after work!', phonetic: 'SHER-nen FY-er-ah-bent!' }
+    ]
+  },
+  {
+    languageId: 'german',
+    topicId: 'dialogues-conversations',
+    difficulty: 'B1',
+    cardType: 'dialogue',
+    front: 'A: Mensch, das darf doch wohl nicht wahr sein! Der Zug fällt schon wieder komplett aus.\nB: Echt jetzt? Das ist doch ein Witz! Was machen wir denn jetzt?\nA: Da haben wir wohl Pech gehabt. Wir müssen wohl den Schienenersatzverkehr nehmen.',
+    back: 'A: Man, that can\'t possibly be true! The train is completely cancelled yet again.\nB: Seriously? That has to be a joke! What on earth do we do now?\nA: Looks like we are out of luck. We\'ll probably have to take the replacement bus service.',
+    phonetic: 'A: Mensh, dahs darf dokh vohl nikht vahr zyn! Dair tsook fellt shon VEE-der kom-PLETT ows.\nB: Ekht yetst? Dahs ist dokh ein vits! Vahs MAH-khen veer den yetst?\nA: Dah HAH-ben veer vohl pekh geh-HAHPT. Veer MEER-sen vohl dayn SHEE-nen-air-zats-fair-kair NAY-men.',
+    grammarNotes: 'Everyday frustration expressions: “Mensch!” (Man!); “Pech gehabt” (out of luck); “Schienenersatzverkehr” (SEV - famous German rail replacement bus); modal particles: “doch wohl”, “denn”.',
+    hint: 'Situation: Rail travel disruption at a Deutsche Bahn platform.',
+    exampleSentences: [
+      { target: 'Pech gehabt!', translation: 'Tough luck / bad luck!', phonetic: 'Pekh geh-HAHPT!' }
+    ]
+  },
+  {
+    languageId: 'german',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A2',
+    cardType: 'dialogue',
+    front: 'A: Hallo! Einmal Döner mit allem, bitte.\nB: Mit Knoblauchsauce oder Kräuter?\nA: Mit Knoblauch, bitte. Und ein bisschen scharf.\nB: Alles klar, Chef! Zum Mitnehmen?\nA: Ja, genau, danke!',
+    back: 'A: Hello! One Döner with everything, please.\nB: With garlic sauce or herb sauce?\nA: With garlic, please. And a little bit spicy.\nB: Got it, boss! To take away?\nA: Yes, exactly, thanks!',
+    phonetic: 'A: HAH-loh! EYN-mahl DER-ner mit AHL-lem, BIT-teh.\nB: Mit KNOHP-lowkh-zoh-seh OH-der KROY-ter?\nA: Mit KNOHP-lowkh, BIT-teh. Oont ein BIS-khen sharf.\nB: AHL-les klahr, shef! Tsoom MIT-nay-men?\nA: Yah, geh-NOW, DAHN-keh!',
+    grammarNotes: 'Germany\'s #1 street food ritual: “Döner mit allem” (döner with all salads and toppings); “ein bisschen scharf” (with a sprinkle of chili flakes / Pul Biber); “Chef” (colloquial friendly address from kiosk vendors).',
+    hint: 'Situation: Ordering Germany\'s most iconic street food at a Döner Imbiss.',
+    exampleSentences: [
+      { target: 'Einmal mit allem, bitte.', translation: 'One with everything, please.', phonetic: 'EYN-mahl mit AHL-lem, BIT-teh.' }
+    ]
+  },
+  // =========================================================================
   // SPANISH DIALOGUES (Diálogos Cortos)
   // =========================================================================
   {
@@ -2401,6 +2507,54 @@ export const DIALOGUE_SEEDS: CurriculumSeed[] = [
     hint: 'Situation: Checking in on an overworked friend.',
     exampleSentences: [
       { target: 'Hay que chingarle duro.', translation: 'One has to grind / bust one\'s tail hard.', phonetic: 'Eye keh cheen-GAHR-leh DOO-roh.' }
+    ]
+  },
+  // =========================================================================
+  // REAL-LIFE COLLOQUIAL SPANISH DIALOGUES (Español Auténtico y Expresiones Callejeras)
+  // =========================================================================
+  {
+    languageId: 'spanish',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A2',
+    cardType: 'dialogue',
+    front: 'A: ¡Tío, qué pasada de concierto ayer! ¿A que estuvo brutal?\nB: ¡Totalmente! La banda lo petó. Hacía tiempo que no me lo pasaba tan bien.\nA: Venga, vamos a tomar una caña y comentamos la jugada.\nB: ¡Vale, me apunto de cabeza!',
+    back: 'A: Dude/Man, what an amazing concert yesterday! Wasn\'t it incredible?\nB: Totally! The band crushed it / blew the roof off. It had been ages since I had such a blast.\nA: Come on, let\'s go grab a draught beer and talk over the details.\nB: Alright, I\'m in 100%!',
+    phonetic: 'A: TEE-oh, keh pah-SAH-dah deh kohn-SYEHR-toh ah-YEHR! Ah keh es-TOO-voh broo-TAHL?\nB: Toh-tahl-MEN-teh! Lah BAHN-dah loh peh-TOH. Ah-SEE-ah TYEM-poh keh noh meh loh pah-SAH-bah tahn byen.\nA: VEN-gah, VAH-mohs ah toh-MAHR OO-nah KAH-nyah ee koh-men-TAH-mohs lah hoo-GAH-dah.\nB: VAH-leh, meh ah-POON-toh deh kah-BEH-sah!',
+    grammarNotes: 'Castilian Spanish street mastery: “tío” (dude/mate); “lo petó” (they killed it / smashed it); “tomar una caña” (grab a draft beer); “me apunto de cabeza” (count me in enthusiastically); “vale” (okay).',
+    hint: 'Situation: Two friends excitedly recapping a live concert over tapas and beer in Spain.',
+    exampleSentences: [
+      { target: '¡Qué pasada!', translation: 'How incredible / amazing!', phonetic: 'Keh pah-SAH-dah!' },
+      { target: '¡Me apunto!', translation: 'Count me in / I\'m down!', phonetic: 'Meh ah-POON-toh!' }
+    ]
+  },
+  {
+    languageId: 'spanish',
+    topicId: 'dialogues-conversations',
+    difficulty: 'B1',
+    cardType: 'dialogue',
+    front: 'A: ¡Ponte las pilas, parce! Que si no entregamos el trabajo hoy, nos jalan la materia.\nB: Fresco, relajate un rato. Ya casi termino la última parte, solo me falta revisar los gráficos.\nA: Hágale pues, que el profe no perdona ni un minuto de retraso.\nB: De una, en media hora queda listo.',
+    back: 'A: Get your act together / hurry up, buddy! If we don\'t turn in the paper today, we\'ll fail the class.\nB: Relax, take it easy for a moment. I\'m almost done with the last part, I just need to check the graphs.\nA: Get on with it then, the professor won\'t forgive even a single minute of delay.\nB: Right away / on it, it\'ll be ready in half an hour.',
+    phonetic: 'A: POHN-teh lahs PEE-lahs, PAR-seh! Keh see noh en-treh-GAH-mohs el trah-BAH-hoh oy, nohs HAH-lahn lah mah-TEH-ryah.\nB: FREHS-koh, reh-lah-HAH-teh oon RAH-toh. Yah KAH-see tehr-MEE-noh lah OOL-tee-mah PAR-teh, SOH-loh meh FAHL-tah reh-vee-SAHR lohs GRAH-fee-kohs.\nA: AH-gah-leh pwehs, keh el PROH-feh noh pehr-DOH-nah nee oon mee-NOO-toh deh reh-TRAH-soh.\nB: Deh OO-nah, en MEH-dyah OH-rah KEH-dah LEES-toh.',
+    grammarNotes: 'Latin American (Colombian/Andean) colloquial mastery: “ponerse las pilas” (get energized/focused); “parce” (bro/friend); “fresco” (cool/chill); “hágale pues” (go for it / hurry up); “de una” (right away / instantly).',
+    hint: 'Situation: University students rushing to submit a final group project before deadline.',
+    exampleSentences: [
+      { target: '¡Ponte las pilas!', translation: 'Get your act together / step it up!', phonetic: 'POHN-teh lahs PEE-lahs!' },
+      { target: '¡De una!', translation: 'Right away / absolutely!', phonetic: 'Deh OO-nah!' }
+    ]
+  },
+  {
+    languageId: 'spanish',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A2',
+    cardType: 'dialogue',
+    front: 'A: ¿Qué onda? ¿Vamos a comer algo que me estoy muriendo de hambre?\nB: ¡Jalo! Conozco un puesto de birria que está para chuparse los dedos.\nA: ¡Uff, ya se me hizo agua la boca! Vámonos en corto.\nB: Órale, deja agarro mis llaves.',
+    back: 'A: What\'s up? Shall we go grab something to eat, I\'m starving to death?\nB: I\'m in / Let\'s do it! I know a birria taco stand that is finger-licking good.\nA: Oof, my mouth is already watering! Let\'s go right now / right away.\nB: Alright, let me grab my keys.',
+    phonetic: 'A: Keh OHN-dah? VAH-mohs ah koh-MEHR AHL-goh keh meh es-TOY moo-RYEN-doh deh AHM-breh?\nB: HAH-loh! Koh-NOHZ-koh oon PWEHS-toh deh BEER-ryah keh es-TAH PAH-rah choo-PAHR-seh lohs DEH-dohs.\nA: Oof, yah seh meh EE-zoh AH-gwah lah BOH-kah! VAH-moh-nohs en KOHR-toh.\nB: OH-rah-leh, DEH-hah ah-GAH-roh mees YAH-ves.',
+    grammarNotes: 'Mexican casual authenticity: “¿Qué onda?” (What\'s up?); “¡Jalo!” (I\'m in / count me in); “en corto” (immediately / pronto); “para chuparse los dedos” (finger-licking good); “órale” (alright / let\'s do it).',
+    hint: 'Situation: Going on a spontaneous street taco run with a friend.',
+    exampleSentences: [
+      { target: '¡Jalo!', translation: 'I\'m in! / Count me in!', phonetic: 'HAH-loh!' },
+      { target: 'Se me hace agua la boca.', translation: 'My mouth is watering.', phonetic: 'Seh meh AH-seh AH-gwah lah BOH-kah.' }
     ]
   },
   // =========================================================================

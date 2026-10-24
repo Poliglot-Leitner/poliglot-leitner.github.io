@@ -1926,4 +1926,265 @@ export const VERBS_SEEDS: CurriculumSeed[] = [
       }
     ]
   }
+,
+  {
+    "languageId": "spanish",
+    "topicId": "verbs-actions",
+    "difficulty": "A2",
+    "cardType": "word",
+    "front": "la chamba",
+    "back": "job / work / gig (informal Latin American / Mexican slang)",
+    "phonetic": "lah CHAHM-bah",
+    "exampleTarget": "Conseguí una buena chamba en una empresa de desarrollo web.",
+    "exampleTranslation": "I landed a good job at a web development company.",
+    "grammarNotes": "Feminine noun: 'la chamba'. Extremely widespread in Mexico, Central America, Peru, Colombia and Ecuador. Equivalent to 'el trabajo' or 'el curro' (Spain).",
+    "hint": "Informal word for daily employment or gig.",
+    "exampleSentences": [
+      {
+        "target": "Ya es hora de ir a la chamba.",
+        "translation": "It is already time to go to work.",
+        "phonetic": "Yah es OH-rah deh eer ah lah CHAHM-bah."
+      },
+      {
+        "target": "¿Cómo te va en la nueva chamba?",
+        "translation": "How is it going for you at the new job?",
+        "phonetic": "KOH-moh teh vah en lah NWEH-vah CHAHM-bah?"
+      }
+    ]
+  },
+  {
+    "languageId": "spanish",
+    "topicId": "verbs-actions",
+    "difficulty": "A2",
+    "cardType": "word",
+    "front": "chambear",
+    "back": "to work / to hustle / to do a job (informal slang)",
+    "phonetic": "chahm-beh-AHR",
+    "exampleTarget": "Me tocó chambear todo el fin de semana para entregar el proyecto.",
+    "exampleTranslation": "I had to work all weekend to deliver the project.",
+    "grammarNotes": "Regular -ar verb: yo chambeo, tú chambeas, él chambea, nosotros chambeamos, ellos chambean. Synonymous with 'trabajar'.",
+    "hint": "Colloquial verb for working or laboring.",
+    "exampleSentences": [
+      {
+        "target": "Aquí andamos chambeando duro como siempre.",
+        "translation": "Here we are working hard as always.",
+        "phonetic": "Ah-KEE ahn-DAH-mohs chahm-beh-AHN-doh DOO-roh KOH-moh SYEM-preh."
+      },
+      {
+        "target": "Tengo que chambear mañana temprano.",
+        "translation": "I have to work early tomorrow.",
+        "phonetic": "TEN-goh keh chahm-beh-AHR mah-NYAH-nah tem-PRAH-noh."
+      }
+    ]
+  },
+  {
+    "languageId": "spanish",
+    "topicId": "verbs-actions",
+    "difficulty": "B1",
+    "cardType": "word",
+    "front": "chambeador / chambeadora",
+    "back": "hard-working / industrious worker (slang adjective & noun)",
+    "phonetic": "chahm-beh-ah-DOHR / chahm-beh-ah-DOH-rah",
+    "exampleTarget": "Ese muchacho es muy chambeador y siempre llega puntual.",
+    "exampleTranslation": "That young guy is very hard-working and always arrives on time.",
+    "grammarNotes": "Adjective and noun derived from 'chamba'. Used admiringly to describe someone diligent, industrious, and committed to their hustle.",
+    "hint": "Compliment for someone with a great work ethic.",
+    "exampleSentences": [
+      {
+        "target": "Es una mujer muy noble y chambeadora.",
+        "translation": "She is a very noble and hard-working woman.",
+        "phonetic": "Es OO-nah moo-HEHR mwee NOH-bleh ee chahm-beh-ah-DOH-rah."
+      }
+    ]
+  },
+  {
+    "languageId": "spanish",
+    "topicId": "verbs-actions",
+    "difficulty": "B1",
+    "cardType": "word",
+    "front": "chingado / chingada",
+    "back": "fucking / damned / screwed up / broken (Mexican slang & expletive)",
+    "phonetic": "cheen-GAH-doh / cheen-GAH-dah",
+    "exampleTarget": "¡Se me cayó este chingado plato y se rompió en mil pedazos!",
+    "exampleTranslation": "I dropped this damned plate and it shattered into a thousand pieces!",
+    "grammarNotes": "From the Nahuatl-influenced root 'chingar'. As an adjective, means damned/wretched or physically broken. As an exclamation: '¡Chingado!' = Damn it! / Fuck!",
+    "hint": "Very versatile Mexican vulgarity and emphasis particle.",
+    "exampleSentences": [
+      {
+        "target": "¡Ah, qué chingado susto me diste!",
+        "translation": "Oh, what a damn fright you gave me!",
+        "phonetic": "Ah, keh cheen-GAH-doh SOOS-toh meh DEES-teh!"
+      },
+      {
+        "target": "¡Chingado! Olvidé las llaves adentro de la casa.",
+        "translation": "Damn it! I forgot the keys inside the house.",
+        "phonetic": "Cheen-GAH-doh! Ohl-vee-DEH lahs YAH-ves ah-DEN-troh deh lah KAH-sah."
+      }
+    ]
+  },
+  {
+    "languageId": "spanish",
+    "topicId": "verbs-actions",
+    "difficulty": "B1",
+    "cardType": "word",
+    "front": "chingar",
+    "back": "to ruin / to bother / to fuck up / to work hard (multifaceted Mexican verb)",
+    "phonetic": "cheen-GAHR",
+    "exampleTarget": "Por favor, ya deja de estar chingando con lo mismo.",
+    "exampleTranslation": "Please, stop bothering / bugging me already about the exact same thing.",
+    "grammarNotes": "The quintessential Mexican slang verb. 'Chingar a alguien' (to annoy or screw someone over); 'chingarse' (to break down, or to work tirelessly).",
+    "hint": "The ultimate multifaceted Mexican slang verb.",
+    "exampleSentences": [
+      {
+        "target": "No me estés chingando, estoy concentrado.",
+        "translation": "Don't bug me, I am concentrated.",
+        "phonetic": "Noh meh es-TEHS cheen-GAHN-doh, es-TOY kohn-tsen-TRAH-doh."
+      }
+    ]
+  },
+  {
+    "languageId": "spanish",
+    "topicId": "verbs-actions",
+    "difficulty": "B1",
+    "cardType": "word",
+    "front": "chingón / chingona",
+    "back": "badass / awesome / super cool / remarkably skilled (Mexican praise)",
+    "phonetic": "cheen-GOHN / cheen-GOH-nah",
+    "exampleTarget": "Ese guitarrista toca bien chingón en los conciertos en vivo.",
+    "exampleTranslation": "That guitarist plays totally badass / amazingly well in live concerts.",
+    "grammarNotes": "Positive counterpart of chingar: describes a person who is exceptionally competent, or an object/experience that is awesome ('está chingón').",
+    "hint": "High compliment in Mexico for supreme skill or quality.",
+    "exampleSentences": [
+      {
+        "target": "¡Qué chingona está tu nueva chamarra!",
+        "translation": "How awesome is your new jacket!",
+        "phonetic": "Keh cheen-GOH-nah es-TAH too NWEH-vah chah-MAH-rah!"
+      },
+      {
+        "target": "Ella es una chingona para las matemáticas.",
+        "translation": "She is a total badass at mathematics.",
+        "phonetic": "EH-yah es OO-nah cheen-GOH-nah PAH-rah lahs mah-teh-MAH-tee-kahs."
+      }
+    ]
+  },
+  {
+    "languageId": "spanish",
+    "topicId": "verbs-actions",
+    "difficulty": "B2",
+    "cardType": "word",
+    "front": "la chingada",
+    "back": "the middle of nowhere / hell / oblivion (mythic Mexican colloquial place)",
+    "phonetic": "lah cheen-GAH-dah",
+    "exampleTarget": "Mandó todo a la chingada y se fue a vivir a la playa.",
+    "exampleTranslation": "He sent everything to hell / threw in the towel and went to live on the beach.",
+    "grammarNotes": "Famous Mexican linguistic concept studied by Octavio Paz. 'Mandar a la chingada' (to tell someone/something to go to hell); 'irse a la chingada' (to go to hell or fail completely).",
+    "hint": "Colloquial place of rejection, failure, or distant exile.",
+    "exampleSentences": [
+      {
+        "target": "Todo el proyecto se fue a la chingada.",
+        "translation": "The whole project went straight to hell / fell apart.",
+        "phonetic": "TOH-doh el proh-YEK-toh seh fweh ah lah cheen-GAH-dah."
+      }
+    ]
+  },
+  {
+    "languageId": "spanish",
+    "topicId": "verbs-actions",
+    "difficulty": "A2",
+    "cardType": "sentence",
+    "front": "Tengo un chingo de chamba acumulada para esta semana.",
+    "back": "I have an absolute ton of accumulated work for this week.",
+    "phonetic": "TEN-goh oon CHEEN-goh deh CHAHM-bah ah-koo-moo-LAH-dah PAH-rah EHS-tah seh-MAH-nah.",
+    "exampleTarget": "Tengo un chingo de chamba acumulada para esta semana.",
+    "exampleTranslation": "I have an absolute ton of accumulated work for this week.",
+    "grammarNotes": "'Un chingo de...' = a huge quantity of / a ton of (Mexican slang quantifier). Combined with 'chamba' (work).",
+    "hint": "Expressing an overwhelming amount of work tasks.",
+    "exampleSentences": [
+      {
+        "target": "Hay un chingo de gente en el metro.",
+        "translation": "There is a ton of people on the subway.",
+        "phonetic": "Eye oon CHEEN-goh deh HEN-teh en el MEH-troh."
+      }
+    ]
+  },
+  {
+    "languageId": "spanish",
+    "topicId": "verbs-actions",
+    "difficulty": "B1",
+    "cardType": "sentence",
+    "front": "Se me chingó la computadora en medio de la junta de trabajo.",
+    "back": "My computer broke down / crashed in the middle of the work meeting.",
+    "phonetic": "Seh meh cheen-GOH lah kohm-poo-tah-DOH-rah en MEH-dyoh deh lah HOON-tah deh trah-BAH-hoh.",
+    "exampleTarget": "Se me chingó la computadora en medio de la junta de trabajo.",
+    "exampleTranslation": "My computer broke down / crashed in the middle of the work meeting.",
+    "grammarNotes": "'Chingarse' used for sudden technical breakdown or hardware failure.",
+    "hint": "Technical breakdown during an important meeting.",
+    "exampleSentences": [
+      {
+        "target": "Se me chingó el coche en la autopista.",
+        "translation": "My car broke down on the highway.",
+        "phonetic": "Seh meh cheen-GOH el KOH-cheh en lah ow-toh-PEES-tah."
+      }
+    ]
+  },
+  {
+    "languageId": "spanish",
+    "topicId": "verbs-actions",
+    "difficulty": "B1",
+    "cardType": "sentence",
+    "front": "Ni modo, compadre, a chingarle a la chamba que las cuentas no se pagan solas.",
+    "back": "No other way around it, buddy, time to bust our tails at work because the bills don't pay themselves.",
+    "phonetic": "Nee MOH-doh, kohm-PAH-dreh, ah cheen-GAHR-leh ah lah CHAHM-bah keh lahs KWEN-tahs noh seh PAH-gahn SOH-lahs.",
+    "exampleTarget": "Ni modo, compadre, a chingarle a la chamba que las cuentas no se pagan solas.",
+    "exampleTranslation": "No other way around it, buddy, time to bust our tails at work because the bills don't pay themselves.",
+    "grammarNotes": "'A chingarle' = imperative infinitive meaning 'get to grinding / work hard'; 'ni modo' = oh well / that's how it is.",
+    "hint": "Pragmatic attitude of getting down to hard work to pay the bills.",
+    "exampleSentences": [
+      {
+        "target": "Ni modo, así es la vida.",
+        "translation": "Oh well, that's life.",
+        "phonetic": "Nee MOH-doh, ah-SEE es lah VEE-dah."
+      }
+    ]
+  },
+  {
+    "languageId": "spanish",
+    "topicId": "verbs-actions",
+    "difficulty": "B2",
+    "cardType": "sentence",
+    "front": "¡Me lleva la chingada! Dejé la cartera con todo el dinero en el taxi.",
+    "back": "Damn it all to hell! I left my wallet with all the money in the taxi.",
+    "phonetic": "Meh YEH-vah lah cheen-GAH-dah! Deh-HEH lah kar-TEH-rah kohn TOH-doh el dee-NEH-roh en el TAHK-see.",
+    "exampleTarget": "¡Me lleva la chingada! Dejé la cartera con todo el dinero en el taxi.",
+    "exampleTranslation": "Damn it all to hell! I left my wallet with all the money in the taxi.",
+    "grammarNotes": "'¡Me lleva la chingada!' is one of Mexico's most iconic strong expressions of shock and misfortune.",
+    "hint": "Exclamation of despair upon losing something valuable.",
+    "exampleSentences": [
+      {
+        "target": "¡Me lleva el tren!",
+        "translation": "Damn it all! (Milder, softened version).",
+        "phonetic": "Meh YEH-vah el tren!"
+      }
+    ]
+  },
+  {
+    "languageId": "spanish",
+    "topicId": "verbs-actions",
+    "difficulty": "B1",
+    "cardType": "sentence",
+    "front": "La neta hiciste una chamba bien chingona con ese diseño.",
+    "back": "To tell the truth / honestly, you did an awesome job with that design.",
+    "phonetic": "Lah NEH-tah ee-SEES-teh OO-nah CHAHM-bah byen cheen-GOH-nah kohn EH-seh dee-SEH-nyoh.",
+    "exampleTarget": "La neta hiciste una chamba bien chingona con ese diseño.",
+    "exampleTranslation": "To tell the truth / honestly, you did an awesome job with that design.",
+    "grammarNotes": "'La neta' = the honest truth / honestly. 'Una chamba bien chingona' combines both words in high praise.",
+    "hint": "Warm, genuine praise of a creative piece of work.",
+    "exampleSentences": [
+      {
+        "target": "La neta te rifaste.",
+        "translation": "Honestly you totally nailed it / went above and beyond.",
+        "phonetic": "Lah NEH-tah teh ree-FAHS-teh."
+      }
+    ]
+  }
 ];

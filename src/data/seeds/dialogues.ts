@@ -2288,6 +2288,122 @@ export const DIALOGUE_SEEDS: CurriculumSeed[] = [
     ]
   },
   // =========================================================================
+  // MEXICAN & LATIN AMERICAN COLLOQUIAL DIALOGUES: "CHAMBA" & "CHINGADO"
+  // =========================================================================
+  {
+    languageId: 'spanish',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A2',
+    cardType: 'dialogue',
+    front: 'A: ¡Qué onda, carnal! ¿A dónde vas tan temprano?\nB: Pues ya me voy a la chamba, hoy toca jornada pesada.\nA: ¡Ánimo con la chamba! Ojalá salgas temprano para echarnos unos tacos.',
+    back: 'A: What\'s up, bro! Where are you off to so early?\nB: Well, I\'m heading off to work, today is going to be a heavy shift.\nA: Keep your spirits up with work! Hopefully you get off early so we can grab some tacos.',
+    phonetic: 'A: Keh OHN-dah, kar-NAHL! Ah DOHN-deh vahs tahn tem-PRAH-noh?\nB: Pwehs yah meh voy ah lah CHAHM-bah, oy TOH-kah hor-NAH-dah peh-SAH-dah.\nA: AH-nee-moh kohn lah CHAHM-bah! Oh-hah-LAH SAHL-gahs tem-PRAH-noh PAH-rah eh-CHAR-nohs OO-nohs TAH-kohs.',
+    grammarNotes: '“Chamba” is standard Mexican and Latin American slang for job / work (trabajo). “Carnal” = close friend / bro. “Toca...” = it\'s time for / turns out to be.',
+    hint: 'Situation: Greeting a friend in the morning on their way to work.',
+    exampleSentences: [
+      { target: 'Voy a la chamba.', translation: 'I\'m going to work.', phonetic: 'Voy ah lah CHAHM-bah.' },
+      { target: 'Tengo un buen de chamba.', translation: 'I have a ton of work.', phonetic: 'TEN-goh oon bwen deh CHAHM-bah.' }
+    ]
+  },
+  {
+    languageId: 'spanish',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A2',
+    cardType: 'dialogue',
+    front: 'A: ¡Me lleva el chingado! Se me fue el camión y ya voy tardísimo.\nB: Tranquilo, güey, no te estreses. Pide un taxi o un Uber.\nA: No manches, ya es la segunda vez esta semana.',
+    back: 'A: Oh damn it all! I missed the bus and I\'m already super late.\nB: Chill out, dude, don\'t stress. Call a taxi or an Uber.\nA: No way / You\'ve got to be kidding, it\'s already the second time this week.',
+    phonetic: 'A: Meh YEH-vah el cheen-GAH-doh! Seh meh fweh el kah-MYOHN ee yah voy tar-DEE-see-moh.\nB: Trahn-KEE-loh, gway, noh teh es-TREH-ses. PEE-deh oon TAHK-see oh oon OO-ber.\nA: Noh MAHN-ches, yah es lah seh-GOON-dah vehs EHS-tah seh-MAH-nah.',
+    grammarNotes: '“¡Me lleva el chingado!” is a very common Mexican expletive expression of frustration / bad luck ("damn it! / screw it!"). “Güey” = dude. “No manches” = no way / come on.',
+    hint: 'Situation: Frustration over missing public transit.',
+    exampleSentences: [
+      { target: '¡Me lleva el chingado!', translation: 'Damn it all! / Curses!', phonetic: 'Meh YEH-vah el cheen-GAH-doh!' }
+    ]
+  },
+  {
+    languageId: 'spanish',
+    topicId: 'dialogues-conversations',
+    difficulty: 'B1',
+    cardType: 'dialogue',
+    front: 'A: Oye, ¿conseguiste la chamba de programador que querías?\nB: ¡Sí, compadre! Mañana firmo el contrato con prestaciones completas.\nA: ¡Eso es todo! Te lo mereces por chambeador.',
+    back: 'A: Hey, did you land that programmer job you wanted?\nB: Yes, buddy! Tomorrow I sign the contract with full benefits.\nA: That\'s what I\'m talking about! You deserve it for being such a hard worker.',
+    phonetic: 'A: OH-yeh, kohn-seh-GEES-teh lah CHAHM-bah deh proh-grah-mah-DOHR keh keh-REE-ahs?\nB: See, kohm-PAH-dreh! Mah-NYAH-nah FEER-moh el kohn-TRAH-toh kohn pres-tah-SYOH-nes kohm-PLEH-tahs.\nA: EH-soh es TOH-doh! Teh loh meh-REH-ses pohr chahm-beh-ah-DOHR.',
+    grammarNotes: 'Derivatives of chamba: “chambeador / chambeadora” = hard-working person; “chambear” (verb) = to work / hustle.',
+    hint: 'Situation: Celebrating landing a new software engineering job.',
+    exampleSentences: [
+      { target: 'Él es muy chambeador.', translation: 'He is a very hard worker.', phonetic: 'El es mwee chahm-beh-ah-DOHR.' }
+    ]
+  },
+  {
+    languageId: 'spanish',
+    topicId: 'dialogues-conversations',
+    difficulty: 'B1',
+    cardType: 'dialogue',
+    front: 'A: ¿Por qué no arranca tu coche?\nB: Se chingó la batería por dejar las luces prendidas toda la noche.\nA: ¡Qué coraje! Deja busco los cables para pasar corriente.',
+    back: 'A: Why won\'t your car start?\nB: The battery broke down / got ruined because I left the lights on all night.\nA: What a pain! Let me grab the jumper cables to jump-start it.',
+    phonetic: 'A: Pohr keh noh ah-RAHN-kah too KOH-cheh?\nB: Seh cheen-GOH lah bah-teh-REE-ah pohr deh-HAHR lahs LOO-ses pren-DEE-dahs TOH-dah lah NOH-cheh.\nA: Keh koh-RAH-heh! DEH-hah BOOS-koh lohs KAH-bles PAH-rah pah-SAHR koh-RYEN-teh.',
+    grammarNotes: '“Chingarse” as a verb often means to break down, ruin, or malfunction (e.g., “se chingó el carro / la tele”).',
+    hint: 'Situation: Dealing with a broken-down car battery.',
+    exampleSentences: [
+      { target: 'Se me chingó el celular.', translation: 'My phone broke down / got ruined.', phonetic: 'Seh meh cheen-GOH el seh-loo-LAHR.' }
+    ]
+  },
+  {
+    languageId: 'spanish',
+    topicId: 'dialogues-conversations',
+    difficulty: 'B1',
+    cardType: 'dialogue',
+    front: 'A: Buenas tardes, ¿se encuentra el señor Rodríguez?\nB: No está, se fue hasta la chingada a supervisar una obra fuera del estado.\nA: ¿Y cuándo regresa?\nB: Hasta el próximo viernes si no hay contratiempos.',
+    back: 'A: Good afternoon, is Mr. Rodríguez around?\nB: He\'s not here, he went extremely far away / out in the middle of nowhere to supervise a project out of state.\nA: And when does he return?\nB: Not until next Friday if there are no delays.',
+    phonetic: 'A: BWEH-nahs TAR-des, seh en-KWEN-trah el seh-NYOHR roh-DREE-ges?\nB: Noh es-TAH, seh fweh AHS-tah lah cheen-GAH-dah ah soo-pair-vee-SAHR OO-nah OH-brah FWEH-rah del es-TAH-doh.\nA: Ee KWAHN-doh reh-GREH-sah?\nB: AHS-tah el PROHK-see-moh VYEHR-nes see noh eye kohn-trah-TYEM-pohs.',
+    grammarNotes: 'Idiom: “Hasta la chingada” = extremely far away / in the boonies. Highly colloquial Mexican Spanish.',
+    hint: 'Situation: Asking for someone who travelled far away for work.',
+    exampleSentences: [
+      { target: 'Ese lugar está hasta la chingada.', translation: 'That place is way out in the middle of nowhere.', phonetic: 'EH-seh loo-GAHR es-TAH AHS-tah lah cheen-GAH-dah.' }
+    ]
+  },
+  {
+    languageId: 'spanish',
+    topicId: 'dialogues-conversations',
+    difficulty: 'B1',
+    cardType: 'dialogue',
+    front: 'A: ¿Nos vemos hoy en la noche para unas cervezas?\nB: No manches, hoy no puedo, salgo tardísimo de la chamba y mañana me toca abrir.\nA: ¡Qué lástima! Entonces el fin de semana sin falta.\nB: Hecho, el sábado nos desquitamos.',
+    back: 'A: Shall we meet tonight for a few beers?\nB: No way, I can\'t today, I get off work super late and tomorrow I have opening shift.\nA: What a bummer! Then this weekend without fail.\nB: Deal, Saturday we make up for it.',
+    phonetic: 'A: Nohs VEH-mohs oy en lah NOH-cheh PAH-rah OO-nahs sehr-VEH-zahs?\nB: Noh MAHN-ches, oy noh PWEH-doh, SAHL-goh tar-DEE-see-moh deh lah CHAHM-bah ee mah-NYAH-nah meh TOH-kah ah-BREER.\nA: Keh LAHS-tee-mah! En-TOHN-ses el feen deh seh-MAH-nah seen FAHL-tah.\nB: EH-choh, el SAH-bah-doh nohs des-kee-TAH-mohs.',
+    grammarNotes: 'Work vs leisure: “salir de la chamba” = to get off work; “toca abrir” = scheduled to open up; “desquitarse” = to make up for lost time.',
+    hint: 'Situation: Declining a drink invite because of intense work schedule.',
+    exampleSentences: [
+      { target: 'Acabo de salir de la chamba.', translation: 'I just got off work.', phonetic: 'Ah-KAH-boh deh sah-LEER deh lah CHAHM-bah.' }
+    ]
+  },
+  {
+    languageId: 'spanish',
+    topicId: 'dialogues-conversations',
+    difficulty: 'B1',
+    cardType: 'dialogue',
+    front: 'A: Mira este código que escribió el nuevo pasante, ¡está bien chingón!\nB: ¡Órale, sí que le sabe! Resolvió el bug en diez minutos.\nA: Hay que reconocer cuando alguien hace una chamba excelente.',
+    back: 'A: Look at this code the new intern wrote, it\'s totally awesome / badass!\nB: Wow, he really knows his stuff! He resolved the bug in ten minutes.\nA: You have to recognize when someone does excellent work.',
+    phonetic: 'A: MEE-rah EHS-teh KOH-dee-goh keh es-kree-BYOH el NWEH-voh pah-SAHN-teh, es-TAH byen cheen-GOHN!\nB: OH-rah-leh, see keh leh SAH-beh! Reh-zohl-VYOH el boog en dyehs mee-NOO-tohs.\nA: Eye keh reh-koh-noh-SEHR KWAHN-doh AHL-gyen AH-seh OO-nah CHAHM-bah ek-seh-LEN-teh.',
+    grammarNotes: 'Positive use of “chingón”: In Mexico, “chingón / chingona” is high praise meaning awesome, badass, top-notch, or remarkably skilled.',
+    hint: 'Situation: Praising a colleague\'s top-notch software code.',
+    exampleSentences: [
+      { target: 'Te quedó bien chingón.', translation: 'It turned out super awesome / great.', phonetic: 'Teh keh-DOH byen cheen-GOHN.' }
+    ]
+  },
+  {
+    languageId: 'spanish',
+    topicId: 'dialogues-conversations',
+    difficulty: 'B2',
+    cardType: 'dialogue',
+    front: 'A: Te ves bien agotado, ¿todo bien?\nB: Me estuve chingando doce horas seguidas para entregar este reporte a tiempo.\nA: Tómate un respiro, caray. La salud es primero que cualquier chamba.\nB: Tienes toda la razón, ya voy a apagar la computadora.',
+    back: 'A: You look completely exhausted, everything alright?\nB: I was busting my ass / grinding twelve hours straight to deliver this report on time.\nA: Take a breather, man. Health comes before any job.\nB: You are completely right, I\'m turning off the computer now.',
+    phonetic: 'A: Teh ves byen ah-goh-TAH-doh, TOH-doh byen?\nB: Meh es-TOO-veh cheen-GAHN-doh DOH-seh OH-rahs seh-GEE-dahs PAH-rah en-treh-GAHR EHS-teh reh-POHR-teh ah TYEM-poh.\nA: TOH-mah-teh oon res-PEE-roh, kah-RYE. Lah sah-LOOD es pree-MEH-roh keh kwahl-KYEHR CHAHM-bah.\nB: TYEH-nes TOH-dah lah rah-ZOHN, yah voy ah ah-pah-GAHR lah kohm-poo-tah-DOH-rah.',
+    grammarNotes: '“Chingarle” (reflexive slang) = to work extremely hard, grind, sweat, or bust one\'s tail for something.',
+    hint: 'Situation: Checking in on an overworked friend.',
+    exampleSentences: [
+      { target: 'Hay que chingarle duro.', translation: 'One has to grind / bust one\'s tail hard.', phonetic: 'Eye keh cheen-GAHR-leh DOO-roh.' }
+    ]
+  },
+  // =========================================================================
   // ENGLISH DIALOGUES (Short Dialogues)
   // =========================================================================
   {

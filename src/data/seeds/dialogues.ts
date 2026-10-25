@@ -2289,6 +2289,435 @@ export const DIALOGUE_SEEDS: CurriculumSeed[] = [
       { target: '洗手间在左边。', translation: 'The restroom is on the left.', phonetic: 'Xǐshǒujiān zài zuǒbiān.' }
     ]
   },
+  // =========================================================================
+  // 30 COLLOQUIAL EVERYDAY DIALOGUES: THANK YOU & AGREEING IN REAL LIFE
+  // (日常极简高频口语：花式感谢与地道赞同表达)
+  // =========================================================================
+
+  // --- PART A: WAYS OF SAYING THANK YOU & RESPONDING (1-15) ---
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 哥们儿，你的雨伞借我用一下可以吗？\nB: 拿去吧，正好我还有一把。\nA: 太给力了，多亏你了！\nB: 嗨，小事一桩！',
+    back: 'A: Bro, can I borrow your umbrella for a sec?\nB: Take it, I happen to have an extra one anyway.\nA: You\'re awesome / That\'s huge, thanks to you!\nB: Ugh, it\'s nothing / no biggie!',
+    phonetic: 'A: Gēmenr, nǐ de yǔsǎn jiè wǒ yòng yīxià kěyǐ ma?\nB: Ná qù ba, zhènghǎo wǒ hái yǒu yī bǎ.\nA: Tài gěilì le, duōkuī nǐ le!\nB: Hāi, xiǎoshì yī zhuāng!',
+    grammarNotes: '“多亏你了” (duōkuī nǐ le = thanks to you / you saved the day); “太给力了” (tài gěilì le = super helpful / awesome); “小事一桩” (xiǎoshì yī zhuāng = a piece of cake / no biggie).',
+    hint: 'Situation: Expressing heartfelt gratitude when someone lends an umbrella in the rain.',
+    exampleSentences: [
+      { target: '多亏你了！', translation: 'Thanks to you! / You saved the day!', phonetic: 'Duōkuī nǐ le!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 师傅，帮我抬一下这个箱子好吗？太重了。\nB: 行，一二三，起！放到这儿行吗？\nA: 辛苦辛苦，麻烦您了！\nB: 没事儿，不麻烦。',
+    back: 'A: Master, help me lift this heavy box please? It\'s too heavy.\nB: Sure, one two three, lift! Is putting it here okay?\nA: Thank you for your hard work, sorry for troubling you!\nB: It\'s nothing, no trouble at all.',
+    phonetic: 'A: Shīfu, bāng wǒ tái yīxià zhège xiāngzi hǎo ma? Tài zhòng le.\nB: Xíng, yī èr sān, qǐ! Fàng dào zhèr xíng ma?\nA: Xīnkǔ xīnkǔ, máfan nín le!\nB: Méishìr, bù máfan.',
+    grammarNotes: '“辛苦辛苦” (xīnkǔ xīnkǔ) is the everyday courteous way to thank physical workers, drivers, delivery staff, and cleaners; paired with “麻烦您了” (sorry to trouble you).',
+    hint: 'Situation: Thanking someone for helping carry heavy luggage.',
+    exampleSentences: [
+      { target: '辛苦了，谢谢！', translation: 'Thanks for your hard work, thank you!', phonetic: 'Xīnkǔ le, xièxiè!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 这是你在免税店托我带的面霜，给你！\nB: 哇，太贴心了，费心了啊！\nA: 顺手的事儿，跟我客气啥。',
+    back: 'A: Here is the face cream you asked me to bring from duty-free, for you!\nB: Wow, so thoughtful of you, thanks for going to the trouble!\nA: It was right on my way, why stand on ceremony with me.',
+    phonetic: 'A: Zhè shì nǐ zài miǎnshuìdiàn tuō wǒ dài de miànshuāng, gěi nǐ!\nB: Wa, tài tiēxīn le, fèixīn le a!\nA: Shùnshǒu de shìr, gēn wǒ kèqì shá.',
+    grammarNotes: '“费心了” (fèixīn le = thank you for taking the trouble/thoughtfulness); “太贴心了” (so considerate); “顺手的事儿” (no trouble, easily done on the way).',
+    hint: 'Situation: Thanking a friend for bringing an item from abroad.',
+    exampleSentences: [
+      { target: '让你费心了。', translation: 'Sorry to have put you to so much trouble.', phonetic: 'Ràng nǐ fèixīn le.' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 你的电脑我帮你清理完病毒了，现在快多了。\nB: 天哪，太感谢了，帮了大忙了！\nA: 举手之劳，随时找我！',
+    back: 'A: I finished cleaning the virus from your computer, it\'s much faster now.\nB: Goodness, thank you so much, that was a huge help!\nA: Just a lift of the hand / glad to help, hit me up anytime!',
+    phonetic: 'A: Nǐ de diànnǎo wǒ bāng nǐ qīnglǐ wán bìngdú le, xiànzài kuài duō le.\nB: Tiān na, tài gǎnxiè le, bāng le dàmáng le!\nA: Jǔshǒuzhīláo, suíshí zhǎo wǒ!',
+    grammarNotes: '“帮了大忙了” (bāng le dàmáng le = helped in a huge way); “举手之劳” (jǔshǒuzhīláo = a mere lift of the hand / effortless favor).',
+    hint: 'Situation: Expressing big gratitude when a friend fixes your laptop.',
+    exampleSentences: [
+      { target: '你帮了我一个大忙！', translation: 'You did me a huge favor!', phonetic: 'Nǐ bāng le wǒ yī gè dàmáng!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 今天下大雨，我顺路开车送你回家吧。\nB: 哎呀，那真是太不好意思了！\nA: 上车吧，别淋感冒了。\nB: 真是太谢谢你了！',
+    back: 'A: It\'s pouring rain today, I\'ll drive you home on my way.\nB: Oh dear, that really makes me feel so shy / indebted to you!\nA: Get in the car, don\'t get drenched and catch cold.\nB: Really thank you so very much!',
+    phonetic: 'A: Jīntiān xià dàyǔ, wǒ shùnlù kāichē sòng nǐ huíjiā ba.\nB: Àiyā, nà zhēnshì tài bù hǎoyìsi le!\nA: Shàngchē ba, bié lín gǎnmào le.\nB: Zhēnshì tài xièxiè nǐ le!',
+    grammarNotes: 'Polite Chinese psychology: “太不好意思了” (tài bù hǎoyìsi le) is commonly said instead of just "thank you" to express that you feel slightly embarrassed by someone\'s immense kindness.',
+    hint: 'Situation: Accepting a generous ride in the rain.',
+    exampleSentences: [
+      { target: '真是不好意思！', translation: 'I\'m really quite embarrassed (to receive such kindness)!', phonetic: 'Zhēnshì bù hǎoyìsi!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 给你带了一杯冰美式，加浓的。\nB: 哇塞，知我者莫若你也！谢啦！\nA: 趁冰还没化快喝吧。',
+    back: 'A: Brought you an iced Americano, extra shot.\nB: Woah, no one knows me better than you! Thanks a bunch!\nA: Drink it up quickly before the ice melts.',
+    phonetic: 'A: Gěi nǐ dài le yībēi bīng měishì, jiānóng de.\nB: Wasài, zhī wǒ zhě mò ruò nǐ yě! Xiè la!\nA: Chèn bīng hái méi huà kuài hē ba.',
+    grammarNotes: 'Casual friendly thanks: “谢啦” (xiè la = thanks a bunch / cheers); humorous idiom: “知我者莫若你也” (nobody understands me like you do!).',
+    hint: 'Situation: Thanking a close coworker for bringing your favorite coffee.',
+    exampleSentences: [
+      { target: '谢啦，兄弟！', translation: 'Thanks a lot, brother!', phonetic: 'Xiè la, xiōngdi!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 你落下的门禁卡我替你收在前台了。\nB: 哎呀妈呀，我找半天了，太感谢了！\nA: 小事一桩，下次可别粗心了。\nB: 好的好的，记住了！',
+    back: 'A: The access card you left behind, I kept it for you at the front desk.\nB: Oh my goodness, I\'ve been searching everywhere, thank you so much!\nA: Little thing, don\'t be careless next time.\nB: Yes yes, I\'ll remember!',
+    phonetic: 'A: Nǐ làxià de ménjìnkǎ wǒ tì nǐ shōu zài qiántái le.\nB: Àiyā mā ya, wǒ zhǎo bàn tiān le, tài gǎnxiè le!\nA: Xiǎoshì yī zhuāng, xià cì kě bié cūxīn le.\nB: Hǎo de hǎo de, jì zhù le!',
+    grammarNotes: 'Exclamations: “哎呀妈呀” (àiyā mā ya = oh my goodness/momma); “落下” (làxià = leave behind/forget); “找半天” (searched for ages).',
+    hint: 'Situation: Relief when someone retrieves your lost access badge.',
+    exampleSentences: [
+      { target: '找了半天！', translation: 'Searched for ages!', phonetic: 'Zhǎo le bàn tiān!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 谢谢你今天大老远跑过来帮我搬家！\nB: 咱俩这关系，见外了不是？\nA: 晚上必须请你吃顿好的！\nB: 哈哈，那我可就不客气了！',
+    back: 'A: Thank you for traveling all this long way to help me move house today!\nB: With our relationship, isn\'t saying thanks treating me like an outsider?\nA: Tonight I must treat you to a feast!\nB: Haha, then I won\'t be polite / I\'ll gladly accept!',
+    phonetic: 'A: Xièxiè nǐ jīntiān dà lǎoyuǎn pǎo guòlái bāng wǒ bānjiā!\nB: Zán liǎ zhè guānxì, jiànwài le bù shì?\nA: Wǎnshang bìxū qǐng nǐ chī dùn hǎo de!\nB: Hāhā, nà wǒ kě jiù bù kèqì le!',
+    grammarNotes: '“见外了” (jiànwài le = acting like strangers / treating me like an outsider); “大老远” (from so far away); “吃顿好的” (have a delicious feast).',
+    hint: 'Situation: Rebuffing formal thanks among deep friends after moving house.',
+    exampleSentences: [
+      { target: '别见外！', translation: 'Don\'t treat me like an outsider / Don\'t be a stranger!', phonetic: 'Bié jiànwài!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 阿姨，您掉了手套！\nB: 哎哟，小伙子，太谢谢你了，心真好！\nA: 您客气了，天冷快戴上吧。',
+    back: 'A: Auntie, you dropped your glove!\nB: Oh my, young man, thank you so much, you have such a kind heart!\nA: You\'re being too polite, it\'s cold, hurry and put it on.',
+    phonetic: 'A: Āyí, nín diào le shǒutào!\nB: Àiyō, xiǎohuǒzi, tài xièxiè nǐ le, xīn zhēn hǎo!\nA: Nín kèqì le, tiān lěng kuài dài shàng ba.',
+    grammarNotes: 'Street politeness: “小伙子” (young man / lad); “心真好” (have a good heart); “您客气了” (polite reply to elders).',
+    hint: 'Situation: Returning a dropped item to an elderly stranger on the street.',
+    exampleSentences: [
+      { target: '您太客气了！', translation: 'You are being far too polite!', phonetic: 'Nín tài kèqì le!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 今天的打车费我已经付过了。\nB: 哎，怎么又让你破费了！\nA: 没事儿，没多少钱。\nB: 下回一定得我来！',
+    back: 'A: I already paid for today\'s taxi fare.\nB: Ah, why did you let yourself spend money again!\nA: It\'s nothing, not much money.\nB: Next time it definitely has to be my turn!',
+    phonetic: 'A: Jīntiān de dǎchēfèi wǒ yǐjīng fù guò le.\nB: Āi, zěnme yòu ràng nǐ pòfèi le!\nA: Méishìr, méi duōshǎo qián.\nB: Xià huí yīdìng děi wǒ lái!',
+    grammarNotes: '“破费” (pòfèi = to spend money / incur expense on my behalf; polite traditional phrase); “打车费” (taxi fare).',
+    hint: 'Situation: Courteous protest when someone pays the cab fare.',
+    exampleSentences: [
+      { target: '又让您破费了。', translation: 'Made you spend money on me again.', phonetic: 'Yòu ràng nín pòfèi le.' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 同学，借用一下橡皮擦。\nB: 给你。\nA: 谢了哈！\nB: 没事儿。',
+    back: 'A: Classmate, may I borrow your eraser for a second.\nB: Here you go.\nA: Thanks a lot!\nB: No problem.',
+    phonetic: 'A: Tóngxué, jièyòng yīxià xiàngpícā.\nB: Gěi nǐ.\nA: Xiè le hā!\nB: Méishìr.',
+    grammarNotes: '“谢了哈” (xiè le hā) is a relaxed, super casual youth way to say "thanks!" with friendly modal particle “哈”.',
+    hint: 'Situation: Quick classroom exchange borrowing stationery.',
+    exampleSentences: [
+      { target: '谢了哈！', translation: 'Thanks a bunch!', phonetic: 'Xiè le hā!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 饭菜都合胃口吗？不够再加菜！\nB: 已经吃得特别饱了，受累了受累了！\nA: 喜欢吃就经常来家里坐坐。',
+    back: 'A: Did the dishes suit your taste? If not enough we can add more!\nB: I\'m already super stuffed, thank you for your hard work / you went to so much trouble!\nA: If you like it, come by the house to hang out often.',
+    phonetic: 'A: Fàncài dōu hé wèikǒu ma? Bùgòu zài jiā cài!\nB: Yǐjīng chī de tèbié bǎo le, shòulèi le shòulèi le!\nA: Xǐhuan chī jiù jīngcháng lái jiālǐ zuòzuo.',
+    grammarNotes: '“受累了” (shòulèi le = you worked so hard / suffered fatigue for me; northern colloquial gratitude for host cooking or hard service).',
+    hint: 'Situation: Thanking a dinner host for preparing an elaborate meal.',
+    exampleSentences: [
+      { target: '让您受累了！', translation: 'Made you work so hard / put you to fatigue!', phonetic: 'Ràng nín shòulèi le!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 快进屋，外面雪太大了，喝口热茶暖和暖和。\nB: 太感激了，正冻得直哆嗦呢！\nA: 暖气开着呢，先烤烤火。',
+    back: 'A: Quick, come inside, the snow outside is too heavy, drink some hot tea to warm up.\nB: So grateful, I was literally shivering from the cold!\nA: The heating is on, warm yourself up first.',
+    phonetic: 'A: Kuài jìn wū, wàimiàn xuě tài dà le, hē kǒu rèchá nuǎnhuo nuǎnhuo.\nB: Tài gǎnjī le, zhèng dòng de zhí duōsuo ne!\nA: Nuǎnqì kāi zhe ne, xiān kǎo kǎo huǒ.',
+    grammarNotes: '“太感激了” (tài gǎnjī le = deeply grateful); “暖和暖和” (nuǎnhuo nuǎnhuo = warm up); “直哆嗦” (shivering constantly).',
+    hint: 'Situation: Receiving warm hospitality on a freezing snowy day.',
+    exampleSentences: [
+      { target: '感激不尽！', translation: 'Cannot thank you enough!', phonetic: 'Gǎnjī bù jìn!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 你送我的生日礼物我很喜欢，感恩！\nB: 你喜欢就好，我还怕你不合适呢。\nA: 真的特别合身，爱你！\nB: 开心最重要！',
+    back: 'A: I really love the birthday present you gave me, so grateful / thankful!\nB: As long as you like it, I was worried it wouldn\'t fit you.\nA: It fits so well, love you!\nB: Being happy is what matters most!',
+    phonetic: 'A: Nǐ sòng wǒ de shēngrì lǐwù wǒ hěn xǐhuan, gǎn-ēn!\nB: Nǐ xǐhuan jiù hǎo, wǒ hái pà nǐ bù héshì ne.\nA: Zhēnde tèbié héshēn, ài nǐ!\nB: Kāixīn zuì zhòngyào!',
+    grammarNotes: 'Youth text slang: “感恩” (gǎn-ēn = grateful / blessed, very common in WeChat texts); “合身” (héshēn = fit clothes well).',
+    hint: 'Situation: Texting appreciation for a thoughtful birthday gift.',
+    exampleSentences: [
+      { target: '感恩有你！', translation: 'Grateful to have you!', phonetic: 'Gǎn-ēn yǒu nǐ!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 路上堵车耽误了半小时，谢谢大家等我！\nB: 没关系没关系，人到了就好，快坐！\nA: 实在抱歉！\nB: 别往心里去，点菜吧！',
+    back: 'A: Traffic jam delayed me half an hour, thank you everyone for waiting for me!\nB: No problem at all, as long as you arrived safe, come sit!\nA: Really sorry!\nB: Don\'t take it to heart, let\'s order food!',
+    phonetic: 'A: Lùshang dǔchē dānwù le bàn xiǎoshí, xièxiè dàjiā děng wǒ!\nB: Méi guānxi méi guānxi, rén dào le jiù hǎo, kuài zuò!\nA: Shízài bàoqiàn!\nB: Bié wǎng xīn lǐ qù, diǎn cài ba!',
+    grammarNotes: 'Group etiquette: “耽误” (dānwù = delay/take up time); “别往心里去” (bié wǎng xīn lǐ qù = don\'t take it to heart / don\'t stress over it).',
+    hint: 'Situation: Apologizing and thanking friends after arriving late due to traffic.',
+    exampleSentences: [
+      { target: '别往心里去。', translation: 'Don\'t take it to heart.', phonetic: 'Bié wǎng xīn lǐ qù.' }
+    ]
+  },
+
+  // --- PART B: COLLOQUIAL WAYS OF AGREEING & CONFIRMING (16-30) ---
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 这家火锅店味道确实地道，食材特别新鲜。\nB: 可不是嘛！我每次来都得排一个小时队。\nA: 下次咱们早点来。\nB: 赞成！',
+    back: 'A: The flavor of this hotpot place is indeed authentic, ingredients are super fresh.\nB: Exactly! / You can say that again! Every time I come I have to wait in line for an hour.\nA: Next time let\'s come earlier.\nB: Agreed / In favor!',
+    phonetic: 'A: Zhè jiā huǒguōdiàn wèidao quèshí dìdao, shícái tèbié xīnxian.\nB: Kě bù shì ma! Wǒ měi cì lái dōu děi pái yī gè xiǎoshí duì.\nA: Xià cì zánmen zǎodiǎn lái.\nB: Zànchéng!',
+    grammarNotes: '“可不是嘛” (kě bù shì ma = exactly! / isn\'t that the truth! / tell me about it!); “赞成” (zànchéng = agreed / I approve).',
+    hint: 'Situation: Strong enthusiastic agreement while enjoying great food.',
+    exampleSentences: [
+      { target: '可不是嘛！', translation: 'Tell me about it! / Exactly!', phonetic: 'Kě bù shì ma!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 我觉得学汉语多开口练说话是进步最快的。\nB: 谁说不是呢！光学语法不张嘴根本不行。\nA: 那咱们以后天天互相练习。\nB: 没毛病，就这么办！',
+    back: 'A: I feel that speaking out loud a lot is the fastest way to improve in Chinese.\nB: Who says it isn\'t! / Exactly! Just studying grammar without opening your mouth doesn\'t work at all.\nA: Then let\'s practice with each other every day from now on.\nB: Flawless / No issue at all, let\'s do it that way!',
+    phonetic: 'A: Wǒ juéde xué Hànyǔ duō kāikǒu liàn shuōhuà shì jìnbù zuì kuài de.\nB: Shuí shuō bù shì ne! Guāng xué yǔfǎ bù zhāngzuǐ gēnběn bù xíng.\nA: Nà zánmen yǐhòu tiāntiān hùxiāng liànxí.\nB: Méi máobìng, jiù zhème bàn!',
+    grammarNotes: '“谁说不是呢” (shuí shuō bù shì ne = who could say otherwise? / totally agree!); “没毛病” (méi máobìng = flawless / zero problems / 100% on point).',
+    hint: 'Situation: Passionate agreement on language learning philosophy.',
+    exampleSentences: [
+      { target: '没毛病！', translation: 'Spot on! / No problem at all!', phonetic: 'Méi máobìng!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 今天太阳这么好，下午不如去公园散散步？\nB: 好主意！我也正想出门透透气呢。\nA: 那两点在公园南门见？\nB: 成，两点见！',
+    back: 'A: The sun is so nice today, how about we go for a stroll in the park this afternoon?\nB: Great idea! I was just wanting to go out and get some fresh air too.\nA: Then see you at the park\'s South Gate at 2:00?\nB: Done deal / Alright, see you at two!',
+    phonetic: 'A: Jīntiān tàiyáng zhème hǎo, xiàwǔ bùrú qù gōngyuán sànsàn bù?\nB: Hǎo zhǔyi! Wǒ yě zhèng xiǎng chūmén tòutòu qì ne.\nA: Nà liǎng diǎn zài gōngyuán nánmén jiàn?\nB: Chéng, liǎng diǎn jiàn!',
+    grammarNotes: '“成” (chéng = done / agreed / alright; super concise Northern colloquial confirmation); “好主意” (great idea); “透透气” (get some fresh air).',
+    hint: 'Situation: Approving an afternoon walk plan with concise agreement.',
+    exampleSentences: [
+      { target: '成，没问题！', translation: 'Deal, no problem!', phonetic: 'Chéng, méi wèntí!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 这部电影的特效和配乐真是绝了。\nB: 可太对了！尤其是结尾那一段，我都看哭了。\nA: 导演水准确实高。\nB: 确实，实至名归。',
+    back: 'A: The visual effects and soundtrack of this movie were truly out of this world.\nB: So true! / You are so right! Especially that ending part, I even cried watching it.\nA: The director\'s caliber is indeed high.\nB: Indeed, well-deserved reputation.',
+    phonetic: 'A: Zhè bù diànyǐng de tèxiào hé pèiyuè zhēnshì jué le.\nB: Kě tài duì le! Yóuqí shì jiéwěi nà yī duàn, wǒ dōu kàn kū le.\nA: Dǎoyǎn shuǐzhǔn quèshí gāo.\nB: Quèshí, shí zhì míng guī.',
+    grammarNotes: '“可太对了” (kě tài duì le = couldn\'t be more right!); “确实” (quèshí = indeed / certainly); “实至名归” (fame matches reality / well deserved).',
+    hint: 'Situation: Emphatically agreeing on a movie review.',
+    exampleSentences: [
+      { target: '确实是这样。', translation: 'Indeed it is like this.', phonetic: 'Quèshí shì zhèyàng.' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 咱们先去超市买零食，再去唱歌，怎么样？\nB: 妥了！完全同意你的安排。\nA: 那你开车还是我开车？\nB: 坐地铁吧，周末商场停车位太难找了。\nA: 有道理，听你的！',
+    back: 'A: Let\'s go to the supermarket first to buy snacks, then go karaoke, what do you think?\nB: Settled / Perfect! I completely agree with your arrangement.\nA: Then are you driving or am I driving?\nB: Let\'s take the subway, mall parking is too hard to find on weekends.\nA: Makes sense, I\'ll follow your lead!',
+    phonetic: 'A: Zánmen xiān qù chāoshì mǎi língshí, zài qù chànggē, zěnmeyàng?\nB: Tuǒ le! Wánquán tóngyì nǐ de ānpái.\nA: Nà nǐ kāichē háishì wǒ kāichē?\nB: Zuò dìtiě ba, zhōumò shāngchǎng tíngchēwèi tài nán zhǎo le.\nA: Yǒu dàolǐ, tīng nǐ de!',
+    grammarNotes: 'Agreement phrases: “妥了” (settled); “完全同意” (completely agree); “有道理” (makes sense); “听你的” (I\'ll listen to you / go with your choice).',
+    hint: 'Situation: Coordinating weekend entertainment smoothly.',
+    exampleSentences: [
+      { target: '听你的！', translation: 'I\'ll follow your lead / Whatever you say!', phonetic: 'Tīng nǐ de!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 天气预报说傍晚有雷阵雨，带把伞以防万一吧。\nB: 必须的！有备无患嘛。\nA: 我包里放了一把折叠伞。\nB: 靠谱！',
+    back: 'A: Weather forecast says thundershowers in the evening, bring an umbrella just in case.\nB: Absolutely! / Must do! Better safe than sorry.\nA: I put a folding umbrella in my bag.\nB: Reliable / You can be counted on!',
+    phonetic: 'A: Tiānqì yùbào shuō bàngwǎn yǒu léizhènyǔ, dài bǎ sǎn yǐ fáng wànyī ba.\nB: Bìxū de! Yǒu bèi wú huàn ma.\nA: Wǒ bāo lǐ fàng le yī bǎ zhédiésǎn.\nB: Kàopǔ!',
+    grammarNotes: '“必须的” (bìxū de = absolutely / of course / a must!); “靠谱” (kàopǔ = dependable / reliable); “以防万一” (just in case); “有备无患” (preparedness prevents peril).',
+    hint: 'Situation: Confirming precautions before leaving the house.',
+    exampleSentences: [
+      { target: '必须的！', translation: 'Absolutely! / You bet!', phonetic: 'Bìxū de!' },
+      { target: '你太靠谱了！', translation: 'You are so reliable!', phonetic: 'Nǐ tài kàopǔ le!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 这道题的答案算出来是四十二，你算的是多少？\nB: 我也是四十二！英雄所见略同啊。\nA: 哈哈，看来咱们都没算错。',
+    back: 'A: The answer calculated for this math problem is 42, what did you calculate?\nB: Mine is 42 as well! Great minds think alike.\nA: Haha, looks like neither of us made a calculation error.',
+    phonetic: 'A: Zhè dào tí de dá-àn suàn chūlái shì sìshí-èr, nǐ suàn de shì duōshǎo?\nB: Wǒ yě shì sìshí-èr! Yīngxióng suǒ jiàn lüè tóng a.\nA: Hāhā, kànlái zánmen dōu méi suàn cuò.',
+    grammarNotes: '“英雄所见略同” (yīngxióng suǒ jiàn lüè tóng = great minds think alike; literally heroes\' views are broadly identical).',
+    hint: 'Situation: Comparing problem sets and laughing at identical conclusions.',
+    exampleSentences: [
+      { target: '英雄所见略同！', translation: 'Great minds think alike!', phonetic: 'Yīngxióng suǒ jiàn lüè tóng!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 咱们今天就讨论到这儿，明天再继续改方案？\nB: 没问题，今天大家都辛苦了，早点休息吧。\nA: 好的，大家辛苦！',
+    back: 'A: Shall we wrap up discussion here for today and continue revising the plan tomorrow?\nB: No problem, everyone worked hard today, get some rest early.\nA: Alright, thanks everyone for your hard work!',
+    phonetic: 'A: Zánmen jīntiān jiù tǎolùn dào zhèr, míngtiān zài jìxù gǎi fāng-àn?\nB: Méi wèntí, jīntiān dàjiā dōu xīnkǔ le, zǎodiǎn xiūxi ba.\nA: Hǎo de, dàjiā xīnkǔ!',
+    grammarNotes: 'Workplace consensus: “就讨论到这儿” (wrap up discussion here); “没问题” (no problem); “辛苦了” (thank you for your efforts).',
+    hint: 'Situation: Ending a team group project meeting amicably.',
+    exampleSentences: [
+      { target: '今天就到这里吧。', translation: 'Let\'s end here for today.', phonetic: 'Jīntiān jiù dào zhèlǐ ba.' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 你觉得这件白色的衣服好看，还是黑色的好看？\nB: 毫无疑问，绝对是白色的更有气质！\nA: 我也是这么想的，那就买白色的！',
+    back: 'A: Do you think this white garment looks better, or the black one?\nB: Without a doubt, definitely the white one has way more elegance / aura!\nA: I was thinking the exact same thing, then white it is!',
+    phonetic: 'A: Nǐ juéde zhè jiàn báisè de yīfu hǎokàn, háishì hēisè de hǎokàn?\nB: Háo wú yíwèn, juéduì shì báisè de gèng yǒu qìzhì!\nA: Wǒ yě shì zhème xiǎng de, nà jiù mǎi báisè de!',
+    grammarNotes: '“毫无疑问” (háo wú yíwèn = without a shadow of a doubt); “绝对” (juéduì = absolutely); “我也是这么想的” (I thought so too).',
+    hint: 'Situation: Strong unanimous agreement when choosing clothes.',
+    exampleSentences: [
+      { target: '毫无疑问！', translation: 'Without a doubt!', phonetic: 'Háo wú yíwèn!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 无论遇到什么困难，咱们团队都要齐心协力。\nB: 那必须的，咱们可是铁打的搭档！\nA: 加油，一定能赢！\nB: 冲！',
+    back: 'A: No matter what difficulty we face, our team must pull together with one heart.\nB: That is an absolute must, we are ironclad partners!\nA: Let\'s go, we can definitely win!\nB: Charge / Let\'s do this!',
+    phonetic: 'A: Wúlùn yù dào shénme kùnnán, zánmen tuánduì dōu yào qíxīn-xiélì.\nB: Nà bìxū de, zánmen kě shì tiědǎ de dādàng!\nA: Jiāyóu, yīdìng néng yíng!\nB: Chōng!',
+    grammarNotes: 'Team morale: “齐心协力” (pull together with one mind); “那必须的” (that\'s an absolute given); “铁打的搭档” (ironclad partners); “冲” (chōng = charge!).',
+    hint: 'Situation: Pumping up motivation and consensus before a sports match or project.',
+    exampleSentences: [
+      { target: '齐心协力！', translation: 'Pull together with one heart!', phonetic: 'Qíxīn-xiélì!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 我建议报告的第一部分简明扼要，把重点数据前置。\nB: 一点儿没错！这样评委一眼就能看懂核心亮点。\nA: 好，那我马上按这个思路调整。',
+    back: 'A: I suggest keeping part 1 of the report concise, placing key data points upfront.\nB: Not a bit wrong / Exactly right! That way judges can see core highlights at a glance.\nA: Great, then I will immediately adjust along this line of thought.',
+    phonetic: 'A: Wǒ jiànyì bàogào de dì-yī bùfen jiǎnmíng-èyào, bǎ zhòngdiǎn shùjù qiánzhì.\nB: Yīdiǎnr méi cuò! Zhèyàng píngwěi yī yǎn jiù néng kàn dǒng héxīn liàngdiǎn.\nA: Hǎo, nà wǒ mǎshàng àn zhège sīlù tiáozhěng.',
+    grammarNotes: '“一点儿没错” (yīdiǎnr méi cuò = not wrong in the slightest / spot on); “简明扼要” (concise to the point); “思路” (line of thought).',
+    hint: 'Situation: Constructive agreement on academic or business presentation strategy.',
+    exampleSentences: [
+      { target: '一点儿没错！', translation: 'Spot on! / Not wrong at all!', phonetic: 'Yīdiǎnr méi cuò!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 咱们今晚自己买菜下厨做饭，比去外面吃健康卫生多了。\nB: 深有同感！外卖吃多了胃都不舒服。\nA: 那下班一起逛菜市场买菜！\nB: 好嘞！',
+    back: 'A: Buying groceries and cooking at home ourselves tonight is way healthier and cleaner than eating out.\nB: Deeply share the feeling / I feel the exact same way! Eating too much takeout upsets my stomach.\nA: Then let\'s browse the wet market together after work to buy food!\nB: Right on!',
+    phonetic: 'A: Zánmen jīnwǎn zìjǐ mǎi cài xiàchú zuòfàn, bǐ qù wàimiàn chī jiànkāng wèishēng duō le.\nB: Shēn yǒu tónggǎn! Wàimài chī duō le wèi dōu bù shūfu.\nA: Nà xiàbān yīqǐ guàng càishìchǎng mǎi cài!\nB: Hǎo lei!',
+    grammarNotes: '“深有同感” (shēn yǒu tónggǎn = deeply share the exact same feeling / resonance); “下厨” (step into the kitchen / cook).',
+    hint: 'Situation: Strong mutual consensus on healthy home cooking over takeout.',
+    exampleSentences: [
+      { target: '深有同感！', translation: 'I deeply feel the same way!', phonetic: 'Shēn yǒu tónggǎn!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 学习语言得每天坚持哪怕十五分钟，细水长流最管用。\nB: 谁说不是呀！三天打鱼两天晒网肯定学不好。\nA: 那就定个每天背十个单词的小目标！\nB: 赞同，贵在坚持！',
+    back: 'A: Learning a language requires daily persistence even for 15 minutes, slow and steady stream works best.\nB: Exactly! / Who could disagree! Fishing for three days and drying nets for two definitely won\'t work.\nA: Then let\'s set a small goal of memorizing 10 words every day!\nB: Agreed, value lies in perseverance!',
+    phonetic: 'A: Xuéxí yǔyán děi měi tiān jiānchí nǎpà shíwǔ fēnzhōng, xìshuǐ-chángliú zuì guǎnyòng.\nB: Shuí shuō bù shì ya! Sān tiān dǎ yú liǎng tiān shài wǎng kěndìng xué bù hǎo.\nA: Nà jiù dìng gè měi tiān bèi shí gè dāncí de xiǎo mùbiāo!\nB: Zàntóng, guì zài jiānchí!',
+    grammarNotes: 'Proverbs of persistence: “细水长流” (thin stream flows long = steady persistence); “三天打鱼两天晒网” (inconsistent effort); “贵在坚持” (the value lies in persistence).',
+    hint: 'Situation: Encouraging each other on daily habits and study goals.',
+    exampleSentences: [
+      { target: '贵在坚持！', translation: 'The key is persistence!', phonetic: 'Guì zài jiānchí!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 刚才那个讲座教授讲得真生动，全是干货！\nB: 确实是，听君一席话，胜读十年书。\nA: 记了好几页笔记呢。\nB: 回头借我复印一份哈！',
+    back: 'A: Just now that lecture professor spoke so vividly, filled with solid useful insights!\nB: Indeed, listening to one talk from a master is worth reading ten years of books.\nA: I took several pages of notes.\nB: Lend it to me later to photocopy a copy, please!',
+    phonetic: 'A: Gāngcái nàge jiǎngzuò jiàoshòu jiǎng de zhēn shēngdòng, quán shì gānhuò!\nB: Quèshí shì, tīng jūn yī xí huà, shèng dú shí nián shū.\nA: Jì le hǎojǐ yè bǐjì ne.\nB: Huítóu jiè wǒ fùyìn yī fèn hā!',
+    grammarNotes: '“干货” (gānhuò = solid, practical, fluff-free substance); “听君一席话，胜读十年书” (classic praise for illuminating discourse).',
+    hint: 'Situation: Enthusiastic post-lecture praise with a classmate.',
+    exampleSentences: [
+      { target: '全是干货！', translation: 'Full of solid, real substance!', phonetic: 'Quán shì gānhuò!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 周末咱们去爬山散散心，逃离城市喧嚣吧！\nB: 一拍即合！我正觉得憋得慌呢，就这么愉快的决定了！\nA: 那我来负责查登山路线。\nB: 好，我准备水和能量棒！',
+    back: 'A: This weekend let\'s go climb a mountain to relax our minds and escape the city noise!\nB: Instant match / Hit it off immediately! I was feeling cooped up and suffocated, happily decided then!\nA: Then I will be responsible for checking the hiking trail.\nB: Good, I\'ll prepare water and energy bars!',
+    phonetic: 'A: Zhōumò zánmen qù páshān sànsàn xīn, táolí chéngshì xuānxiāo ba!\nB: Yī pāi jí hé! Wǒ zhèng juéde biē de huāng ne, jiù zhème yúkuài de juédìng le!\nA: Nà wǒ lái fùzé chá dēngshān lùxiàn.\nB: Hǎo, wǒ zhǔnbèi shuǐ hé néngliàngbàng!',
+    grammarNotes: '“一拍即合” (yī pāi jí hé = click immediately / instant enthusiastic agreement); “憋得慌” (feeling suffocated/cooped up); “就这么愉快的决定了” (popular modern decision formula: and so it is happily decided!).',
+    hint: 'Situation: Spontaneous enthusiastic agreement on an outdoor weekend trip.',
+    exampleSentences: [
+      { target: '咱们俩真是一拍即合！', translation: 'We two truly hit it off / clicked immediately!', phonetic: 'Zánmen liǎ zhēnshì yī pāi jí hé!' }
+    ]
+  },
 {
     languageId: 'german',
     topicId: 'dialogues-conversations',

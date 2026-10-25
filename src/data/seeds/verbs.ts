@@ -3381,4 +3381,170 @@ export const VERBS_SEEDS: CurriculumSeed[] = [
     "grammarNotes": "'Etwas zu schätzen wissen' = to appreciate something. Warm, polite closing of deep gratitude.",
     "hint": "Expressing deep gratitude to someone who assisted you."
   }
+,
+  {
+    "languageId": "chinese",
+    "topicId": "idioms-expressions",
+    "difficulty": "A1",
+    "cardType": "sentence",
+    "front": "情绪价值在恋爱中非常关键，善于倾听、赞美和提供安全感，比炫耀物质更能打动女生。",
+    "back": "Emotional value is crucial in dating; being good at listening, complimenting, and providing emotional security touches girls much more than showing off material things.",
+    "phonetic": "Qíngxù jiàzhí zài liàn'ài zhōng fēicháng guānjiàn, shànyú qīngtīng, zànměi hé tígōng ānquángǎn, bǐ xuànyào wùzhì gèng néng dǎdòng nǚshēng.",
+    "grammarNotes": "“情绪价值” (emotional value - the #1 buzzword in modern Chinese relationship culture); “安全感” (emotional security); “打动” (to move / touch someone's heart).",
+    "hint": "The concept of 'emotional value' (qíngxù jiàzhí) in modern Chinese romance."
+  },
+  {
+    "languageId": "chinese",
+    "topicId": "idioms-expressions",
+    "difficulty": "A1",
+    "cardType": "sentence",
+    "front": "凡事有交代，件件有着落，事事有回音，这就是让女生最有安全感的细节。",
+    "back": "Accountability in everything, execution on every task, and a response to every matter — these are the details that give a girl the greatest sense of security.",
+    "phonetic": "Fánshì yǒu jiāodài, jiànjiàn yǒu zhuóluò, shìshì yǒu huíyīn, zhè jiù shì ràng nǚshēng zuì yǒu ānquángǎn de xìjié.",
+    "grammarNotes": "Iconic gold-standard definition of an ideal partner in China: prompt replies, dependable follow-through, never leaving messages unanswered.",
+    "hint": "Reliability and communicative attentiveness (事事有回音)."
+  },
+  {
+    "languageId": "chinese",
+    "topicId": "idioms-expressions",
+    "difficulty": "A1",
+    "cardType": "sentence",
+    "front": "在小红书上收藏几家氛围感好的网红餐厅、宝藏咖啡馆或艺术展，约会时带她去打卡拍照。",
+    "back": "Save a few photogenic trending restaurants, hidden gem cafés, or art exhibits on Xiaohongshu, and take her there on dates to snap photos and check in.",
+    "phonetic": "Zài Xiǎohóngshū shàng shǒucáng jǐ jiā fēnwéigǎn hǎo de wǎnghóng cāntīng, bǎozàng kāfēiguǎn huò yìshùzhǎn, yuēhuì shí dài tā qù dǎkǎ pāizhào.",
+    "grammarNotes": "“小红书” (Xiaohongshu / RED - the lifestyle search engine of Chinese women); “打卡” (dǎkǎ = visit/check in); “宝藏” (hidden gem); “拍照” (taking good aesthetic photos).",
+    "hint": "Curating date spots using Xiaohongshu (RED)."
+  },
+  {
+    "languageId": "chinese",
+    "topicId": "idioms-expressions",
+    "difficulty": "A1",
+    "cardType": "sentence",
+    "front": "学会帮女生拍出好看的照片是一项核心技能：蹲下找好构图角度，把腿拍长，脸拍小。",
+    "back": "Learning how to take great photos for girls is a core dating skill: squat down to frame the angle properly, make her legs look long, and make her face look slender.",
+    "phonetic": "Xuéhuì bāng nǚshēng pāi chū hǎokàn de zhàopiàn shì yī xiàng héxīn jīnéng: dūn xià zhǎo hǎo gòutú jiǎodù, bǎ tuǐ pāi cháng, liǎn pāi xiǎo.",
+    "grammarNotes": "Taking good photos for your date is universally considered an elite boyfriend trait in China. A guy who patiently frames shots wins massive admiration.",
+    "hint": "Mastering mobile photography for dates."
+  },
+  {
+    "languageId": "chinese",
+    "topicId": "idioms-expressions",
+    "difficulty": "A1",
+    "cardType": "sentence",
+    "front": "当女生身体不舒服时，千万不要只说多喝热水，要立刻点一份热红糖姜茶或者外卖送药。",
+    "back": "When a girl is unwell, never just tell her to drink hot water; immediately order hot brown sugar ginger tea or deliver medicine via food delivery app.",
+    "phonetic": "Dāng nǚshēng shēntǐ bù shūfu shí, qiānwàn bùyào zhǐ shuō duō hē rèshuǐ, yào lìkè diǎn yī fèn rè hóngtáng jiāngchá huòzhě wàimài sòng yào.",
+    "grammarNotes": "“多喝热水” (drink more hot water) is mocked as lazy empathy in China. Concrete action (ordering ginger tea / hot soup / medicine via Meituan) demonstrates genuine care.",
+    "hint": "Avoiding the 'drink hot water' meme through concrete attentive actions."
+  },
+  {
+    "languageId": "chinese",
+    "topicId": "idioms-expressions",
+    "difficulty": "A1",
+    "cardType": "sentence",
+    "front": "在特别的节日或纪念日准备小惊喜，比如一束鲜花、手写卡片或她随口提过想买的小礼物。",
+    "back": "Prepare little surprises on special holidays or anniversaries, like a bouquet of fresh flowers, a handwritten card, or a little gift she casually mentioned wanting.",
+    "phonetic": "Zài tèbié de jiérì huò jìnìanrì zhǔnbèi xiǎo jīngxǐ, bǐrú yī shù xiānhuā, shǒuxiě kǎpiàn huò tā suíkǒu tí guò xiǎng mǎi de xiǎo lǐwù.",
+    "grammarNotes": "“仪式感” (sense of ritual/celebration); “随口提过” (casually mentioned in passing). Remembering what she casually likes shows high attentiveness.",
+    "hint": "The power of 'ritual sense' (yíshìgǎn) and thoughtful surprises."
+  },
+  {
+    "languageId": "chinese",
+    "topicId": "idioms-expressions",
+    "difficulty": "A1",
+    "cardType": "sentence",
+    "front": "点餐前主动询问她的口味偏好：吃不吃辣、忌不忌口、奶茶要几分甜和少冰还是去冰。",
+    "back": "Before ordering, proactively inquire about her taste preferences: spicy or not, dietary restrictions, and milk tea sweetness percentage and less ice vs no ice.",
+    "phonetic": "Diǎncān qián zhǔdòng xúnwèn tā de kǒuwèi piānhào: chī bù chī là, jì bù jì kǒu, nǎichá yào jǐ fēn tián hé shǎo bīng háishì qù bīng.",
+    "grammarNotes": "“忌口” (dietary restrictions / foods to avoid); “微糖 / 半糖” (sweetness levels); “去冰” (no ice). Memorizing her exact drink order wins major points.",
+    "hint": "Remembering exact beverage sweetness and ice preferences."
+  },
+  {
+    "languageId": "chinese",
+    "topicId": "idioms-expressions",
+    "difficulty": "A1",
+    "cardType": "sentence",
+    "front": "走路时主动走在外侧挡着车流，进门时帮她扶着门，吃饭时先帮她烫餐具和倒温水。",
+    "back": "When walking, proactively take the street side to shield traffic; hold the door when entering; at dining tables, scald tableware with hot tea and pour warm water first.",
+    "phonetic": "Zǒulù shí zhǔdòng zǒu zài wàicè dǎng zhe chēliú, jìn mén shí bāng tā fú zhe mén, chīfàn shí xiān bāng tā tàng cānjù hé dào wēnshuǐ.",
+    "grammarNotes": "“烫餐具” (tàng cānjù = rinsing tableware with hot tea/water in restaurants, customary in southern China). These automatic courtesies showcase high upbringing.",
+    "hint": "Classic Chinese table and street manners (烫餐具)."
+  },
+  {
+    "languageId": "chinese",
+    "topicId": "idioms-expressions",
+    "difficulty": "A1",
+    "cardType": "sentence",
+    "front": "微信聊天时多分享有趣的日常照片和可爱的猫猫狗狗表情包，不要做一问一答的话题终结者。",
+    "back": "When chatting on WeChat, share fun daily photos and cute pet sticker packs often; don't be a dry 'question-and-answer' topic killer.",
+    "phonetic": "Wēixìn liáotiān shí duō fēnxiǎng yǒuqù de rìcháng zhàopiàn hé kě'ài de māomāo-gǒugǒu biǎoqíngbāo, bùyào zuò yī wèn yī dá de huàtí zhōngjiézhě.",
+    "grammarNotes": "“表情包” (stickers/memes - the lifeblood of WeChat conversations); “话题终结者” (topic killer). Sharing daily moments (分享欲) is seen as proof of affection.",
+    "hint": "WeChat sticker culture and sharing daily moments (分享欲)."
+  },
+  {
+    "languageId": "chinese",
+    "topicId": "idioms-expressions",
+    "difficulty": "A1",
+    "cardType": "sentence",
+    "front": "分享欲是最高级的浪漫，每天遇到搞笑的事、看到好看的夕阳，都第一时间发给她看。",
+    "back": "The desire to share is the highest form of romance: whenever you encounter something funny or see a gorgeous sunset, send it to her right away.",
+    "phonetic": "Fēnxiǎngyù shì zuì gāojí de làngmàn, měi tiān yù dào gǎoxiào de shì, kàn dào hǎokàn de xīyáng, dōu dì-yī shíjiān fā gěi tā kàn.",
+    "grammarNotes": "“分享欲” (fēnxiǎngyù = desire to share daily trivia with someone). In China, when a girl loses her 分享欲, the love is gone; keeping it vibrant keeps love alive.",
+    "hint": "The fundamental concept of 'Fēnxiǎngyù' (desire to share)."
+  },
+  {
+    "languageId": "chinese",
+    "topicId": "idioms-expressions",
+    "difficulty": "A1",
+    "cardType": "sentence",
+    "front": "约会结束送她上车后，记下出租车牌号，并叮嘱她到了家在微信上发个消息报平安。",
+    "back": "After putting her in a taxi at date's end, note down the license plate, and remind her to send a WeChat message confirming she arrived home safely.",
+    "phonetic": "Yuēhuì jiéshù sòng tā shàng chē hòu, jì xià chūzū chēpàihào, bìng dīngzhǔ tā dào le jiā zài Wēixìn shàng fā gè xiāoxi bào píng'ān.",
+    "grammarNotes": "“报平安” (report safe arrival); “叮嘱” (tenderly remind). The hallmark ending of every successful and caring gentlemanly date.",
+    "hint": "Taxi safety and reporting arrival (报平安)."
+  },
+  {
+    "languageId": "chinese",
+    "topicId": "idioms-expressions",
+    "difficulty": "A1",
+    "cardType": "sentence",
+    "front": "认真了解并尊重中国的传统节日，比如情人节、七夕节、五二零和中秋节，陪伴比什么都重要。",
+    "back": "Genuinely learn and respect Chinese traditional and modern romantic holidays, such as Western Valentine's, Qixi, 520, and Mid-Autumn; companionship matters most.",
+    "phonetic": "Rènzhēn liǎojiě bìng zūnzhòng Zhōngguó de chuántǒng jiérì, bǐrú Qíngrénjié, Qīxījié, Wǔ'èrlíng hé Zhōngqiūjié, péibàn bǐ shénme dōu zhòngyào.",
+    "grammarNotes": "Key romantic dates in China: 2.14 (Valentine's), 5.20 (520 sounds like wǒ ài nǐ), 7.7 lunar (Qixi / Chinese Valentine's). “陪伴是最长情的告白” (Companionship is the longest confession).",
+    "hint": "Navigating Chinese romance festivals (520, Qixi, Valentine's)."
+  },
+  {
+    "languageId": "chinese",
+    "topicId": "idioms-expressions",
+    "difficulty": "A1",
+    "cardType": "sentence",
+    "front": "努力学好地道的中文日常表达，这不仅能展现你对中国文化的喜爱，更体现你的真诚与用心。",
+    "back": "Diligently learning authentic Chinese everyday expressions not only demonstrates your love for the culture, but truly reflects your sincerity and dedication.",
+    "phonetic": "Nǔlì xuéhǎo dìdao de zhōngwén rìcháng biǎodá, zhè bùjǐn néng zhǎnxiàn nǐ duì Zhōngguó wénhuà de xǐ'ài, gèng tǐxiàn nǐ de zhēnchéng yǔ yòngxīn.",
+    "grammarNotes": "“真诚与用心” (sincerity and effort). In China, an expat who speaks fluent, natural Chinese without an ego is regarded as extraordinarily attractive.",
+    "hint": "Sincerity through language fluency (真诚永远是必杀技)."
+  },
+  {
+    "languageId": "chinese",
+    "topicId": "idioms-expressions",
+    "difficulty": "A1",
+    "cardType": "sentence",
+    "front": "吵架时要学会就事论事并主动给台阶下，态度真诚地哄一哄，千万不要冷战或讲大道理。",
+    "back": "During disagreements, focus on the issue and give her a graceful way out; soothe her with sincere affection, and never do silent treatment or preach cold lectures.",
+    "phonetic": "Chǎojià shí yào xuéhuì jiùshì-lùnshì bìng zhǔdòng gěi táijiē xià, tàidù zhēnchéng de hǒng-yī-hǒng, qiānwàn bùyào lěngzhàn huò jiǎng dà dàolǐ.",
+    "grammarNotes": "“给台阶下” (provide a graceful way out of embarrassment); “哄” (comfort tenderly); “冷战” (silent treatment); “讲大道理” (preaching cold logic instead of showing empathy).",
+    "hint": "Conflict resolution: giving graceful exits (给台阶下) vs preaching."
+  },
+  {
+    "languageId": "chinese",
+    "topicId": "idioms-expressions",
+    "difficulty": "A1",
+    "cardType": "sentence",
+    "front": "真诚永远是最大的必杀技：不套路、不轻浮、尊重她的边界感，长久的吸引力来自人品与担当。",
+    "back": "Sincerity is forever the ultimate superpower: no manipulative tricks, no frivolous flippancy, respecting her personal boundaries; lasting attraction comes from character and responsibility.",
+    "phonetic": "Zhēnchéng yǒngyuǎn shì zuìdà de bìshājì: bù tàolù, bù qīngfú, zūnzhòng tā de biānjiègǎn, chángjiǔ de xīyǐnlì láizì rénpǐn yǔ dāndāng.",
+    "grammarNotes": "“真诚永远是必杀技” (Sincerity is forever the ultimate trump card / killer move); “边界感” (sense of boundaries); “担当” (willingness to take responsibility).",
+    "hint": "The ultimate dating truth in China: Sincerity beats all tricks."
+  }
 ];

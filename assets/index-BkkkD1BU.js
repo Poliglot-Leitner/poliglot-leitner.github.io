@@ -2465,7 +2465,187 @@ A: It's fine, weekends are made for sleeping in. Go wash up, I made steaming hot
 B: Aww you are so wonderful, I find myself getting more and more attached to you!`,phonetic:`A: Zǎo'ān bǎobèi! Kàn nǐ shuì de zhèng xiāng, méi shěde jiàoxǐng nǐ.
 B: Zǎo! Tiān na dōu shí diǎn le, wǒ qǐ wǎn le!
 A: Méi guānxi, zhōumò jiù shì yònglái shuì lǎnjiào de. Xǐshù yīxià, wǒ zuò le rèténgténg de miàntiáo.
-B: Wūwū nǐ tài hǎo le, wǒ fāxiàn wǒ yuèláiyuè líbukāi nǐ le!`,grammarNotes:`The morning after defines whether you're just a one-night encounter or her future boyfriend. Making warm breakfast (*热腾腾的面条*) and using term of endearment (*宝贝*) shows deep respect.`,hint:`Step 15: Morning after breakfast and affectionate bonding.`,exampleSentences:[{target:`早安宝贝！`,translation:`Good morning baby!`,phonetic:`Zǎo'ān bǎobèi!`}]},{languageId:`german`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: Guten Tag! Ich heiße Lukas Weber. Wie heißen Sie?
+B: Wūwū nǐ tài hǎo le, wǒ fāxiàn wǒ yuèláiyuè líbukāi nǐ le!`,grammarNotes:`The morning after defines whether you're just a one-night encounter or her future boyfriend. Making warm breakfast (*热腾腾的面条*) and using term of endearment (*宝贝*) shows deep respect.`,hint:`Step 15: Morning after breakfast and affectionate bonding.`,exampleSentences:[{target:`早安宝贝！`,translation:`Good morning baby!`,phonetic:`Zǎo'ān bǎobèi!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 你好！请问你在看什么书？
+B: 你好！我在看一本关于中国历史的书。
+A: 看起来挺有意思的，你平时很喜欢阅读吗？
+B: 对呀，每天睡觉前我都会看半小时书。`,back:`A: Hello! What book are you reading?
+B: Hello! I'm reading a book about Chinese history.
+A: It looks quite interesting, do you usually like reading a lot?
+B: Yes, every day before sleeping I read for half an hour.`,phonetic:`A: Nǐ hǎo! Qǐngwèn nǐ zài kàn shénme shū?
+B: Nǐ hǎo! Wǒ zài kàn yī běn guānyú Zhōngguó lìshǐ de shū.
+A: Kàn qǐlái tǐng yǒuyìsi de, nǐ píngshí hěn xǐhuan yuèdú ma?
+B: Duì ya, měi tiān shuìjiào qián wǒ dōu huì kàn bàn xiǎoshí shū.`,grammarNotes:`“关于...” (about / concerning...); “一本...” (measure word 'běn' for books); “挺有意思的” (quite interesting).`,hint:`Situation: Striking up a conversation in a library or bookshop.`,exampleSentences:[{target:`这本书很有意思。`,translation:`This book is very interesting.`,phonetic:`Zhè běn shū hěn yǒuyìsi.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 请问这附近有自动取款机或者中国银行吗？
+B: 有的，顺着这条街往前走大约两百米，马路对面就是。
+A: 好的，那取现金需要手续费吗？
+B: 跨行取款可能会收一点点手续费。`,back:`A: Excuse me, is there an ATM or Bank of China nearby?
+B: Yes, go straight along this street for about 200 meters, it's right across the road.
+A: Alright, does withdrawing cash require a transaction fee?
+B: Withdrawing from a different bank might charge a small fee.`,phonetic:`A: Qǐngwèn zhè fùjìn yǒu zìdòng qǔkuǎnjī huòzhě Zhōngguó Yínháng ma?
+B: Yǒu de, shùn zhe zhè tiáo jiē wǎng qián zǒu dàyuē liǎngbǎi mǐ, mǎlù duìmiàn jiù shì.
+A: Hǎo de, nà qǔ xiànjīn xūyào shǒuxùfèi ma?
+B: Kuàháng qǔkuǎn kěnéng huì shōu yīdiǎndiǎn shǒuxùfèi.`,grammarNotes:`“自动取款机” (ATM); “手续费” (service fee / commission); “跨行取款” (inter-bank withdrawal).`,hint:`Situation: Inquiring about ATM cash withdrawal and banking fees.`,exampleSentences:[{target:`马路对面就是银行。`,translation:`Right across the street is the bank.`,phonetic:`Mǎlù duìmiàn jiù shì yínháng.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 今天天气预报说下午有雷阵雨，你带伞了吗？
+B: 哎呀，我出门太急，完全忘了看天气预报！
+A: 没关系，我有折叠伞，等会儿下班我们一起撑伞去地铁站。
+B: 太感谢你了，你人真好！`,back:`A: Today's weather forecast says there will be thunderstorms this afternoon, did you bring an umbrella?
+B: Oh dear, I left home in such a rush, I completely forgot to check the forecast!
+A: It's fine, I have a folding umbrella; after work we can share it to the subway station.
+B: Thank you so much, you are so kind!`,phonetic:`A: Jīntiān tiānqì yùbào shuō xiàwǔ yǒu léizhènyǔ, nǐ dài sǎn le ma?
+B: Āiyā, wǒ chūmén tài jí, wánquán wàng le kàn tiānqì yùbào!
+A: Méi guānxi, wǒ yǒu zhédiésǎn, děnghuìr xiàbān wǒmen yīqǐ chēng sǎn qù dìtiězhàn.
+B: Tài gǎnxiè nǐ le, nǐ rén zhēn hǎo!`,grammarNotes:`“雷阵雨” (thunderstorm); “出门太急” (left in a hurry); “撑伞” (hold open an umbrella / share an umbrella).`,hint:`Situation: Weather talk and sharing an umbrella with a colleague.`,exampleSentences:[{target:`你带伞了吗？`,translation:`Did you bring an umbrella?`,phonetic:`Nǐ dài sǎn le ma?`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 老板，这件毛衣可以试穿一下吗？
+B: 当然可以，试衣间在里面右侧。
+A: 请问还有更小一号的S码吗？这件M码感觉衣袖有点长。
+B: 稍等，我去仓库帮您找一件S码试试。`,back:`A: Shopkeeper, can I try on this sweater?
+B: Of course you can, fitting room is inside on the right.
+A: Do you have a smaller size S? This size M feels like the sleeves are a bit long.
+B: Just a moment, I'll go to the storage room to find a size S for you to try.`,phonetic:`A: Lǎobǎn, zhè jiàn máoyī kěyǐ shìchuān yīxià ma?
+B: Dāngrán kěyǐ, shìyījiān zài lǐmiàn yòucè.
+A: Qǐngwèn hái yǒu gèng xiǎo yī hào de S mǎ ma? Zhè jiàn M mǎ gǎnjué yīxiù yǒudiǎn cháng.
+B: Shāoděng, wǒ qù cāngkù bāng nín zhǎo yī jiàn S mǎ shìshi.`,grammarNotes:`Shopping language: “试衣间” (fitting room); “试穿” (try on clothing); “衣袖” (sleeves); “仓库” (storage / stockroom).`,hint:`Situation: Trying on clothes and asking for a different size at a boutique.`,exampleSentences:[{target:`试衣间在哪里？`,translation:`Where is the fitting room?`,phonetic:`Shìyījiān zài nǎlǐ?`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 师父，请问理发大概要等多久？
+B: 前面只有一位客人在吹头发，您稍坐五分钟就好。
+A: 好的，我只想稍微修剪一下发梢和刘海，不要剪太短。
+B: 明白，包您满意！`,back:`A: Barber, about how long is the wait for a haircut?
+B: There is only one customer ahead blow-drying their hair; just sit for 5 minutes.
+A: Alright, I only want to trim the ends and bangs slightly, please don't cut it too short.
+B: Understood, guaranteed you will be satisfied!`,phonetic:`A: Shīfu, qǐngwèn lǐfà dàgài yào děng duōjiǔ?
+B: Qiánmiàn zhǐ yǒu yī wèi kèrén zài chuī tóufa, nín shāozuò wǔ fēnzhōng jiù hǎo.
+A: Hǎo de, wǒ zhǐ xiǎng shāowēi xiūjiǎn yīxià fàshāo hé liúhǎi, bùyào jiǎn tài duǎn.
+B: Míngbai, bāo nín mǎnyì!`,grammarNotes:`Hair salon terms: “理发” (haircut); “修剪” (trim); “发梢” (hair ends); “刘海” (bangs/fringe); “包您满意” (guaranteed satisfaction).`,hint:`Situation: Explaining haircut instructions at a Chinese hair salon.`,exampleSentences:[{target:`不要剪得太短。`,translation:`Please do not cut it too short.`,phonetic:`Bùyào jiǎn de tài duǎn.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 医生您好，我这两天咳嗽得厉害，喉咙也特别疼。
+B: 先量一下体温……三十七度八，稍微有点低烧。张开嘴，说“啊——”。
+A: 会不会是流感或者扁桃体发炎？
+B: 嗓子红肿明显，我给您开三天的消炎药和止咳糖浆，按时服用，多休息。`,back:`A: Hello doctor, I have been coughing severely these past two days, and my throat hurts badly.
+B: Let's take your temperature first... 37.8°C, a slight low-grade fever. Open your mouth and say 'Ah--'.
+A: Could it be influenza or tonsillitis?
+B: Your throat is visibly inflamed; I will prescribe 3 days of anti-inflammatories and cough syrup, take on time and rest.`,phonetic:`A: Yīshēng nín hǎo, wǒ zhè liǎng tiān késou de lìhai, hóulóng yě tèbié téng.
+B: Xiān liáng yīxià tǐwēn…… sānshíqī dù bā, shāowēi yǒudiǎn dīshāo. Zhāngkāi zuǐ, shuō "A--".
+A: Huì bù huì shì liúgǎn huòzhě biǎntáotǐ fāyán?
+B: Sǎngzi hóngzhǒng míngxiǎn, wǒ gěi nín kāi sān tiān de xiāoyányào hé zhǐké tángjiāng, ànshí fúyòng, duō xiūxi.`,grammarNotes:`Medical clinic terms: “咳嗽得厉害” (coughing severely); “低烧” (mild fever); “开药” (prescribe medicine); “按时服用” (take as scheduled).`,hint:`Situation: Consulting a physician at a hospital outpatient clinic.`,exampleSentences:[{target:`我喉咙特别疼。`,translation:`My throat hurts terribly.`,phonetic:`Wǒ hóulóng tèbié téng.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 你好，我要寄一个包裹去上海，请问大概几天能寄到？
+B: 普通快递大概两到三天，顺丰特快明天下午就能送到。
+A: 那我选顺丰特快吧，里面是重要文件。
+B: 好的，请在手机小程序上填写一下寄件人和收件人的手机号与详细地址。`,back:`A: Hello, I want to send a parcel to Shanghai, roughly how many days will it take to arrive?
+B: Regular express takes about 2 to 3 days; SF Express priority will arrive tomorrow afternoon.
+A: Then I'll choose SF priority, inside are important documents.
+B: Sure, please fill in the sender and recipient phone numbers and detailed address on the mini-program.`,phonetic:`A: Nǐ hǎo, wǒ yào jì yī gè bāoguǒ qù Shànghǎi, qǐngwèn dàgài jǐ tiān néng jì dào?
+B: Pǔtōng kuàidì dàgài liǎng dào sān tiān, Shùnfēng tèkuài míngtiān xiàwǔ jiù néng sòng dào.
+A: Nà wǒ xuǎn Shùnfēng tèkuài ba, lǐmiàn shì zhòngyào wénjiàn.
+B: Hǎo de, qǐng zài shǒujī xiǎochéngxù shàng tiánxiě yīxià jìjiànrén hé shōujiànrén de shǒujīhào yǔ xiángxì dìzhǐ.`,grammarNotes:`Courier services: “顺丰速运” (SF Express - China's fastest premium courier); “小程序” (WeChat Mini Program); “寄件人 / 收件人” (sender / recipient).`,hint:`Situation: Mailing urgent documents via express courier.`,exampleSentences:[{target:`大概几天能送到？`,translation:`Roughly how many days will it take to be delivered?`,phonetic:`Dàgài jǐ tiān néng sòng dào?`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 前台你好，我房间里的浴室下水道好像有点堵，下水很慢。
+B: 非常抱歉给您带来不便！请问您的房号是多少？
+A: 808房。
+B: 好的，我马上安排工程部师傅带工具上去帮您疏通。`,back:`A: Hello front desk, the bathroom drain in my room seems a bit clogged, draining very slowly.
+B: Very sorry for the inconvenience! May I ask your room number?
+A: Room 808.
+B: Alright, I will immediately arrange a maintenance technician to go up with tools to unclog it for you.`,phonetic:`A: Qiántái nǐ hǎo, wǒ fángjiān lǐ de yùshì xiàshuǐdào hǎoxiàng yǒudiǎn dǔ, xiàshuǐ hěn màn.
+B: Fēicháng bàoqiàn gěi nín dàilái bùbiàn! Qǐngwèn nín de fánghào shì duōshǎo?
+A: Bābāolíng fáng.
+B: Hǎo de, wǒ mǎshàng ānpái gōngchéngbù shīfu dài gōngjù shàngqù bāng nín shūtōng.`,grammarNotes:`Hotel complaint phrases: “下水道堵了” (drain is clogged); “下水慢” (slow draining); “房号” (room number - pronounced digit-by-digit 'bā-bā-líng'); “疏通” (unclog).`,hint:`Situation: Reporting plumbing issues to hotel front desk reception.`,exampleSentences:[{target:`下水道堵了。`,translation:`The drain is clogged.`,phonetic:`Xiàshuǐdào dǔ le.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 师傅，我去东方明珠广播电视塔，大概需要开多久？
+B: 现在是早高峰，高架桥上稍微有点堵车，估计得四十分钟。
+A: 师傅，我赶时间去开会，能不能帮我走一条不堵的小路？
+B: 没问题，那我抄近道走地面辅道，给您省十分钟！`,back:`A: Driver, I'm going to the Oriental Pearl TV Tower, roughly how long will the drive take?
+B: Right now is morning rush hour, slightly congested on the elevated expressway, estimate 40 minutes.
+A: Driver, I'm rushing to a meeting, could you take a less congested side route for me?
+B: No problem, I'll take a shortcut along the ground surface roads to save you 10 minutes!`,phonetic:`A: Shīfu, wǒ qù Dōngfāng Míngzhū Guǎngbō Diànshìtǎ, dàgài xūyào kāi duōjiǔ?
+B: Xiànzài shì zǎogāofēng, gāojiàqiáo shàng shāowēi yǒudiǎn dǔchē, gūjì děi sìshí fēnzhōng.
+A: Shīfu, wǒ gǎn shíjiān qù kāihuì, néng bù néng bāng wǒ zǒu yī tiáo bù dǔ de xiǎolù?
+B: Méi wèntí, nà wǒ chāo jìndào zǒu dìmiàn fǔdào, gěi nín shěng shí fēnzhōng!`,grammarNotes:`Traffic & taxi terms: “早高峰” (morning rush hour); “高架桥” (elevated highway); “抄近道” (take a shortcut); “赶时间” (in a rush against time).`,hint:`Situation: Asking taxi driver to take shortcuts to avoid rush hour jams.`,exampleSentences:[{target:`我现在很赶时间！`,translation:`I am in a big rush right now!`,phonetic:`Wǒ xiànzài hěn gǎn shíjiān!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 您好，请问借阅处在哪里？我想借这三本中文小说。
+B: 请刷您的读者卡，放在感应区就可以自助办理借还手续。
+A: 请问借书期限是多久？可以续借吗？
+B: 每次可以借一个月，如果没人预约，可以在网上续借一次。`,back:`A: Hello, where is the circulation desk? I want to borrow these three Chinese novels.
+B: Please scan your library reader card, place it on the sensor area to self-serve borrow and return.
+A: What is the loan duration? Can it be renewed?
+B: Each loan is for one month; if nobody has reserved it, you can renew once online.`,phonetic:`A: Nín hǎo, qǐngwèn jièyuèchù zài nǎlǐ? Wǒ xiǎng jiè zhè sān běn zhōngwén xiǎoshuō.
+B: Qǐng shuā nín de dúzhěkǎ, fàng zài gǎnyìngqū jiù kěyǐ zìzhù bànlǐ jiè-huán shǒuxù.
+A: Qǐngwèn jièshū qīxiàn shì duōjiǔ? Kěyǐ xùjiè ma?
+B: Měi cì kěyǐ jiè yī gè yuè, rúguǒ méirén yùyuē, kěyǐ zài wǎngshàng xùjiè yī cì.`,grammarNotes:`Library procedures: “借阅处” (borrowing desk); “自助办理” (self-service processing); “续借” (renew loan); “预约” (reserve / appointment).`,hint:`Situation: Borrowing and renewing books at a modern public library.`,exampleSentences:[{target:`可以在网上续借吗？`,translation:`Can I renew the book online?`,phonetic:`Kěyǐ zài wǎngshàng xùjiè ma?`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 老板，这箱砂糖橘怎么卖？甜不甜？
+B: 十五块钱一整箱，包甜！不甜不要钱，您可以先尝一个！
+A: 哇，确实很甜，而且皮特别好剥。给我来一箱！
+B: 好嘞！给您装个结实的袋子，欢迎下次再来！`,back:`A: Boss, how much for this box of sugar tangerines? Are they sweet?
+B: Fifteen yuan for the whole box, guaranteed sweet! If not sweet no charge, you can taste one first!
+A: Wow, indeed very sweet, and the peel comes off so easily. Give me a box!
+B: Sure thing! I'll pack it in a sturdy bag for you, come again next time!`,phonetic:`A: Lǎobǎn, zhè xiāng shātángjú zěnme mài? Tián bù tián?
+B: Shíwǔ kuài qián yī zhěng xiāng, bāo tián! Bù tián bù yào qián, nín kěyǐ xiān cháng yī gè!
+A: Wa, quèshí hěn tián, érqiě pí tèbié hǎo bāo. Gěi wǒ lái yī xiāng!
+B: Hǎo lei! Gěi nín zhuāng gè jiēshi de dàizi, huānyíng xià cì zài lái!`,grammarNotes:`Fruit market bargaining: “砂糖橘” (sugar mandarin oranges); “包甜” (guaranteed sweet); “不甜不要钱” (classic vendor promise: free if not sweet!); “好嘞” (enthusiastic 'alright/sure thing!').`,hint:`Situation: Buying sweet fruit at a roadside fruit stall.`,exampleSentences:[{target:`包甜，不甜不要钱！`,translation:`Guaranteed sweet, free if it is not sweet!`,phonetic:`Bāo tián, bù tián bù yào qián!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 听说你最近办了健身房的年卡，练得怎么样？
+B: 刚练了一个星期，浑身酸痛，快起不来床了！
+A: 刚开始都这样，有做运动前拉伸和运动后放松吗？
+B: 我就是忘了拉伸，下次一定得用筋膜枪好好按按。`,back:`A: I heard you recently signed up for an annual gym membership, how's your training going?
+B: Just worked out for one week, my whole body aches, can barely get out of bed!
+A: It's always like that at the start, do you do pre-workout stretching and post-workout cool-downs?
+B: I forgot to stretch, next time I must use a massage gun to loosen up properly.`,phonetic:`A: Tīngshuō nǐ zuìjìn bàn le jiànshēnfáng de niánkǎ, liàn de zěnmeyàng?
+B: Gāng liàn le yī gè xīngqī, húnshēn suāntòng, kuài qǐ bù lái chuáng le!
+A: Gāng kāishǐ dōu zhèyàng, yǒu zuò yùndòng qián lāshēn hé yùndòng hòu fàngsōng ma?
+B: Wǒ jiù shì wàng le lāshēn, xià cì yīdìng děi yòng jīnmóqiāng hǎohǎo àn'àn.`,grammarNotes:`Fitness terms: “浑身酸痛” (sore muscles all over); “拉伸” (stretching); “筋膜枪” (massage gun / fascia gun - very popular in China).`,hint:`Situation: Chatting about post-workout gym soreness with a friend.`,exampleSentences:[{target:`我浑身酸痛。`,translation:`My whole body aches.`,phonetic:`Wǒ húnshēn suāntòng.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 喂，物业管理处吗？我家厨房的自来水水压特别小，断断续续的。
+B: 您好，因为今天小区在清洗二次供水蓄水池，现在处于降压供水阶段。
+A: 原来是这样啊，请问大概几点能恢复正常水压？
+B: 预计下午五点清洗完毕，届时就会恢复正常供水。`,back:`A: Hello, property management office? The tap water pressure in my kitchen is very weak and intermittent.
+B: Hello, because the residential compound is cleaning the secondary water reservoir today, it's currently under reduced pressure supply.
+A: Oh that's why; roughly what time will normal water pressure be restored?
+B: Expected to finish cleaning by 5 PM, normal water supply will resume then.`,phonetic:`A: Wèi, wùyè guǎnlǐchù ma? Wǒ jiā chúfáng de zìláishuǐ shuǐyā tèbié xiǎo, duànduàn-xùxù de.
+B: Nín hǎo, yīnwèi jīntiān xiǎoqū zài qīngxǐ èrcì gōngshuǐ xùshuǐchí, xiànzài chǔyú jiàngyā gōngshuǐ jiēduàn.
+A: Yuánlái shì zhèyàng a, qǐngwèn dàgài jǐ diǎn néng huīfù zhèngcháng shuǐyā?
+B: Yùjì xiàwǔ wǔ diǎn qīngxǐ wánbì, jièshí jiù huì huīfù zhèngcháng gōngshuǐ.`,grammarNotes:`Apartment living: “物业管理处” (property management); “水压小” (low water pressure); “断断续续” (intermittent / on and off); “恢复供水” (restore water supply).`,hint:`Situation: Calling apartment property management regarding water pressure.`,exampleSentences:[{target:`水压特别小。`,translation:`The water pressure is very low.`,phonetic:`Shuǐyā tèbié xiǎo.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 请问洗手间是在走廊尽头还是二楼？
+B: 一楼走廊尽头左拐就是，女洗手间在左边，男洗手间在右边。
+A: 谢谢！请问里面有无障碍卫生间吗？
+B: 有的，正中间那一间就是无障碍卫生间，门上贴有明显轮椅标志。`,back:`A: Excuse me, is the restroom at the end of the corridor or on the second floor?
+B: Turn left at the end of the first-floor hallway; women's on the left, men's on the right.
+A: Thank you! Is there an accessible restroom inside?
+B: Yes, the one right in the middle is the accessible restroom, clearly marked with a wheelchair sign.`,phonetic:`A: Qǐngwèn xǐshǒujiān shì zài zǒuláng jìntóu háishì èrlóu?
+B: Yīlóu zǒuláng jìntóu zuǒguǎi jiù shì, nǚ xǐshǒujiān zài zuǒbiān, nán xǐshǒujiān zài yòubiān.
+A: Xièxiè! Qǐngwèn lǐmiàn yǒu wúzhàng'ài wèishēngjiān ma?
+B: Yǒu de, zhèng zhōngjiān nà yī jiān jiù shì wúzhàng'ài wèishēngjiān, mén shàng tiē yǒu míngxiǎn lúnyǐ biāozhì.`,grammarNotes:`Facilities navigation: “走廊尽头” (end of hallway); “无障碍卫生间” (barrier-free / accessible restroom); “轮椅标志” (wheelchair icon).`,hint:`Situation: Finding directional pathways to public facility restrooms.`,exampleSentences:[{target:`在走廊尽头左拐。`,translation:`Turn left at the end of the corridor.`,phonetic:`Zài zǒuláng jìntóu zuǒguǎi.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 你好，请帮我把这件白色衬衫干洗，领口这里有一块咖啡渍。
+B: 好的，我先给您做一下去渍标记。请问后天下午来取可以吗？
+A: 后天下午完全没问题。请问一共多少钱？
+B: 干洗衬衫一件二十五元，取衣时凭这张小票结算付款。`,back:`A: Hello, please dry clean this white shirt for me, there is a coffee stain here on the collar.
+B: Alright, I'll tag the stain for treatment first. Is picking it up the day after tomorrow afternoon fine?
+A: Day after tomorrow afternoon is completely fine. How much in total?
+B: Dry cleaning one shirt is 25 yuan; pay when collecting using this receipt ticket.`,phonetic:`A: Nǐ hǎo, qǐng bāng wǒ bǎ zhè jiàn báisè chènshān gānxǐ, lǐngkǒu zhèlǐ yǒu yī kuài kāfēizì.
+B: Hǎo de, wǒ xiān gěi nín zuò yīxià qùzì biāojì. Qǐngwèn hòutiān xiàwǔ lái qǔ kěyǐ ma?
+A: Hòutiān xiàwǔ wánquán méi wèntí. Qǐngwèn yīgòng duōshǎo qián?
+B: Gānxǐ chènshān yī jiàn èrshíwǔ yuán, qǔ yī shí píng zhè zhāng xiǎopiào jiésuàn fùkuǎn.`,grammarNotes:`Dry cleaning: “干洗” (dry clean); “咖啡渍” (coffee stain); “领口” (collar); “小票” (receipt slip); “凭...取衣” (claim with ticket).`,hint:`Situation: Dropping off stained clothing at a dry cleaner.`,exampleSentences:[{target:`领口有咖啡渍。`,translation:`There is a coffee stain on the collar.`,phonetic:`Lǐngkǒu yǒu kāfēizì.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 服务员，请问可以帮我们加两副碗筷和一个儿童座椅吗？
+B: 马上帮您送过来！请问宝宝需要儿童专用的塑料小碗和小勺子吗？
+A: 太好了，非常需要，非常感谢您的细心！
+B: 不客气，这是我们应该做的，祝您用餐愉快！`,back:`A: Waiter, could you please add two sets of bowls & chopsticks and a child chair for us?
+B: Bringing them right over! Does the baby need a kid-friendly plastic bowl and small spoon?
+A: Wonderful, very much needed, thank you so much for your thoughtfulness!
+B: You're welcome, it is our pleasure, have a delightful meal!`,phonetic:`A: Fúwùyuán, qǐngwèn kěyǐ bāng wǒmen jiā liǎng fù wǎnkuài hé yī gè értóng zuòyǐ ma?
+B: Mǎshàng bāng nín sòng guòlái! Qǐngwèn bǎobao xūyào értóng zhuānyòng de sùliào xiǎowǎn hé xiǎo sháozi ma?
+A: Tài hǎo le, fēicháng xūyào, fēicháng gǎnxiè nín de xìxīn!
+B: Bù kèqì, zhè shì wǒmen yīnggāi zuò de, zhù nín yòngcān yúkuài!`,grammarNotes:`Restaurant hospitality: “两副碗筷” (measure word 'fù' for pairs/sets of tableware); “儿童座椅” (high chair / baby chair); “用餐愉快” (enjoy your meal).`,hint:`Situation: Dining with family and requesting child accessories at a restaurant.`,exampleSentences:[{target:`请加一副碗筷。`,translation:`Please add a set of bowl and chopsticks.`,phonetic:`Qǐng jiā yī fù wǎnkuài.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 师傅，请问这辆共享单车车胎是不是漏气了？按起来软塌塌的。
+B: 是漏气了，您千万别骑。您可以在手机App上点击“报修”，锁上车换旁边那辆。
+A: 好的，报修会扣我的信用分或者钱吗？
+B: 不会的，报修故障车还会给您赠送骑行抵扣券呢！`,back:`A: Sir, is this shared bike's tire leaking air? It feels squishy when pressed.
+B: Yes it's leaking air, definitely don't ride it. Click 'Report Repair' on the phone app, lock it and switch to the one next to it.
+A: Okay, will reporting a repair deduct my credit score or money?
+B: No, reporting faulty bikes will even gift you ride discount coupons!`,phonetic:`A: Shīfu, qǐngwèn zhè liàng gòngxiǎng dānchē chētāi shì bù shì lòuqì le? Àn qǐlái ruǎntātā de.
+B: Shì lòuqì le, nín qiānwàn bié qí. Nín kěyǐ zài shǒujī App shàng diǎnjī "bàoxiū", suǒ shàng chē huàn pángbiān nà liàng.
+A: Hǎo de, bàoxiū huì kòu wǒ de xìnyòngfēn huòzhě qián ma?
+B: Bù huì de, bàoxiū gùzhàngchē hái huì gěi nín zèngsòng qíxíng dǐkòujuàn ne!`,grammarNotes:`Shared bike usage (Meituan / Hello Bike): “共享单车” (shared bicycle); “车胎漏气” (leaking tire); “报修” (report malfunction); “抵扣券” (discount voucher).`,hint:`Situation: Handling a broken shared bike and reporting repair on the app.`,exampleSentences:[{target:`车胎好像漏气了。`,translation:`The tire seems to be leaking air.`,phonetic:`Chētāi hǎoxiàng lòuqì le.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 听说最近上映的那部科幻电影口碑爆棚，评分高达九点二分！
+B: 我也刷到了！特效非常震撼，而且剧情很感人。
+A: 周末一起去万达影城看巨幕IMAX版怎么样？
+B: 好啊好啊，我来在手机上选两个中间黄金观影位置的座位！`,back:`A: I heard that sci-fi movie recently released has booming positive reviews, rated as high as 9.2!
+B: I saw that on my feed too! The special effects are stunning, and the plot is moving.
+A: How about going together this weekend to Wanda Cinema to see the giant screen IMAX version?
+B: Awesome, I'll select two prime viewing seats in the center on my phone!`,phonetic:`A: Tīngshuō zuìjìn shàngyìng de nà bù kēhuàn diànyǐng kǒubēi bàopéng, píngfēn gāodá jiǔ diǎn èr fēn!
+B: Wǒ yě shuā dào le! Tèxiào fēicháng zhènhàn, érqiě jùqíng hěn gǎnrén.
+A: Zhōumò yīqǐ qù Wàndá Yǐngchéng kàn jùmù IMAX bǎn zěnmeyàng?
+B: Hǎo a hǎo a, wǒ lái zài shǒujī shàng xuǎn liǎng gè zhōngjiān huángjīn guānyǐng wèizhi de zuòwèi!`,grammarNotes:`Cinema outings: “上映” (showing in cinemas); “口碑爆棚” (overwhelmingly positive word of mouth); “特效震撼” (mindblowing VFX); “黄金位置” (prime seats).`,hint:`Situation: Planning a weekend movie date at an IMAX cinema.`,exampleSentences:[{target:`口碑非常棒！`,translation:`The word-of-mouth reviews are fantastic!`,phonetic:`Kǒubēi fēicháng bàng!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 你好，我想咨询一下，外籍人士可以在这里办理公交一卡通吗？
+B: 可以的，请出示您的有效护照原件，押金二十元。
+A: 充值后可以在全国交通互联互通的城市使用吗？
+B: 只要卡面印有“交通联合”标志，在全国三百多个城市坐公交地铁都能刷！`,back:`A: Hello, I want to inquire: can foreigners apply for an all-in-one public transit card here?
+B: Yes you can, please present your original valid passport; deposit is 20 yuan.
+A: After topping up, can it be used across interconnected transit cities nationwide?
+B: As long as the card bears the 'China T-Union' logo, you can swipe on buses and subways in over 300 cities nationwide!`,phonetic:`A: Nǐ hǎo, wǒ xiǎng zīxún yīxià, wàijí rénshì kěyǐ zài zhèlǐ bànlǐ gōngjiāo yītōngkǎ ma?
+B: Kěyǐ de, qǐng chūshì nín de yǒuxiào hùzhào yuánjiàn, yājīn èrshí yuán.
+A: Chōngzhí hòu kěyǐ zài quánguó jiāotōng hùlián-hùtōng de chéngshì shǐyòng ma?
+B: Zhǐyào kǎmiàn yìn yǒu "Jiāotōng Liánhé" biāozhì, zài quánguó sānbǎi duō gè chéngshì zuò gōngjiāo dìtiě dōu néng shuā!`,grammarNotes:`Public transit: “交通联合” (China T-Union card - works across 300+ Chinese cities); “充值” (top up money); “护照原件” (original passport); “押金” (deposit).`,hint:`Situation: Buying a national public transport smartcard with a passport.`,exampleSentences:[{target:`可以在全国使用吗？`,translation:`Can it be used nationwide?`,phonetic:`Kěyǐ zài quánguó shǐyòng ma?`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 终于爬上山顶了！放眼望去，整座城市的夜景和灯火辉煌尽收眼底，太震撼了！
+B: 是啊，刚才爬得气喘吁吁，现在觉得所有的汗水都值了！
+A: 来，站到观景台护栏边，我给你拍几张好看的背影剪影照！
+B: 好呀，三、二、一，茄子！`,back:`A: Finally climbed to the mountaintop! Looking out, the night view and radiant lights of the entire city are in full view, so breathtaking!
+B: Yes, panting out of breath climbing just now, now I feel every drop of sweat was worth it!
+A: Come, stand by the observation deck railing, I'll take a few beautiful silhouette photos of you!
+B: Great! Three, two, one, cheese (eggplant)!`,phonetic:`A: Zhōngyú pá shàng shāndǐng le! Fàngyǎnwàngqù, zhěng zuò chéngshì de yèjǐng hé dēnghuǒ-huīhuáng jìn shōu yǎndǐ, tài zhènhàn le!
+B: Shì a, gāngcái pá de qìchuǎn-xūxū, xiànzài juéde suǒyǒu de hànshuǐ dōu zhí le!
+A: Lái, zhàn dào guānjǐngtái hùlán biān, wǒ gěi nǐ pāi jǐ zhāng hǎokàn de bèiyǐng jiǎnyǐng zhào!
+B: Hǎo ya, sān, èr, yī, qiézi!`,grammarNotes:`Scenic views: “尽收眼底” (take in the panoramic view); “气喘吁吁” (panting out of breath); “茄子” (eggplant / 'qiézi' = Chinese cultural equivalent of 'say cheese!').`,hint:`Situation: Celebrating panoramic night views and snapping photos on a mountain summit.`,exampleSentences:[{target:`三、二、一，茄子！`,translation:`Three, two, one, say cheese!`,phonetic:`Sān, èr, yī, qiézi!`}]},{languageId:`german`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: Guten Tag! Ich heiße Lukas Weber. Wie heißen Sie?
 B: Guten Tag, Herr Weber! Mein Name ist Maria Santos. Freut mich sehr!
 A: Ganz meinerseits, Frau Santos! Woher kommen Sie?
 B: Ich komme aus Spanien, aber ich lebe und arbeite jetzt in Berlin.`,back:`A: Good day! My name is Lukas Weber. What is your name?

@@ -1946,7 +1946,379 @@ A: Then I will be responsible for checking the hiking trail.
 B: Good, I'll prepare water and energy bars!`,phonetic:`A: Zhōumò zánmen qù páshān sànsàn xīn, táolí chéngshì xuānxiāo ba!
 B: Yī pāi jí hé! Wǒ zhèng juéde biē de huāng ne, jiù zhème yúkuài de juédìng le!
 A: Nà wǒ lái fùzé chá dēngshān lùxiàn.
-B: Hǎo, wǒ zhǔnbèi shuǐ hé néngliàngbàng!`,grammarNotes:`“一拍即合” (yī pāi jí hé = click immediately / instant enthusiastic agreement); “憋得慌” (feeling suffocated/cooped up); “就这么愉快的决定了” (popular modern decision formula: and so it is happily decided!).`,hint:`Situation: Spontaneous enthusiastic agreement on an outdoor weekend trip.`,exampleSentences:[{target:`咱们俩真是一拍即合！`,translation:`We two truly hit it off / clicked immediately!`,phonetic:`Zánmen liǎ zhēnshì yī pāi jí hé!`}]},{languageId:`german`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: Guten Tag! Ich heiße Lukas Weber. Wie heißen Sie?
+B: Hǎo, wǒ zhǔnbèi shuǐ hé néngliàngbàng!`,grammarNotes:`“一拍即合” (yī pāi jí hé = click immediately / instant enthusiastic agreement); “憋得慌” (feeling suffocated/cooped up); “就这么愉快的决定了” (popular modern decision formula: and so it is happily decided!).`,hint:`Situation: Spontaneous enthusiastic agreement on an outdoor weekend trip.`,exampleSentences:[{target:`咱们俩真是一拍即合！`,translation:`We two truly hit it off / clicked immediately!`,phonetic:`Zánmen liǎ zhēnshì yī pāi jí hé!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 不好意思打扰一下，你今天穿这件大衣真好看，特别有气质！
+B: 谢谢你！你很有眼光哦。
+A: 哈哈，主要还是你底子好！请问怎么称呼你？
+B: 我叫思琪，朋友们叫我琪琪。`,back:`A: Excuse me for disturbing you, that coat you're wearing today looks really nice, so classy!
+B: Thank you! You have good taste.
+A: Haha, mostly because you look great naturally! How should I address you?
+B: I'm Siqi, my friends call me Qiqi.`,phonetic:`A: Bù hǎoyìsi dǎrǎo yīxià, nǐ jīntiān chuān zhè jiàn dàyī zhēn hǎokàn, tèbié yǒu qìzhì!
+B: Xièxiè nǐ! Nǐ hěn yǒu yǎnguāng o.
+A: Hāhā, zhǔyào háishì nǐ dǐzi hǎo! Qǐngwèn zěnme chēnghu nǐ?
+B: Wǒ jiào Sīqí, péngyoumen jiào wǒ Qíqi.`,grammarNotes:`“有气质” (has class/aura/elegance - one of the best compliments in China); “很有眼光” (good taste/eye); “底子好” (naturally good-looking).`,hint:`Situation: Giving a tasteful fashion compliment and introducing yourselves.`,exampleSentences:[{target:`你今天真有气质！`,translation:`You look so classy today!`,phonetic:`Nǐ jīntiān zhēn yǒu qìzhì!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 旁边的座位有人吗？我可以坐这儿吗？
+B: 没有人，请坐吧。
+A: 谢谢！我看你也在喝茉莉花茶，这家店招牌就是这个对吧？
+B: 对呀，茶香特别清淡解腻。`,back:`A: Is anyone sitting in this seat next to you? May I sit here?
+B: Nobody, please sit down.
+A: Thank you! I see you're also having jasmine tea; that's this shop's signature, right?
+B: Yes, the tea aroma is delightfully subtle and refreshing.`,phonetic:`A: Pángbiān de zuòwèi yǒurén ma? Wǒ kěyǐ zuò zhèr ma?
+B: Méiyǒu rén, qǐng zuò ba.
+A: Xièxiè! Wǒ kàn nǐ yě zài hē mòlìhuā chá, zhè jiā diàn zhāopái jiù shì zhège duì ba?
+B: Duì ya, cháxiāng tèbié qīngdàn jiěnì.`,grammarNotes:`Classic low-pressure café icebreaker noticing shared drink choice. “解腻” (jiěnì = cuts grease / refreshing).`,hint:`Situation: Natural conversation opener at a café.`,exampleSentences:[{target:`我可以坐这儿吗？`,translation:`May I sit here?`,phonetic:`Wǒ kěyǐ zuò zhèr ma?`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 你的小狗好可爱啊！是什么品种？我可以摸摸它吗？
+B: 它是柴犬，性格很温顺，随便摸！
+A: 哇，毛茸茸的太治愈了！它平时粘人吗？
+B: 超级粘人，跟个跟屁虫似的！`,back:`A: Your dog is so cute! What breed is it? May I pet it?
+B: He's a Shiba Inu, very gentle, feel free to pet him!
+A: Wow, so fluffy and heartwarming! Is he clingy usually?
+B: Super clingy, just like a little shadow!`,phonetic:`A: Nǐ de xiǎogǒu hǎo kě'ài a! Shì shénme pǐnzhǒng? Wǒ kěyǐ mōmo tā ma?
+B: Tā shì cháiquǎn, xìnggé hěn wēnshùn, suíbiàn mō!
+A: Wa, máorōngrōng de tài zhìyù le! Tā píngshí niánrén ma?
+B: Chāojí niánrén, gēn gè gēnpìchóng shìde!`,grammarNotes:`Pets are top conversation starters in China. “治愈” (zhìyù = therapeutic/healing); “粘人” (niánrén = clingy/affectionate); “跟屁虫” (little shadow/tagalong).`,hint:`Situation: Striking up a conversation with someone walking a cute dog in the park.`,exampleSentences:[{target:`太治愈了！`,translation:`So comforting / heartwarming!`,phonetic:`Tài zhìyù le!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 你笑起来眼睛弯弯的，像月牙一样，很有感染力。
+B: 哪有啊，被你夸得我都不好意思了。
+A: 我说的是大实话，看见你笑心情都变好了！
+B: 嘴巴真甜，你平时都这么会哄女生开心吗？`,back:`A: When you smile your eyes curve like little crescent moons, so contagious.
+B: No way, you're making me blush from your compliment.
+A: I'm speaking pure truth; seeing you smile instantly improves my mood!
+B: So sweet-talker, are you always this good at making girls happy?`,phonetic:`A: Nǐ xiào qǐlái yǎnjing wānwān de, xiàng yuèyá yīyàng, hěn yǒu gǎnrǎnlì.
+B: Nǎ yǒu a, bèi nǐ kuā de wǒ dōu bù hǎoyìsi le.
+A: Wǒ shuō de shì dà shíhuà, kànjiàn nǐ xiào xīinqíng dōu biàn hǎo le!
+B: Zuǐba zhēn tián, nǐ píngshí dōu zhème huì hǒng nǚshēng kāixīn ma?`,grammarNotes:`“眼睛弯弯的像月牙” (cherished Chinese beauty description); “嘴巴真甜” (sweet-tongued / smooth talker); “哄” (hǒng = to cheer up / sweet-talk).`,hint:`Situation: Playful genuine compliment on someone's smile.`,exampleSentences:[{target:`你嘴巴真甜！`,translation:`You have a sweet tongue / smooth talker!`,phonetic:`Nǐ zuǐba zhēn tián!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 我觉得你长得特别像一个明星，但我一时想不起名字了。
+B: 真的假的？该不会是哪个搞笑艺人吧？
+A: 绝对不是！是个大美女，反正神韵特别像。
+B: 哈哈，算你会说话，原谅你的套路了！`,back:`A: I think you look really like a celebrity, but I can't recall the name right now.
+B: Really? It couldn't be some comedy artist, right?
+A: Definitely not! A stunning beauty; anyway your whole vibe and aura resembles her.
+B: Haha, you sure know how to talk, I forgive your smooth pickup routine!`,phonetic:`A: Wǒ juéde nǐ zhǎng de tèbié xiàng yī gè míngxīng, dàn wǒ yīshí xiǎng bù qǐ míngzì le.
+B: Zhēn de jiǎ de? Gāi bù huì shì nǎge gǎoxiào yìrén ba?
+A: Juéduì bù shì! Shì gè dà měinǚ, fǎnzhèng shényùn tèbié xiàng.
+B: Hāhā, suàn nǐ huì shuōhuà, yuánliàng nǐ de tàolù le!`,grammarNotes:`“神韵” (vibe / spirit / charm); “算你会说话” (you know what to say / smooth words); “套路” (flirty routine / playbook).`,hint:`Situation: Flirty celebrity comparison icebreaker.`,exampleSentences:[{target:`算你会说话！`,translation:`Credit to you, you know how to talk nicely!`,phonetic:`Suàn nǐ huì shuōhuà!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 你平时周末都喜欢做些什么？宅在家里还是喜欢户外？
+B: 我比较慢热，喜欢去安静的咖啡馆看看书或者看看展。
+A: 巧了！我也喜欢看艺术展，最近美术馆有个新展特别棒！
+B: 是吗？哪位艺术家的展？`,back:`A: What do you usually like doing on weekends? Chill at home or outdoor activities?
+B: I'm rather slow-to-warm-up, I like going to quiet cafés to read or visit art exhibits.
+A: What a coincidence! I love art exhibitions too, the art museum has a great new one!
+B: Really? Which artist's exhibit?`,phonetic:`A: Nǐ píngshí zhōumò dōu xǐhuan zuò xiē shénme? Zhái zài jiālǐ háishì xǐhuan hùwài?
+B: Wǒ bǐjiào mànrè, xǐhuan qù ānjìng de kāfēiguǎn kànkan shū huòzhě kànkan zhǎn.
+A: Qiǎo le! Wǒ yě xǐhuan kàn yìshùzhǎn, zuìjìn měishùguǎn yǒu gè xīn zhǎn tèbié bàng!
+B: Shì ma? Nǎ wèi yìshùjiā de zhǎn?`,grammarNotes:`“慢热” (slow to warm up / takes time to open up - very common self-description in China); “宅” (homebody); “看展” (visit art/photo exhibitions).`,hint:`Situation: Discovering weekend hobbies and common ground.`,exampleSentences:[{target:`我是一个比较慢热的人。`,translation:`I am someone who is rather slow to warm up.`,phonetic:`Wǒ shì yī gè bǐjiào mànrè de rén.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 听你的口音，你应该是南方姑娘吧？
+B: 哇，你耳朵好灵！我是成都的，你怎么猜出来的？
+A: 因为感觉你说话软软糯糯的，很有亲和力。
+B: 哈哈，不过我吃辣椒可是很凶的哦！`,back:`A: Judging by your accent, you must be a southern girl, right?
+B: Wow, you have sharp ears! I'm from Chengdu, how did you guess?
+A: Because the way you talk feels gentle and soft, very friendly and approachable.
+B: Haha, but when it comes to chili peppers I am fierce!`,phonetic:`A: Tīng nǐ de kǒuyīn, nǐ yīnggāi shì nánfāng gūniang ba?
+B: Wa, nǐ ěrduo hǎo líng! Wǒ shì Chéngdū de, nǐ zěnme cāi chūlái de?
+A: Yīnwèi gǎnjué nǐ shuōhuà ruǎnruǎn-nuònuò de, hěn yǒu qīnhélì.
+B: Hāhā, bùguò wǒ chī làjiāo kě shì hěn xiōng de o!`,grammarNotes:`“耳朵好灵” (sharp ears); “软软糯糯” (soft, sweet, and gentle tone); “亲和力” (approachability / warmth); “很凶” (fierce/intense).`,hint:`Situation: Playful guessing of hometown based on accent and demeanor.`,exampleSentences:[{target:`你很有亲和力。`,translation:`You have great warmth and approachability.`,phonetic:`Nǐ hěn yǒu qīnhélì.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 你平时喜欢听什么风格的音乐？
+B: 我听民谣和独立摇滚比较多，像告五人、万能青年旅店。
+A: 天哪，我也超喜欢告五人的《披星戴月的想你》！
+B: 真的吗？遇到同道中人了，品味一致！`,back:`A: What style of music do you usually enjoy listening to?
+B: I listen mostly to folk and indie rock, like Accusefive and Omnipotent Youth Society.
+A: Oh gosh, I super love Accusefive's 'Missing You Under the Stars' too!
+B: Really? We're kindred spirits, matching music taste!`,phonetic:`A: Nǐ píngshí xǐhuan tīng shénme fēnggé de yīnyuè?
+B: Wǒ tīng mínyáo hé dúlì yáogǔn bǐjiào duō, xiàng Gàowǔrén, Wànnéng Qīngnián Lǚdiàn.
+A: Tiān na, wǒ yě chāo xǐhuan Gàowǔrén de Pī Xīng Dài Yuè de Xiǎng Nǐ!
+B: Zhēn de ma? Yù dào tóngdàozhōngrén le, pǐnwèi yīzhì!`,grammarNotes:`Top modern bands among young Chinese: 告五人, 万青. “同道中人” (kindred spirits / people of same path); “品味一致” (matching taste).`,hint:`Situation: Bonding over popular Chinese indie bands and music taste.`,exampleSentences:[{target:`遇到同道中人了！`,translation:`Found a kindred spirit!`,phonetic:`Yù dào tóngdàozhōngrén le!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 你的香水味闻起来好清新，前调有种淡淡的柑橘香。
+B: 你鼻子好灵！是柑橘和雪松的香调。
+A: 感觉很适合你的风格，清爽又温柔。
+B: 谢谢，这是我最喜欢的一款香水！`,back:`A: Your perfume smells so fresh, the top notes have a faint citrus aroma.
+B: You have a sharp nose! It is a blend of citrus and cedarwood.
+A: It really suits your personal style, refreshing yet gentle.
+B: Thank you, this is my absolute favorite perfume!`,phonetic:`A: Nǐ de xiāngshuǐ wèi wén qǐlái hǎo qīngxīn, qiántiào yǒu zhǒng dàndàn de gānjú xiāng.
+B: Nǐ bízi hǎo líng! Shì gānjú hé xuěsōng de xiāngdiào.
+A: Gǎnjué hěn shìhé nǐ de fēnggé, qīngshuǎng yòu wēnróu.
+B: Xièxiè, zhè shì wǒ zuì xǐhuan de yī kuǎn xiāngshuǐ!`,grammarNotes:`“前调” (top notes in fragrance); “雪松” (cedarwood); “清爽又温柔” (refreshing yet gentle). Subtly observant compliment.`,hint:`Situation: Appreciating her perfume in a subtle, refined manner.`,exampleSentences:[{target:`你的香水闻起来很特别。`,translation:`Your perfume smells very unique.`,phonetic:`Nǐ de xiāngshuǐ wén qǐlái hěn tèbié.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 聊了这么久，感觉跟你聊天特别轻松投缘。
+B: 我也有同感，时间过得好快！
+A: 加个微信吧，下次一起去喝好喝的咖啡？
+B: 好呀，扫我还是我扫你？`,back:`A: We've talked for so long, chatting with you feels so effortless and in sync.
+B: I feel the exact same way, time flew by so fast!
+A: Let's add WeChat, next time let's get delicious coffee together?
+B: Sure, do you scan me or do I scan you?`,phonetic:`A: Liáo le zhème jiǔ, gǎnjué gēn nǐ liáotiān tèbié qīngsōng tóuyuán.
+B: Wǒ yě yǒu tónggǎn, shíjiān guò de hǎo kuài!
+A: Jiā gè Wēixìn ba, xià cì yīqǐ qù hē hǎohē de kāfēi?
+B: Hǎo ya, sǎo wǒ háishì wǒ sǎo nǐ?`,grammarNotes:`“投缘” (tóuyuán = naturally hitting it off / kindred vibes); “同感” (same feeling); “扫我还是我扫你” (standard WeChat exchange phrase).`,hint:`Situation: Seamlessly moving from a pleasant talk to exchanging WeChat.`,exampleSentences:[{target:`我们俩真投缘！`,translation:`We two really click!`,phonetic:`Wǒmen liǎ zhēn tóuyuán!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 你知道你今天有一个特别大的缺点吗？
+B: 啊？什么缺点？我怎么不知道？
+A: 缺点我！哈哈，开个玩笑，别打我！
+B: 哎呀你好肉麻！土味情话满分！`,back:`A: Do you know you have a huge flaw today?
+B: Huh? What flaw? How come I don't know?
+A: Lacking me! (Pun: 'quēdiǎn' = flaw / lack). Haha just joking, don't hit me!
+B: Oh my gosh, you are so cheesy! Full marks on cheesy pickup lines!`,phonetic:`A: Nǐ zhīdào nǐ jīntiān yǒu yī gè tèbié dà de quēdiǎn ma?
+B: A? Shénme quēdiǎn? Wǒ zěnme bù zhīdào?
+A: Quē diǎn wǒ! Hāhā, kāi gè wánxiào, bié dǎ wǒ!
+B: Āiyā nǐ hǎo ròumá! Tǔwèi qínghuà mǎnfēn!`,grammarNotes:`Classic Chinese pun: “缺点” (quēdiǎn = shortcoming) vs “缺” (lacking) + “点” (a bit) + “我” (me). “土味情话” (cheesy romantic pickup lines); “肉麻” (cheesy / cringe in a funny way).`,hint:`Situation: Playful cheesy Chinese pickup line to break tension with laughter.`,exampleSentences:[{target:`你好肉麻！`,translation:`You're so cheesy / corny!`,phonetic:`Nǐ hǎo ròumá!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 别动，你脸上有东西！
+B: 哪里？睫毛掉了吗？
+A: 是有点漂亮，而且超标了！
+B: 讨厌，吓我一跳，你套路怎么一套一套的！`,back:`A: Don't move, you have something on your face!
+B: Where? Did an eyelash fall?
+A: A bit too pretty, and it exceeds the legal limit!
+B: You're annoying (flirty), scared me! Where did you learn all these routines?!`,phonetic:`A: Bié dòng, nǐ liǎn shàng yǒu dōngxi!
+B: Nǎlǐ? Jiémáo diào le ma?
+A: Shì yǒudiǎn piàoliang, érqiě chāobiāo le!
+B: Tǎoyàn, xià wǒ yī tiào, nǐ tàolù zěnme yītào-yītào de!`,grammarNotes:`“超标” (exceeding standard); “讨厌” (tǎoyàn = playful 'you're so mean/silly', used universally when girls are flustered); “一套一套的” (endless series of slick tricks).`,hint:`Situation: Playful fake speck tease leading into a flirty compliment.`,exampleSentences:[{target:`你真讨厌！`,translation:`You're so naughty / teasing! (affectionate)`,phonetic:`Nǐ zhēn tǎoyàn!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 外面风好大，你的手怎么这么冰？
+B: 我体质偏寒，一到秋冬就这样。
+A: 那借你放我大衣口袋里暖和暖和？
+B: 算了吧，你是不是想占我便宜？
+A: 冤枉啊，纯粹是雷锋精神助人为乐！`,back:`A: The wind outside is so strong, why are your hands so cold?
+B: My constitution leans cold; in autumn and winter it's always like this.
+A: Then lend it to put in my coat pocket to warm up?
+B: Forget it, are you trying to take advantage of me?
+A: False accusation! Purely Lei Feng spirit of helping others!`,phonetic:`A: Wàimiàn fēng hǎo dà, nǐ de shǒu zěnme zhème bīng?
+B: Wǒ tǐzhì piān hán, yī dào qiūdōng jiù zhèyàng.
+A: Nà jiè nǐ fàng wǒ dàyī kǒudài lǐ nuǎnhuo-nuǎnhuo?
+B: Suàn le ba, nǐ shì bù shì xiǎng zhàn wǒ piányi?
+A: Yuānwang a, chúncuì shì Léi Fēng jīngshén zhùrén-wéilè!`,grammarNotes:`“体质偏寒” (cold body constitution in Traditional Chinese Medicine); “占便宜” (take advantage/get physical); “雷锋精神” (iconic Chinese selfless altruism used humorously).`,hint:`Situation: Flirty hand-warming banter in cool weather.`,exampleSentences:[{target:`你是不是想占我便宜？`,translation:`Are you trying to take advantage of me?`,phonetic:`Nǐ shì bù shì xiǎng zhàn wǒ piányi?`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 我发现你这个人有点双标哦。
+B: 我怎么双标了？你说清楚！
+A: 平时对别人高冷，笑起来怎么这么甜？
+B: 哼，我哪有高冷，分明是对你才笑的！`,back:`A: I've noticed you have a bit of a double standard.
+B: How do I have a double standard? Explain clearly!
+A: Normally aloof and cold to others, so why is your smile so sweet?
+B: Hmph, I'm not aloof, obviously I'm smiling only because it's you!`,phonetic:`A: Wǒ fāxiàn nǐ zhège rén yǒudiǎn shuāngbiāo o.
+B: Wǒ zěnme shuāngbiāo le? Nǐ shuō qīngchu!
+A: Píngshí duì biérén gāolěng, xiào qǐlái zěnme zhème tián?
+B: Hēng, wǒ nǎ yǒu gāolěng, fēnmíng shì duì nǐ cái xiào de!`,grammarNotes:`“双标” (double standard); “高冷” (aloof and cool/unapproachable); “分明是” (distinctly / obviously). Great push-and-pull banter.`,hint:`Situation: Accusing playfully of double standards to draw out a sweet confession.`,exampleSentences:[{target:`你怎么这么高冷？`,translation:`Why are you so aloof?`,phonetic:`Nǐ zěnme zhème gāolěng?`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 刚才过马路车那么多，走在我右边，我挡着车流。
+B: 哇，没想到你还挺有绅士风度的嘛。
+A: 那当然，保护漂亮女生是男生的基本职责。
+B: 算你及格，给你加十分！`,back:`A: Crossing the street just now had so much traffic; walk on my right side, I'll shield the cars.
+B: Wow, didn't expect you to have such gentlemanly manners.
+A: Of course, protecting pretty girls is a man's basic duty.
+B: You pass the test, adding 10 points to your score!`,phonetic:`A: Gāngcái guò mǎlù chē nàme duō, zǒu zài wǒ yòubiān, wǒ dǎng zhe chēliú.
+B: Wa, méi xiǎngdào nǐ hái tǐng yǒu shēnshì fēngdù de ma.
+A: Nà dāngrán, bǎohù piàoliang nǚshēng shì nánshēng de jīběn zhízé.
+B: Suàn nǐ jígé, gěi nǐ jiā shí fēn!`,grammarNotes:`Walking on the traffic-facing side of a girl is an essential chivalrous gesture in China. “绅士风度” (gentlemanly manner); “算你及格” (counts as passing).`,hint:`Situation: Protective body language while crossing the street.`,exampleSentences:[{target:`你很有绅士风度。`,translation:`You have wonderful gentlemanly manners.`,phonetic:`Nǐ hěn yǒu shēnshì fēngdù.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 你看今晚的月色真美。
+B: 哇，你居然知道夏目漱石这个梗？
+A: 不仅知道，而且我是认真的。
+B: 心跳突然漏了半拍，别这么深情看着我……`,back:`A: Look, the moonlight is so beautiful tonight.
+B: Wow, you actually know Natsume Soseki's hidden reference?
+A: Not only do I know it, but I genuinely mean it.
+B: My heart suddenly skipped half a beat; don't look at me with such deep eyes...`,phonetic:`A: Nǐ kàn jīnwǎn de yuèsè zhēn měi.
+B: Wa, nǐ jūrán zhīdào Xiàmù Shùshí zhège gěng?
+A: Bùjǐn zhīdào, érqiě wǒ shì rènzhēn de.
+B: Xīntiào tūrán lòu le bàn pāi, bié zhème shēnqíng kàn zhe wǒ……`,grammarNotes:`“今晚月色真美” is famous East Asian literary code for 'I love you' (attributed to Natsume Soseki). “心跳漏了半拍” (heart skipped a beat); “深情” (deep affectionate devotion).`,hint:`Situation: Subtle literary romantic confession under the moon.`,exampleSentences:[{target:`今晚的月色真美。`,translation:`The moonlight tonight is so beautiful (I love you).`,phonetic:`Jīnwǎn de yuèsè zhēn měi.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 你今天喷的口红颜色很好看，显得气色特别棒。
+B: 真的吗？是最近很火的豆沙色。
+A: 很衬你的肤色，温温柔柔的，让人忍不住多看两眼。
+B: 谢谢你注意到了，很多男生根本分不清口红色号！`,back:`A: The lipstick color you wore today is really pretty, makes your complexion look great.
+B: Really? It's the trendy bean-paste red shade.
+A: It really complements your skin tone, so soft and gentle, hard to resist looking twice.
+B: Thanks for noticing! Many guys can't distinguish lipstick shades at all!`,phonetic:`A: Nǐ jīntiān pēn de kǒuhóng yánsè hěn hǎokàn, xiǎnde qìsè tèbié bàng.
+B: Zhēn de ma? Shì zuìjìn hěn huǒ de dòushā sè.
+A: Hěn chèn nǐ de fūsè, wēnwen-róuróu de, ràng rén rěnbuzhù duō kàn liǎng yǎn.
+B: Xièxiè nǐ zhùyì dào le, hěn duō nánshēng gēnběn fēn bù qīng kǒuhóng sèhào!`,grammarNotes:`“豆沙色” (bean paste / dusty rose - classic Chinese beauty favorite); “很衬肤色” (complements complexion); “色号” (shade number). High emotional intelligence compliment.`,hint:`Situation: Complimenting lipstick shade with refined taste.`,exampleSentences:[{target:`这个颜色很衬你。`,translation:`This color really suits/complements you.`,phonetic:`Zhège yánsè hěn chèn nǐ.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 怎么一直低头喝水？不敢看着我说话吗？
+B: 谁不敢了！明明是你眼神太有攻击性。
+A: 哈哈，对美丽的事物保持专注，是本能反应嘛。
+B: 哎，你真的太能撩了！`,back:`A: Why keep looking down sipping water? Don't dare look me in the eyes?
+B: Who says I don't dare! Clearly your gaze is too intensely electric.
+A: Haha, maintaining focus on beautiful things is just an instinctive reflex.
+B: Sigh, you really know how to flirt/tease way too well!`,phonetic:`A: Zěnme yīzhí dītóu hē shuǐ? Bù gǎn kàn zhe wǒ shuōhuà ma?
+B: Shuí bù gǎn le! Míngmíng shì nǐ yǎnshén tài yǒu gōngjīxìng.
+A: Hāhā, duì měilì de shìwù bǎochí zhuānzhù, shì běnnéng fǎnyìng ma.
+B: Āi, nǐ zhēnde tài néng liáo le!`,grammarNotes:`“撩” (liáo = to flirt / tease / hit on / seduce); “本能反应” (instinctive reflex); “太能撩了” (so good at flirting).`,hint:`Situation: Playful teasing about intense eye contact across the table.`,exampleSentences:[{target:`你太能撩了！`,translation:`You are way too good at flirting!`,phonetic:`Nǐ tài néng liáo le!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 如果满分是十分的话，你今天见我对我的第一印象打几分？
+B: 嗯……打八分吧，留两分怕你骄傲！
+A: 那怎样才能把剩下的两分补齐呢？
+B: 看你接下来的表现咯，比如带我去吃好吃的宵夜！`,back:`A: If full score is 10, what score would you give your first impression of me?
+B: Hmm... 8 points, keeping 2 back in case you get too cocky!
+A: Then how can I make up the remaining 2 points?
+B: Depends on your upcoming performance, like taking me for delicious late-night snacks!`,phonetic:`A: Rúguǒ mǎnfēn shì shí fēn de huà, nǐ jīntiān jiàn wǒ duì wǒ de dì-yī yìnxiàng dǎ jǐ fēn?
+B: Èn…… dǎ bā fēn ba, liú liǎng fēn pà nǐ jiāo'ào!
+A: Nà zěnyàng cái néng bǎ shèngxià de liǎng fēn bǔqí ne?
+B: Kàn nǐ jiēxiàlái de biǎoxiàn lo, bǐrú dài wǒ qù chī hǎochī de xiāoyè!`,grammarNotes:`“留两分怕你骄傲” (classic Chinese teacher meme repurposed for playful flirting); “宵夜” (late-night snack / midnight meal).`,hint:`Situation: Rating date impressions playfully and segueing into late night food.`,exampleSentences:[{target:`怕你骄傲！`,translation:`In case you become full of yourself!`,phonetic:`Pà nǐ jiāo'ào!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 刚才那首歌放完，突然觉得整个世界只有我们两个人。
+B: 你怎么突然这么感性？
+A: 因为遇到特别的人，时间就会变慢。
+B: 你说话真的好浪漫，听得我都脸红了。`,back:`A: When that song finished playing just now, I suddenly felt like the whole world was just the two of us.
+B: Why did you get so sentimental all of a sudden?
+A: Because when you meet someone special, time slows down.
+B: You talk so romantically, you made me blush.`,phonetic:`A: Gāngcái nà shǒu gē fàng wán, tūrán juéde zhěnggè shìjiè zhǐ yǒu wǒmen liǎng gè rén.
+B: Nǐ zěnme tūrán zhème gǎnxìng?
+A: Yīnwèi yù dào tèbié de rén, shíjiān jiù huì biàn màn.
+B: Nǐ shuōhuà zhēn de hǎo làngmàn, tīng de wǒ dōu liǎnhóng le.`,grammarNotes:`“感性” (sentimental/emotional); “特别的人” (special person); “脸红” (blushing). Deep emotional connection dialogue.`,hint:`Situation: Sharing a romantic mood change as a slow song plays.`,exampleSentences:[{target:`我都脸红了。`,translation:`I'm even blushing.`,phonetic:`Wǒ dōu liǎnhóng le.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 这家清吧环境挺有情调的，你平时喝酒多吗？
+B: 不多，一般就喝点甜甜的果味鸡尾酒。
+A: 那我给你点一杯“日落巴黎”？低度数的，颜值很高。
+B: 好啊，听名字就很浪漫！`,back:`A: This lounge bar has a great atmosphere, do you drink often?
+B: Not much, usually just sweet fruity cocktails.
+A: Then shall I order you a 'Paris Sunset'? Low alcohol and looks gorgeous in photos.
+B: Sounds great, the name alone sounds romantic!`,phonetic:`A: Zhè jiā qīngba huánjìng tǐng yǒu qíngdiào de, nǐ píngshí hējiǔ duō ma?
+B: Bù duō, yībān jiù hē diǎn tiántián de guǒwèi jīwěijiǔ.
+A: Nà wǒ gěi nǐ diǎn yī bēi Rìluò Bālí? Dī dùshù de, yánzhí hěn gāo.
+B: Hǎo a, tīng míngzì jiù hěn làngmàn!`,grammarNotes:`“清吧” (lounge / relaxed chill bar without deafening music); “有情调” (romantic atmosphere/mood); “颜值高” (looks gorgeous/photogenic).`,hint:`Situation: Ordering drinks at a relaxed cocktail lounge.`,exampleSentences:[{target:`这家店很有情调。`,translation:`This venue has a very romantic vibe.`,phonetic:`Zhè jiā diàn hěn yǒu qíngdiào.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 来，碰一下杯！为了今天能遇到这么迷人的你。
+B: 干杯！你今天嘴抹了蜜吧，这么会夸人。
+A: 只有面对你，灵感才能源源不断。
+B: 喝完这口酒，不许再逗我笑了！`,back:`A: Come, cheers! To meeting someone as charming as you today.
+B: Cheers! Did you spread honey on your lips today, so good at praising?
+A: Only in front of you does inspiration never stop flowing.
+B: After this sip, you're not allowed to make me giggle anymore!`,phonetic:`A: Lái, pèng yīxià bēi! Wèile jīntiān néng yù dào zhème mírén de nǐ.
+B: Gānbēi! Nǐ jīntiān zuǐ mǒ le mì ba, zhème huì kuārén.
+A: Zhǐyǒu miànduì nǐ, línggǎn cái néng yuányuán-bùduàn.
+B: Hē wán zhè kǒu jiǔ, bù xǔ zài dòu wǒ xiào le!`,grammarNotes:`“碰杯” (clink glasses); “嘴抹了蜜” (spread honey on lips = sweet-talker); “源源不断” (incessant flow); “逗我笑” (make me laugh).`,hint:`Situation: Clinking glasses with a romantic toast.`,exampleSentences:[{target:`为了我们的相遇，干杯！`,translation:`To our meeting, cheers!`,phonetic:`Wèile wǒmen de xiāngyù, gānbēi!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 这里音乐有点太吵了，说话都要贴着耳朵喊。
+B: 是啊，我都快听不清你说话了。
+A: 我知道附近有一家特别惬意的天台静吧，能看到江景，咱们换个地方？
+B: 好呀，正想换个安静地方好好聊天呢！`,back:`A: The music here is a bit too loud, have to whisper right in your ear to be heard.
+B: Yeah, I can barely hear what you're saying.
+A: I know a cozy rooftop lounge nearby with river views, shall we move to another spot?
+B: Great, I was just wanting to switch to somewhere quiet to chat properly!`,phonetic:`A: Zhèlǐ yīnyuè yǒudiǎn tài chǎo le, shuōhuà dōu yào tiē zhe ěrduo hǎn.
+B: Shì a, wǒ dōu kuài tīng bù qīng nǐ shuōhuà le.
+A: Wǒ zhīdào fùjìn yǒu yī jiā tèbié qièyì de tiāntái jìngba, néng kàn dào jiāngjǐng, zánmen huàn gè dìfang?
+B: Hǎo ya, zhèng xiǎng huàn gè ānjìng dìfang hǎohǎo liáotiān ne!`,grammarNotes:`Key transition phrase for moving venues: “换个地方” (huàn gè dìfang = change locations / go to a 2nd spot); “天台静吧” (rooftop quiet bar); “惬意” (cozy / pleasant).`,hint:`Situation: Smoothly proposing to transition from a loud club to an intimate lounge.`,exampleSentences:[{target:`咱们换个地方吧？`,translation:`Shall we move to another place?`,phonetic:`Zánmen huàn gè dìfang ba?`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 喝了酒吹吹晚风真舒服，头有没有晕？
+B: 有点微醺，脚步感觉轻飘飘的。
+A: 扶着我的胳膊慢慢走，小心台阶。
+B: 谢谢你这么细心体贴。`,back:`A: Feeling the evening breeze after drinking feels wonderful; is your head spinning?
+B: A bit tipsy, my steps feel all floaty and light.
+A: Hold onto my arm and walk slowly, watch out for the steps.
+B: Thank you for being so attentive and thoughtful.`,phonetic:`A: Hē le jiǔ chuīchui wǎnfēng zhēn shūfu, tóu yǒu méiyǒu yūn?
+B: Yǒudiǎn wēixūn, jiǎobù gǎnjué qīngpiāopiāo de.
+A: Fú zhe wǒ de gēbo mànmàn zǒu, xiǎoxīn táijiē.
+B: Xièxiè nǐ zhème xìxīn tǐtiē.`,grammarNotes:`“微醺” (wēixūn = pleasantly tipsy - extremely popular romantic vibe in China); “细心体贴” (thoughtful and considerate); “扶着我的胳膊” (holding my arm).`,hint:`Situation: Walking in the breeze while slightly tipsy with gentle physical touch.`,exampleSentences:[{target:`我有点微醺了。`,translation:`I am feeling a little tipsy.`,phonetic:`Wǒ yǒudiǎn wēixūn le.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 肚子有点饿了吧？我知道附近有一家绝好吃的热气烤串和砂锅粥！
+B: 哇，被你一说我馋虫都勾出来了！
+A: 走，喝完酒吃点热乎的暖胃最舒服。
+B: 那必须安排上，今晚热量彻底放纵！`,back:`A: Feeling a bit hungry? I know an incredible spot nearby for sizzling skewers and claypot congee!
+B: Wow, hearing you say that made my foodie cravings jump out!
+A: Let's go, having something warm to soothe the stomach after drinks is the best.
+B: Absolutely on the agenda then, total calorie indulgence tonight!`,phonetic:`A: Dùzi yǒudiǎn è le ba? Wǒ zhīdào fùjìn yǒu yī jiā jué hǎochī de rèqì kǎochuàn hé shāguōzhōu!
+B: Wa, bèi nǐ yī shuō wǒ chánchóng dōu gōu chūlái le!
+A: Zǒu, hē wán jiǔ chī diǎn rèhu de nuǎnwèi zuì shūfu.
+B: Nà bìxū ānpái shàng, jīnwǎn rèliàng chèdǐ fàngzòng!`,grammarNotes:`“砂锅粥” (claypot congee - classic late night sobering food); “暖胃” (warm stomach); “安排上” (get it arranged); “放纵” (indulge).`,hint:`Situation: Transitioning to late-night street food and snacks.`,exampleSentences:[{target:`吃点热乎的暖暖胃。`,translation:`Eat something warm to soothe the stomach.`,phonetic:`Chī diǎn rèhu de nuǎnnuan wèi.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 已经是半夜十二点了，时间怎么过得这么快？
+B: 对呀，感觉才刚跟你见面没多久呢。
+A: 我一点都不想这么早就结束今晚的约会。
+B: 其实……我也是。`,back:`A: It's already midnight, how did time fly by so fast?
+B: Exactly, feels like we only met just a little while ago.
+A: I don't want to end tonight's date this early at all.
+B: Actually... me neither.`,phonetic:`A: Yǐjīng shì bànyè shí'èr diǎn le, shíjiān zěnme guò de zhème kuài?
+B: Duì ya, gǎnjué cái gāng gēn nǐ jiànmiàn méi duōjiǔ ne.
+A: Wǒ yīdiǎn dōu bù xiǎng zhème zǎo jiù jiéshù jīnwǎn de yuēhuì.
+B: Qíshí…… wǒ yě shì.`,grammarNotes:`“其实我也是” (Actually, me too); expressing mutual reluctance to part ways at the end of the evening.`,hint:`Situation: Expressing mutual reluctance to end the date at midnight.`,exampleSentences:[{target:`时间过得太快了！`,translation:`Time went by way too fast!`,phonetic:`Shíjiān guò de tài kuài le!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 外面好冷还下着小雨，路边很难打到出租车了。
+B: 是啊，打车软件排队前面还有三十几个人。
+A: 我家就在前面那个街区，走路五分钟，要不先去我那儿避避雨？
+B: 会不会太打扰你呀？
+A: 怎么会！有热茶和暖气，正合适。`,back:`A: It's so cold outside and drizzling, very hard to hail a taxi curbside.
+B: Yeah, the ride app queue still has over 30 people ahead.
+A: My apartment is right on the next block, a 5-minute walk. How about coming to my place to shelter from the rain first?
+B: Would that be bothering you too much?
+A: How could it! I have hot tea and heating, just right.`,phonetic:`A: Wàimiàn hǎo lěng hái xià zhe xiǎoyǔ, lùbiān hěn nán dǎ dào chūzūchē le.
+B: Shì a, dǎchē ruǎnjiàn páiduì qiánmiàn hái yǒu sānshí jǐ gè rén.
+A: Wǒ jiā jiù zài qiánmiàn nàge jiēqū, zǒulù wǔ fēnzhōng, yàobù xiān qù wǒ nàr bìbi yǔ?
+B: Huì bù huì tài dǎrǎo nǐ ya?
+A: Zěnme huì! Yǒu rèchá hé nuǎnqì, zhèng héshì.`,grammarNotes:`Natural, comfortable situational invite: “要不先去我那儿避避雨” (Why not shelter from the rain at my place first); “避雨” (take shelter from rain); “避风头”.`,hint:`Situation: Natural invitation home due to rain and difficult taxi queues.`,exampleSentences:[{target:`先去我那儿避避雨吧。`,translation:`Let's shelter from the rain at my place first.`,phonetic:`Xiān qù wǒ nàr bìbi yǔ ba.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 我家里养了一只超级粘人的金渐层猫咪，你要不要去看看？
+B: 真的吗？！我最抵抗不了猫咪了！它凶不凶？
+A: 一点都不凶，特别喜欢趴在客人腿上呼噜呼噜叫。
+B: 哇，那我要去吸猫！走走走！`,back:`A: I have a super cuddly Golden British Shorthair cat at my home, do you want to see him?
+B: Really?! I have zero resistance against cats! Is he aggressive?
+A: Not aggressive at all, loves curling up on guests' laps and purring.
+B: Wow, then I definitely want to cuddle the cat! Let's go!`,phonetic:`A: Wǒ jiālǐ yǎng le yī zhī chāojí niánrén de jīnjiàncéng māomī, nǐ yào bù yào qù kànkan?
+B: Zhēn de ma?! Wǒ zuì dǐkàng bù liǎo māomī le! Tā xiōng bù xiōng?
+A: Yīdiǎn dōu bù xiōng, tèbié xǐhuan pā zài kèrén tuǐ shàng hūlu-hūlu jiào.
+B: Wa, nà wǒ yào qù xīmāo! Zǒu zǒu zǒu!`,grammarNotes:`“吸猫” (xīmāo = 'sniff/cuddle cats' - universally popular youth cultural phrase in China); “金渐层” (Golden shaded British Shorthair); “抵抗不了” (can't resist). The #1 most charming casual invite home.`,hint:`Situation: Inviting a date home to play with your pet cat ('xīmāo').`,exampleSentences:[{target:`我要去吸猫！`,translation:`I want to cuddle the cat!`,phonetic:`Wǒ yào qù xīmāo!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 我收藏了一瓶很棒的红酒，家里还有黑胶唱片机，要不要去我那儿听会儿音乐？
+B: 听起来很有格调，但你可别有什么坏心思哦！
+A: 放心，保证是正人君子，纯粹想让你听听我最喜欢的爵士乐。
+B: 哈哈，谅你也不敢！那就上去坐半小时。`,back:`A: I've collected a bottle of great red wine, and have a vinyl turntable at home, want to come listen to some music at my place?
+B: Sounds very stylish, but don't you have any cheeky intentions!
+A: Rest assured, guarantee I'm a gentleman, purely want you to hear my favorite jazz.
+B: Haha, you wouldn't dare anyway! Let's go up and sit for half an hour.`,phonetic:`A: Wǒ shǒucáng le yī píng hěn bàng de hóngjiǔ, jiālǐ hái yǒu hēijiāo chàngpiànjī, yào bù yào qù wǒ nàr tīng huìr yīnyuè?
+B: Tīng qǐlái hěn yǒu gédiào, dàn nǐ kě bié yǒu shénme huài xīnsi o!
+A: Fàngxīn, bǎozhèng shì zhèngrén-jūnzǐ, chúncuì xiǎng ràng nǐ tīngting wǒ zuì xǐhuan de juéshìyuè.
+B: Hāhā, liàng nǐ yě bù gǎn! Nà jiù shàngqù zuò bàn xiǎoshí.`,grammarNotes:`“黑胶唱片机” (vinyl record player); “格调” (class / style); “坏心思” (mischievous / sneaky intentions); “正人君子” (honorable gentleman). Playful boundary testing.`,hint:`Situation: Inviting home for wine and vinyl music with playful reassurance.`,exampleSentences:[{target:`你可别有什么坏心思哦！`,translation:`Don't you have any sneaky intentions!`,phonetic:`Nǐ kě bié yǒu shénme huài xīnsi o!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 这么晚了，你一个女孩子打车回家不太安全。
+B: 好像确实有点晚了，路灯都暗了。
+A: 我家有干净的客房，或者我睡沙发，去我那儿歇一晚吧，明天我送你。
+B: 真的吗？会不会太麻烦你了？
+A: 照顾你是我的荣幸，走吧，别犹豫了。`,back:`A: It's so late, a girl taking a cab home alone isn't very safe.
+B: It does seem pretty late, streetlights have dimmed.
+A: My apartment has a clean guest room, or I can sleep on the sofa; rest at my place tonight, I'll escort you tomorrow.
+B: Really? Wouldn't that trouble you too much?
+A: Taking care of you is my honor, let's go, no need to hesitate.`,phonetic:`A: Zhème wǎn le, nǐ yī gè nǚháizi dǎchē huíjiā bù tài ānquán.
+B: Hǎoxiàng quèshí yǒudiǎn wǎn le, lùdēng dōu àn le.
+A: Wǒ jiā yǒu gānjìng de kèfáng, huòzhě wǒ shuì shāfā, qù wǒ nàr xiē yī wǎn ba, míngtiān wǒ sòng nǐ.
+B: Zhēn de ma? Huì bù huì tài máfan nǐ le?
+A: Zhàogù nǐ shì wǒ de róngxìng, zǒu ba, bié yóuyù le.`,grammarNotes:`Gentle, protective offer of hospitality: “别犹豫了” (don't hesitate); “照顾你是我的荣幸” (caring for you is my honor); “客房” (guest room).`,hint:`Situation: Offering a secure and considerate stay when it's too late to travel.`,exampleSentences:[{target:`照顾你是我的荣幸。`,translation:`Taking care of you is my honor.`,phonetic:`Zhàogù nǐ shì wǒ de róngxìng.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 请进！换这双软拖鞋吧，是全新的。
+B: 哇，你家里收拾得好干净、好温馨啊！
+A: 哈哈，特意为你准备的！快坐沙发上，我去给你倒杯蜂蜜温水。
+B: 感觉你好会照顾人，很居家暖男呢！`,back:`A: Please come in! Change into these soft slippers, they're brand new.
+B: Wow, your home is kept so clean and warm and cozy!
+A: Haha, specially prepared for you! Have a seat on the sofa, I'll pour you warm honey water.
+B: I feel like you know how to take care of people, such a domestic caring guy!`,phonetic:`A: Qǐng jìn! Huàn zhè shuāng ruǎn tuōxié ba, shì quánxīn de.
+B: Wa, nǐ jiālǐ shōushi de hǎo gānjìng, hǎo wēnxīn a!
+A: Hāhā, tèyì wèi nǐ zhǔnbèi de! Kuài zuò shāfā shàng, wǒ qù gěi nǐ dào bēi fēngmì wēnshuǐ.
+B: Gǎnjué nǐ hǎo huì zhàogù rén, hěn jūjiā nuǎnnán ne!`,grammarNotes:`“温馨” (wēnxīn = warm and cozy); “暖男” (nuǎnnán = warm, attentive, caring guy - highly prized in China); “换拖鞋” (change slippers - mandatory Chinese home etiquette).`,hint:`Situation: Welcoming her into your apartment with warm hospitality.`,exampleSentences:[{target:`你真是一个暖男！`,translation:`You are truly a caring, thoughtful man!`,phonetic:`Nǐ zhēn shì yī gè nuǎnnán!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 我把客厅大灯关了，只留这盏落地暖光灯，刺眼吗？
+B: 不刺眼，这种柔柔的光线特别有氛围感。
+A: 放一首老爵士，怎么样？
+B: 感觉整个人都彻底放松下来了。`,back:`A: I turned off the main living room ceiling light and left just this floor lamp on, is it too bright?
+B: Not blinding at all, this soft light has such an intimate mood and ambiance.
+A: How about putting on some vintage jazz?
+B: I feel my entire body completely relaxing.`,phonetic:`A: Wǒ bǎ kètīng dàdēng guān le, zhǐ liú zhè zhǎn luòdì nuǎnguāngdēng, cìyǎn ma?
+B: Bù cìyǎn, zhè zhǒng róuróu de guāngxiàn tèbié yǒu fēnwéigǎn.
+A: Fàng yī shǒu lǎo juéshì, zěnmeyàng?
+B: Gǎnjué zhěnggè rén dōu chèdǐ fàngsōng xiàlái le.`,grammarNotes:`“氛围感” (fēnwéigǎn = ambiance / aesthetic mood / vibe - major trending Chinese keyword); “暖光灯” (warm light lamp); “刺眼” (glaring/blinding).`,hint:`Situation: Setting the relaxing low-light atmosphere in the living room.`,exampleSentences:[{target:`特别有氛围感！`,translation:`It has such a wonderful romantic vibe!`,phonetic:`Tèbié yǒu fēnwéigǎn!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 我给你找了一件我干净宽大的棉质T恤当睡衣，可以吗？
+B: 哈哈，穿你的衣服会不会太大了？
+A: 没关系，女生穿大一号的男生T恤超可爱的。
+B: 那我去洗手间卸个妆洗漱一下。`,back:`A: I found a clean, oversized cotton T-shirt of mine for you to use as sleepwear, is that okay?
+B: Haha, won't wearing your clothes be way too big?
+A: It's fine, girls look super cute wearing an oversized men's T-shirt.
+B: Then I'll head to the bathroom to remove my makeup and wash up.`,phonetic:`A: Wǒ gěi nǐ zhǎo le yī jiàn wǒ gānjìng kuāndà de miánzhì T-xù dāng shuìyī, kěyǐ ma?
+B: Hāhā, chuān nǐ de yīfu huì bù huì tài dà le?
+A: Méi guānxi, nǚshēng chuān dà yī hào de nánshēng T-xù chāo kě'ài de.
+B: Nà wǒ qù xǐshǒujiān xiè gè zhuāng xǐshù yīxià.`,grammarNotes:`“卸妆” (xièzhuāng = remove makeup); “洗漱” (xǐshù = wash up / brush teeth); “当睡衣” (use as pajamas). Sharing a cozy oversized shirt.`,hint:`Situation: Offering comfortable clothes to change into at home.`,exampleSentences:[{target:`女生穿大号T恤很可爱。`,translation:`Girls look very cute wearing oversized T-shirts.`,phonetic:`Nǚshēng chuān dàhào T-xù hěn kě'ài.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 洗手间里有崭新的毛巾和一次性牙刷，热水器开关我已经帮你调好了。
+B: 你想得太周到了，连一次性牙刷都有！
+A: 照顾贵客当然要全套服务！
+B: 哈哈，那你先去客厅休息，我弄好就出来。`,back:`A: There are brand new towels and disposable toothbrushes in the bathroom, I already adjusted the water heater.
+B: You are so thoughtful, even had disposable toothbrushes prepared!
+A: Serving an esteemed guest of course requires the full service!
+B: Haha, go rest in the living room first, I'll come out when done.`,phonetic:`A: Xǐshǒujiān lǐ yǒu zhǎnxīn de máojīn hé yīcìxìng yáshuā, rèshuǐqì kāiguān wǒ yǐjīng bāng nǐ tiáo hǎo le.
+B: Nǐ xiǎng de tài zhōudào le, lián yīcìxìng yáshuā dōu yǒu!
+A: Zhàogù guìkè dāngrán yào quántào fúwù!
+B: Hāhā, nà nǐ xiān qù kètīng xiūxi, wǒ nòng hǎo jiù chūlái.`,grammarNotes:`“想得太周到了” (thought of everything / extremely attentive); “一次性牙刷” (disposable toothbrush); “热水器” (water heater).`,hint:`Situation: Offering bathroom toiletries and comfort essentials.`,exampleSentences:[{target:`你想得太周到了！`,translation:`You thought of everything!`,phonetic:`Nǐ xiǎng de tài zhōudào le!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 你的头发还没彻底吹干，吹风机在抽屉里，要我帮你吹吗？
+B: 不用啦，我自己来就好，怎么好意思劳驾你。
+A: 坐好别动，给美女吹头发是我的荣幸！
+B: 哇……你的手法好温柔，好舒服。`,back:`A: Your hair isn't completely dry yet; the hairdryer is in the drawer, want me to blow-dry it for you?
+B: No need, I can do it myself, how could I trouble you.
+A: Sit tight and don't move; blow-drying a beauty's hair is my honor!
+B: Wow... your touch is so gentle and feels so nice.`,phonetic:`A: Nǐ de tóufa hái méi chèdǐ chuīgān, chuīfēngjī zài chōuti lǐ, yào wǒ bāng nǐ chuī ma?
+B: Bùyòng la, wǒ zìjǐ lái jiù hǎo, zěnme hǎoyìsi láojià nǐ.
+A: Zuò hǎo bié dòng, gěi měinǚ chuī tóufa shì wǒ de róngxìng!
+B: Wa…… nǐ de shǒufǎ hǎo wēnróu, hǎo shūfu.`,grammarNotes:`Blow-drying a partner's hair (吹头发) is recognized across China as one of the ultimate romantic gestures. “劳驾” (láojià = trouble you); “手法温柔” (gentle touch).`,hint:`Situation: Intimately offering to blow-dry her hair.`,exampleSentences:[{target:`我帮你吹头发吧。`,translation:`Let me blow-dry your hair for you.`,phonetic:`Wǒ bāng nǐ chuī tóufa ba.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 坐沙发上看会儿电影吧，想看浪漫喜剧还是悬疑惊悚？
+B: 看个轻松搞笑的吧，今天工作挺累的，不想动脑筋。
+A: 好，给你盖上小毯子，靠枕垫在后面舒服点。
+B: 谢谢你，靠在你身边感觉好踏实。`,back:`A: Let's sit on the sofa and watch a movie; romantic comedy or suspense thriller?
+B: Let's watch something light and funny, today at work was tiring, don't want to think hard.
+A: Good, let me tuck this small blanket over you, put the cushion behind your back.
+B: Thank you, leaning next to you feels so comforting and reassuring.`,phonetic:`A: Zuò shāfā shàng kàn huìr diànyǐng ba, xiǎng kàn làngmàn xǐjù háishì xuányí jīngsǒng?
+B: Kàn gè qīngsōng gǎoxiào de ba, jīntiān gōngzuò tǐng lèi de, bù xiǎng dòng nǎojīn.
+A: Hǎo, gěi nǐ gài shàng xiǎo tǎnzi, kàozhěn diàn zài hòumiàn shūfu diǎn.
+B: Xièxiè nǐ, kào zài nǐ shēnbiān gǎnjué hǎo tàshi.`,grammarNotes:`“踏实” (tàshi = deeply secure / emotionally grounded / safe); “小毯子” (cozy blanket); “靠在你身边” (leaning by your side).`,hint:`Situation: Cozying up on the couch under a blanket watching a film.`,exampleSentences:[{target:`感觉好踏实。`,translation:`I feel so safe and at ease.`,phonetic:`Gǎnjué hǎo tàshi.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 电影看完了，困了吗？眼睛都快睁不开了。
+B: 确实有点犯困了，眼皮在打架。
+A: 那快去睡吧，今晚你睡大床，我睡沙发。
+B: 沙发有点小吧？要不……床挺宽的，各睡一边？
+A: 你确定？那我不客气了哦。`,back:`A: Movie is finished, sleepy? Your eyes can barely stay open.
+B: Indeed feeling drowsy, my eyelids are fighting each other.
+A: Then go to sleep soon; tonight you take the big bed, I'll sleep on the couch.
+B: Isn't the couch a bit small? How about... the bed is pretty wide, each take one side?
+A: Are you sure? Then I won't be overly formal!`,phonetic:`A: Diànyǐng kàn wán le, kùn le ma? Yǎnjing dōu kuài zhēng bù kāi le.
+B: Quèshí yǒudiǎn fànkùn le, yǎnpí zài dǎjià.
+A: Nà kuài qù shuì ba, jīnwǎn nǐ shuì dàchuáng, wǒ shuì shāfā.
+B: Shāfā yǒudiǎn xiǎo ba? Yàobù…… chuáng tǐng kuān de, gè shuì yībiān?
+A: Nǐ quèdìng? Nà wǒ bù kèqì le o.`,grammarNotes:`“眼皮在打架” (eyelids fighting = drooping with sleepiness); “各睡一边” (each take one side of the bed); respectful offer of the sofa giving her the choice.`,hint:`Situation: Graceful sleeping arrangement discussion at bedtime.`,exampleSentences:[{target:`我的眼皮在打架。`,translation:`My eyelids are drooping from tiredness.`,phonetic:`Wǒ de yǎnpí zài dǎjià.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 晚安，做个好梦，梦里记得有我哦。
+B: 晚安！今天晚上过得真的很开心。
+A: 我也是，希望以后经常能有这样的夜晚。
+B: 那就看你之后的表现啦，快闭眼睡觉！`,back:`A: Good night, sweet dreams, remember to have me in your dreams.
+B: Good night! I truly had such a happy evening tonight.
+A: Me too; I hope we can often have nights like this in the future.
+B: Then that will depend on your future performance, now close your eyes and sleep!`,phonetic:`A: Wǎn'ān, zuò gè hǎo mèng, mèng lǐ jìde yǒu wǒ o.
+B: Wǎn'ān! Jīntiān wǎnshang guò de zhēn de hěn kāixīn.
+A: Wǒ yě shì, xīwàng yǐhòu jīngcháng néng yǒu zhèyàng de yèwǎn.
+B: Nà jiù kàn nǐ zhīhòu de biǎoxiàn la, kuài bìyǎn shuìjiào!`,grammarNotes:`“做个好梦” (sweet dreams); “梦里记得有我” (remember to have me in your dreams - sweet flirty night sign-off).`,hint:`Situation: Sweet bedtime exchange and whispering goodnight.`,exampleSentences:[{target:`做个好梦！`,translation:`Sweet dreams!`,phonetic:`Zuò gè hǎo mèng!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 早安！睡得好吗？
+B: 早！睡得特别香，好久没有睡得这么沉了。
+A: 我煮了现磨咖啡，还做了煎蛋和牛油果吐司，趁热吃。
+B: 天哪，你也太完美了吧！我都要舍不得走了。`,back:`A: Good morning! Did you sleep well?
+B: Morning! Slept so well, haven't slept this soundly in a long time.
+A: I brewed freshly ground coffee, and made fried eggs and avocado toast; eat while it's hot.
+B: Goodness, you are way too perfect! I'm going to hate having to leave.`,phonetic:`A: Zǎo'ān! Shuì de hǎo ma?
+B: Zǎo! Shuì de tèbié xiāng, hǎo jiǔ méiyǒu shuì de zhème chén le.
+A: Wǒ zhǔ le xiànmó kāfēi, hái zuò le jiāndàn hé niúyóuguǒ tǔsī, chèn rè chī.
+B: Tiān na, nǐ yě tài wánměi le ba! Wǒ dōu yào shěbude zǒu le.`,grammarNotes:`“睡得特别香” (slept so soundly/sweetly); “趁热吃” (eat while hot); “舍不得” (shěbude = reluctant to leave / hate to part with).`,hint:`Situation: Making breakfast the next morning and gentle wake-up conversation.`,exampleSentences:[{target:`我舍不得走。`,translation:`I'm reluctant to leave / hate to leave.`,phonetic:`Wǒ shěbude zǒu.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 吃完早餐我开车送你回家，路上顺便去买杯你喜欢的奶茶？
+B: 好的，辛苦你啦！
+A: 怎么会辛苦，能陪你多呆一会儿我高兴还来不及呢。
+B: 嘻嘻，那下周末换我请你吃饭！`,back:`A: After breakfast I'll drive you home; along the way we can grab that bubble tea you like?
+B: Alright, thank you for the trouble!
+A: How could it be trouble? Being able to spend a bit more time with you, I'm overjoyed!
+B: Hehe, then next weekend it's my turn to treat you to dinner!`,phonetic:`A: Chī wán zǎocān wǒ kāichē sòng nǐ huíjiā, lùshang shùnbiàn qù mǎi bēi nǐ xǐhuan de nǎichá?
+B: Hǎo de, xīnkǔ nǐ la!
+A: Zěnme huì xīnkǔ, néng péi nǐ duō dāi yīhuìr wǒ gāoxìng hái láibují ne.
+B: Xīxī, nà xià zhōumò huàn wǒ qǐng nǐ chīfàn!`,grammarNotes:`“辛苦你啦” (thank you for your trouble/effort); “高兴还来不及呢” (more than happy to / overjoyed); “换我请你” (my turn to treat you). Secures the next date.`,hint:`Situation: Escorting her home and seamlessly locking in the next weekend date.`,exampleSentences:[{target:`高兴还来不及呢！`,translation:`I'm more than happy to do so!`,phonetic:`Gāoxìng hái láibují ne!`}]},{languageId:`german`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: Guten Tag! Ich heiße Lukas Weber. Wie heißen Sie?
 B: Guten Tag, Herr Weber! Mein Name ist Maria Santos. Freut mich sehr!
 A: Ganz meinerseits, Frau Santos! Woher kommen Sie?
 B: Ich komme aus Spanien, aber ich lebe und arbeite jetzt in Berlin.`,back:`A: Good day! My name is Lukas Weber. What is your name?

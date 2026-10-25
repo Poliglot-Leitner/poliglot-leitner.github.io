@@ -267,9 +267,19 @@ export function App() {
       ? dueCards.filter(c => (c.cardType || 'sentence') === typeFilter)
       : dueCards;
 
+    const diffRank: Record<string, number> = { A1: 1, A2: 2, B1: 3, B2: 4, C1: 5, C2: 6, beginner: 1, intermediate: 3, advanced: 5, fluent: 6 };
+    const sortByDifficulty = (a: Flashcard, b: Flashcard) => {
+      const rA = diffRank[a.difficulty || 'A1'] || 1;
+      const rB = diffRank[b.difficulty || 'A1'] || 1;
+      if (rA !== rB) return rA - rB;
+      // Secondary: Box level (lowest box first)
+      return (a.box || 1) - (b.box || 1);
+    };
+
     let queue: Flashcard[] = [];
     if (filteredDueCards.length > 0) {
-      queue = filteredDueCards.slice(0, SESSION_SIZE);
+      const sortedDue = [...filteredDueCards].sort(sortByDifficulty);
+      queue = sortedDue.slice(0, SESSION_SIZE);
     } else {
       // If no cards are due today, allow practice of cards in current scope
       const targetCards = deckId
@@ -282,7 +292,8 @@ export function App() {
         ? targetCards.filter(c => (c.cardType || 'sentence') === typeFilter)
         : targetCards;
 
-      queue = filteredTarget.slice(0, SESSION_SIZE);
+      const sortedTarget = [...filteredTarget].sort(sortByDifficulty);
+      queue = sortedTarget.slice(0, SESSION_SIZE);
     }
 
     setStudyQueue(queue);

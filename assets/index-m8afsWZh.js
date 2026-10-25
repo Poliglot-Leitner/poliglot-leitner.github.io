@@ -1430,7 +1430,280 @@ A: Thank you so much! Did the broth spill at all?
 B: Don't worry, packed tight and secure. Enjoy your meal, remember to leave a 5-star review please!`,phonetic:`A: Wèi, shì wàimài xiǎogē ma?
 B: Duì, nín hǎo! Nín de huángmènjī mǐfàn dào le, fàng zài nín jiā ménkǒu xiéguì shàng le.
 A: Tài gǎnxiè le! Tāngzhī méi sǎ ba?
-B: Fàngxīn, bāo de yányán-shíshí de, zhù nín yòngcān yúkuài, jìde gěi gè wǔxīng hǎopíng a!`,grammarNotes:`Takeout delivery ecosystem: “外卖小哥” (delivery rider); “放门口” (leave at the door); “严严实实” (tightly sealed); “五星好评” (5-star rating).`,hint:`Situation: Coordinating food delivery arrival over the phone.`,exampleSentences:[{target:`记得给个好评！`,translation:`Remember to leave a good review!`,phonetic:`Jìde gěi gè hǎopíng!`}]},{languageId:`german`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: Guten Tag! Ich heiße Lukas Weber. Wie heißen Sie?
+B: Fàngxīn, bāo de yányán-shíshí de, zhù nín yòngcān yúkuài, jìde gěi gè wǔxīng hǎopíng a!`,grammarNotes:`Takeout delivery ecosystem: “外卖小哥” (delivery rider); “放门口” (leave at the door); “严严实实” (tightly sealed); “五星好评” (5-star rating).`,hint:`Situation: Coordinating food delivery arrival over the phone.`,exampleSentences:[{target:`记得给个好评！`,translation:`Remember to leave a good review!`,phonetic:`Jìde gěi gè hǎopíng!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 同学你好，请问三号教学楼怎么走？
+B: 就在前面图书馆后面，直走两分钟就是。
+A: 太感谢你了！
+B: 没事儿，不客气。`,back:`A: Hello classmate, excuse me how do I get to Teaching Building No. 3?
+B: It's right behind the library ahead, go straight for two minutes and you're there.
+A: Thank you so much!
+B: No problem, you're welcome.`,phonetic:`A: Tóngxué nǐ hǎo, qǐngwèn sān hào jiàoxuélóu zěnme zǒu?
+B: Jiù zài qiánmiàn túshūguǎn hòumiàn, zhí zǒu liǎng fēnzhōng jiù shì.
+A: Tài gǎnxiè nǐ le!
+B: Méishìr, bù kèqì.`,grammarNotes:`Campus basics: “同学” (tóngxué = classmate, universal polite address for students); “教学楼” (jiàoxuélóu = teaching/academic building); “没事儿” (méishìr = no worries).`,hint:`Situation: Asking directions to a classroom building on campus.`,exampleSentences:[{target:`请问三号楼在哪里？`,translation:`Excuse me, where is Building 3?`,phonetic:`Qǐngwèn sān hào lóu zài nǎlǐ?`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 不好意思，请问这个座位有人吗？
+B: 没有，没人坐，你坐吧。
+A: 谢谢！这里能插充电器吗？
+B: 可以，桌子底下有插座。`,back:`A: Excuse me, is anyone sitting in this seat?
+B: No, no one is sitting here, go ahead and sit.
+A: Thank you! Can I plug in a charger here?
+B: Yes, there is an electrical outlet under the desk.`,phonetic:`A: Bù hǎoyìsi, qǐngwèn zhège zuòwèi yǒurén ma?
+B: Méiyǒu, méirén zuò, nǐ zuò ba.
+A: Xièxiè! Zhèlǐ néng chā chōngdiànqì ma?
+B: Kěyǐ, zhuōzi dǐxia yǒu chāzuò.`,grammarNotes:`Classroom & library courtesy: “有人吗？” (Is this taken?); “插座” (chāzuò = power socket); “充电器” (chōngdiànqì = charger).`,hint:`Situation: Taking a seat and asking for power at the university library or study hall.`,exampleSentences:[{target:`请问这里有人吗？`,translation:`Excuse me, is this seat taken?`,phonetic:`Qǐngwèn zhèlǐ yǒurén ma?`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 老师好！请问今天的作业是什么？
+B: 请复习第十课生词，并完成练习册第三页。
+A: 什么时候需要交呢？
+B: 下周一上课前交。`,back:`A: Hello teacher! What is today's homework?
+B: Please review lesson 10 vocabulary and complete page 3 of the workbook.
+A: When do we need to submit it?
+B: Submit it before class next Monday.`,phonetic:`A: Lǎoshī hǎo! Qǐngwèn jīntiān de zuòyè shì shénme?
+B: Qǐng fùxí dì shí kè shēngcí, bìng wánchéng liànxícè dì sān yè.
+A: Shénme shíhou xūyào jiāo ne?
+B: Xià zhōuyī shàngkè qián jiāo.`,grammarNotes:`Teacher-student interaction: “交作业” (jiāo zuòyè = hand in homework); “复习” (fùxí = review); “练习册” (liànxícè = workbook).`,hint:`Situation: Asking the professor about homework assignment and due date.`,exampleSentences:[{target:`什么时候交作业？`,translation:`When is homework due?`,phonetic:`Shénme shíhou jiāo zuòyè?`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 老师，不好意思，下周三我想请半天假。
+B: 怎么了？身体不舒服吗？
+A: 我需要去出入境管理局办理签证延期。
+B: 好的，记得在系统里提交请假申请。`,back:`A: Teacher, excuse me, I would like to request half a day off next Wednesday.
+B: What's the matter? Feeling unwell?
+A: I need to go to the Entry-Exit Bureau to process a visa extension.
+B: Alright, remember to submit an absence request in the campus portal.`,phonetic:`A: Lǎoshī, bù hǎoyìsi, xià zhōusān wǒ xiǎng qǐng bàn tiān jià.
+B: Zěnme le? Shēntǐ bù shūfu ma?
+A: Wǒ xūyào qù chūrùjìng guǎnlǐjú bànlǐ qiānzhèng yánqī.
+B: Hǎo de, jìde zài xìtǒng lǐ tíjiāo qǐngjià shēnqǐng.`,grammarNotes:`Taking leave: “请假” (qǐngjià = ask for leave/absence); “签证延期” (qiānzhèng yánqī = visa extension); “出入境管理局” (Exit-Entry Administration).`,hint:`Situation: Requesting official absence from university for immigration paperwork.`,exampleSentences:[{target:`我想请一天假。`,translation:`I would like to ask for a day off.`,phonetic:`Wǒ xiǎng qǐng yī tiān jià.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 阿姨，来一份番茄炒蛋和一份土豆丝，配一碗米饭。
+B: 好嘞！在这儿吃还是打包？
+A: 在这儿吃。一共多少钱？
+B: 一共十二块，刷校园卡或者微信都行。`,back:`A: Auntie, one tomato scrambled eggs and one shredded potato, with a bowl of rice.
+B: Right on! For here or takeaway?
+A: For here. How much altogether?
+B: Twelve yuan total, swipe campus card or WeChat, both work.`,phonetic:`A: Āyí, lái yīfèn fānqié chǎodàn hé yīfèn tǔdòusī, pèi yī wǎn mǐfàn.
+B: Hǎo lei! Zài zhèr chī háishì dǎbāo?
+A: Zài zhèr chī. Yīgòng duōshǎo qián?
+B: Yīgòng shí-èr kuài, shuā xiàoyuán kǎ huòzhě Wēixìn dōu xíng.`,grammarNotes:`Canteen Chinese: “阿姨” (āyí = auntie, universally used for canteen workers); “打包” (dǎbāo = doggy bag/takeaway); “校园卡” (xiàoyuán kǎ = student campus card).`,hint:`Situation: Ordering lunch at a university cafeteria (食堂).`,exampleSentences:[{target:`阿姨，打包带走！`,translation:`Auntie, pack it to go!`,phonetic:`Āyí, dǎbāo dàizǒu!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A2`,cardType:`dialogue`,front:`A: 你好，请问校园卡充值在哪里办理？
+B: 可以在食堂一楼服务台人工充值，也可以直接在微信小程序充。
+A: 小程序叫什么名字？
+B: 搜“智慧校园”绑定学号就行。`,back:`A: Hello, where can I top up my campus card?
+B: You can top up in person at the 1st floor canteen service desk, or directly via WeChat mini-program.
+A: What is the mini-program called?
+B: Search "Smart Campus" and bind your student ID.`,phonetic:`A: Nǐ hǎo, qǐngwèn xiàoyuán kǎ chōngzhí zài nǎlǐ bànlǐ?
+B: Kěyǐ zài shítáng yī lóu fúwùtái réngōng chōngzhí, yě kěyǐ zhíjiē zài Wēixìn xiǎochéngxù chōng.
+A: Xiǎochéngxù jiào shénme míngzì?
+B: Sōu “Zhìhuì Xiàoyuán” bǎngdìng xuéhào jiù xíng.`,grammarNotes:`Campus fintech: “充值” (chōngzhí = top up balance); “小程序” (xiǎochéngxù = mini-program); “绑定学号” (bind student ID number).`,hint:`Situation: Recharging student meal card balance.`,exampleSentences:[{target:`我的校园卡没钱了，需要充值。`,translation:`My campus card is out of money, I need to top up.`,phonetic:`Wǒ de xiàoyuán kǎ méi qián le, xūyào chōngzhí.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A2`,cardType:`dialogue`,front:`A: 师傅你好，我想借这两本书，可以借多久？
+B: 本科生借期是一个月，到期前可以在网上续借一次。
+A: 如果逾期还书会有罚款吗？
+B: 每天每本一毛钱，记得按时还哦。`,back:`A: Hello master, I'd like to borrow these two books, how long can I keep them?
+B: Undergraduate loan period is one month; you can renew once online before due date.
+A: If I return books late will there be a fine?
+B: Ten cents per book per day, remember to return on time!`,phonetic:`A: Shīfu nǐ hǎo, wǒ xiǎng jiè zhè liǎng běn shū, kěyǐ jiè duōjiǔ?
+B: Běnkēshēng jièqī shì yī gè yuè, dàoqī qián kěyǐ zài wǎngshàng xùjiè yī cì.
+A: Rúguǒ yúqī huán shū huì yǒu fákuǎn ma?
+B: Měi tiān měi běn yī máo qián, jìde ànshí huán o.`,grammarNotes:`Library terms: “借书 / 还书” (jiè shū / huán shū = borrow/return books); “续借” (xùjiè = renew loan); “逾期罚款” (overdue fine).`,hint:`Situation: Borrowing and renewing books at the college library.`,exampleSentences:[{target:`我想续借这本书。`,translation:`I would like to renew this book.`,phonetic:`Wǒ xiǎng xùjiè zhè běn shū.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A2`,cardType:`dialogue`,front:`A: 老师，我想打印这份中文论文，请问怎么收费？
+B: 黑白单面一毛，双面一毛五，彩印一块一张。
+A: 我打双面黑白，一共二十页。
+B: 好的，微信扫这台机子上的码付款即可。`,back:`A: Teacher, I'd like to print this Chinese paper, how much do you charge?
+B: Black and white single-sided is 0.1 yuan, double-sided 0.15, color print 1 yuan per page.
+A: Double-sided black and white for me, twenty pages in total.
+B: Alright, scan the code on this machine via WeChat to pay.`,phonetic:`A: Lǎoshī, wǒ xiǎng dǎyìn zhè fèn Zhōngwén lùnwén, qǐngwèn zěnme shòufèi?
+B: Hēibái dānmiàn yī máo, shuāngmiàn yī máo wǔ, cǎiyìn yī kuài yī zhāng.
+A: Wǒ dǎ shuāngmiàn hēibái, yīgòng èrshí yè.
+B: Hǎo de, Wēixìn sǎo zhè tái jīzi shàng de mǎ fùkuǎn jíkě.`,grammarNotes:`Campus print shop (打印店): “单面 / 双面” (dānmiàn / shuāngmiàn = single/double sided); “彩印” (color print); “论文” (lùnwén = paper/thesis).`,hint:`Situation: Printing essay documents at the campus copy shop.`,exampleSentences:[{target:`帮我打印两份，双面打印。`,translation:`Help me print two copies, double-sided.`,phonetic:`Bāng wǒ dǎyìn liǎng fèn, shuāngmiàn dǎyìn.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 宿管阿姨好，我的宿舍门锁好像坏了，钥匙转不动。
+B: 是几号楼几零几房间？
+A: 八号楼302室。
+B: 好，我马上联系后勤维修师傅过去看看。`,back:`A: Hello dorm auntie, my dorm door lock seems broken, the key won't turn.
+B: Which building number and which room number?
+A: Building 8, Room 302.
+B: Alright, I'll immediately contact the logistics maintenance master to check it out.`,phonetic:`A: Sùguǎn āyí hǎo, wǒ de sùshè ménsuǒ hǎoxiàng huài le, yàoshi zhuàn bù dòng.
+B: Shì jǐ hào lóu jǐ líng jǐ fángjiān?
+A: Bā hào lóu sān-líng-èr shì.
+B: Hǎo, wǒ mǎshàng liánxì hòuqín wéixiū shīfu guòqù kànkan.`,grammarNotes:`Dorm life: “宿管阿姨” (sùguǎn āyí = dorm manager / supervisor); “门锁坏了” (door lock broken); “后勤维修” (logistics maintenance).`,hint:`Situation: Reporting a broken door lock to the dormitory supervisor.`,exampleSentences:[{target:`阿姨，我的宿舍没热水了。`,translation:`Auntie, my dorm has no hot water.`,phonetic:`Āyí, wǒ de sùshè méi rèshuǐ le.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 宿管阿姨，请问宿舍几点关大门啊？
+B: 晚上十一点准时锁门，千万别晚归！
+A: 要是万一晚了怎么办？
+B: 晚了就得敲门登记学号和姓名，扣操行分的。`,back:`A: Dorm auntie, what time does the dormitory lock the front gate?
+B: Locks at 11 PM sharp, don't be late getting back!
+A: What if by any chance I am late?
+B: If late you must knock and register your student ID and name, which docks conduct points.`,phonetic:`A: Sùguǎn āyí, qǐngwèn sùshè jǐ diǎn guān dàmén a?
+B: Wǎnshang shíyī diǎn zhǔnshí suǒmén, qiānwàn bié wǎnguī!
+A: Yàoshì wànyī wǎn le zěnme bàn?
+B: Wǎn le jiù děi qiāomén dēngjì xuéhào hé xìngmíng, kòu cāoxíngfēn de.`,grammarNotes:`Curfew rules in Chinese colleges: “关大门” (close the main gate); “准时” (punctually / on time); “晚归” (wǎnguī = late return); “登记” (register).`,hint:`Situation: Asking dorm gate closure curfew times.`,exampleSentences:[{target:`晚上十一点关门。`,translation:`Closes at 11:00 at night.`,phonetic:`Wǎnshang shíyī diǎn guānmén.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 嗨！下节课是去东区还是西区上？
+B: 在西区文科楼201教室，快走吧，快打上课铃了！
+A: 好的，骑共享单车去吧，走路来不及了。
+B: 行，走起！`,back:`A: Hey! Is the next class in the East Campus or West Campus?
+B: In West Campus Liberal Arts Building, Room 201, hurry, bell's about to ring!
+A: Okay, let's ride a shared bike, walking won't make it in time.
+B: Sounds good, let's roll!`,phonetic:`A: Hāi! Xià jié kè shì qù dōngqū háishì xīqū shàng?
+B: Zài xīqū wénkēlóu èr-líng-yī jiàoshì, kuài zǒu ba, kuài dǎ shàngkèlíng le!
+A: Hǎo de, qí gòngxiǎng dānchē qù ba, zǒulù láibùjí le.
+B: Xíng, zǒu qǐ!`,grammarNotes:`Rushing between classes: “东区 / 西区” (East/West campus); “上课铃” (class bell); “来不及” (won't make it in time); “走起” (let's roll / let's go).`,hint:`Situation: Rushing between university campuses for the next lecture.`,exampleSentences:[{target:`快来不及了！`,translation:`We're not going to make it in time!`,phonetic:`Kuài láibùjí le!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A2`,cardType:`dialogue`,front:`A: 同学，你知道下周的期末考试怎么考吗？
+B: 听说开卷考，可以带手写笔记，但不能用手机。
+A: 那太好了，平时认真记笔记就稳了。
+B: 没错，周末一起去自习室复习吧！`,back:`A: Classmate, do you know how next week's final exam will be tested?
+B: I heard it's open-book; handwritten notes allowed, but no mobile phones.
+A: That's great, taking good notes normally will keep us safe.
+B: Exactly, let's go to the study room together this weekend to review!`,phonetic:`A: Tóngxué, nǐ zhīdào xià zhōu de qīmò kǎoshì zěnme kǎo ma?
+B: Tīngshuō kāijuàn kǎo, kěyǐ dài shǒuxiě bǐjì, dàn bùnéng yòng shǒujī.
+A: Nà tài hǎo le, píngshí rènzhēn jì bǐjì jiù wěn le.
+B: Méicuò, zhōumò yīqǐ qù zìxíshì fùxí ba!`,grammarNotes:`Exam terminology: “期末考试” (final exam); “开卷考” (open-book exam) vs “闭卷考” (closed-book); “稳了” (slang: safe and sound / in the bag).`,hint:`Situation: Discussing exam formats and study plans with a fellow student.`,exampleSentences:[{target:`周末去自习室吗？`,translation:`Going to the self-study room this weekend?`,phonetic:`Zhōumò qù zìxíshì ma?`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A2`,cardType:`dialogue`,front:`A: 请问留学生办公室在几楼？
+B: 在国际交流中心四楼408房间。
+A: 我想咨询一下奖学金申请的事。
+B: 负责老师就在里面，你直接敲门进去就行。`,back:`A: Excuse me, which floor is the International Student Office on?
+B: On the 4th floor of the International Exchange Center, Room 408.
+A: I would like to inquire about scholarship applications.
+B: The teacher in charge is right inside, you can just knock and enter.`,phonetic:`A: Qǐngwèn liúxuéshēng bàngōngshì zài jǐ lóu?
+B: Zài guójì jiāoliú zhōngxīn sì lóu sì-líng-bā fángjiān.
+A: Wǒ xiǎng zīxún yīxià jiǎngxuéjīn shēnqǐng de shì.
+B: Fùzé lǎoshī jiù zài lǐmiàn, nǐ zhíjiē qiāomén jìnqù jiù xíng.`,grammarNotes:`Administrative support: “留学生办公室” (ISO - International Students Office); “咨询” (consult/inquire); “奖学金申请” (scholarship application).`,hint:`Situation: Visiting the International Student Office to inquire about scholarship.`,exampleSentences:[{target:`我想申请奖学金。`,translation:`I want to apply for a scholarship.`,phonetic:`Wǒ xiǎng shēnqǐng jiǎngxuéjīn.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A2`,cardType:`dialogue`,front:`A: 你加入了学校什么社团啊？
+B: 我加入了羽毛球社和汉服社，你呢？
+A: 我想加书法社和吉他社，不知道怎么报名。
+B: 这周末百团大战，大操场全是社团招新摊位，现场报名就行！`,back:`A: What student clubs did you join at university?
+B: I joined the Badminton Club and Hanfu Club, what about you?
+A: I want to join the Calligraphy Club and Guitar Club, don't know how to register.
+B: This weekend is the "Hundred Clubs Fair", the sports field is full of club recruitment stalls, just sign up on site!`,phonetic:`A: Nǐ jiārù le xuéxiào shénme shètuán a?
+B: Wǒ jiārù le yǔmáoqiú shè hé hànfú shè, nǐ ne?
+A: Wǒ xiǎng jiā shūfǎ shè hé jítā shè, bù zhīdào zěnme bàomíng.
+B: Zhè zhōumò bǎituán dàzhàn, dà cāochǎng quán shì shètuán zhāoxīn tānwèi, xiànchǎng bàomíng jiù xíng!`,grammarNotes:`Student clubs: “社团” (shètuán = student club); “百团大战” (colloquial term for the huge annual student club recruitment fair); “操场” (sports field).`,hint:`Situation: Finding and signing up for student clubs and sports on campus.`,exampleSentences:[{target:`你参加了什么社团？`,translation:`What club did you join?`,phonetic:`Nǐ cānjiā le shénme shètuán?`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 同学，你有校园网账号吗？怎么连Wi-Fi啊？
+B: 连“i-Campus”，然后网页会自动跳出登录界面。
+A: 账号密码是什么？
+B: 账号是你的学号，初始密码通常是护照后六位。`,back:`A: Classmate, do you have a campus Wi-Fi account? How do I connect?
+B: Connect to "i-Campus", then the web browser will automatically pop up a login screen.
+A: What are the account and password?
+B: Account is your student ID, default password is usually the last 6 digits of your passport.`,phonetic:`A: Tóngxué, nǐ yǒu xiàoyuánwǎng zhànghào ma? Zěnme lián Wi-Fi a?
+B: Lián “i-Campus”, ránhòu wǎngyè huì zìdòng tiàochū dēnglù jièmiàn.
+A: Zhànghào mìmǎ shì shénme?
+B: Zhànghào shì nǐ de xuéhào, chūshǐ mìmǎ tōngcháng shì hùzhào hòu liù wèi.`,grammarNotes:`Campus IT setup: “校园网” (campus network); “登录界面” (login interface); “学号” (student ID number); “初始密码” (initial/default password).`,hint:`Situation: Connecting to the university Wi-Fi network for the first time.`,exampleSentences:[{target:`校园网连不上了。`,translation:`Campus internet won't connect.`,phonetic:`Xiàoyuánwǎng lián bù shàng le.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 老板，一碗豆腐脑，甜的还是咸的？
+B: 我们北方默认吃咸的，浇卤汁加葱花，可香了！
+A: 行，那来一碗咸豆腐脑，再来两根刚炸好的油条！
+B: 好嘞，坐那儿稍等，马上端过来！`,back:`A: Boss, a bowl of tofu pudding, sweet or savory?
+B: We in the North default to savory, ladle gravy with scallions, super fragrant!
+A: Alright, then one savory tofu pudding, plus two freshly fried dough sticks!
+B: Right on, take a seat and wait a sec, bringing it right over!`,phonetic:`A: Lǎobǎn, yī wǎn dòufunǎo, tián de háishì xián de?
+B: Wǒmen běifāng mòrèn chī xián de, jiāo lǔzhī jiā cōnghuā, kě xiāng le!
+A: Xíng, nà lái yī wǎn xián dòufunǎo, zài lái liǎng gēn gāng zhà hǎo de yóutiáo!
+B: Hǎo lei, zuò nàr shāoděng, mǎshàng duān guòlái!`,grammarNotes:`Chinese street breakfast: “豆腐脑” (dòufunǎo = tofu pudding; savory 咸 in North, sweet 甜 in South); “油条” (yóutiáo = fried dough sticks); “可香了” (super fragrant).`,hint:`Situation: Ordering traditional breakfast at a street morning stall (早市/早餐摊).`,exampleSentences:[{target:`豆浆配油条是绝配。`,translation:`Soy milk paired with fried dough sticks is the perfect match.`,phonetic:`Dòujiāng pèi yóutiáo shì juépèi.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 师傅，修自行车！我车后轮好像扎破扎胎了。
+B: 我瞧瞧……嗯，扎了根钉子，补个胎十块钱。
+A: 大概要多长时间？
+B: 五分钟就好，把内胎补上打足气就行。
+A: 好的，辛苦您！`,back:`A: Master, bike repair! Seems my bike's rear tire is punctured.
+B: Let me take a look... yeah, a nail punctured it, patching the tire is 10 yuan.
+A: About how long will it take?
+B: Five minutes is enough, patch the inner tube and pump it full of air.
+A: Great, thank you for your hard work!`,phonetic:`A: Shīfu, xiū zìxíngchē! Wǒ chē hòulún hǎoxiàng zhāpò zhātāi le.
+B: Wǒ qiáoqiao... èn, zhā le gēn dīngzi, bǔ gè tāi shí kuài qián.
+A: Dàgài yào duō cháng shíjiān?
+B: Wǔ fēnzhōng jiù hǎo, bǎ nèitāi bǔ shàng dǎ zú qì jiù xíng.
+A: Hǎo de, xīnkǔ nín!`,grammarNotes:`Street repairs: “修自行车” (repair bicycle); “扎胎” (zhātāi = flat tire from puncture); “补胎” (patch tire); “打气” (pump air).`,hint:`Situation: Getting a flat bike tire repaired by a roadside mechanic.`,exampleSentences:[{target:`师傅，借打气筒打个气！`,translation:`Master, may I borrow the air pump to pump air!`,phonetic:`Shīfu, jiè dǎqìtǒng dǎ gè qì!`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 请问这附近有共享充电宝吗？我手机只剩5%电了。
+B: 旁边便利店门口那个绿色柜机就是怪兽充电宝。
+A: 怎么借啊？
+B: 用微信扫一下柜子上的二维码，付押金就能弹出来。`,back:`A: Excuse me, is there a shared power bank nearby? My phone only has 5% battery left.
+B: The green kiosk machine at the convenience store entrance next door is Monster Powerbank.
+A: How do I borrow it?
+B: Scan the QR code on the machine with WeChat, pay deposit and it pops right out.`,phonetic:`A: Qǐngwèn zhè fùjìn yǒu gòngxiǎng chōngdiànbǎo ma? Wǒ shǒujī zhǐ shèng bǎifēnzhī wǔ diàn le.
+B: Pángbiān biànlìdiàn ménkǒu nàge lǜsè guìjī jiù shì Guàishòu Chōngdiànbǎo.
+A: Zěnme jiè a?
+B: Yòng Wēixìn sǎo yīxià guìzi shàng de èrwéimǎ, fù yājīn jiù néng tán chūlái.`,grammarNotes:`Everyday life saver: “共享充电宝” (shared power bank); “柜机” (kiosk station); “弹出来” (pops out). Essential everywhere in urban China.`,hint:`Situation: Renting an on-the-go power bank when phone battery is dying.`,exampleSentences:[{target:`我借个充电宝。`,translation:`I'll borrow a power bank.`,phonetic:`Wǒ jiè gè chōngdiànbǎo.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 师傅，理个发！
+B: 帅哥想怎么剪？剪短点还是修一修？
+A: 两边推平，上面稍微剪短打薄一点就行。
+B: 好的，先去后面洗个头吧！`,back:`A: Master, haircut please!
+B: Handsome, how would you like it cut? Cut it short or just a trim?
+A: Buzz the two sides flat, slightly shorten and thin out the top.
+B: Got it, let's go to the back to wash your hair first!`,phonetic:`A: Shīfu, lǐ gè fà!
+B: Shuàigē xiǎng zěnme jiǎn? Jiǎn duǎn diǎn háishì xiū yī xiū?
+A: Liǎngbiān tuī píng, shàngmiàn shāowēi jiǎn duǎn dǎbáo yīdiǎn jiù xíng.
+B: Hǎo de, xiān qù hòumiàn xǐ gè tóu ba!`,grammarNotes:`Barbershop vocabulary (理发店): “理发” (haircut); “两边推平” (fade/buzz sides); “打薄” (thin out hair); “洗头” (wash hair).`,hint:`Situation: Getting a standard haircut at a neighborhood hair salon.`,exampleSentences:[{target:`稍微剪短一点就好。`,translation:`Just cut it slightly shorter.`,phonetic:`Shāowēi jiǎn duǎn yīdiǎn jiù hǎo.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 您好，我来取快递！尾号是5821，名字是李明。
+B: 稍等我查一下……在三号货架第二层，取件码是3-2-15。
+A: 找到了，需要扫码出库吗？
+B: 对，在高拍仪前面照一下条形码即可出库。`,back:`A: Hello, I've come to pick up a package! Last phone digits are 5821, name is Li Ming.
+B: Wait a moment while I check... It's on Shelf 3, 2nd tier, pickup code is 3-2-15.
+A: Found it, do I need to scan to check out?
+B: Yes, show the barcode in front of the overhead scanner scanner to confirm checkout.`,phonetic:`A: Nín hǎo, wǒ lái qǔ kuàidì! Wěihào shì wǔ-bā-èr-yī, míngzì shì Lǐ Míng.
+B: Shāoděng wǒ chá yīxià... zài sān hào huòjià dì èr céng, qǔjiànmǎ shì sān-èr-yī-wǔ.
+A: Zhǎodào le, xūyào sǎo mǎ chūkù ma?
+B: Duì, zài gāopàiyí qiánmiàn zhào yīxià tiáoxíngmǎ jíkě chūkù.`,grammarNotes:`Cainiao Station (菜鸟驿站): “取快递” (pick up delivery); “尾号” (last phone digits); “取件码” (pickup code); “扫码出库” (scan out of station).`,hint:`Situation: Picking up an online shopping parcel at a neighborhood parcel station.`,exampleSentences:[{target:`我来拿快递。`,translation:`I'm here to pick up a parcel.`,phonetic:`Wǒ lái ná kuàidì.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 药剂师你好，我有点感冒发烧，嗓子还特别疼。
+B: 有量过体温吗？发烧多少度？
+A: 刚才量是38.2度。
+B: 给你拿一盒退烧药布洛芬，再配一盒清热解毒的含片，多喝温开水！`,back:`A: Pharmacist hello, I have a bit of a cold and fever, and my throat hurts badly.
+B: Have you taken your temperature? How high is the fever?
+A: Just measured 38.2 degrees Celsius.
+B: I'll give you a box of ibuprofen fever reducer, plus a box of soothing throat lozenges, drink plenty of warm water!`,phonetic:`A: Yàojìshī nǐ hǎo, wǒ yǒudiǎn gǎnmào fāshāo, sǎngzi hái tèbié téng.
+B: Yǒu liáng guò tǐwēn ma? Fāshāo duōshǎo dù?
+A: Gāngcái liáng shì sānshíbā diǎn èr dù.
+B: Gěi nǐ ná yī hé tuìshāoyào bùluòfēn, zài pèi yī hé qīngrè jiědú de hánpiàn, duō hē wēn kāishuǐ!`,grammarNotes:`Pharmacy visits (药店): “感冒发烧” (cold and fever); “嗓子疼” (sore throat); “布洛芬” (ibuprofen); “多喝温开水” (the universal Chinese health advice: drink warm boiled water).`,hint:`Situation: Buying over-the-counter medicine for cold and fever at a pharmacy.`,exampleSentences:[{target:`我发烧了，需要退烧药。`,translation:`I have a fever, I need fever medication.`,phonetic:`Wǒ fāshāo le, xūyào tuìshāoyào.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 师傅，我的皮鞋鞋跟掉了，能修补一下吗？
+B: 能修，用专用强力胶粘一下，再钉两颗小钉子。
+A: 多少钱？马上能修好吗？
+B: 五块钱，坐旁边小马扎等三分钟，马上就好！`,back:`A: Master, the heel of my leather shoe came off, can you repair it?
+B: Can fix it, glue it with special heavy-duty adhesive and drive in two small nails.
+A: How much? Can it be repaired right away?
+B: Five yuan, sit on the little folding stool for three minutes, ready in no time!`,phonetic:`A: Shīfu, wǒ de píxié xiégēn diào le, néng xiūbǔ yīxià ma?
+B: Néng xiū, yòng zhuānyòng qiánglìjiāo zhān yīxià, zài dīng liǎng kē xiǎo dīngzi.
+A: Duōshǎo qián? Mǎshàng néng xiūhǎo ma?
+B: Wǔ kuài qián, zuò pángbiān xiǎo mǎzhá děng sān fēnzhōng, mǎshàng jiù hǎo!`,grammarNotes:`Cobbler street stall: “鞋跟掉了” (heel fell off); “强力胶” (super glue); “小马扎” (mǎzhá = traditional Chinese folding stool).`,hint:`Situation: Fixing footwear at a roadside cobbler stall.`,exampleSentences:[{target:`师傅，帮我修下鞋。`,translation:`Master, help me fix my shoe.`,phonetic:`Shīfu, bāng wǒ xiū xià xié.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 阿姨，这个红富士苹果怎么卖？
+B: 六块钱一斤，特别甜，脆得很！
+A: 给我挑四个大一点的。
+B: 好嘞，一共两斤三两，收你十四块钱！`,back:`A: Auntie, how much are these Red Fuji apples?
+B: Six yuan per jin (500g), super sweet and very crisp!
+A: Pick four bigger ones for me.
+B: Right on, two jin and three liang (1.15 kg) total, charging you fourteen yuan!`,phonetic:`A: Āyí, zhège hóngfùshì píngguǒ zěnme mài?
+B: Liù kuài qián yī jīn, tèbié tián, cuì de hěn!
+A: Gěi wǒ tiāo sì gè dà yīdiǎn de.
+B: Hǎo lei, yīgòng liǎng jīn sān liǎng, shōu nǐ shísì kuài qián!`,grammarNotes:`Fruit store shopping: Weight units in China: 1 斤 (jīn) = 500 grams; 1 两 (liǎng) = 50 grams; “脆” (cuì = crispy/crunchy); “挑” (tiāo = pick/choose).`,hint:`Situation: Buying fresh fruit from a street fruit stand.`,exampleSentences:[{target:`这个西瓜甜不甜？`,translation:`Is this watermelon sweet?`,phonetic:`Zhège xīguā tián bù tián?`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 师傅，我去东方商厦，请打表！
+B: 好嘞，系好安全带，请问走高架还是走地面？
+A: 走高架吧，快一点。
+B: 行，大概十五分钟到。`,back:`A: Driver, I'm going to Oriental Commercial Plaza, please run the meter!
+B: Sure thing, buckle up your seatbelt. Elevated highway or surface roads?
+A: Let's take the elevated highway, it's quicker.
+B: Alright, about fifteen minutes to arrive.`,phonetic:`A: Shīfu, wǒ qù Dōngfāng Shāngshà, qǐng dǎbiǎo!
+B: Hǎo lei, jì hǎo ānquándài, qǐngwèn zǒu gāojià háishì zǒu dìmiàn?
+A: Zǒu gāojià ba, kuài yīdiǎn.
+B: Xíng, dàgài shíwǔ fēnzhōng dào.`,grammarNotes:`Taking taxis: “打表” (dǎbiǎo = run taximeter); “安全带” (seatbelt); “高架” (elevated expressway) vs “地面” (surface streets).`,hint:`Situation: Directing a taxi driver and requesting the meter.`,exampleSentences:[{target:`师傅，请打表。`,translation:`Driver, please turn on the meter.`,phonetic:`Shīfu, qǐng dǎbiǎo.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 您好，请问这附近哪里有工商银行的ATM自动取款机？
+B: 顺着这条街往前走一百米，路口右转就是工行营业厅。
+A: 那里能用外国Visa卡取人民币吗？
+B: 能，只要机器上有Visa标志的都能取。`,back:`A: Hello, where is an ICBC bank ATM machine nearby?
+B: Walk 100 meters ahead along this street, turn right at the intersection for the ICBC branch.
+A: Can I withdraw RMB using a foreign Visa card there?
+B: Yes, as long as the ATM displays the Visa logo you can withdraw.`,phonetic:`A: Nín hǎo, qǐngwèn zhè fùjìn nǎlǐ yǒu Gōngshāng Yínháng de ATM zìdòng qǔkuǎnjī?
+B: Shùn zhe zhè tiáo jiē wǎng qián zǒu yībǎi mǐ, lùkǒu yòuzhuǎn jiù shì Gōngháng yíngyètīng.
+A: Nàlǐ néng yòng wàiguó Visa kǎ qǔ rénmínbì ma?
+B: Néng, zhǐyào jīqì shàng yǒu Visa biāozhì de dōu néng qǔ.`,grammarNotes:`Banking: “自动取款机” (ATM); “工行” (ICBC); “取款 / 取钱” (withdraw money); “外卡取现” (foreign card cash withdrawal).`,hint:`Situation: Finding an international ATM to withdraw cash with a foreign credit card.`,exampleSentences:[{target:`我想取点现金。`,translation:`I want to withdraw some cash.`,phonetic:`Wǒ xiǎng qǔ diǎn xiànjīn.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 阿姨，这件羊毛衫能水洗吗？
+B: 千万不能水洗，会缩水变形的，必须干洗。
+A: 洗一件羊毛衫多少钱？
+B: 普通羊毛衫二十五，后天下午凭单子来取。`,back:`A: Auntie, can this wool sweater be water washed?
+B: Absolutely cannot water wash, it will shrink and deform, must be dry cleaned.
+A: How much to clean a wool sweater?
+B: Regular wool sweater is 25 yuan, pick it up day after tomorrow afternoon with your ticket.`,phonetic:`A: Āyí, zhè jiàn yángmáoshān néng shuǐxǐ ma?
+B: Qiānwàn bùnéng shuǐxǐ, huì suōshuǐ biànxíng de, bìxū gānxǐ.
+A: Xǐ yī jiàn yángmáoshān duōshǎo qián?
+B: Pǔtōng yángmáoshān èrshíwǔ, hòutiān xiàwǔ píng dānzi lái qǔ.`,grammarNotes:`Laundry care: “干洗” (dry clean); “水洗” (water wash); “缩水” (shrink); “凭单子取” (pick up with the receipt/slip).`,hint:`Situation: Dropping off delicate wool clothing at a neighborhood dry cleaners.`,exampleSentences:[{target:`这件衣服需要干洗。`,translation:`This garment needs to be dry-cleaned.`,phonetic:`Zhè jiàn yīfu xūyào gānxǐ.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 老板，一碗肉丝炒面！少放油，不要味精。
+B: 好嘞！面里要加辣吗？桌上有醋和辣椒油。
+A: 不加辣，我自己加点醋就行。
+B: 没问题，炒面马上出锅！`,back:`A: Boss, one shredded pork fried noodles! Light on oil, no MSG.
+B: Right on! Do you want chili in the noodles? Vinegar and chili oil are on the table.
+A: No chili, I'll just add a splash of vinegar myself.
+B: No problem, fried noodles coming right out of the wok!`,phonetic:`A: Lǎobǎn, yī wǎn ròusī chǎomiàn! Shǎo fàng yóu, bùyào wèijīng.
+B: Hǎo lei! Miàn lǐ yào jiā là ma? Zhuō shàng yǒu cù hé làjiāoyóu.
+A: Bù jiā là, wǒ zìjǐ jiā diǎn cù jiù xíng.
+B: Méi wèntí, chǎomiàn mǎshàng chūguō!`,grammarNotes:`Casual food customization: “少放油” (less oil); “味精” (MSG); “香醋” (aromatic black vinegar); “马上出锅” (fresh out of the wok).`,hint:`Situation: Ordering customized stir-fried noodles at a street eatery.`,exampleSentences:[{target:`请不要放味精。`,translation:`Please do not add MSG.`,phonetic:`Qǐng bùyào fàng wèijīng.`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 师傅，我去机场，坐几号线地铁最快？
+B: 坐二号线直达，或者坐二号线到龙阳路转磁悬浮。
+A: 磁悬浮票价多少？多长时间能到？
+B: 凭当天机票只要四十块，八分钟就能飙到机场！`,back:`A: Master, I'm heading to the airport, which subway line is fastest?
+B: Take Line 2 directly, or take Line 2 to Longyang Road and transfer to Maglev.
+A: How much is the Maglev ticket? How long does it take?
+B: Only 40 yuan with same-day flight ticket, shoots to the airport in 8 minutes!`,phonetic:`A: Shīfu, wǒ qù jīchǎng, zuò jǐ hào xiàn dìtiě zuì kuài?
+B: Zuò èr hào xiàn zhídá, huòzhě zuò èr hào xiàn dào Lóngyáng Lù zhuǎn cíxuánfú.
+A: Cíxuánfú piàojià duōshǎo? Duō cháng shíjiān néng dào?
+B: Píng dàngtiān jīpiào zhǐyào sìshí kuài, bā fēnzhōng jiù néng biāo dào jīchǎng!`,grammarNotes:`Urban transport: “直达” (direct/non-stop); “换乘 / 转” (transfer lines); “磁悬浮” (cíxuánfú = Maglev train); “凭机票” (with airline ticket).`,hint:`Situation: Getting airport transit directions and Maglev train advice.`,exampleSentences:[{target:`去机场怎么走最快？`,translation:`What's the fastest way to get to the airport?`,phonetic:`Qù jīchǎng zěnme zǒu zuì kuài?`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 您好，请问这趟105路公交车到人民广场吗？
+B: 到的，请上车扫乘车码，两块钱一位。
+A: 刷支付宝乘车码可以吗？
+B: 可以，对准那个扫码镜头照一下就行。`,back:`A: Hello, does this Bus 105 go to People's Square?
+B: Yes it does, please board and scan your transit QR code, two yuan per person.
+A: Can I scan the Alipay bus ride transit code?
+B: Yes, just align and scan in front of that camera scanner.`,phonetic:`A: Nín hǎo, qǐngwèn zhè tàng yībǎi-líng-wǔ lù gōngjiāochē dào Rénmín Guǎngchǎng ma?
+B: Dào de, qǐng shàngchē sǎo chéngchēmǎ, liǎng kuài qián yī wèi.
+A: Shuā Zhīfùbǎo chéngchēmǎ kěyǐ ma?
+B: Kěyǐ, duìzhǔn nàge sǎomǎ jìngtóu zhào yīxià jiù xíng.`,grammarNotes:`Taking city buses: “公交车” (city bus); “乘车码” (transit QR code on Alipay/WeChat); “两块钱一位” (2 yuan per passenger flat fare).`,hint:`Situation: Asking bus route destinations and scanning phone transit code.`,exampleSentences:[{target:`这趟车到火车站吗？`,translation:`Does this bus go to the train station?`,phonetic:`Zhè tàng chē dào huǒchēzhàn ma?`}]},{languageId:`chinese`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: 请问这附近有洗手间吗？
+B: 直走五十米，左手边商场一楼里面有免费卫生间。
+A: 谢谢！需要扫码或者门禁吗？
+B: 不需要，直接推门进去就可以。`,back:`A: Excuse me, is there a restroom nearby?
+B: Go straight 50 meters, inside the 1st floor of the mall on your left has free public toilets.
+A: Thank you! Does it require a QR code or access key?
+B: Not needed, you can just push the door and walk right in.`,phonetic:`A: Qǐngwèn zhè fùjìn yǒu xǐshǒujiān ma?
+B: Zhí zǒu wǔshí mǐ, zuǒshǒubiān shāngchǎng yī lóu lǐmiàn yǒu miǎnfèi wèishēngjiān.
+A: Xièxiè! Xūyào sǎo mǎ huòzhě ménjìn ma?
+B: Bù xūyào, zhíjiē tuīmén jìnqù jiù kěyǐ.`,grammarNotes:`Public restrooms: “洗手间 / 卫生间” (polite restroom terms); “左手边” (on the left-hand side); “推门” (push the door).`,hint:`Situation: Asking a pedestrian for the nearest public restroom in a shopping district.`,exampleSentences:[{target:`洗手间在左边。`,translation:`The restroom is on the left.`,phonetic:`Xǐshǒujiān zài zuǒbiān.`}]},{languageId:`german`,topicId:`dialogues-conversations`,difficulty:`A1`,cardType:`dialogue`,front:`A: Guten Tag! Ich heiße Lukas Weber. Wie heißen Sie?
 B: Guten Tag, Herr Weber! Mein Name ist Maria Santos. Freut mich sehr!
 A: Ganz meinerseits, Frau Santos! Woher kommen Sie?
 B: Ich komme aus Spanien, aber ich lebe und arbeite jetzt in Berlin.`,back:`A: Good day! My name is Lukas Weber. What is your name?

@@ -1862,6 +1862,433 @@ export const DIALOGUE_SEEDS: CurriculumSeed[] = [
       { target: '记得给个好评！', translation: 'Remember to leave a good review!', phonetic: 'Jìde gěi gè hǎopíng!' }
     ]
   },
+  // =========================================================================
+  // 30 DAILY CHINESE CONVERSATIONS: STREETS & SCHOOL (校园与街头实用真实对话)
+  // =========================================================================
+
+  // --- PART 1: AT SCHOOL & UNIVERSITY (校园生活篇: 1-15) ---
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 同学你好，请问三号教学楼怎么走？\nB: 就在前面图书馆后面，直走两分钟就是。\nA: 太感谢你了！\nB: 没事儿，不客气。',
+    back: 'A: Hello classmate, excuse me how do I get to Teaching Building No. 3?\nB: It\'s right behind the library ahead, go straight for two minutes and you\'re there.\nA: Thank you so much!\nB: No problem, you\'re welcome.',
+    phonetic: 'A: Tóngxué nǐ hǎo, qǐngwèn sān hào jiàoxuélóu zěnme zǒu?\nB: Jiù zài qiánmiàn túshūguǎn hòumiàn, zhí zǒu liǎng fēnzhōng jiù shì.\nA: Tài gǎnxiè nǐ le!\nB: Méishìr, bù kèqì.',
+    grammarNotes: 'Campus basics: “同学” (tóngxué = classmate, universal polite address for students); “教学楼” (jiàoxuélóu = teaching/academic building); “没事儿” (méishìr = no worries).',
+    hint: 'Situation: Asking directions to a classroom building on campus.',
+    exampleSentences: [
+      { target: '请问三号楼在哪里？', translation: 'Excuse me, where is Building 3?', phonetic: 'Qǐngwèn sān hào lóu zài nǎlǐ?' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 不好意思，请问这个座位有人吗？\nB: 没有，没人坐，你坐吧。\nA: 谢谢！这里能插充电器吗？\nB: 可以，桌子底下有插座。',
+    back: 'A: Excuse me, is anyone sitting in this seat?\nB: No, no one is sitting here, go ahead and sit.\nA: Thank you! Can I plug in a charger here?\nB: Yes, there is an electrical outlet under the desk.',
+    phonetic: 'A: Bù hǎoyìsi, qǐngwèn zhège zuòwèi yǒurén ma?\nB: Méiyǒu, méirén zuò, nǐ zuò ba.\nA: Xièxiè! Zhèlǐ néng chā chōngdiànqì ma?\nB: Kěyǐ, zhuōzi dǐxia yǒu chāzuò.',
+    grammarNotes: 'Classroom & library courtesy: “有人吗？” (Is this taken?); “插座” (chāzuò = power socket); “充电器” (chōngdiànqì = charger).',
+    hint: 'Situation: Taking a seat and asking for power at the university library or study hall.',
+    exampleSentences: [
+      { target: '请问这里有人吗？', translation: 'Excuse me, is this seat taken?', phonetic: 'Qǐngwèn zhèlǐ yǒurén ma?' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 老师好！请问今天的作业是什么？\nB: 请复习第十课生词，并完成练习册第三页。\nA: 什么时候需要交呢？\nB: 下周一上课前交。',
+    back: 'A: Hello teacher! What is today\'s homework?\nB: Please review lesson 10 vocabulary and complete page 3 of the workbook.\nA: When do we need to submit it?\nB: Submit it before class next Monday.',
+    phonetic: 'A: Lǎoshī hǎo! Qǐngwèn jīntiān de zuòyè shì shénme?\nB: Qǐng fùxí dì shí kè shēngcí, bìng wánchéng liànxícè dì sān yè.\nA: Shénme shíhou xūyào jiāo ne?\nB: Xià zhōuyī shàngkè qián jiāo.',
+    grammarNotes: 'Teacher-student interaction: “交作业” (jiāo zuòyè = hand in homework); “复习” (fùxí = review); “练习册” (liànxícè = workbook).',
+    hint: 'Situation: Asking the professor about homework assignment and due date.',
+    exampleSentences: [
+      { target: '什么时候交作业？', translation: 'When is homework due?', phonetic: 'Shénme shíhou jiāo zuòyè?' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 老师，不好意思，下周三我想请半天假。\nB: 怎么了？身体不舒服吗？\nA: 我需要去出入境管理局办理签证延期。\nB: 好的，记得在系统里提交请假申请。',
+    back: 'A: Teacher, excuse me, I would like to request half a day off next Wednesday.\nB: What\'s the matter? Feeling unwell?\nA: I need to go to the Entry-Exit Bureau to process a visa extension.\nB: Alright, remember to submit an absence request in the campus portal.',
+    phonetic: 'A: Lǎoshī, bù hǎoyìsi, xià zhōusān wǒ xiǎng qǐng bàn tiān jià.\nB: Zěnme le? Shēntǐ bù shūfu ma?\nA: Wǒ xūyào qù chūrùjìng guǎnlǐjú bànlǐ qiānzhèng yánqī.\nB: Hǎo de, jìde zài xìtǒng lǐ tíjiāo qǐngjià shēnqǐng.',
+    grammarNotes: 'Taking leave: “请假” (qǐngjià = ask for leave/absence); “签证延期” (qiānzhèng yánqī = visa extension); “出入境管理局” (Exit-Entry Administration).',
+    hint: 'Situation: Requesting official absence from university for immigration paperwork.',
+    exampleSentences: [
+      { target: '我想请一天假。', translation: 'I would like to ask for a day off.', phonetic: 'Wǒ xiǎng qǐng yī tiān jià.' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 阿姨，来一份番茄炒蛋和一份土豆丝，配一碗米饭。\nB: 好嘞！在这儿吃还是打包？\nA: 在这儿吃。一共多少钱？\nB: 一共十二块，刷校园卡或者微信都行。',
+    back: 'A: Auntie, one tomato scrambled eggs and one shredded potato, with a bowl of rice.\nB: Right on! For here or takeaway?\nA: For here. How much altogether?\nB: Twelve yuan total, swipe campus card or WeChat, both work.',
+    phonetic: 'A: Āyí, lái yīfèn fānqié chǎodàn hé yīfèn tǔdòusī, pèi yī wǎn mǐfàn.\nB: Hǎo lei! Zài zhèr chī háishì dǎbāo?\nA: Zài zhèr chī. Yīgòng duōshǎo qián?\nB: Yīgòng shí-èr kuài, shuā xiàoyuán kǎ huòzhě Wēixìn dōu xíng.',
+    grammarNotes: 'Canteen Chinese: “阿姨” (āyí = auntie, universally used for canteen workers); “打包” (dǎbāo = doggy bag/takeaway); “校园卡” (xiàoyuán kǎ = student campus card).',
+    hint: 'Situation: Ordering lunch at a university cafeteria (食堂).',
+    exampleSentences: [
+      { target: '阿姨，打包带走！', translation: 'Auntie, pack it to go!', phonetic: 'Āyí, dǎbāo dàizǒu!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A2',
+    cardType: 'dialogue',
+    front: 'A: 你好，请问校园卡充值在哪里办理？\nB: 可以在食堂一楼服务台人工充值，也可以直接在微信小程序充。\nA: 小程序叫什么名字？\nB: 搜“智慧校园”绑定学号就行。',
+    back: 'A: Hello, where can I top up my campus card?\nB: You can top up in person at the 1st floor canteen service desk, or directly via WeChat mini-program.\nA: What is the mini-program called?\nB: Search "Smart Campus" and bind your student ID.',
+    phonetic: 'A: Nǐ hǎo, qǐngwèn xiàoyuán kǎ chōngzhí zài nǎlǐ bànlǐ?\nB: Kěyǐ zài shítáng yī lóu fúwùtái réngōng chōngzhí, yě kěyǐ zhíjiē zài Wēixìn xiǎochéngxù chōng.\nA: Xiǎochéngxù jiào shénme míngzì?\nB: Sōu “Zhìhuì Xiàoyuán” bǎngdìng xuéhào jiù xíng.',
+    grammarNotes: 'Campus fintech: “充值” (chōngzhí = top up balance); “小程序” (xiǎochéngxù = mini-program); “绑定学号” (bind student ID number).',
+    hint: 'Situation: Recharging student meal card balance.',
+    exampleSentences: [
+      { target: '我的校园卡没钱了，需要充值。', translation: 'My campus card is out of money, I need to top up.', phonetic: 'Wǒ de xiàoyuán kǎ méi qián le, xūyào chōngzhí.' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A2',
+    cardType: 'dialogue',
+    front: 'A: 师傅你好，我想借这两本书，可以借多久？\nB: 本科生借期是一个月，到期前可以在网上续借一次。\nA: 如果逾期还书会有罚款吗？\nB: 每天每本一毛钱，记得按时还哦。',
+    back: 'A: Hello master, I\'d like to borrow these two books, how long can I keep them?\nB: Undergraduate loan period is one month; you can renew once online before due date.\nA: If I return books late will there be a fine?\nB: Ten cents per book per day, remember to return on time!',
+    phonetic: 'A: Shīfu nǐ hǎo, wǒ xiǎng jiè zhè liǎng běn shū, kěyǐ jiè duōjiǔ?\nB: Běnkēshēng jièqī shì yī gè yuè, dàoqī qián kěyǐ zài wǎngshàng xùjiè yī cì.\nA: Rúguǒ yúqī huán shū huì yǒu fákuǎn ma?\nB: Měi tiān měi běn yī máo qián, jìde ànshí huán o.',
+    grammarNotes: 'Library terms: “借书 / 还书” (jiè shū / huán shū = borrow/return books); “续借” (xùjiè = renew loan); “逾期罚款” (overdue fine).',
+    hint: 'Situation: Borrowing and renewing books at the college library.',
+    exampleSentences: [
+      { target: '我想续借这本书。', translation: 'I would like to renew this book.', phonetic: 'Wǒ xiǎng xùjiè zhè běn shū.' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A2',
+    cardType: 'dialogue',
+    front: 'A: 老师，我想打印这份中文论文，请问怎么收费？\nB: 黑白单面一毛，双面一毛五，彩印一块一张。\nA: 我打双面黑白，一共二十页。\nB: 好的，微信扫这台机子上的码付款即可。',
+    back: 'A: Teacher, I\'d like to print this Chinese paper, how much do you charge?\nB: Black and white single-sided is 0.1 yuan, double-sided 0.15, color print 1 yuan per page.\nA: Double-sided black and white for me, twenty pages in total.\nB: Alright, scan the code on this machine via WeChat to pay.',
+    phonetic: 'A: Lǎoshī, wǒ xiǎng dǎyìn zhè fèn Zhōngwén lùnwén, qǐngwèn zěnme shòufèi?\nB: Hēibái dānmiàn yī máo, shuāngmiàn yī máo wǔ, cǎiyìn yī kuài yī zhāng.\nA: Wǒ dǎ shuāngmiàn hēibái, yīgòng èrshí yè.\nB: Hǎo de, Wēixìn sǎo zhè tái jīzi shàng de mǎ fùkuǎn jíkě.',
+    grammarNotes: 'Campus print shop (打印店): “单面 / 双面” (dānmiàn / shuāngmiàn = single/double sided); “彩印” (color print); “论文” (lùnwén = paper/thesis).',
+    hint: 'Situation: Printing essay documents at the campus copy shop.',
+    exampleSentences: [
+      { target: '帮我打印两份，双面打印。', translation: 'Help me print two copies, double-sided.', phonetic: 'Bāng wǒ dǎyìn liǎng fèn, shuāngmiàn dǎyìn.' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 宿管阿姨好，我的宿舍门锁好像坏了，钥匙转不动。\nB: 是几号楼几零几房间？\nA: 八号楼302室。\nB: 好，我马上联系后勤维修师傅过去看看。',
+    back: 'A: Hello dorm auntie, my dorm door lock seems broken, the key won\'t turn.\nB: Which building number and which room number?\nA: Building 8, Room 302.\nB: Alright, I\'ll immediately contact the logistics maintenance master to check it out.',
+    phonetic: 'A: Sùguǎn āyí hǎo, wǒ de sùshè ménsuǒ hǎoxiàng huài le, yàoshi zhuàn bù dòng.\nB: Shì jǐ hào lóu jǐ líng jǐ fángjiān?\nA: Bā hào lóu sān-líng-èr shì.\nB: Hǎo, wǒ mǎshàng liánxì hòuqín wéixiū shīfu guòqù kànkan.',
+    grammarNotes: 'Dorm life: “宿管阿姨” (sùguǎn āyí = dorm manager / supervisor); “门锁坏了” (door lock broken); “后勤维修” (logistics maintenance).',
+    hint: 'Situation: Reporting a broken door lock to the dormitory supervisor.',
+    exampleSentences: [
+      { target: '阿姨，我的宿舍没热水了。', translation: 'Auntie, my dorm has no hot water.', phonetic: 'Āyí, wǒ de sùshè méi rèshuǐ le.' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 宿管阿姨，请问宿舍几点关大门啊？\nB: 晚上十一点准时锁门，千万别晚归！\nA: 要是万一晚了怎么办？\nB: 晚了就得敲门登记学号和姓名，扣操行分的。',
+    back: 'A: Dorm auntie, what time does the dormitory lock the front gate?\nB: Locks at 11 PM sharp, don\'t be late getting back!\nA: What if by any chance I am late?\nB: If late you must knock and register your student ID and name, which docks conduct points.',
+    phonetic: 'A: Sùguǎn āyí, qǐngwèn sùshè jǐ diǎn guān dàmén a?\nB: Wǎnshang shíyī diǎn zhǔnshí suǒmén, qiānwàn bié wǎnguī!\nA: Yàoshì wànyī wǎn le zěnme bàn?\nB: Wǎn le jiù děi qiāomén dēngjì xuéhào hé xìngmíng, kòu cāoxíngfēn de.',
+    grammarNotes: 'Curfew rules in Chinese colleges: “关大门” (close the main gate); “准时” (punctually / on time); “晚归” (wǎnguī = late return); “登记” (register).',
+    hint: 'Situation: Asking dorm gate closure curfew times.',
+    exampleSentences: [
+      { target: '晚上十一点关门。', translation: 'Closes at 11:00 at night.', phonetic: 'Wǎnshang shíyī diǎn guānmén.' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 嗨！下节课是去东区还是西区上？\nB: 在西区文科楼201教室，快走吧，快打上课铃了！\nA: 好的，骑共享单车去吧，走路来不及了。\nB: 行，走起！',
+    back: 'A: Hey! Is the next class in the East Campus or West Campus?\nB: In West Campus Liberal Arts Building, Room 201, hurry, bell\'s about to ring!\nA: Okay, let\'s ride a shared bike, walking won\'t make it in time.\nB: Sounds good, let\'s roll!',
+    phonetic: 'A: Hāi! Xià jié kè shì qù dōngqū háishì xīqū shàng?\nB: Zài xīqū wénkēlóu èr-líng-yī jiàoshì, kuài zǒu ba, kuài dǎ shàngkèlíng le!\nA: Hǎo de, qí gòngxiǎng dānchē qù ba, zǒulù láibùjí le.\nB: Xíng, zǒu qǐ!',
+    grammarNotes: 'Rushing between classes: “东区 / 西区” (East/West campus); “上课铃” (class bell); “来不及” (won\'t make it in time); “走起” (let\'s roll / let\'s go).',
+    hint: 'Situation: Rushing between university campuses for the next lecture.',
+    exampleSentences: [
+      { target: '快来不及了！', translation: 'We\'re not going to make it in time!', phonetic: 'Kuài láibùjí le!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A2',
+    cardType: 'dialogue',
+    front: 'A: 同学，你知道下周的期末考试怎么考吗？\nB: 听说开卷考，可以带手写笔记，但不能用手机。\nA: 那太好了，平时认真记笔记就稳了。\nB: 没错，周末一起去自习室复习吧！',
+    back: 'A: Classmate, do you know how next week\'s final exam will be tested?\nB: I heard it\'s open-book; handwritten notes allowed, but no mobile phones.\nA: That\'s great, taking good notes normally will keep us safe.\nB: Exactly, let\'s go to the study room together this weekend to review!',
+    phonetic: 'A: Tóngxué, nǐ zhīdào xià zhōu de qīmò kǎoshì zěnme kǎo ma?\nB: Tīngshuō kāijuàn kǎo, kěyǐ dài shǒuxiě bǐjì, dàn bùnéng yòng shǒujī.\nA: Nà tài hǎo le, píngshí rènzhēn jì bǐjì jiù wěn le.\nB: Méicuò, zhōumò yīqǐ qù zìxíshì fùxí ba!',
+    grammarNotes: 'Exam terminology: “期末考试” (final exam); “开卷考” (open-book exam) vs “闭卷考” (closed-book); “稳了” (slang: safe and sound / in the bag).',
+    hint: 'Situation: Discussing exam formats and study plans with a fellow student.',
+    exampleSentences: [
+      { target: '周末去自习室吗？', translation: 'Going to the self-study room this weekend?', phonetic: 'Zhōumò qù zìxíshì ma?' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A2',
+    cardType: 'dialogue',
+    front: 'A: 请问留学生办公室在几楼？\nB: 在国际交流中心四楼408房间。\nA: 我想咨询一下奖学金申请的事。\nB: 负责老师就在里面，你直接敲门进去就行。',
+    back: 'A: Excuse me, which floor is the International Student Office on?\nB: On the 4th floor of the International Exchange Center, Room 408.\nA: I would like to inquire about scholarship applications.\nB: The teacher in charge is right inside, you can just knock and enter.',
+    phonetic: 'A: Qǐngwèn liúxuéshēng bàngōngshì zài jǐ lóu?\nB: Zài guójì jiāoliú zhōngxīn sì lóu sì-líng-bā fángjiān.\nA: Wǒ xiǎng zīxún yīxià jiǎngxuéjīn shēnqǐng de shì.\nB: Fùzé lǎoshī jiù zài lǐmiàn, nǐ zhíjiē qiāomén jìnqù jiù xíng.',
+    grammarNotes: 'Administrative support: “留学生办公室” (ISO - International Students Office); “咨询” (consult/inquire); “奖学金申请” (scholarship application).',
+    hint: 'Situation: Visiting the International Student Office to inquire about scholarship.',
+    exampleSentences: [
+      { target: '我想申请奖学金。', translation: 'I want to apply for a scholarship.', phonetic: 'Wǒ xiǎng shēnqǐng jiǎngxuéjīn.' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A2',
+    cardType: 'dialogue',
+    front: 'A: 你加入了学校什么社团啊？\nB: 我加入了羽毛球社和汉服社，你呢？\nA: 我想加书法社和吉他社，不知道怎么报名。\nB: 这周末百团大战，大操场全是社团招新摊位，现场报名就行！',
+    back: 'A: What student clubs did you join at university?\nB: I joined the Badminton Club and Hanfu Club, what about you?\nA: I want to join the Calligraphy Club and Guitar Club, don\'t know how to register.\nB: This weekend is the "Hundred Clubs Fair", the sports field is full of club recruitment stalls, just sign up on site!',
+    phonetic: 'A: Nǐ jiārù le xuéxiào shénme shètuán a?\nB: Wǒ jiārù le yǔmáoqiú shè hé hànfú shè, nǐ ne?\nA: Wǒ xiǎng jiā shūfǎ shè hé jítā shè, bù zhīdào zěnme bàomíng.\nB: Zhè zhōumò bǎituán dàzhàn, dà cāochǎng quán shì shètuán zhāoxīn tānwèi, xiànchǎng bàomíng jiù xíng!',
+    grammarNotes: 'Student clubs: “社团” (shètuán = student club); “百团大战” (colloquial term for the huge annual student club recruitment fair); “操场” (sports field).',
+    hint: 'Situation: Finding and signing up for student clubs and sports on campus.',
+    exampleSentences: [
+      { target: '你参加了什么社团？', translation: 'What club did you join?', phonetic: 'Nǐ cānjiā le shénme shètuán?' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 同学，你有校园网账号吗？怎么连Wi-Fi啊？\nB: 连“i-Campus”，然后网页会自动跳出登录界面。\nA: 账号密码是什么？\nB: 账号是你的学号，初始密码通常是护照后六位。',
+    back: 'A: Classmate, do you have a campus Wi-Fi account? How do I connect?\nB: Connect to "i-Campus", then the web browser will automatically pop up a login screen.\nA: What are the account and password?\nB: Account is your student ID, default password is usually the last 6 digits of your passport.',
+    phonetic: 'A: Tóngxué, nǐ yǒu xiàoyuánwǎng zhànghào ma? Zěnme lián Wi-Fi a?\nB: Lián “i-Campus”, ránhòu wǎngyè huì zìdòng tiàochū dēnglù jièmiàn.\nA: Zhànghào mìmǎ shì shénme?\nB: Zhànghào shì nǐ de xuéhào, chūshǐ mìmǎ tōngcháng shì hùzhào hòu liù wèi.',
+    grammarNotes: 'Campus IT setup: “校园网” (campus network); “登录界面” (login interface); “学号” (student ID number); “初始密码” (initial/default password).',
+    hint: 'Situation: Connecting to the university Wi-Fi network for the first time.',
+    exampleSentences: [
+      { target: '校园网连不上了。', translation: 'Campus internet won\'t connect.', phonetic: 'Xiàoyuánwǎng lián bù shàng le.' }
+    ]
+  },
+
+  // --- PART 2: AT THE STREETS & EVERYDAY OUTINGS (街头日常篇: 16-30) ---
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 老板，一碗豆腐脑，甜的还是咸的？\nB: 我们北方默认吃咸的，浇卤汁加葱花，可香了！\nA: 行，那来一碗咸豆腐脑，再来两根刚炸好的油条！\nB: 好嘞，坐那儿稍等，马上端过来！',
+    back: 'A: Boss, a bowl of tofu pudding, sweet or savory?\nB: We in the North default to savory, ladle gravy with scallions, super fragrant!\nA: Alright, then one savory tofu pudding, plus two freshly fried dough sticks!\nB: Right on, take a seat and wait a sec, bringing it right over!',
+    phonetic: 'A: Lǎobǎn, yī wǎn dòufunǎo, tián de háishì xián de?\nB: Wǒmen běifāng mòrèn chī xián de, jiāo lǔzhī jiā cōnghuā, kě xiāng le!\nA: Xíng, nà lái yī wǎn xián dòufunǎo, zài lái liǎng gēn gāng zhà hǎo de yóutiáo!\nB: Hǎo lei, zuò nàr shāoděng, mǎshàng duān guòlái!',
+    grammarNotes: 'Chinese street breakfast: “豆腐脑” (dòufunǎo = tofu pudding; savory 咸 in North, sweet 甜 in South); “油条” (yóutiáo = fried dough sticks); “可香了” (super fragrant).',
+    hint: 'Situation: Ordering traditional breakfast at a street morning stall (早市/早餐摊).',
+    exampleSentences: [
+      { target: '豆浆配油条是绝配。', translation: 'Soy milk paired with fried dough sticks is the perfect match.', phonetic: 'Dòujiāng pèi yóutiáo shì juépèi.' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 师傅，修自行车！我车后轮好像扎破扎胎了。\nB: 我瞧瞧……嗯，扎了根钉子，补个胎十块钱。\nA: 大概要多长时间？\nB: 五分钟就好，把内胎补上打足气就行。\nA: 好的，辛苦您！',
+    back: 'A: Master, bike repair! Seems my bike\'s rear tire is punctured.\nB: Let me take a look... yeah, a nail punctured it, patching the tire is 10 yuan.\nA: About how long will it take?\nB: Five minutes is enough, patch the inner tube and pump it full of air.\nA: Great, thank you for your hard work!',
+    phonetic: 'A: Shīfu, xiū zìxíngchē! Wǒ chē hòulún hǎoxiàng zhāpò zhātāi le.\nB: Wǒ qiáoqiao... èn, zhā le gēn dīngzi, bǔ gè tāi shí kuài qián.\nA: Dàgài yào duō cháng shíjiān?\nB: Wǔ fēnzhōng jiù hǎo, bǎ nèitāi bǔ shàng dǎ zú qì jiù xíng.\nA: Hǎo de, xīnkǔ nín!',
+    grammarNotes: 'Street repairs: “修自行车” (repair bicycle); “扎胎” (zhātāi = flat tire from puncture); “补胎” (patch tire); “打气” (pump air).',
+    hint: 'Situation: Getting a flat bike tire repaired by a roadside mechanic.',
+    exampleSentences: [
+      { target: '师傅，借打气筒打个气！', translation: 'Master, may I borrow the air pump to pump air!', phonetic: 'Shīfu, jiè dǎqìtǒng dǎ gè qì!' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 请问这附近有共享充电宝吗？我手机只剩5%电了。\nB: 旁边便利店门口那个绿色柜机就是怪兽充电宝。\nA: 怎么借啊？\nB: 用微信扫一下柜子上的二维码，付押金就能弹出来。',
+    back: 'A: Excuse me, is there a shared power bank nearby? My phone only has 5% battery left.\nB: The green kiosk machine at the convenience store entrance next door is Monster Powerbank.\nA: How do I borrow it?\nB: Scan the QR code on the machine with WeChat, pay deposit and it pops right out.',
+    phonetic: 'A: Qǐngwèn zhè fùjìn yǒu gòngxiǎng chōngdiànbǎo ma? Wǒ shǒujī zhǐ shèng bǎifēnzhī wǔ diàn le.\nB: Pángbiān biànlìdiàn ménkǒu nàge lǜsè guìjī jiù shì Guàishòu Chōngdiànbǎo.\nA: Zěnme jiè a?\nB: Yòng Wēixìn sǎo yīxià guìzi shàng de èrwéimǎ, fù yājīn jiù néng tán chūlái.',
+    grammarNotes: 'Everyday life saver: “共享充电宝” (shared power bank); “柜机” (kiosk station); “弹出来” (pops out). Essential everywhere in urban China.',
+    hint: 'Situation: Renting an on-the-go power bank when phone battery is dying.',
+    exampleSentences: [
+      { target: '我借个充电宝。', translation: 'I\'ll borrow a power bank.', phonetic: 'Wǒ jiè gè chōngdiànbǎo.' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 师傅，理个发！\nB: 帅哥想怎么剪？剪短点还是修一修？\nA: 两边推平，上面稍微剪短打薄一点就行。\nB: 好的，先去后面洗个头吧！',
+    back: 'A: Master, haircut please!\nB: Handsome, how would you like it cut? Cut it short or just a trim?\nA: Buzz the two sides flat, slightly shorten and thin out the top.\nB: Got it, let\'s go to the back to wash your hair first!',
+    phonetic: 'A: Shīfu, lǐ gè fà!\nB: Shuàigē xiǎng zěnme jiǎn? Jiǎn duǎn diǎn háishì xiū yī xiū?\nA: Liǎngbiān tuī píng, shàngmiàn shāowēi jiǎn duǎn dǎbáo yīdiǎn jiù xíng.\nB: Hǎo de, xiān qù hòumiàn xǐ gè tóu ba!',
+    grammarNotes: 'Barbershop vocabulary (理发店): “理发” (haircut); “两边推平” (fade/buzz sides); “打薄” (thin out hair); “洗头” (wash hair).',
+    hint: 'Situation: Getting a standard haircut at a neighborhood hair salon.',
+    exampleSentences: [
+      { target: '稍微剪短一点就好。', translation: 'Just cut it slightly shorter.', phonetic: 'Shāowēi jiǎn duǎn yīdiǎn jiù hǎo.' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 您好，我来取快递！尾号是5821，名字是李明。\nB: 稍等我查一下……在三号货架第二层，取件码是3-2-15。\nA: 找到了，需要扫码出库吗？\nB: 对，在高拍仪前面照一下条形码即可出库。',
+    back: 'A: Hello, I\'ve come to pick up a package! Last phone digits are 5821, name is Li Ming.\nB: Wait a moment while I check... It\'s on Shelf 3, 2nd tier, pickup code is 3-2-15.\nA: Found it, do I need to scan to check out?\nB: Yes, show the barcode in front of the overhead scanner scanner to confirm checkout.',
+    phonetic: 'A: Nín hǎo, wǒ lái qǔ kuàidì! Wěihào shì wǔ-bā-èr-yī, míngzì shì Lǐ Míng.\nB: Shāoděng wǒ chá yīxià... zài sān hào huòjià dì èr céng, qǔjiànmǎ shì sān-èr-yī-wǔ.\nA: Zhǎodào le, xūyào sǎo mǎ chūkù ma?\nB: Duì, zài gāopàiyí qiánmiàn zhào yīxià tiáoxíngmǎ jíkě chūkù.',
+    grammarNotes: 'Cainiao Station (菜鸟驿站): “取快递” (pick up delivery); “尾号” (last phone digits); “取件码” (pickup code); “扫码出库” (scan out of station).',
+    hint: 'Situation: Picking up an online shopping parcel at a neighborhood parcel station.',
+    exampleSentences: [
+      { target: '我来拿快递。', translation: 'I\'m here to pick up a parcel.', phonetic: 'Wǒ lái ná kuàidì.' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 药剂师你好，我有点感冒发烧，嗓子还特别疼。\nB: 有量过体温吗？发烧多少度？\nA: 刚才量是38.2度。\nB: 给你拿一盒退烧药布洛芬，再配一盒清热解毒的含片，多喝温开水！',
+    back: 'A: Pharmacist hello, I have a bit of a cold and fever, and my throat hurts badly.\nB: Have you taken your temperature? How high is the fever?\nA: Just measured 38.2 degrees Celsius.\nB: I\'ll give you a box of ibuprofen fever reducer, plus a box of soothing throat lozenges, drink plenty of warm water!',
+    phonetic: 'A: Yàojìshī nǐ hǎo, wǒ yǒudiǎn gǎnmào fāshāo, sǎngzi hái tèbié téng.\nB: Yǒu liáng guò tǐwēn ma? Fāshāo duōshǎo dù?\nA: Gāngcái liáng shì sānshíbā diǎn èr dù.\nB: Gěi nǐ ná yī hé tuìshāoyào bùluòfēn, zài pèi yī hé qīngrè jiědú de hánpiàn, duō hē wēn kāishuǐ!',
+    grammarNotes: 'Pharmacy visits (药店): “感冒发烧” (cold and fever); “嗓子疼” (sore throat); “布洛芬” (ibuprofen); “多喝温开水” (the universal Chinese health advice: drink warm boiled water).',
+    hint: 'Situation: Buying over-the-counter medicine for cold and fever at a pharmacy.',
+    exampleSentences: [
+      { target: '我发烧了，需要退烧药。', translation: 'I have a fever, I need fever medication.', phonetic: 'Wǒ fāshāo le, xūyào tuìshāoyào.' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 师傅，我的皮鞋鞋跟掉了，能修补一下吗？\nB: 能修，用专用强力胶粘一下，再钉两颗小钉子。\nA: 多少钱？马上能修好吗？\nB: 五块钱，坐旁边小马扎等三分钟，马上就好！',
+    back: 'A: Master, the heel of my leather shoe came off, can you repair it?\nB: Can fix it, glue it with special heavy-duty adhesive and drive in two small nails.\nA: How much? Can it be repaired right away?\nB: Five yuan, sit on the little folding stool for three minutes, ready in no time!',
+    phonetic: 'A: Shīfu, wǒ de píxié xiégēn diào le, néng xiūbǔ yīxià ma?\nB: Néng xiū, yòng zhuānyòng qiánglìjiāo zhān yīxià, zài dīng liǎng kē xiǎo dīngzi.\nA: Duōshǎo qián? Mǎshàng néng xiūhǎo ma?\nB: Wǔ kuài qián, zuò pángbiān xiǎo mǎzhá děng sān fēnzhōng, mǎshàng jiù hǎo!',
+    grammarNotes: 'Cobbler street stall: “鞋跟掉了” (heel fell off); “强力胶” (super glue); “小马扎” (mǎzhá = traditional Chinese folding stool).',
+    hint: 'Situation: Fixing footwear at a roadside cobbler stall.',
+    exampleSentences: [
+      { target: '师傅，帮我修下鞋。', translation: 'Master, help me fix my shoe.', phonetic: 'Shīfu, bāng wǒ xiū xià xié.' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 阿姨，这个红富士苹果怎么卖？\nB: 六块钱一斤，特别甜，脆得很！\nA: 给我挑四个大一点的。\nB: 好嘞，一共两斤三两，收你十四块钱！',
+    back: 'A: Auntie, how much are these Red Fuji apples?\nB: Six yuan per jin (500g), super sweet and very crisp!\nA: Pick four bigger ones for me.\nB: Right on, two jin and three liang (1.15 kg) total, charging you fourteen yuan!',
+    phonetic: 'A: Āyí, zhège hóngfùshì píngguǒ zěnme mài?\nB: Liù kuài qián yī jīn, tèbié tián, cuì de hěn!\nA: Gěi wǒ tiāo sì gè dà yīdiǎn de.\nB: Hǎo lei, yīgòng liǎng jīn sān liǎng, shōu nǐ shísì kuài qián!',
+    grammarNotes: 'Fruit store shopping: Weight units in China: 1 斤 (jīn) = 500 grams; 1 两 (liǎng) = 50 grams; “脆” (cuì = crispy/crunchy); “挑” (tiāo = pick/choose).',
+    hint: 'Situation: Buying fresh fruit from a street fruit stand.',
+    exampleSentences: [
+      { target: '这个西瓜甜不甜？', translation: 'Is this watermelon sweet?', phonetic: 'Zhège xīguā tián bù tián?' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 师傅，我去东方商厦，请打表！\nB: 好嘞，系好安全带，请问走高架还是走地面？\nA: 走高架吧，快一点。\nB: 行，大概十五分钟到。',
+    back: 'A: Driver, I\'m going to Oriental Commercial Plaza, please run the meter!\nB: Sure thing, buckle up your seatbelt. Elevated highway or surface roads?\nA: Let\'s take the elevated highway, it\'s quicker.\nB: Alright, about fifteen minutes to arrive.',
+    phonetic: 'A: Shīfu, wǒ qù Dōngfāng Shāngshà, qǐng dǎbiǎo!\nB: Hǎo lei, jì hǎo ānquándài, qǐngwèn zǒu gāojià háishì zǒu dìmiàn?\nA: Zǒu gāojià ba, kuài yīdiǎn.\nB: Xíng, dàgài shíwǔ fēnzhōng dào.',
+    grammarNotes: 'Taking taxis: “打表” (dǎbiǎo = run taximeter); “安全带” (seatbelt); “高架” (elevated expressway) vs “地面” (surface streets).',
+    hint: 'Situation: Directing a taxi driver and requesting the meter.',
+    exampleSentences: [
+      { target: '师傅，请打表。', translation: 'Driver, please turn on the meter.', phonetic: 'Shīfu, qǐng dǎbiǎo.' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 您好，请问这附近哪里有工商银行的ATM自动取款机？\nB: 顺着这条街往前走一百米，路口右转就是工行营业厅。\nA: 那里能用外国Visa卡取人民币吗？\nB: 能，只要机器上有Visa标志的都能取。',
+    back: 'A: Hello, where is an ICBC bank ATM machine nearby?\nB: Walk 100 meters ahead along this street, turn right at the intersection for the ICBC branch.\nA: Can I withdraw RMB using a foreign Visa card there?\nB: Yes, as long as the ATM displays the Visa logo you can withdraw.',
+    phonetic: 'A: Nín hǎo, qǐngwèn zhè fùjìn nǎlǐ yǒu Gōngshāng Yínháng de ATM zìdòng qǔkuǎnjī?\nB: Shùn zhe zhè tiáo jiē wǎng qián zǒu yībǎi mǐ, lùkǒu yòuzhuǎn jiù shì Gōngháng yíngyètīng.\nA: Nàlǐ néng yòng wàiguó Visa kǎ qǔ rénmínbì ma?\nB: Néng, zhǐyào jīqì shàng yǒu Visa biāozhì de dōu néng qǔ.',
+    grammarNotes: 'Banking: “自动取款机” (ATM); “工行” (ICBC); “取款 / 取钱” (withdraw money); “外卡取现” (foreign card cash withdrawal).',
+    hint: 'Situation: Finding an international ATM to withdraw cash with a foreign credit card.',
+    exampleSentences: [
+      { target: '我想取点现金。', translation: 'I want to withdraw some cash.', phonetic: 'Wǒ xiǎng qǔ diǎn xiànjīn.' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 阿姨，这件羊毛衫能水洗吗？\nB: 千万不能水洗，会缩水变形的，必须干洗。\nA: 洗一件羊毛衫多少钱？\nB: 普通羊毛衫二十五，后天下午凭单子来取。',
+    back: 'A: Auntie, can this wool sweater be water washed?\nB: Absolutely cannot water wash, it will shrink and deform, must be dry cleaned.\nA: How much to clean a wool sweater?\nB: Regular wool sweater is 25 yuan, pick it up day after tomorrow afternoon with your ticket.',
+    phonetic: 'A: Āyí, zhè jiàn yángmáoshān néng shuǐxǐ ma?\nB: Qiānwàn bùnéng shuǐxǐ, huì suōshuǐ biànxíng de, bìxū gānxǐ.\nA: Xǐ yī jiàn yángmáoshān duōshǎo qián?\nB: Pǔtōng yángmáoshān èrshíwǔ, hòutiān xiàwǔ píng dānzi lái qǔ.',
+    grammarNotes: 'Laundry care: “干洗” (dry clean); “水洗” (water wash); “缩水” (shrink); “凭单子取” (pick up with the receipt/slip).',
+    hint: 'Situation: Dropping off delicate wool clothing at a neighborhood dry cleaners.',
+    exampleSentences: [
+      { target: '这件衣服需要干洗。', translation: 'This garment needs to be dry-cleaned.', phonetic: 'Zhè jiàn yīfu xūyào gānxǐ.' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 老板，一碗肉丝炒面！少放油，不要味精。\nB: 好嘞！面里要加辣吗？桌上有醋和辣椒油。\nA: 不加辣，我自己加点醋就行。\nB: 没问题，炒面马上出锅！',
+    back: 'A: Boss, one shredded pork fried noodles! Light on oil, no MSG.\nB: Right on! Do you want chili in the noodles? Vinegar and chili oil are on the table.\nA: No chili, I\'ll just add a splash of vinegar myself.\nB: No problem, fried noodles coming right out of the wok!',
+    phonetic: 'A: Lǎobǎn, yī wǎn ròusī chǎomiàn! Shǎo fàng yóu, bùyào wèijīng.\nB: Hǎo lei! Miàn lǐ yào jiā là ma? Zhuō shàng yǒu cù hé làjiāoyóu.\nA: Bù jiā là, wǒ zìjǐ jiā diǎn cù jiù xíng.\nB: Méi wèntí, chǎomiàn mǎshàng chūguō!',
+    grammarNotes: 'Casual food customization: “少放油” (less oil); “味精” (MSG); “香醋” (aromatic black vinegar); “马上出锅” (fresh out of the wok).',
+    hint: 'Situation: Ordering customized stir-fried noodles at a street eatery.',
+    exampleSentences: [
+      { target: '请不要放味精。', translation: 'Please do not add MSG.', phonetic: 'Qǐng bùyào fàng wèijīng.' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 师傅，我去机场，坐几号线地铁最快？\nB: 坐二号线直达，或者坐二号线到龙阳路转磁悬浮。\nA: 磁悬浮票价多少？多长时间能到？\nB: 凭当天机票只要四十块，八分钟就能飙到机场！',
+    back: 'A: Master, I\'m heading to the airport, which subway line is fastest?\nB: Take Line 2 directly, or take Line 2 to Longyang Road and transfer to Maglev.\nA: How much is the Maglev ticket? How long does it take?\nB: Only 40 yuan with same-day flight ticket, shoots to the airport in 8 minutes!',
+    phonetic: 'A: Shīfu, wǒ qù jīchǎng, zuò jǐ hào xiàn dìtiě zuì kuài?\nB: Zuò èr hào xiàn zhídá, huòzhě zuò èr hào xiàn dào Lóngyáng Lù zhuǎn cíxuánfú.\nA: Cíxuánfú piàojià duōshǎo? Duō cháng shíjiān néng dào?\nB: Píng dàngtiān jīpiào zhǐyào sìshí kuài, bā fēnzhōng jiù néng biāo dào jīchǎng!',
+    grammarNotes: 'Urban transport: “直达” (direct/non-stop); “换乘 / 转” (transfer lines); “磁悬浮” (cíxuánfú = Maglev train); “凭机票” (with airline ticket).',
+    hint: 'Situation: Getting airport transit directions and Maglev train advice.',
+    exampleSentences: [
+      { target: '去机场怎么走最快？', translation: 'What\'s the fastest way to get to the airport?', phonetic: 'Qù jīchǎng zěnme zǒu zuì kuài?' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 您好，请问这趟105路公交车到人民广场吗？\nB: 到的，请上车扫乘车码，两块钱一位。\nA: 刷支付宝乘车码可以吗？\nB: 可以，对准那个扫码镜头照一下就行。',
+    back: 'A: Hello, does this Bus 105 go to People\'s Square?\nB: Yes it does, please board and scan your transit QR code, two yuan per person.\nA: Can I scan the Alipay bus ride transit code?\nB: Yes, just align and scan in front of that camera scanner.',
+    phonetic: 'A: Nín hǎo, qǐngwèn zhè tàng yībǎi-líng-wǔ lù gōngjiāochē dào Rénmín Guǎngchǎng ma?\nB: Dào de, qǐng shàngchē sǎo chéngchēmǎ, liǎng kuài qián yī wèi.\nA: Shuā Zhīfùbǎo chéngchēmǎ kěyǐ ma?\nB: Kěyǐ, duìzhǔn nàge sǎomǎ jìngtóu zhào yīxià jiù xíng.',
+    grammarNotes: 'Taking city buses: “公交车” (city bus); “乘车码” (transit QR code on Alipay/WeChat); “两块钱一位” (2 yuan per passenger flat fare).',
+    hint: 'Situation: Asking bus route destinations and scanning phone transit code.',
+    exampleSentences: [
+      { target: '这趟车到火车站吗？', translation: 'Does this bus go to the train station?', phonetic: 'Zhè tàng chē dào huǒchēzhàn ma?' }
+    ]
+  },
+  {
+    languageId: 'chinese',
+    topicId: 'dialogues-conversations',
+    difficulty: 'A1',
+    cardType: 'dialogue',
+    front: 'A: 请问这附近有洗手间吗？\nB: 直走五十米，左手边商场一楼里面有免费卫生间。\nA: 谢谢！需要扫码或者门禁吗？\nB: 不需要，直接推门进去就可以。',
+    back: 'A: Excuse me, is there a restroom nearby?\nB: Go straight 50 meters, inside the 1st floor of the mall on your left has free public toilets.\nA: Thank you! Does it require a QR code or access key?\nB: Not needed, you can just push the door and walk right in.',
+    phonetic: 'A: Qǐngwèn zhè fùjìn yǒu xǐshǒujiān ma?\nB: Zhí zǒu wǔshí mǐ, zuǒshǒubiān shāngchǎng yī lóu lǐmiàn yǒu miǎnfèi wèishēngjiān.\nA: Xièxiè! Xūyào sǎo mǎ huòzhě ménjìn ma?\nB: Bù xūyào, zhíjiē tuīmén jìnqù jiù kěyǐ.',
+    grammarNotes: 'Public restrooms: “洗手间 / 卫生间” (polite restroom terms); “左手边” (on the left-hand side); “推门” (push the door).',
+    hint: 'Situation: Asking a pedestrian for the nearest public restroom in a shopping district.',
+    exampleSentences: [
+      { target: '洗手间在左边。', translation: 'The restroom is on the left.', phonetic: 'Xǐshǒujiān zài zuǒbiān.' }
+    ]
+  },
 {
     languageId: 'german',
     topicId: 'dialogues-conversations',

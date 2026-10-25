@@ -3278,6 +3278,216 @@ export const DIALOGUE_SEEDS: CurriculumSeed[] = [
       { target: "高兴还来不及呢！", translation: "I'm more than happy to do so!", phonetic: "Gāoxìng hái láibují ne!" }
     ]
   },
+  {
+    languageId: "chinese",
+    topicId: "dialogues-conversations",
+    difficulty: "A1",
+    cardType: "dialogue",
+    front: "A: 你好，打扰一下，请问这附近哪儿有好喝的奶茶？\nB: 前面右拐有一家茶百道和霸王茶姬。\nA: 谢谢你！看你手里这杯好像很好喝，推荐哪个？\nB: 我手里的伯牙绝弦挺好喝的，微糖少冰刚刚好。",
+    back: "A: Hello, excuse me, where nearby is there good bubble tea?\nB: Turn right ahead, there is a ChaPanda and a CHAGEE.\nA: Thank you! The one in your hand looks delicious, which do you recommend?\nB: The 'Boya Juexian' in my hand is pretty good, slight sugar and less ice is just right.",
+    phonetic: "A: Nǐ hǎo, dǎrǎo yīxià, qǐngwèn zhè fùjìn nǎr yǒu hǎohē de nǎichá?\nB: Qiánmiàn yòuguǎi yǒu yī jiā Chábǎidào hé Bàwángchájī.\nA: Xièxiè nǐ! Kàn nǐ shǒulǐ zhè bēi hǎoxiàng hěn hǎohē, tuījiàn nǎge?\nB: Wǒ shǒulǐ de Bóyá Juéxián tǐng hǎohē de, wēitáng shǎobīng gānggāng hǎo.",
+    grammarNotes: "Zero-risk natural opener: asking a local girl for her favorite milk tea recommendation. CHAGEE (霸王茶姬) and ChaPanda are top modern brands.",
+    hint: "Step 1: Low-pressure milk tea recommendation opener.",
+    exampleSentences: [
+      { target: "你推荐哪一个？", translation: "Which one do you recommend?", phonetic: "Nǐ tuījiàn nǎ yī gè?" }
+    ]
+  },
+  {
+    languageId: "chinese",
+    topicId: "dialogues-conversations",
+    difficulty: "A1",
+    cardType: "dialogue",
+    front: "A: 其实……我刚才看到你，觉得你特别可爱，很想认识你。\nB: 啊，谢谢你！\nA: 可以加你一个微信吗？改天请你喝杯奶茶。\nB: 可以呀，你扫我的二维码吧。",
+    back: "A: Actually... I saw you just now and thought you were really cute, I really wanted to get to know you.\nB: Ah, thank you!\nA: Can I add your WeChat? I'd love to treat you to milk tea another day.\nB: Sure, scan my QR code.",
+    phonetic: "A: Qíshí…… wǒ gāngcái kàn dào nǐ, juéde nǐ tèbié kě'ài, hěn xiǎng rènshí nǐ.\nB: A, xièxiè nǐ!\nA: Kěyǐ jiā nǐ yī gè Wēixìn ma? Gǎitiān qǐng nǐ hē bēi nǎichá.\nB: Kěyǐ ya, nǐ sǎo wǒ de èrwéimǎ ba.",
+    grammarNotes: "The cleanest direct street approach: “觉得你特别可爱，很想认识你” followed by “加你一个微信” (add your WeChat). Polite, bold, yet respectful.",
+    hint: "Step 2: Asking directly and sweetly for her WeChat.",
+    exampleSentences: [
+      { target: "可以加你的微信吗？", translation: "May I add your WeChat?", phonetic: "Kěyǐ jiā nǐ de Wēixìn ma?" }
+    ]
+  },
+  {
+    languageId: "chinese",
+    topicId: "dialogues-conversations",
+    difficulty: "A1",
+    cardType: "dialogue",
+    front: "A: 我是通过好友申请的大卫，今天很高兴遇到你！\nB: 哈哈你好，通过啦！\nA: 到了家记得说一声哦，注意安全。\nB: 好的，我已经到家啦，谢谢关心！",
+    back: "A: I'm David from the friend request, so happy to run into you today!\nB: Haha hello, accepted!\nA: Remember to let me know when you get home, stay safe.\nB: Okay, I've arrived home, thanks for caring!",
+    phonetic: "A: Wǒ shì tōngguò hǎoyǒu shēnqǐng de Dàwèi, jīntiān hěn gāoxìng yù dào nǐ!\nB: Hāhā nǐ hǎo, tōngguò la!\nA: Dào le jiā jìde shuō yī shēng o, zhùyì ānquán.\nB: Hǎo de, wǒ yǐjīng dào jiā la, xièxiè guānxīn!",
+    grammarNotes: "First text rule: establish identity, show courteous care without being suffocating (*“注意安全 / 到了家说一声”*).",
+    hint: "Step 3: First WeChat message right after exchanging contacts.",
+    exampleSentences: [
+      { target: "到了家记得说一声。", translation: "Remember to let me know when you get home.", phonetic: "Dào le jiā jìde shuō yī shēng." }
+    ]
+  },
+  {
+    languageId: "chinese",
+    topicId: "dialogues-conversations",
+    difficulty: "A1",
+    cardType: "dialogue",
+    front: "A: 周末有空吗？我知道一家日落特别美的咖啡馆，一起去喝一杯？\nB: 这周六下午我有空呀。\nA: 那太好了，周六下午三点我去接你，可以吗？\nB: 好呀，那一言为定！",
+    back: "A: Are you free this weekend? I know a café with a gorgeous sunset, want to grab a drink together?\nB: I'm free this Saturday afternoon.\nA: Wonderful, can I come pick you up at 3 PM on Saturday?\nB: Sure, it's a promise then!",
+    phonetic: "A: Zhōumò yǒu kòng ma? Wǒ zhīdào yī jiā rìluò tèbié měi de kāfēiguǎn, yīqǐ qù hē yī bēi?\nB: Zhè zhōuliù xiàwǔ wǒ yǒu kòng ya.\nA: Nà tài hǎo le, zhōuliù xiàwǔ sān diǎn wǒ qù jiē nǐ, kěyǐ ma?\nB: Hǎo ya, nà yī yán wéi dìng!",
+    grammarNotes: "“一言为定” (yī yán wéi dìng = it's a deal / settled!); “有空吗” (are you free). Specific time + specific activity makes dates easy to accept.",
+    hint: "Step 4: Setting up the first casual weekend afternoon date.",
+    exampleSentences: [
+      { target: "那一言为定！", translation: "It is a deal then!", phonetic: "Nà yī yán wéi dìng!" }
+    ]
+  },
+  {
+    languageId: "chinese",
+    topicId: "dialogues-conversations",
+    difficulty: "A1",
+    cardType: "dialogue",
+    front: "A: 你今天化了淡妆，比照片上还要漂亮迷人。\nB: 哪有啦，今天出门有点匆忙。\nA: 小心脚下台阶，把手给我，牵着你走。\nB: 嘻嘻，你的手好大、好暖和。",
+    back: "A: You did light makeup today, even prettier and more charming than in your photos.\nB: Not really, I rushed out the door a bit today.\nA: Careful of the steps underfoot, give me your hand, let me guide you.\nB: Hehe, your hands are so big and warm.",
+    phonetic: "A: Nǐ jīntiān huà le dànzhuāng, bǐ zhàopiàn shàng hái yào piàoliang mírén.\nB: Nǎ yǒu la, jīntiān chūmén yǒudiǎn cōngmáng.\nA: Xiǎoxīn jiǎoxià táijiē, bǎ shǒu gěi wǒ, qiān zhe nǐ zǒu.\nB: Xīxī, nǐ de shǒu hǎo dà, hǎo nuǎnhuo.",
+    grammarNotes: "“牵着你走” (holding hands while walking); “小心脚下” (watch your step). Using natural situational assistance to break the touch barrier effortlessly.",
+    hint: "Step 5: Natural hand-holding transition while walking.",
+    exampleSentences: [
+      { target: "把手给我。", translation: "Give me your hand.", phonetic: "Bǎ shǒu gěi wǒ." }
+    ]
+  },
+  {
+    languageId: "chinese",
+    topicId: "dialogues-conversations",
+    difficulty: "A1",
+    cardType: "dialogue",
+    front: "A: 尝尝这杯鸡尾酒，甜甜的，有水蜜桃和薄荷的味道。\nB: 哇，真的很好喝耶！你尝一口我的？\nA: 确实很甜，不过……没有你甜。\nB: 哎呀！你干嘛突然这么撩人！",
+    back: "A: Taste this cocktail, it's sweet, with peach and mint notes.\nB: Wow, it really is delicious! Take a sip of mine?\nA: Indeed very sweet, but... not as sweet as you.\nB: Oh my goodness! Why are you suddenly being so flirtatiously charming!",
+    phonetic: "A: Chángchang zhè bēi jīwěijiǔ, tiántián de, yǒu shuǐmìtáo hé bòhe de wèidào.\nB: Wa, zhēn de hěn hǎohē ye! Nǐ cháng yīkǒu wǒ de?\nA: Quèshí hěn tián, bùguò…… méiyǒu nǐ tián.\nB: Āiyā! Nǐ gànmá tūrán zhème liáorén!",
+    grammarNotes: "Sharing drinks (*“尝一口我的”*) signifies clear mutual physical comfort. “撩人” (liáorén = flirtatious / seductive).",
+    hint: "Step 6: Sharing drinks and escalating playful flirtation.",
+    exampleSentences: [
+      { target: "你干嘛这么撩人！", translation: "Why are you being so seductive/flirty!", phonetic: "Nǐ gànmá zhème liáorén!" }
+    ]
+  },
+  {
+    languageId: "chinese",
+    topicId: "dialogues-conversations",
+    difficulty: "A1",
+    cardType: "dialogue",
+    front: "A: 现在时间还早，要不要去我家里坐坐？我调一杯独家热红酒给你喝。\nB: 去你家？你家里方便吗？\nA: 特别方便，我家阳台夜景很美，而且还有暖气。\nB: 那好吧，不过我坐一会儿就要回家哦！\nA: 没问题，听你的。",
+    back: "A: It's still early, want to come sit at my place for a bit? I'll make you my special hot mulled wine.\nB: Go to your place? Is your home convenient?\nA: Super convenient, my balcony night view is gorgeous, and there's heating.\nB: Alright then, but I can only stay for a little while before heading home!\nA: No problem, whatever you say.",
+    phonetic: "A: Xiànzài shíjiān hái zǎo, yào bù yào qù wǒ jiālǐ zuòzuo? Wǒ tiáo yī bēi dújiā rè hóngjiǔ gěi nǐ hē.\nB: Qù nǐ jiā? Nǐ jiālǐ fāngbiàn ma?\nA: Tèbié fāngbiàn, wǒ jiā yángtái yèjǐng hěn měi, érqiě hái yǒu nuǎnqì.\nB: Nà hǎo ba, bùguò wǒ zuò yīhuìr jiù yào huíjiā o!\nA: Méi wèntí, tīng nǐ de.",
+    grammarNotes: "Girls often say “坐一会儿就要走” (I can only stay a little bit) as social self-protection (*给台阶*). Never argue; simply agree relaxedly (*“没问题，听你的”*).",
+    hint: "Step 7: The smooth invitation home with plausible reasons.",
+    exampleSentences: [
+      { target: "去我家里坐坐吧？", translation: "How about coming to my place to sit for a while?", phonetic: "Qù wǒ jiālǐ zuòzuo ba?" }
+    ]
+  },
+  {
+    languageId: "chinese",
+    topicId: "dialogues-conversations",
+    difficulty: "A1",
+    cardType: "dialogue",
+    front: "A: 进来吧，把外套脱了挂这里，家里暖气挺热的。\nB: 哇，你家里好香啊，是香薰的味道吗？\nA: 对，特意点的白茶香薰。你坐在沙发上，我去拿喝的。\nB: 感觉在你家好放松、好惬意。",
+    back: "A: Come on in, take off your coat and hang it here; heating inside is quite warm.\nB: Wow, your home smells so nice, is it an aroma diffuser?\nA: Yes, specially lit white tea aroma. Sit on the sofa, I'll grab drinks.\nB: I feel so relaxed and cozy at your place.",
+    phonetic: "A: Jìnlái ba, bǎ wàitào tuō le guà zhèlǐ, jiālǐ nuǎnqì tǐng rè de.\nB: Wa, nǐ jiālǐ hǎo xiāng a, shì xiāngxūn de wèidào ma?\nA: Duì, tèyì diǎn de báichá xiāngxūn. Nǐ zuò zài shāfā shàng, wǒ qù ná hē de.\nB: Gǎnjué zài nǐ jiā hǎo fàngsōng, hǎo qièyì.",
+    grammarNotes: "Taking off heavy outerwear (*脱外套*), lighting aroma diffusers (*香薰*), and seating her comfortably on the sofa sets a tranquil, safe environment.",
+    hint: "Step 8: Welcoming her into your apartment with cozy sensory details.",
+    exampleSentences: [
+      { target: "把外套脱了吧。", translation: "Take off your coat.", phonetic: "Bǎ wàitào tuō le ba." }
+    ]
+  },
+  {
+    languageId: "chinese",
+    topicId: "dialogues-conversations",
+    difficulty: "A1",
+    cardType: "dialogue",
+    front: "A: 坐过来一点嘛，离我那么远干什么，我又不会吃了你。\nB: 谁怕你了，坐近就坐近！\nA: 靠近了看，你的皮肤真好，眼睛睫毛好长。\nB: 你干嘛靠这么近看我，心跳都加速了……",
+    back: "A: Sit a little closer, why sit so far from me? It's not like I'm going to eat you.\nB: Who's afraid of you! I'll sit closer then!\nA: Looking close up, your skin is so good, and your eyelashes are so long.\nB: Why are you looking at me from so close, my heart rate is speeding up...",
+    phonetic: "A: Zuò guòlái yīdiǎn ma, lí wǒ nàme yuǎn gàn shénme, wǒ yòu bù huì chī le nǐ.\nB: Shuí pà nǐ le, zuò jìn jiù zuò jìn!\nA: Kàojìn le kàn, nǐ de pífū zhēn hǎo, yǎnjing jiémáo hǎo cháng.\nB: Nǐ gànmá kào zhème jìn kàn wǒ, xīntiào dōu jiāsù le……",
+    grammarNotes: "“我又不会吃了你” (I won't eat you = harmless classic tease); “坐过来一点” (sit a bit closer). Moving proximity naturally on the couch.",
+    hint: "Step 9: Playful couch banter closing the physical gap.",
+    exampleSentences: [
+      { target: "坐过来一点嘛。", translation: "Sit a little closer to me.", phonetic: "Zuò guòlái yīdiǎn ma." }
+    ]
+  },
+  {
+    languageId: "chinese",
+    topicId: "dialogues-conversations",
+    difficulty: "A1",
+    cardType: "dialogue",
+    front: "A: 可以抱抱你吗？\nB: 嗯……可以。\nA: 你身上好香，抱起来好舒服。\nB: 唔……（轻声）闭上眼睛……\nA: 我可以吻你吗？\nB: 傻瓜，这种事还要问……",
+    back: "A: May I hug you?\nB: Mmm... yes you may.\nA: You smell so wonderful, hugging you feels so good.\nB: Mmh... (whispering) close your eyes...\nA: May I kiss you?\nB: Silly, you don't even need to ask about something like this...",
+    phonetic: "A: Kěyǐ bào bao nǐ ma?\nB: Èn…… kěyǐ.\nA: Nǐ shēnshàng hǎo xiāng, bào qǐlái hǎo shūfu.\nB: Wù…… (qīngshēng) bì shàng yǎnjing……\nA: Wǒ kěyǐ wěn nǐ ma?\nB: Shǎguā, zhè zhǒng shì hái yào wèn……",
+    grammarNotes: "“傻瓜，还要问” (Silly, why even ask!) is the classic affectionate green light in Chinese romance. Hugging first (*抱抱你*) builds comfort before kissing (*吻你*).",
+    hint: "Step 10: Hugging, asking permission, and the first kiss.",
+    exampleSentences: [
+      { target: "我可以吻你吗？", translation: "May I kiss you?", phonetic: "Wǒ kěyǐ wěn nǐ ma?" }
+    ]
+  },
+  {
+    languageId: "chinese",
+    topicId: "dialogues-conversations",
+    difficulty: "A1",
+    cardType: "dialogue",
+    front: "A: 沙发坐久了腰酸，去卧室床上躺着吧，床垫特别软。\nB: 去卧室躺着？你可别乱来哦。\nA: 放心，只想跟你抱在一起好好说说话。\nB: 那好吧，抱我过去。",
+    back: "A: Sitting on the couch too long hurts the back; let's go lie on the bedroom bed, the mattress is super soft.\nB: Lie on the bed in the bedroom? Don't you try anything naughty.\nA: Rest assured, I only want to cuddle with you and talk nicely.\nB: Alright then, carry me over.",
+    phonetic: "A: Shāfā zuò jiǔ le yāosuān, qù wòshì chuáng shàng tǎng zhe ba, chuángdiàn tèbié ruǎn.\nB: Qù wòshì tǎng zhe? Nǐ kě bié luànlái o.\nA: Fàngxīn, zhǐ xiǎng gēn nǐ bào zài yīqǐ hǎohǎo shuōshuohuà.\nB: Nà hǎo ba, bào wǒ guòqù.",
+    grammarNotes: "“去卧室床上躺着” (lie on the bed in bedroom); “别乱来” (don't get wild / teasing boundary); “抱我过去” (carry/hug me over - green light).",
+    hint: "Step 11: Smoothly transitioning from couch to bedroom.",
+    exampleSentences: [
+      { target: "抱我过去吧。", translation: "Carry/hug me over.", phonetic: "Bào wǒ guòqù ba." }
+    ]
+  },
+  {
+    languageId: "chinese",
+    topicId: "dialogues-conversations",
+    difficulty: "A1",
+    cardType: "dialogue",
+    front: "A: 今晚留在这一起睡，好不好？我想一直抱着你。\nB: 可是我没有卸妆，也没有换洗衣服……\nA: 没关系，我准备了全新的一次性洗漱用品和干净的睡衣，都准备好了。\nB: 你……你是不是早有预谋？\nA: 面对喜欢的女孩子，任何男生都会心动的。",
+    back: "A: Stay here tonight and sleep together, okay? I want to keep holding you.\nB: But I didn't remove makeup, and don't have fresh clothes...\nA: Doesn't matter, I prepared brand new disposable toiletries and clean sleepwear, all ready.\nB: You... did you plan this all along?\nA: Facing a girl he loves, any guy's heart would race.",
+    phonetic: "A: Jīnwǎn liú zài zhè yīqǐ shuì, hǎo bù hǎo? Wǒ xiǎng yīzhí bào zhe nǐ.\nB: Kěshì wǒ méiyǒu xièzhuāng, yě méiyǒu huànxǐ yīfu……\nA: Méi guānxi, wǒ zhǔnbèi le quánxīn de yīcìxìng xǐshù yòngpǐn hé gānjìng de shuìyī, dōu zhǔnbèi hǎo le.\nB: Nǐ…… nǐ shì bù shì zǎoyǒu yùmóu?\nA: Miànduì xǐhuan de nǚháizi, rènhé nánshēng dōu huì xīndòng de.",
+    grammarNotes: "“早有预谋” (planned all along - teasing accusation); solving all practical objections (toiletries, pajamas) calmly and affectionately.",
+    hint: "Step 12: Bedroom invitation addressing practical objections gently.",
+    exampleSentences: [
+      { target: "今晚留下来，好不好？", translation: "Stay tonight, alright?", phonetic: "Jīnwǎn liú xiàlái, hǎo bù hǎo?" }
+    ]
+  },
+  {
+    languageId: "chinese",
+    topicId: "dialogues-conversations",
+    difficulty: "A1",
+    cardType: "dialogue",
+    front: "A: 会紧张吗？如果不舒服或者害怕，随时告诉我。\nB: 有一点点害羞，把灯光再调暗一点好不好？\nA: 好，听你的。别紧张，有我在呢。\nB: 抱着你好有安全感……吻我吧。",
+    back: "A: Are you nervous? If you feel uncomfortable or scared, tell me anytime.\nB: Just a tiny bit shy, can you dim the lights a bit more, please?\nA: Sure, whatever you wish. Don't be nervous, I'm right here with you.\nB: Holding you gives me such a sense of security... kiss me.",
+    phonetic: "A: Huì jǐnzhāng ma? Rúguǒ bù shūfu huòzhě hàipà, suíshí gàosu wǒ.\nB: Yǒu yīdiǎndiǎn hàixiū, bǎ dēngguāng zài tiáo àn yīdiǎn hǎo bù hǎo?\nA: Hǎo, tīng nǐ de. Bié jǐnzhāng, yǒu wǒ zài ne.\nB: Bào zhe nǐ hǎo yǒu ānquángǎn…… wěn wǒ ba.",
+    grammarNotes: "Verbal check-in (*“随时告诉我”*) is the pinnacle of emotional security (*安全感*). Dimming the lights (*调暗灯光*) eases shyness.",
+    hint: "Step 13: Tender check-in, dimming lights, and mutual intimacy.",
+    exampleSentences: [
+      { target: "别紧张，有我在呢。", translation: "Don't be nervous, I'm right here with you.", phonetic: "Bié jǐnzhāng, yǒu wǒ zài ne." }
+    ]
+  },
+  {
+    languageId: "chinese",
+    topicId: "dialogues-conversations",
+    difficulty: "A1",
+    cardType: "dialogue",
+    front: "A: 累了吧？喝点温水，盖好被子别着凉。\nB: 嗯……头好沉，只想枕在你胳膊上睡。\nA: 枕着吧，今晚我是你的专属抱枕。\nB: 谢谢你今晚这么温柔，晚安，亲爱的。",
+    back: "A: Tired? Drink some warm water, tuck in the quilt so you don't catch a cold.\nB: Mmh... my head feels heavy, I only want to sleep pillowed on your arm.\nA: Rest on it, tonight I'm your exclusive body pillow.\nB: Thank you for being so tender tonight, good night, darling.",
+    phonetic: "A: Lèi le ba? Hē diǎn wēnshuǐ, gài hǎo bèizi bié zháoliáng.\nB: Èn…… tóu hǎo chén, zhǐ xiǎng zhěn zài nǐ gēbo shàng shuì.\nA: Zhěn zhe ba, jīnwǎn wǒ shì nǐ de zhuānshǔ bàozhěn.\nB: Xièxiè nǐ jīnwǎn zhème wēnróu, wǎn'ān, qīn'ài de.",
+    grammarNotes: "Post-intimacy care: offering warm water, tucking the quilt (*盖被子*), offering your arm as a pillow (*枕在胳膊上*). Solidifies true emotional bonding.",
+    hint: "Step 14: Caring pillow talk and tucking in together.",
+    exampleSentences: [
+      { target: "盖好被子别着凉。", translation: "Tuck the blanket well so you don't catch cold.", phonetic: "Gài hǎo bèizi bié zháoliáng." }
+    ]
+  },
+  {
+    languageId: "chinese",
+    topicId: "dialogues-conversations",
+    difficulty: "A1",
+    cardType: "dialogue",
+    front: "A: 早安宝贝！看你睡得正香，没舍得叫醒你。\nB: 早！天哪都十点了，我起晚了！\nA: 没关系，周末就是用来睡懒觉的。洗漱一下，我做了热腾腾的面条。\nB: 呜呜你太好了，我发现我越来越离不开你了！",
+    back: "A: Good morning baby! Saw you sleeping so sweetly, didn't have the heart to wake you.\nB: Morning! Gosh it's already 10 AM, I woke up late!\nA: It's fine, weekends are made for sleeping in. Go wash up, I made steaming hot noodles.\nB: Aww you are so wonderful, I find myself getting more and more attached to you!",
+    phonetic: "A: Zǎo'ān bǎobèi! Kàn nǐ shuì de zhèng xiāng, méi shěde jiàoxǐng nǐ.\nB: Zǎo! Tiān na dōu shí diǎn le, wǒ qǐ wǎn le!\nA: Méi guānxi, zhōumò jiù shì yònglái shuì lǎnjiào de. Xǐshù yīxià, wǒ zuò le rèténgténg de miàntiáo.\nB: Wūwū nǐ tài hǎo le, wǒ fāxiàn wǒ yuèláiyuè líbukāi nǐ le!",
+    grammarNotes: "The morning after defines whether you're just a one-night encounter or her future boyfriend. Making warm breakfast (*热腾腾的面条*) and using term of endearment (*宝贝*) shows deep respect.",
+    hint: "Step 15: Morning after breakfast and affectionate bonding.",
+    exampleSentences: [
+      { target: "早安宝贝！", translation: "Good morning baby!", phonetic: "Zǎo'ān bǎobèi!" }
+    ]
+  },
 {
     languageId: 'german',
     topicId: 'dialogues-conversations',

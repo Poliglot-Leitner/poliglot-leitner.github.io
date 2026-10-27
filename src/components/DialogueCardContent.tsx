@@ -150,6 +150,7 @@ export const DialogueCardContent: React.FC<DialogueCardContentProps> = ({
           <button
             type="button"
             onClick={handlePlayAll}
+            onPointerDown={e => e.stopPropagation()}
             title="Play entire conversation natively"
             className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold bg-purple-50 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800/80 hover:bg-purple-100 dark:hover:bg-purple-900/50 cursor-pointer transition-all active:scale-95 shadow-2xs"
           >
@@ -196,6 +197,7 @@ export const DialogueCardContent: React.FC<DialogueCardContentProps> = ({
                     <button
                       type="button"
                       onClick={(e) => handlePlayTurn(idx, turn.target, e)}
+                      onPointerDown={e => e.stopPropagation()}
                       title={`Listen to Speaker ${turn.speaker}`}
                       className="p-1 rounded-md text-zinc-400 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-white/80 dark:hover:bg-zinc-900/80 transition-all cursor-pointer"
                     >

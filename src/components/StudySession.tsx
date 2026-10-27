@@ -92,6 +92,8 @@ export const StudySession: React.FC<StudySessionProps> = ({
   const [flyDirection, setFlyDirection] = useState<'left' | 'right' | null>(null);
   const dragStartRef = useRef<{ x: number; y: number; time: number } | null>(null);
   const isHorizontalSwipeRef = useRef<boolean | null>(null);
+  const hasSwipedRef = useRef(false);
+  const lastFlipTimeRef = useRef(0);
 
   const { speak, isSpeaking, isSupported: speechSupported } = useSpeech();
 
@@ -118,6 +120,9 @@ export const StudySession: React.FC<StudySessionProps> = ({
   }, [speak, isReverseMode, targetLangCode]);
 
   const handleFlip = useCallback(() => {
+    const now = Date.now();
+    if (now - lastFlipTimeRef.current < 180) return; // Prevent accidental rapid double flip
+    lastFlipTimeRef.current = now;
     setIsFlipped(prev => !prev);
   }, []);
 
@@ -207,21 +212,33 @@ export const StudySession: React.FC<StudySessionProps> = ({
   }, [currentCard, currentIndex, cards.length, sessionResults]);
 
   // Pointer / Touch Swipe Handlers
-  const handlePointerDown = (e: React.PointerEvent) => {
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if (e.button !== 0 && e.pointerType === 'mouse') return;
+    const target = e.target as HTMLElement;
+    if (target.closest('button, a, input, [role="button"]')) {
+      return;
+    }
+
     dragStartRef.current = { x: e.clientX, y: e.clientY, time: Date.now() };
     isHorizontalSwipeRef.current = null;
+    hasSwipedRef.current = false;
     setIsDragging(true);
     setDragOffset(0);
+
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch {
+      // ignore
+    }
   };
 
-  const handlePointerMove = (e: React.PointerEvent) => {
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!dragStartRef.current || !isDragging) return;
     const diffX = e.clientX - dragStartRef.current.x;
     const diffY = e.clientY - dragStartRef.current.y;
 
     if (isHorizontalSwipeRef.current === null) {
-      if (Math.abs(diffX) > 6 || Math.abs(diffY) > 6) {
+      if (Math.abs(diffX) > 8 || Math.abs(diffY) > 8) {
         isHorizontalSwipeRef.current = Math.abs(diffX) > Math.abs(diffY);
       }
     }
@@ -231,49 +248,98 @@ export const StudySession: React.FC<StudySessionProps> = ({
     }
   };
 
-  const handlePointerUp = () => {
-    if (!dragStartRef.current) return;
+  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+      try {
+        e.currentTarget.releasePointerCapture(e.pointerId);
+      } catch {
+        // ignore
+      }
+    }
+
+    if (!dragStartRef.current) {
+      setIsDragging(false);
+      setDragOffset(0);
+      return;
+    }
+
+    const start = dragStartRef.current;
+    const diffX = e.clientX - start.x;
+    const diffY = e.clientY - start.y;
+    const duration = Math.max(Date.now() - start.time, 1);
+    const totalDist = Math.hypot(diffX, diffY);
     const wasHorizontal = isHorizontalSwipeRef.current;
     const offset = dragOffset;
-    const duration = Date.now() - dragStartRef.current.time;
-    const velocity = Math.abs(offset) / Math.max(duration, 1);
+    const velocity = Math.abs(offset) / duration;
 
     dragStartRef.current = null;
     isHorizontalSwipeRef.current = null;
     setIsDragging(false);
 
-    // Minor movement (< 8px) is a clean tap to flip
-    if (Math.abs(offset) < 8) {
-      setDragOffset(0);
-      handleFlip();
-      return;
-    }
+    // 1. Intentional horizontal swipe to review sooner or later:
+    // Requires clear horizontal movement (>= 65px, or >= 45px with quick flick velocity > 0.45).
+    // Minor movements (< 40px) CANNOT trigger a swipe or grade!
+    const isIntentionalSwipe =
+      wasHorizontal &&
+      (Math.abs(offset) >= 65 || (Math.abs(offset) >= 45 && velocity > 0.45));
 
-    // Meaningful horizontal swipe: threshold > 65px or quick flick
-    if (wasHorizontal && (Math.abs(offset) > 65 || velocity > 0.35)) {
+    if (isIntentionalSwipe) {
+      hasSwipedRef.current = true;
       const direction = offset > 0 ? 'right' : 'left';
       setFlyDirection(direction);
 
       setTimeout(() => {
         setFlyDirection(null);
         setDragOffset(0);
-        // Swiping left = Review Again (false), Swiping right = I Know This (true)
+        // Swiping left = Review Again (review sooner / false)
+        // Swiping right = I Know This (don't need to review so soon / true)
         if (direction === 'right') {
           handleGrade(true);
         } else {
           handleGrade(false);
         }
       }, 160);
-    } else {
-      setDragOffset(0);
+      return;
     }
+
+    // 2. Press / Tap on card:
+    // Any press with small displacement (< 30px) flips the card, back and again!
+    // It NEVER moves forward on press/click.
+    if (totalDist < 30 && Math.abs(offset) < 30) {
+      setDragOffset(0);
+      handleFlip();
+      return;
+    }
+
+    // 3. User dragged partially but did not reach swipe threshold:
+    // Smoothly snap back to center without flipping and without grading
+    setDragOffset(0);
   };
 
-  const handlePointerCancel = () => {
+  const handlePointerCancel = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+      try {
+        e.currentTarget.releasePointerCapture(e.pointerId);
+      } catch {
+        // ignore
+      }
+    }
     dragStartRef.current = null;
     isHorizontalSwipeRef.current = null;
     setIsDragging(false);
     setDragOffset(0);
+  };
+
+  const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLElement;
+    if (target.closest('button, a, input, [role="button"]')) {
+      return;
+    }
+    if (hasSwipedRef.current) {
+      hasSwipedRef.current = false;
+      return;
+    }
+    handleFlip();
   };
 
   // Global Keyboard listener for spacebar, 1, 2, K, S, H, Arrow keys
@@ -482,8 +548,9 @@ export const StudySession: React.FC<StudySessionProps> = ({
           onPointerMove={isDragging ? handlePointerMove : undefined}
           onPointerUp={isDragging ? handlePointerUp : undefined}
           onPointerCancel={isDragging ? handlePointerCancel : undefined}
+          onClick={handleCardClick}
           style={getCardStyle()}
-          className={`w-full min-h-[360px] rounded-2xl border transition-all duration-300 cursor-grab active:cursor-grabbing p-8 flex flex-col justify-between relative shadow-sm hover:shadow-md select-none touch-pan-y ${
+          className={`w-full min-h-[360px] rounded-2xl border transition-all duration-300 cursor-pointer active:cursor-grabbing p-8 flex flex-col justify-between relative shadow-sm hover:shadow-md select-none touch-pan-y ${
             isFlipped
               ? 'bg-zinc-50/90 dark:bg-zinc-900/90 border-zinc-300 dark:border-zinc-700 ring-1 ring-zinc-400/20'
               : 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800'
@@ -499,7 +566,7 @@ export const StudySession: React.FC<StudySessionProps> = ({
           {dragOffset < -25 && (
             <div className="absolute top-4 left-4 z-30 px-3.5 py-1.5 rounded-full text-xs font-semibold shadow-md flex items-center gap-1.5 pointer-events-none animate-in fade-in zoom-in-95 bg-rose-600 text-white border border-rose-500">
               <XCircle className="w-3.5 h-3.5 text-white" />
-              <span>Review Again</span>
+              <span>Review Sooner</span>
             </div>
           )}
 
@@ -829,7 +896,7 @@ export const StudySession: React.FC<StudySessionProps> = ({
             <span className="flex items-center gap-1.5">
               <RotateCw className="w-3.5 h-3.5 shrink-0" />
               <span>Tap to {isFlipped ? 'flip back' : 'reveal'}</span>
-              <span className="opacity-70">&bull; Swipe &larr; Review Again &bull; Swipe &rarr; I Know This</span>
+              <span className="opacity-70">&bull; Swipe &larr; Review Sooner &bull; Swipe &rarr; I Know This</span>
             </span>
             <span className="font-mono text-[11px] uppercase">
               {deck?.languageId}
@@ -840,83 +907,45 @@ export const StudySession: React.FC<StudySessionProps> = ({
 
       {/* Control Buttons Bar */}
       <div className="mt-4 sm:mt-6 flex items-center gap-2 sm:gap-3">
-        {!isFlipped ? (
-          <div className="w-full flex items-center gap-2 sm:gap-3">
-            <button
-              type="button"
-              onClick={handlePrevious}
-              disabled={currentIndex === 0}
-              title={currentIndex === 0 ? 'This is the first card' : 'Return to previous card (Shortcut: J)'}
-              className={`py-3 sm:py-3.5 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-medium border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 shrink-0 shadow-2xs ${
-                currentIndex === 0
-                  ? 'opacity-40 cursor-not-allowed pointer-events-none'
-                  : 'hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 cursor-pointer'
-              }`}
-            >
-              <SkipBack className="w-4 h-4" />
-              <span>Previous</span>
-              <kbd className="hidden sm:inline-block font-mono bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded text-[10px]">J</kbd>
-            </button>
+        <div className="w-full flex items-center gap-2 sm:gap-3">
+          <button
+            type="button"
+            onClick={handlePrevious}
+            disabled={currentIndex === 0}
+            title={currentIndex === 0 ? 'This is the first card' : 'Return to previous card (Shortcut: J)'}
+            className={`py-3 sm:py-3.5 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-medium border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 shrink-0 shadow-2xs ${
+              currentIndex === 0
+                ? 'opacity-40 cursor-not-allowed pointer-events-none'
+                : 'hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 cursor-pointer'
+            }`}
+          >
+            <SkipBack className="w-4 h-4" />
+            <span>Previous</span>
+            <kbd className="hidden sm:inline-block font-mono bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded text-[10px]">J</kbd>
+          </button>
 
-            <button
-              type="button"
-              onClick={handleFlip}
-              className="flex-1 py-3 sm:py-3.5 rounded-xl text-xs sm:text-sm font-semibold tracking-wide bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 active:scale-[0.99] transition-all cursor-pointer shadow-xs flex items-center justify-center gap-2"
-            >
-              <span>Show Translation</span>
-              <kbd className="hidden sm:inline-block font-mono bg-white/20 dark:bg-black/10 px-1.5 py-0.5 rounded text-[10px]">Space</kbd>
-            </button>
+          <button
+            type="button"
+            onClick={handleFlip}
+            title={isFlipped ? 'Hide translation and flip back (Shortcut: Space)' : 'Show translation (Shortcut: Space)'}
+            className="flex-1 py-3 sm:py-3.5 rounded-xl text-xs sm:text-sm font-semibold tracking-wide bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 hover:opacity-90 active:scale-[0.99] transition-all cursor-pointer shadow-xs flex items-center justify-center gap-2"
+          >
+            <RotateCw className={`w-3.5 h-3.5 transition-transform duration-300 ${isFlipped ? 'rotate-180' : ''}`} />
+            <span>{isFlipped ? 'Hide Translation' : 'Show Translation'}</span>
+            <kbd className="hidden sm:inline-block font-mono bg-white/20 dark:bg-black/10 px-1.5 py-0.5 rounded text-[10px]">Space</kbd>
+          </button>
 
-            <button
-              type="button"
-              onClick={handleSkip}
-              title="Skip to next card (Shortcut: K or swipe card left/right)"
-              className="py-3 sm:py-3.5 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-medium border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 active:scale-[0.98] transition-all cursor-pointer flex items-center justify-center gap-1.5 shrink-0 shadow-2xs"
-            >
-              <SkipForward className="w-4 h-4" />
-              <span>Skip</span>
-              <kbd className="hidden sm:inline-block font-mono bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded text-[10px]">K</kbd>
-            </button>
-          </div>
-        ) : (
-          <div className="w-full flex items-center gap-2 sm:gap-3">
-            <button
-              type="button"
-              onClick={handlePrevious}
-              disabled={currentIndex === 0}
-              title={currentIndex === 0 ? 'This is the first card' : 'Return to previous card (Shortcut: J)'}
-              className={`py-3 sm:py-3.5 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-medium border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 shrink-0 shadow-2xs ${
-                currentIndex === 0
-                  ? 'opacity-40 cursor-not-allowed pointer-events-none'
-                  : 'hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 cursor-pointer'
-              }`}
-            >
-              <SkipBack className="w-4 h-4" />
-              <span className="hidden sm:inline">Previous</span>
-              <kbd className="hidden sm:inline-block font-mono bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded text-[10px]">J</kbd>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => handleGrade(false)}
-              className="flex-1 py-3 sm:py-3.5 px-3 sm:px-4 rounded-xl border border-red-200 dark:border-red-950/60 bg-red-500/10 hover:bg-red-500/15 text-red-700 dark:text-red-400 text-xs sm:text-sm font-semibold active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer"
-            >
-              <XCircle className="w-4 h-4 shrink-0" />
-              <span>Review Again</span>
-              <kbd className="hidden sm:inline-block font-mono bg-red-500/10 px-1.5 py-0.5 rounded text-[10px]">1</kbd>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => handleGrade(true)}
-              className="flex-1 py-3 sm:py-3.5 px-3 sm:px-4 rounded-xl border border-emerald-200 dark:border-emerald-950/60 bg-emerald-500/15 hover:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-xs sm:text-sm font-semibold active:scale-[0.98] transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer shadow-xs"
-            >
-              <CheckCircle className="w-4 h-4 shrink-0" />
-              <span>I Know This</span>
-              <kbd className="hidden sm:inline-block font-mono bg-emerald-500/15 px-1.5 py-0.5 rounded text-[10px]">2</kbd>
-            </button>
-          </div>
-        )}
+          <button
+            type="button"
+            onClick={handleSkip}
+            title="Skip to next card (Shortcut: K or swipe card left/right)"
+            className="py-3 sm:py-3.5 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-medium border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 active:scale-[0.98] transition-all cursor-pointer flex items-center justify-center gap-1.5 shrink-0 shadow-2xs"
+          >
+            <SkipForward className="w-4 h-4" />
+            <span>Skip</span>
+            <kbd className="hidden sm:inline-block font-mono bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded text-[10px]">K</kbd>
+          </button>
+        </div>
       </div>
     </div>
   );
